@@ -1,10 +1,10 @@
 extends Interactable
 
-
+@export var take: Node3D
 @export var title:CanvasLayer
 
-
 func _on_interaction_detector_player_interacted() -> void:
+	#the title bloacks the mouse click on the polaroid layer's buttons
 	title.visible=false
 	Globals.polaroid_camera_ui.visible=true
 	print("camera scene should be on")
