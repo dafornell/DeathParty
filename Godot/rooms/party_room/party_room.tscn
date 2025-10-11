@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=4 uid="uid://busrnnhrujsqx"]
+[gd_scene load_steps=99 format=4 uid="uid://busrnnhrujsqx"]
 
 [ext_resource type="Texture2D" uid="uid://dwqn2srjfxhnt" path="res://rooms/party_room/PartyRoom layout_wood panel big.png" id="2_1xrom"]
 [ext_resource type="PackedScene" uid="uid://b5sjjc5i61576" path="res://Singletons/ContentLoader/TeleportPoint.tscn" id="2_ir6ct"]
@@ -39,10 +39,13 @@
 [ext_resource type="PackedScene" uid="uid://bagpax3yb0uf7" path="res://Assets/CharacterAssets/christmas_tree/christmas_tree.tscn" id="39_yycxt"]
 [ext_resource type="PackedScene" uid="uid://ddiqilmdbakfb" path="res://Assets/CharacterAssets/angel/angel.tscn" id="43_vtyk6"]
 [ext_resource type="PackedScene" uid="uid://cjkogt4y2w5dp" path="res://Assets/CharacterAssets/bunnies/red_bunny/red_bunny.tscn" id="44_itjaw"]
+[ext_resource type="PackedScene" uid="uid://cfxvpoegl0xb5" path="res://Assets/CharacterAssets/nora/nora.tscn" id="46_fame6"]
 [ext_resource type="PackedScene" uid="uid://cfen8ypgv1gjf" path="res://Assets/CharacterAssets/gamers/shark_gamer/shark_gamer.tscn" id="47_2fylr"]
+[ext_resource type="PackedScene" uid="uid://gu7mwgusye5o" path="res://Assets/CharacterAssets/sam/sam.tscn" id="47_aawic"]
 [ext_resource type="PackedScene" uid="uid://cno0dyov1i6bm" path="res://Assets/CharacterAssets/witch/witch.tscn" id="47_e1lh3"]
 [ext_resource type="PackedScene" uid="uid://csh7q4aonjs3d" path="res://Assets/CharacterAssets/frat_boys/red_hat_frat_boy/Frat boy red hat.glb" id="47_prrke"]
 [ext_resource type="PackedScene" uid="uid://b36wsq6enc3vs" path="res://Assets/CharacterAssets/chi_omega_girl/chi_omega_girl.tscn" id="48_2fylr"]
+[ext_resource type="PackedScene" uid="uid://cnb05rd1rv7e7" path="res://Assets/CharacterAssets/rowan/rowan.tscn" id="48_lucee"]
 [ext_resource type="PackedScene" uid="uid://bte4agxfg1yhm" path="res://Assets/CharacterAssets/frat_boys/Long_Hair_frat_boy/Frat boy long hair.glb" id="48_prrke"]
 [ext_resource type="PackedScene" uid="uid://5ssjaesop020" path="res://Assets/CharacterAssets/free_hug_guy/free_hug_guy.tscn" id="49_prrke"]
 
@@ -2031,6 +2034,7 @@ transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 6.99696, -
 
 [node name="AlbertoMa" parent="NPCs" instance=ExtResource("26_ib5sr")]
 transform = Transform3D(-0.653751, 0, -0.75671, 0, 1, 0, 0.75671, 0, -0.653751, 4.70908, 0.00185193, -4.51747)
+visible = false
 
 [node name="Benny" parent="NPCs" instance=ExtResource("27_5o5c1")]
 transform = Transform3D(-0.999999, 0, 0.0015184, 0, 1, 0, -0.0015184, 0, -0.999999, 1.93569, 0.778855, 1.30822)
@@ -2629,6 +2633,15 @@ bones/64/position = Vector3(3.40518e-07, 7.30069, -1.31951e-06)
 
 [node name="AnimationPlayer" parent="NPCs/Frat boy long hair" index="1"]
 autoplay = "fucking vibe"
+
+[node name="Nora" parent="NPCs" instance=ExtResource("46_fame6")]
+transform = Transform3D(-0.9476737, 0, -0.31924054, 0, 1, 0, 0.31924054, 0, -0.9476737, 4.3692126, 0.002283524, -4.4315643)
+
+[node name="Rowan" parent="NPCs" instance=ExtResource("48_lucee")]
+transform = Transform3D(-0.96246475, 0, -0.27140692, 0, 1, 0, 0.27140692, 0, -0.96246475, 3.5383759, 0.0062999222, -4.1721673)
+
+[node name="Sam" parent="NPCs" instance=ExtResource("47_aawic")]
+transform = Transform3D(-0.9194788, 0, -0.3931397, 0, 1, 0, 0.3931397, 0, -0.9194788, 5.0447335, -0.014124393, -4.2353377)
 
 [node name="CrowdSounds" type="FmodEventEmitter3D" parent="."]
 event_name = "event:/000_SFX/100_Environment/Crowd"
