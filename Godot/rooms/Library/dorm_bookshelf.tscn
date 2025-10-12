@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2ewt3lkiv4ea"]
+
+[ext_resource type="PackedScene" uid="uid://dg5lud6e674m5" path="res://rooms/bedroom/dorm bookshelf.glb" id="1_0mgtc"]
+[ext_resource type="PackedScene" uid="uid://3dt1w7lckdyq" path="res://Entities/interaction_detector.tscn" id="2_4n5gu"]
+[ext_resource type="PackedScene" uid="uid://cqxjk5afxrhem" path="res://Common/Popup UI/object_interact_popup.tscn" id="3_no8lt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f1ky0"]
+resource_local_to_scene = true
+size = Vector3(2.2148414, 2.961471, 2.897675)
+
+[node name="dorm bookshelf" instance=ExtResource("1_0mgtc")]
+
+[node name="InteractionDetector" parent="." index="4" instance=ExtResource("2_4n5gu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.043853045, -0.28958556, 0.27443033)
+
+[node name="CollisionShape3D" parent="InteractionDetector" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28051877, 0.20000333, 0.38871732)
+shape = SubResource("BoxShape3D_f1ky0")
+
+[node name="Popup" parent="." index="5" instance=ExtResource("3_no8lt")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -0.5602859, -0.1596306, -0.26669455)
+
+[editable path="InteractionDetector"]

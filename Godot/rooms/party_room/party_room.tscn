@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=4 uid="uid://busrnnhrujsqx"]
+[gd_scene load_steps=99 format=4 uid="uid://busrnnhrujsqx"]
 
 [ext_resource type="Texture2D" uid="uid://dwqn2srjfxhnt" path="res://rooms/party_room/PartyRoom layout_wood panel big.png" id="2_1xrom"]
 [ext_resource type="PackedScene" uid="uid://b5sjjc5i61576" path="res://Singletons/ContentLoader/TeleportPoint.tscn" id="2_ir6ct"]
@@ -39,10 +39,13 @@
 [ext_resource type="PackedScene" uid="uid://bagpax3yb0uf7" path="res://Assets/CharacterAssets/christmas_tree/christmas_tree.tscn" id="39_yycxt"]
 [ext_resource type="PackedScene" uid="uid://ddiqilmdbakfb" path="res://Assets/CharacterAssets/angel/angel.tscn" id="43_vtyk6"]
 [ext_resource type="PackedScene" uid="uid://cjkogt4y2w5dp" path="res://Assets/CharacterAssets/bunnies/red_bunny/red_bunny.tscn" id="44_itjaw"]
+[ext_resource type="PackedScene" uid="uid://cfxvpoegl0xb5" path="res://Assets/CharacterAssets/nora/nora.tscn" id="46_fame6"]
 [ext_resource type="PackedScene" uid="uid://cfen8ypgv1gjf" path="res://Assets/CharacterAssets/gamers/shark_gamer/shark_gamer.tscn" id="47_2fylr"]
+[ext_resource type="PackedScene" uid="uid://gu7mwgusye5o" path="res://Assets/CharacterAssets/sam/sam.tscn" id="47_aawic"]
 [ext_resource type="PackedScene" uid="uid://cno0dyov1i6bm" path="res://Assets/CharacterAssets/witch/witch.tscn" id="47_e1lh3"]
 [ext_resource type="PackedScene" uid="uid://csh7q4aonjs3d" path="res://Assets/CharacterAssets/frat_boys/red_hat_frat_boy/Frat boy red hat.glb" id="47_prrke"]
 [ext_resource type="PackedScene" uid="uid://b36wsq6enc3vs" path="res://Assets/CharacterAssets/chi_omega_girl/chi_omega_girl.tscn" id="48_2fylr"]
+[ext_resource type="PackedScene" uid="uid://cnb05rd1rv7e7" path="res://Assets/CharacterAssets/rowan/rowan.tscn" id="48_lucee"]
 [ext_resource type="PackedScene" uid="uid://bte4agxfg1yhm" path="res://Assets/CharacterAssets/frat_boys/Long_Hair_frat_boy/Frat boy long hair.glb" id="48_prrke"]
 [ext_resource type="PackedScene" uid="uid://5ssjaesop020" path="res://Assets/CharacterAssets/free_hug_guy/free_hug_guy.tscn" id="49_prrke"]
 
@@ -78,7 +81,7 @@ func _on_body_exited(body: Node3D) -> void:
 size = Vector3(20, 12, 25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0yn4t"]
-size = Vector3(25, 2, 0.1)
+size = Vector3(28, 2, 0.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8hjut"]
 size = Vector3(22, 2, 0.1)
@@ -137,7 +140,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_7f31m")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lwnio"]
-size = Vector3(21, 1, 26)
+size = Vector3(21, 1, 27)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_boqwv"]
 resource_name = "wall wood"
@@ -694,6 +697,10 @@ shape = SubResource("BoxShape3D_0yn4t")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.278742, 1, 14.0004)
 shape = SubResource("BoxShape3D_8hjut")
 
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Boundaries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31366518, 1, -8.999573)
+shape = SubResource("BoxShape3D_8hjut")
+
 [node name="TeleportPoint3" parent="." instance=ExtResource("2_ir6ct")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.62563, 0.89898, -0.365424)
 spawn_point_number = 2
@@ -837,28 +844,28 @@ transform = Transform3D(-4.36557e-08, 0, -1, 0, 1, 0, 1, 0, -4.36557e-08, 10.082
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.3, 0)
 
 [node name="MarblePillar" parent="MarblePillars" instance=ExtResource("4_yruca")]
-transform = Transform3D(-1.29, 0, 0.0020651, 0, 0.954104, 0, -0.00195864, 0, -1.36012, 7.99903, -8.7518, -3.38377)
+transform = Transform3D(0.82919705, 0, 1.0419136, 0, 0.954104, 0, -0.98819846, 0, 0.87426937, 7.99903, -8.7518, -3.38377)
 
 [node name="MarblePillar2" parent="MarblePillars" instance=ExtResource("4_yruca")]
-transform = Transform3D(-1.28974, 0, 0.00206468, 0, 0.95391, 0, -0.00195824, 0, -1.35984, 7.98975, -8.7518, 2.72535)
+transform = Transform3D(0.8290298, 0, 1.041699, 0, 0.95391, 0, -0.9879992, 0, 0.87408936, 7.98975, -8.7518, 2.72535)
 
 [node name="MarblePillar3" parent="MarblePillars" instance=ExtResource("4_yruca")]
-transform = Transform3D(-1.28974, 0, 0.00206468, 0, 0.95391, 0, -0.00195824, 0, -1.35984, 7.9803, -8.7518, 8.95283)
+transform = Transform3D(0.8290298, 0, 1.041699, 0, 0.95391, 0, -0.9879992, 0, 0.87408936, 7.9803, -8.7518, 8.95283)
 
 [node name="MarblePillar4" parent="MarblePillars" instance=ExtResource("4_yruca")]
-transform = Transform3D(-1.28974, 0, 0.00206467, 0, 1.03033, 0, -0.00195824, 0, -1.35984, 3.51763, -8.46388, 10.225)
+transform = Transform3D(0.8290298, 0, 1.041699, 0, 1.03033, 0, -0.9879992, 0, 0.87408936, 3.51763, -8.46388, 10.225)
 
 [node name="MarblePillar5" parent="MarblePillars" instance=ExtResource("4_yruca")]
-transform = Transform3D(-1.28974, 0, 0.00206467, 0, 1.03033, 0, -0.00195824, 0, -1.35984, -2.59168, -8.48158, 10.2159)
+transform = Transform3D(0.8290298, 0, 1.041699, 0, 1.03033, 0, -0.9879992, 0, 0.87408936, -2.59168, -8.48158, 10.2159)
 
 [node name="MarblePillar6" parent="MarblePillars" instance=ExtResource("4_yruca")]
-transform = Transform3D(-1.28974, 0, 0.00206468, 0, 0.95391, 0, -0.00195824, 0, -1.35984, -7.69582, -8.74743, 8.93358)
+transform = Transform3D(0.8290298, 0, 1.041699, 0, 0.95391, 0, -0.9879992, 0, 0.87408936, -7.69582, -8.74743, 8.93358)
 
 [node name="MarblePillar7" parent="MarblePillars" instance=ExtResource("4_yruca")]
-transform = Transform3D(-1.28974, 0, 0.00206468, 0, 0.95391, 0, -0.00195824, 0, -1.35984, -7.68754, -8.7518, 2.70155)
+transform = Transform3D(0.8290298, 0, 1.041699, 0, 0.95391, 0, -0.9879992, 0, 0.87408936, -7.68754, -8.7518, 2.70155)
 
 [node name="MarblePillar8" parent="MarblePillars" instance=ExtResource("4_yruca")]
-transform = Transform3D(-1.28974, 0, 0.00206468, 0, 0.95391, 0, -0.00195824, 0, -1.35984, -7.67826, -8.7518, -3.40758)
+transform = Transform3D(0.8290298, 0, 1.041699, 0, 0.95391, 0, -0.9879992, 0, 0.87408936, -7.67826, -8.7518, -3.40758)
 
 [node name="Balcony" type="Node3D" parent="."]
 
@@ -2027,6 +2034,7 @@ transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 6.99696, -
 
 [node name="AlbertoMa" parent="NPCs" instance=ExtResource("26_ib5sr")]
 transform = Transform3D(-0.653751, 0, -0.75671, 0, 1, 0, 0.75671, 0, -0.653751, 4.70908, 0.00185193, -4.51747)
+visible = false
 
 [node name="Benny" parent="NPCs" instance=ExtResource("27_5o5c1")]
 transform = Transform3D(-0.999999, 0, 0.0015184, 0, 1, 0, -0.0015184, 0, -0.999999, 1.93569, 0.778855, 1.30822)
@@ -2625,6 +2633,15 @@ bones/64/position = Vector3(3.40518e-07, 7.30069, -1.31951e-06)
 
 [node name="AnimationPlayer" parent="NPCs/Frat boy long hair" index="1"]
 autoplay = "fucking vibe"
+
+[node name="Nora" parent="NPCs" instance=ExtResource("46_fame6")]
+transform = Transform3D(-0.9476737, 0, -0.31924054, 0, 1, 0, 0.31924054, 0, -0.9476737, 4.3692126, 0.002283524, -4.4315643)
+
+[node name="Rowan" parent="NPCs" instance=ExtResource("48_lucee")]
+transform = Transform3D(-0.96246475, 0, -0.27140692, 0, 1, 0, 0.27140692, 0, -0.96246475, 3.5383759, 0.0062999222, -4.1721673)
+
+[node name="Sam" parent="NPCs" instance=ExtResource("47_aawic")]
+transform = Transform3D(-0.9194788, 0, -0.3931397, 0, 1, 0, 0.3931397, 0, -0.9194788, 5.0447335, -0.014124393, -4.2353377)
 
 [node name="CrowdSounds" type="FmodEventEmitter3D" parent="."]
 event_name = "event:/000_SFX/100_Environment/Crowd"

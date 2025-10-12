@@ -550,6 +550,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0325311, 0.901062, 0.04868
 shape = SubResource("BoxShape3D_q02m8")
 
 [node name="Popup" parent="." instance=ExtResource("17_q02m8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.044417065, 1.3306601, 0.82199734)
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -0.044417065, 1.2259725, 0.82199734)
 
 [editable path="InteractionDetector"]

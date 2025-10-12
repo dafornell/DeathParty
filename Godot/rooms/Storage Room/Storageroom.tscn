@@ -1,4 +1,4 @@
-[gd_scene load_steps=262 format=4 uid="uid://c7033b4susyvc"]
+[gd_scene load_steps=263 format=4 uid="uid://c7033b4susyvc"]
 
 [ext_resource type="Script" uid="uid://uvrra8rcndm8" path="res://rooms/Storage Room/storageroom.gd" id="1_tlveg"]
 [ext_resource type="PackedScene" uid="uid://bbyg62wymptn6" path="res://Singletons/ContentLoader/scene_loader.tscn" id="2_llsdw"]
@@ -65,6 +65,7 @@
 [ext_resource type="PackedScene" uid="uid://bhbpw48nifdkp" path="res://rooms/Storage Room/brush_2.tscn" id="63_81kv4"]
 [ext_resource type="PackedScene" uid="uid://b5sjjc5i61576" path="res://Singletons/ContentLoader/TeleportPoint.tscn" id="64_x0wqr"]
 [ext_resource type="Texture2D" uid="uid://ccuxjk7edg5dg" path="res://Assets/pop_ups/EnterArrowDown.png" id="65_g0t3m"]
+[ext_resource type="PackedScene" uid="uid://dsti2l63426xr" path="res://rooms/Storage Room/glove.glb" id="66_ileeo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_od2cs"]
 size = Vector3(19.865, 6, 11.194)
@@ -3762,6 +3763,9 @@ texture = ExtResource("65_g0t3m")
 [node name="CollisionShape3D" parent="SceneLoader_Hourhand hallway/InteractionDetector" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0400696, 1.23943, -0.364662)
 shape = SubResource("BoxShape3D_e0eie")
+
+[node name="glove" parent="." instance=ExtResource("66_ileeo")]
+transform = Transform3D(0.9749775, 0.17732906, 0.5623818, 0, 1.0866873, -0.34265202, -0.58967686, 0.2931976, 0.9298475, -2.6548386, -0.97094053, 4.2998486)
 
 [editable path="SceneLoader_Basement"]
 [editable path="SceneLoader_Basement/InteractionDetector"]
