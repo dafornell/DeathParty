@@ -2350,13 +2350,14 @@ path_follow_node = NodePath("IntroCameraPath/PathFollow3D")
 
 [node name="TitleScreen" parent="." instance=ExtResource("2_0t478")]
 
-[node name="TutorialUI" parent="." node_paths=PackedStringArray("exterior_scene_loader", "polaroid_camera", "corkboard_popup") instance=ExtResource("3_84fnt")]
+[node name="TutorialUI" parent="." node_paths=PackedStringArray("exterior_scene_loader", "polaroid_camera", "corkboard_popup", "corkboard") instance=ExtResource("3_84fnt")]
 rowan_invite_dialogue = ExtResource("4_vr1g1")
 on_phone_close_dialogue = ExtResource("5_shd6j")
 on_journal_dialogue = ExtResource("6_yxfps")
 exterior_scene_loader = NodePath("../SceneLoader_Exterior")
 polaroid_camera = NodePath("../PolaroidCamera")
 corkboard_popup = NodePath("../CorkBoard/Popup")
+corkboard = NodePath("../CorkBoard")
 
 [node name="IntroCameraPath" type="Path3D" parent="."]
 curve = SubResource("Curve3D_tluma")
@@ -2771,9 +2772,10 @@ shadow_enabled = true
 [node name="Chair" parent="." instance=ExtResource("8_8bc0i")]
 transform = Transform3D(0.998259, 0, -0.102315, 0, 1.00349, 0, 0.102315, 0, 0.998259, -0.776669, 0.361875, 0.718062)
 
-[node name="CorkBoard" type="Node3D" parent="." node_paths=PackedStringArray("title")]
+[node name="CorkBoard" type="Node3D" parent="." node_paths=PackedStringArray("take", "title")]
 transform = Transform3D(1.12343, 0, 0, 0, 1.12343, 0, 0, 0, 1.12343, -0.926211, 1.4748, -1.18352)
 script = ExtResource("54_8ahpd")
+take = NodePath("Popup")
 title = NodePath("../TitleScreen")
 enabled = false
 metadata/_custom_type_script = "uid://bea7y4hurcesx"
@@ -2789,6 +2791,7 @@ texture = ExtResource("57_f0vbm")
 [node name="NameLabel" parent="CorkBoard/Popup" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08159971, 0.4823072, 0)
 text = "TAKE!"
+font_size = 166
 
 [node name="TakeLabel" parent="CorkBoard/Popup" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.29784387, 0.4006183, 0)
