@@ -1,11 +1,9 @@
 extends Button
-@export var question_mark : Area3D
 @export var Polaroid_image : MeshInstance3D
 
+
 func _on_pressed():
-	print("CLICkED BUTTON")
-	#question_mark.visible=false
-	#disabled=true
+	print("CLICKED BUTTON")
 	await get_tree().create_timer(0.3).timeout
 	#code for flash 
 	print("picture taken")
@@ -15,6 +13,7 @@ func _on_pressed():
 	await tween.finished
 	#await get_tree().create_timer(1.2).timeout
 	await get_tree().create_timer(0.3).timeout
+	Globals.player.movement_disabled = false
 	Globals.polaroid_camera_ui.visible=false
 	if(Polaroid_image):
 		Polaroid_image.turn_off()

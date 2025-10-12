@@ -22,6 +22,7 @@ signal toggle_corkboard_interactable(value: bool)
 @export var exterior_scene_loader: SceneLoader
 @export var polaroid_camera: Interactable
 @export var corkboard_popup: Node3D
+@export var corkboard: Interactable
 
 @onready var loading_timer: Timer = %LoadingTimer
 @onready var move_controls_popup: PanelContainer = %MoveControlsPopup
@@ -70,6 +71,7 @@ var state: States:
 				polaroid_camera.interaction_detector.player_interacted.connect(on_camera_interacted)
 			States.TAKE_PICTURE:
 				print("TUTORIAL STEP: TAKE PICTURE")
+				corkboard.enabled = true
 				polaroid_camera.queue_free()
 				toggle_corkboard_interactable.emit(true)
 			States.TUTORIAL_FINISHED:
