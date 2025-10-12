@@ -74,9 +74,24 @@ wait_time = 25.0
 one_shot = true
 
 [node name="bookflip" parent="." instance=ExtResource("2_7ovfm")]
-transform = Transform3D(-0.8, 0, -1.20797e-07, 0, 0.8, 0, 1.20797e-07, 0, -0.8, -0.00238484, 0.0737534, -0.0990923)
+transform = Transform3D(-0.841762, 0, -1.271029e-07, 0, 0.841762, -3.5527137e-15, 1.271029e-07, -3.5527137e-15, -0.841762, -0.0024470873, 0.06660719, -0.34848255)
 viewport_texture1 = SubResource("ViewportTexture_0upgx")
 viewport_texture2 = SubResource("ViewportTexture_e2q15")
+
+[node name="LeftPageCollider" parent="bookflip" index="0"]
+transform = Transform3D(1.074718, -1.6940659e-21, -1.4210855e-14, 0, 1, -1.4210855e-14, -3.100631e-22, 1.7763568e-14, 0.9275239, 0.006120963, 0.23497495, -0.1216833)
+
+[node name="RightPageCollider" parent="bookflip" index="1"]
+transform = Transform3D(1.074718, -1.6940659e-21, -1.4210855e-14, 0, 1, -1.4210855e-14, -3.100631e-22, 1.7763568e-14, 0.9275239, 0.006120963, 0.23497495, -0.1216833)
+
+[node name="Tabs" parent="bookflip" index="3"]
+transform = Transform3D(1.074718, -1.6940659e-21, -1.4210855e-14, 0, 1, -1.4210855e-14, -3.100631e-22, 1.7763568e-14, 0.9275239, -0.00017506839, 0, -0.11869836)
+
+[node name="ArrowDown" parent="bookflip" index="4"]
+transform = Transform3D(0.07523026, -3.5527137e-15, 2.1175824e-22, 2.1175824e-22, -2.838036e-09, -0.07, -8.881784e-16, 0.06492667, -3.059797e-09, -0.00017506839, 0.3307316, -1.2658907)
+
+[node name="new_book_animated" parent="bookflip" index="5"]
+transform = Transform3D(-4.6977412e-08, -1.6940659e-21, -1.074718, -1.7763568e-14, 1, -8.4703295e-22, 1.074718, 1.7763568e-14, -4.6977412e-08, -0.00017506839, 0, -0.11869836)
 
 [node name="Skeleton3D" parent="bookflip/new_book_animated/Armature" index="0"]
 bones/0/position = Vector3(2.688972e-19, 0.06413985, 0)
@@ -86,7 +101,7 @@ bones/2/rotation = Quaternion(0, 0, 0, 1)
 bones/3/rotation = Quaternion(0, 0, 0, 1)
 
 [node name="ShowInventoryArea" type="Area3D" parent="." node_paths=PackedStringArray("inventory_items_container", "journal_root")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.267168, -1.16783e-08)
+transform = Transform3D(1.0522025, 0, 0, 0, 1.0522025, 0, 0, 0, 1.0522025, 6.224727e-05, 0.2701185, -0.24421738)
 collision_layer = 9
 script = ExtResource("1_jth6w")
 inventory_items_container = NodePath("../InventoryItems")
@@ -98,19 +113,19 @@ shape = SubResource("BoxShape3D_rss8h")
 debug_color = Color(0.784314, 0, 0.0745098, 1)
 
 [node name="InventoryItems" type="Node3D" parent="." node_paths=PackedStringArray("bookflip_instance")]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -0.00238484, 0.575661, 1.71238)
+transform = Transform3D(0.9469822, 0, 0, 0, 0.9469822, 3.5527137e-15, 0, -3.5527137e-15, 0.9469822, -0.0024470873, 0.5947156, 1.5575532)
 script = ExtResource("3_7ovfm")
 bookflip_instance = NodePath("../bookflip")
 
 [node name="BackpackBackground" type="MeshInstance3D" parent="."]
-transform = Transform3D(2.65118, 0, 0, 0, 3, 0, 0, 0, 2.83896, 0, 0.0441817, 0.789593)
+transform = Transform3D(2.7895782, 0, 0, 0, 3.1566074, 0, 0, 0, 2.9871607, 6.224727e-05, 0.035491776, 0.58659434)
 material_overlay = ExtResource("6_0upgx")
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_ngl8b")
 surface_material_override/0 = SubResource("StandardMaterial3D_47kpb")
 
 [node name="HideInventoryArea" type="Area3D" parent="." node_paths=PackedStringArray("inventory_items_container", "journal_root")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.172886, -1.57865)
+transform = Transform3D(1.0522025, 0, 0, 0, 1.0522025, 0, 0, 0, 1.0522025, 6.224727e-05, 0.17091477, -1.9052768)
 collision_layer = 9
 script = ExtResource("7_xwflh")
 inventory_items_container = NodePath("../InventoryItems")
@@ -122,7 +137,7 @@ shape = SubResource("BoxShape3D_47kpb")
 debug_color = Color(0.0663742, 0.326824, 0.926759, 0.42)
 
 [node name="new_book_static" parent="." instance=ExtResource("9_8c4l8")]
-transform = Transform3D(-3.4969112e-08, 0, 0.8, 0, 0.8, 0, -0.8, 0, -3.4969112e-08, -0.00238484, 0.13023275, -0.099092305)
+transform = Transform3D(-3.6794585e-08, 0, 0.841762, -3.5527137e-15, 0.841762, 0, -0.841762, -3.5527137e-15, -3.6794585e-08, -0.0024470873, 0.1260349, -0.34848255)
 visible = false
 
 [connection signal="timeout" from="Sounds/JournalMusic/MusicTimer" to="." method="_on_music_timer_timeout"]

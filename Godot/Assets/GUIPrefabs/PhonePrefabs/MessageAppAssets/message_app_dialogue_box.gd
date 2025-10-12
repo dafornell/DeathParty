@@ -143,7 +143,7 @@ var last_speaker: String = ""
 var previous_text_instance : DialogueLineExpand
 func add_line(line: InkLineInfo, skip_delay : bool = false) -> void:
 	#DELAY BEFORE SHOWING (except on first message)
-	var delay_time : float = line.text.length()/30.0
+	var delay_time : float = line.text.length()/20.0
 	
 	dialogue_scroll_container.offset_bottom = 0
 	touch_screen.visible = true

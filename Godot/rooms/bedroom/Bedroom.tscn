@@ -1090,6 +1090,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_4g2yi")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_wkd24"]
+size = Vector3(2, 2, 2)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7orw5"]
 resource_name = "Material.009"
 transparency = 1
@@ -2358,7 +2361,6 @@ on_journal_dialogue = ExtResource("6_yxfps")
 exterior_scene_loader = NodePath("../SceneLoader_Exterior")
 polaroid_camera = NodePath("../PolaroidCamera")
 corkboard_popup = NodePath("../CorkBoard/Popup")
-corkboard = NodePath("../CorkBoard")
 
 [node name="IntroCameraPath" type="Path3D" parent="."]
 curve = SubResource("Curve3D_tluma")
@@ -2781,24 +2783,16 @@ title = NodePath("../TitleScreen")
 enabled = false
 metadata/_custom_type_script = "uid://bea7y4hurcesx"
 
-[node name="InteractionDetector" parent="CorkBoard" node_paths=PackedStringArray("collision_shape") instance=ExtResource("63_yquho")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.43036, 0, 0)
-monitoring = false
-collision_shape = NodePath("CollisionShape3D2")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="CorkBoard/InteractionDetector"]
-shape = SubResource("BoxShape3D_w60h2")
-debug_color = Color(1, 0.675478, 0.6244368, 1)
-
 [node name="Popup" parent="CorkBoard" instance=ExtResource("55_wkd24")]
-transform = Transform3D(0.615, 0, 0, 0, 0.615, 0, 0, 0, 0.615, 1.1864907, 0, 0)
+transform = Transform3D(0.615, 0, 0, 0, 0.615, 0, 0, 0, 0.615, 0.94049066, 0, 0.3075)
+visible = false
 
 [node name="Background" parent="CorkBoard/Popup" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.407059, 0)
 texture = ExtResource("57_f0vbm")
 
 [node name="NameLabel" parent="CorkBoard/Popup" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13931042, 0.4823072, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08159971, 0.4823072, 0)
 text = "TAKE!"
 font_size = 166
 
@@ -2835,6 +2829,15 @@ skeleton = NodePath("")
 
 [node name="Evidence" parent="CorkBoard" instance=ExtResource("30_ke8q4")]
 transform = Transform3D(0.900741, 0, 0, 0, 0.900741, 0, 0, 0, 0.900741, -0.0322255, 0.0498521, 0.0131065)
+
+[node name="InteractionDetector" parent="CorkBoard" node_paths=PackedStringArray("collision_shape") instance=ExtResource("63_yquho")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.43036, 0, 0)
+collision_shape = NodePath("CollisionShape3D2")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CorkBoard/InteractionDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.43, -0.23500001, 1.5)
+shape = SubResource("BoxShape3D_wkd24")
+debug_color = Color(0, 1, 0.0333333, 1)
 
 [node name="StarRug" parent="." groups=["material_carpet"] instance=ExtResource("20_y7msa")]
 transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, 0.137042, -0.120105, 1.50737)
@@ -3196,7 +3199,6 @@ visible = false
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="intro_finished" from="." to="TutorialUI" method="_on_bedroom_intro_finished"]
 [connection signal="toggle_corkboard_interactable" from="TutorialUI" to="CorkBoard" method="_on_tutorial_ui_toggle_corkboard_interactable"]
-[connection signal="player_interacted" from="CorkBoard/InteractionDetector" to="CorkBoard" method="_on_interaction_detector_player_interacted"]
 
 [editable path="SceneLoader_Exterior"]
 [editable path="SceneLoader_Exterior/InteractionDetector"]
