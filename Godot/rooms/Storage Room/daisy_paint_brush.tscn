@@ -13,7 +13,6 @@ size = Vector3(1.97247, 2.02496, 2.84531)
 [node name="Daisy Paint Brush1" instance=ExtResource("1_52v0e")]
 script = ExtResource("2_swwfa")
 talking_object_resource = ExtResource("3_htcy3")
-free_on_interact = true
 
 [node name="InteractionDetector" parent="." index="1" instance=ExtResource("4_xaeli")]
 
@@ -22,6 +21,6 @@ transform = Transform3D(1.295, 0, 0, 0, 1.295, 0, 0, 0, 1.295, -0.193758, 0.5124
 shape = SubResource("BoxShape3D_yvbm7")
 
 [node name="Popup" parent="." index="2" instance=ExtResource("5_cj2di")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1716704, 1.348774, -0.7389456)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0238509, 0.9224949, -0.15989566)
 
 [editable path="InteractionDetector"]

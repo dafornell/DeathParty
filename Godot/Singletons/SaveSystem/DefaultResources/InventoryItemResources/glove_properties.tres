@@ -7,5 +7,6 @@
 script = ExtResource("1_kmrl0")
 description = "A thick, rubbery, yellow glove, all by itself. Used to protect the wearer from harsh chemicals and hot water."
 model = ExtResource("1_efq2c")
+inventory_position = Vector2(0, -0.1)
 name = "Glove"
 metadata/_custom_type_script = "uid://cwplai8fhufrp"
