@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://8x3tcu4xsvvn"]
+
+[ext_resource type="PackedScene" uid="uid://dsti2l63426xr" path="res://rooms/Storage Room/glove.glb" id="1_qdy33"]
+
+[node name="glove" instance=ExtResource("1_qdy33")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)

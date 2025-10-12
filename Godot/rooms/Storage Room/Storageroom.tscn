@@ -61,11 +61,11 @@
 [ext_resource type="Texture2D" uid="uid://bs6b6l2er7cvd" path="res://rooms/Storage Room/spiderwebs_dsf.png" id="59_fat75"]
 [ext_resource type="PackedScene" uid="uid://bewi8xed4xchk" path="res://Assets/props/chairs/folded chairs/folded chairs.glb" id="60_fat75"]
 [ext_resource type="PackedScene" uid="uid://04h45wmndeqi" path="res://rooms/Kitchen/beerpong trophie.glb" id="61_ntvq4"]
-[ext_resource type="PackedScene" uid="uid://iprjr7kw0pf0" path="res://rooms/Storage Room/daisy_paint_brush_1.tscn" id="62_xs4sd"]
+[ext_resource type="PackedScene" uid="uid://iprjr7kw0pf0" path="res://rooms/Storage Room/daisy_paint_brush.tscn" id="62_xs4sd"]
 [ext_resource type="PackedScene" uid="uid://bhbpw48nifdkp" path="res://rooms/Storage Room/brush_2.tscn" id="63_81kv4"]
 [ext_resource type="PackedScene" uid="uid://b5sjjc5i61576" path="res://Singletons/ContentLoader/TeleportPoint.tscn" id="64_x0wqr"]
 [ext_resource type="Texture2D" uid="uid://ccuxjk7edg5dg" path="res://Assets/pop_ups/EnterArrowDown.png" id="65_g0t3m"]
-[ext_resource type="PackedScene" uid="uid://dsti2l63426xr" path="res://rooms/Storage Room/glove.glb" id="66_ileeo"]
+[ext_resource type="PackedScene" uid="uid://xef5l0oe30i" path="res://rooms/Storage Room/glove.tscn" id="66_ileeo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_od2cs"]
 size = Vector3(19.865, 6, 11.194)
@@ -2757,6 +2757,7 @@ interactable = false
 target_scene = 6
 local_spawn_point = 1
 door_sound_type = 1
+free_on_interact = null
 
 [node name="Popup" parent="SceneLoader_Basement" index="1"]
 transform = Transform3D(-6.55671e-09, 0, -0.15, 0, 0.15, 0, 0.15, 0, -6.55671e-09, 0, 1.75, -1.25)
@@ -3755,6 +3756,7 @@ transform = Transform3D(0.599649, -0.365484, -0.897297, 0.26079, 1.07719, -0.264
 [node name="SceneLoader_Hourhand hallway" parent="." instance=ExtResource("2_llsdw")]
 transform = Transform3D(1.13943, 0, 0, 0, 1.13943, 0, 0, 0, 1.13943, 0.974497, -1.74971, 1.00802)
 target_scene = 11
+free_on_interact = null
 
 [node name="Popup" parent="SceneLoader_Hourhand hallway" index="1"]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 1.75, 0)

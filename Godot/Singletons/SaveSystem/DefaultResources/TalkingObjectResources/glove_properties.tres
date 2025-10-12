@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="TalkingObjectResource" load_steps=5 format=3 uid="uid://ylig7tvtayms"]
+
+[ext_resource type="Script" uid="uid://d1yny6oqf2gvp" path="res://Singletons/SaveSystem/ResourceScripts/json_array.gd" id="1_7sl0l"]
+[ext_resource type="JSON" path="res://Assets/InkFiles/storageroom_Olivia_glove_interact.json" id="2_8fo4j"]
+[ext_resource type="Script" uid="uid://b3ieaqolkasnx" path="res://Singletons/SaveSystem/ResourceScripts/talking_object_properties_script.gd" id="2_lsmg6"]
+
+[sub_resource type="Resource" id="Resource_8raev"]
+script = ExtResource("1_7sl0l")
+json_array = Array[JSON]([ExtResource("2_8fo4j"), null])
+metadata/_custom_type_script = "uid://d1yny6oqf2gvp"
+
+[resource]
+script = ExtResource("2_lsmg6")
+queue_chats = Dictionary[int, ExtResource("1_7sl0l")]({
+8: SubResource("Resource_8raev")
+})
+metadata/_custom_type_script = "uid://b3ieaqolkasnx"
