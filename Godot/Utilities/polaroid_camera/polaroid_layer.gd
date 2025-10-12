@@ -3,15 +3,22 @@ class_name PolaroidLayer extends CanvasLayer
 @export var viewfinder_camera: Camera2D
 #variable hold the image that the camera is looking at  
 @export var Picture: TextureRect
-
+@export var shoot:Button
+#takes in picture count 
+var count =0
 func _ready() -> void:
 	Globals.polaroid_camera_ui = self
-	
+
 #function for movement of camera
 func _physics_process(delta) -> void:
 	# picture movement corresponds with player input	
 	#error: awsd moves player at the same time		
 	#if (Picture!=""):	
+		#counts the first E when opening the picture taking scene, so have to shoot on the second picture take input	
+		if self.visible and Input.is_action_just_pressed("take_picture"):
+			count+=1
+			if count ==2:
+				shoot._on_pressed()
 		if Input.is_action_pressed("move_right"):
 			Picture.position.x -= 3
 		if Input.is_action_pressed("move_left"):

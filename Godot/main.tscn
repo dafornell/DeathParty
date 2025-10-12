@@ -93,11 +93,12 @@ visible = false
 [node name="Stats" parent="." instance=ExtResource("56_e71vb")]
 process_mode = 3
 
-[node name="PolaroidCamera" parent="." node_paths=PackedStringArray("viewfinder_camera", "Picture") instance=ExtResource("55_e71vb")]
+[node name="PolaroidCamera" parent="." node_paths=PackedStringArray("viewfinder_camera", "Picture", "shoot") instance=ExtResource("55_e71vb")]
 visible = false
 script = ExtResource("65_uatky")
 viewfinder_camera = NodePath("Camera2D")
 Picture = NodePath("body/MainImage")
+shoot = NodePath("body/ViewFinder/filter_control/shoot")
 
 [node name="shoot" parent="PolaroidCamera/body/ViewFinder/filter_control" index="6"]
 script = ExtResource("12_kq58d")
