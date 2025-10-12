@@ -34,8 +34,11 @@ func _ready() -> void:
 	if interaction_detector == null:
 		interaction_detector = interaction_detector_file.instantiate()
 		var char_body: CharacterBody3D = get_node_or_null("CharacterBody3D")
+		var follower_body: FollowerBody3D = get_node_or_null("FollowerBody3D")
 		if char_body:
 			char_body.add_child(interaction_detector)
+		elif follower_body:
+			follower_body.add_child(interaction_detector)
 		else:
 			add_child(interaction_detector)
 	interaction_detector.player_interacted.connect(on_interact)

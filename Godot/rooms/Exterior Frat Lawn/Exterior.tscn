@@ -1,4 +1,4 @@
-[gd_scene load_steps=221 format=4 uid="uid://dph5ihe40llhe"]
+[gd_scene load_steps=217 format=4 uid="uid://dph5ihe40llhe"]
 
 [ext_resource type="Script" uid="uid://c7lpgksj3ddcu" path="res://rooms/Exterior Frat Lawn/exterior.gd" id="1_nnx0v"]
 [ext_resource type="Environment" uid="uid://ca3e8txjiikuc" path="res://Assets/environments/new Exterior environment.tres" id="2_maypx"]
@@ -7,9 +7,8 @@
 [ext_resource type="Script" uid="uid://cyn7mdbv1saaq" path="res://rooms/Exterior Frat Lawn/jog_controls_popup.gd" id="4_81i5n"]
 [ext_resource type="Texture2D" uid="uid://ddr8f0a45pnoy" path="res://rooms/Exterior Frat Lawn/Exterior_51dc8d5e7ac559bb47ade3dfd3ba5b58.jpg" id="4_s6f1y"]
 [ext_resource type="Texture2D" uid="uid://dj2kkd15yuake" path="res://rooms/Exterior Frat Lawn/Exterior_Door.png" id="5_nnx0v"]
-[ext_resource type="Script" uid="uid://d10fwvktnsx7m" path="res://Entities/EntityScripts/npc.gd" id="5_pkvil"]
-[ext_resource type="Script" uid="uid://be0lp566umrrx" path="res://rooms/Exterior Frat Lawn/character_body_3d.gd" id="6_42tb4"]
 [ext_resource type="Texture2D" uid="uid://jhfdrr25x8hn" path="res://rooms/Exterior Frat Lawn/Exterior_RoofingTiles014B_1K-JPG_Color-RoofingTiles014B_1K-JPG_Opacity.png" id="7_72fye"]
+[ext_resource type="PackedScene" uid="uid://d0ktctob5o1sk" path="res://Entities/NPCs/rowan_follower.tscn" id="7_a3xny"]
 [ext_resource type="Texture2D" uid="uid://b0to4splsbr7y" path="res://rooms/Exterior Frat Lawn/Exterior_RoofingTiles014B_1K-JPG_Roughness.png" id="8_c8lo3"]
 [ext_resource type="Texture2D" uid="uid://5bpex64vp0vd" path="res://rooms/Exterior Frat Lawn/Exterior_RoofingTiles014B_1K-JPG_NormalGL.jpg" id="9_qhpyv"]
 [ext_resource type="PackedScene" path="res://Assets/props/party_here_sign.tscn" id="9_qxka8"]
@@ -46,14 +45,14 @@
 [ext_resource type="Texture2D" uid="uid://dihy3o21m8vm" path="res://rooms/Exterior Frat Lawn/Trees 2_Untitled_Artwork.png" id="38_soob6"]
 [ext_resource type="Texture2D" uid="uid://b6kacqqu4hq2x" path="res://rooms/Exterior Frat Lawn/Trees 2_banch.png" id="39_vpvgt"]
 [ext_resource type="Texture2D" uid="uid://cijdsma3jnomh" path="res://Assets/environment/marble_pillar/pillar_party windows.png" id="40_me6sl"]
-[ext_resource type="PackedScene" path="res://Assets/props/beerpong_trophy.tscn" id="42_3e6am"]
+[ext_resource type="PackedScene" uid="uid://tt4l0v1cauji" path="res://Assets/props/beerpong_trophy.tscn" id="42_3e6am"]
 [ext_resource type="PackedScene" uid="uid://cno0dyov1i6bm" path="res://Assets/CharacterAssets/witch/witch.tscn" id="44_6gmc6"]
 [ext_resource type="PackedScene" uid="uid://rjlwmibbgl3v" path="res://Assets/props/wallet_and_id.tscn" id="44_qxka8"]
 [ext_resource type="PackedScene" uid="uid://b36wsq6enc3vs" path="res://Assets/CharacterAssets/chi_omega_girl/chi_omega_girl.tscn" id="45_8d7hf"]
 [ext_resource type="PackedScene" uid="uid://s3crydfiatmy" path="res://Assets/CharacterAssets/cone_ghost/cone_ghost.tscn" id="46_08o5p"]
 [ext_resource type="PackedScene" uid="uid://bagpax3yb0uf7" path="res://Assets/CharacterAssets/christmas_tree/christmas_tree.tscn" id="51_3e6am"]
 [ext_resource type="PackedScene" uid="uid://cfen8ypgv1gjf" path="res://Assets/CharacterAssets/gamers/shark_gamer/shark_gamer.tscn" id="53_j827k"]
-[ext_resource type="PackedScene" uid="uid://bhn4nq3dwy343" path="res://Assets/CharacterAssets/frat_boys/red_hat_frat_boy/frat_boy_red_hat.tscn" id="53_maypx"]
+[ext_resource type="PackedScene" uid="uid://cd3gxo5pookxd" path="res://Assets/CharacterAssets/frat_boys/red_hat_frat_boy/frat_boy_red_hat.tscn" id="53_maypx"]
 [ext_resource type="PackedScene" uid="uid://b0xusmrkexal4" path="res://Assets/CharacterAssets/frat_boys/pink_hair_frat_boy/pink_hair_frat_boy.tscn" id="54_4yq3p"]
 [ext_resource type="PackedScene" uid="uid://b5sjjc5i61576" path="res://Singletons/ContentLoader/TeleportPoint.tscn" id="54_txmqg"]
 [ext_resource type="PackedScene" uid="uid://bbyg62wymptn6" path="res://Singletons/ContentLoader/scene_loader.tscn" id="55_maypx"]
@@ -87,13 +86,6 @@ size = Vector3(5, 2, 3)
 [sub_resource type="NavigationMesh" id="NavigationMesh_81i5n"]
 vertices = PackedVector3Array(-9.300789, -6.6861916, 7.7673683, -9.300789, -6.4361916, 4.7673683, -10.300789, -6.4361916, 2.2673683, -48.05079, -6.6861916, -8.482632, -54.05079, -6.6861916, -8.232632, -54.05079, -6.6861916, 8.017368, -10.300789, -6.6861916, -3.9826317, -8.300789, -6.6861916, -3.9826317, -8.300789, -6.6861916, -18.982632, -48.05079, -6.6861916, -18.982632, 7.449211, -6.6861916, -3.9826317, 7.449211, -6.6861916, -18.982632, 9.449211, -6.4361916, 2.5173683, 8.449211, -6.4361916, 4.7673683, 8.449211, -6.6861916, 7.2673683, 54.19921, -6.6861916, 4.7673683, 53.94921, -6.6861916, -6.9826317, 49.19921, -6.6861916, -7.2326317, 53.69921, -6.6861916, 7.0173683, 9.449211, -6.6861916, -3.9826317, 49.19921, -6.6861916, -18.982632, -6.550789, -5.9361916, 10.017368, -2.8007889, -5.9361916, 10.017368, -2.8007889, -5.4361916, 9.517368, -6.800789, -5.4361916, 8.517368, 1.9492111, -5.4361916, 9.517368, 7.449211, -5.4361916, 4.2673683, 8.449211, -5.4361916, -2.9826317, -9.300789, -5.4361916, -2.9826317, -8.300789, -5.4361916, 4.2673683, -8.300789, -5.4361916, 8.517368, 1.9492111, -5.9361916, 10.017368, 6.449211, -5.9361916, 10.017368, 6.449211, -5.4361916, 8.767368, 7.449211, -5.4361916, 8.517368, 8.449211, -5.4361916, 2.0173683, -9.300789, -5.4361916, 2.0173683, 8.449211, -6.6861916, 9.267368, 7.449211, -6.6861916, 9.517368, 7.199211, -6.6861916, 10.767368, 50.69921, -6.6861916, 17.767368, 50.94921, -6.6861916, 17.267368, 53.94921, -6.6861916, 17.267368, -54.05079, -6.6861916, 16.017368, -53.30079, -6.6861916, 16.017368, -53.05079, -6.6861916, 16.517368, -9.300789, -6.6861916, 9.267368, -8.800789, -6.6861916, 9.517368, -7.550789, -6.6861916, 10.767368, -7.550789, -6.6861916, 9.517368, -48.30079, -6.6861916, 63.01737, -48.30079, -6.6861916, 87.267365, -7.050789, -6.6861916, 87.267365, -7.050789, -6.4361916, 10.767368, -53.05079, -6.6861916, 62.76737, -2.8007889, -6.1861916, 10.517368, -6.550789, -6.4361916, 10.767368, -1.3007889, -6.1861916, 10.517368, -1.5507889, -6.6861916, 87.267365, -3.5407753, -6.6861916, 12.003355, 1.9492111, -6.1861916, 10.517368, 6.449211, -6.4361916, 10.767368, 6.949211, -6.6861916, 87.267365, 6.949211, -6.4361916, 10.767368, 0.44921112, -6.1861916, 10.517368, 0.6992111, -6.6861916, 87.267365, 2.4242096, -6.6861916, 11.992369, 48.94921, -6.6861916, 63.01737, 50.69921, -6.6861916, 62.76737, 48.94921, -6.6861916, 87.267365)
 polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 0, 4), PackedInt32Array(4, 0, 5), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 3), PackedInt32Array(8, 3, 9), PackedInt32Array(3, 6, 2), PackedInt32Array(8, 11, 7), PackedInt32Array(7, 11, 10), PackedInt32Array(14, 13, 12), PackedInt32Array(15, 18, 16), PackedInt32Array(16, 18, 17), PackedInt32Array(17, 18, 12), PackedInt32Array(12, 18, 14), PackedInt32Array(12, 19, 17), PackedInt32Array(10, 11, 19), PackedInt32Array(19, 11, 17), PackedInt32Array(17, 11, 20), PackedInt32Array(22, 21, 23), PackedInt32Array(23, 21, 24), PackedInt32Array(23, 29, 25), PackedInt32Array(25, 29, 26), PackedInt32Array(26, 29, 28), PackedInt32Array(26, 28, 27), PackedInt32Array(24, 30, 29), PackedInt32Array(31, 25, 32), PackedInt32Array(32, 25, 33), PackedInt32Array(23, 24, 29), PackedInt32Array(34, 33, 26), PackedInt32Array(26, 33, 25), PackedInt32Array(27, 35, 26), PackedInt32Array(29, 36, 28), PackedInt32Array(38, 37, 39), PackedInt32Array(39, 37, 40), PackedInt32Array(18, 42, 41), PackedInt32Array(41, 40, 18), PackedInt32Array(18, 40, 37), PackedInt32Array(18, 37, 14), PackedInt32Array(44, 43, 5), PackedInt32Array(44, 5, 45), PackedInt32Array(45, 5, 46), PackedInt32Array(46, 5, 0), PackedInt32Array(45, 46, 47), PackedInt32Array(49, 48, 47), PackedInt32Array(47, 48, 45), PackedInt32Array(52, 51, 50), PackedInt32Array(48, 53, 45), PackedInt32Array(45, 53, 50), PackedInt32Array(50, 53, 52), PackedInt32Array(50, 54, 45), PackedInt32Array(22, 55, 21), PackedInt32Array(21, 55, 56), PackedInt32Array(52, 53, 56), PackedInt32Array(52, 59, 58), PackedInt32Array(58, 59, 57), PackedInt32Array(57, 59, 55), PackedInt32Array(55, 59, 56), PackedInt32Array(56, 59, 52), PackedInt32Array(31, 32, 60), PackedInt32Array(60, 32, 61), PackedInt32Array(61, 63, 62), PackedInt32Array(65, 66, 62), PackedInt32Array(62, 66, 61), PackedInt32Array(61, 66, 60), PackedInt32Array(60, 66, 64), PackedInt32Array(64, 66, 65), PackedInt32Array(57, 64, 58), PackedInt32Array(58, 64, 65), PackedInt32Array(39, 40, 63), PackedInt32Array(63, 40, 67), PackedInt32Array(63, 67, 62), PackedInt32Array(40, 68, 67), PackedInt32Array(67, 69, 62)]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_42tb4"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_a3xny"]
-material = SubResource("StandardMaterial3D_42tb4")
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_efiih"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_81i5n"]
 resource_local_to_scene = true
@@ -2956,28 +2948,8 @@ debug_color = Color(0.980392, 0, 0.196078, 1)
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_81i5n")
 
-[node name="NPCFollower" type="Node3D" parent="." node_paths=PackedStringArray("primary_mesh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.601309, 47.911602)
-script = ExtResource("5_pkvil")
-primary_mesh = NodePath("CharacterBody3D/MeshInstance3D")
-use_first_mesh = false
-metadata/_custom_type_script = "uid://d10fwvktnsx7m"
-
-[node name="CharacterBody3D" type="CharacterBody3D" parent="NPCFollower" node_paths=PackedStringArray("navigation_agent")]
-script = ExtResource("6_42tb4")
-navigation_agent = NodePath("NavigationAgent3D")
-
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="NPCFollower/CharacterBody3D"]
-target_desired_distance = 1.75
-avoidance_enabled = true
-use_3d_avoidance = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NPCFollower/CharacterBody3D"]
-mesh = SubResource("CapsuleMesh_a3xny")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NPCFollower/CharacterBody3D"]
-shape = SubResource("CapsuleShape3D_efiih")
+[node name="RowanFollower" parent="." instance=ExtResource("7_a3xny")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.78048885, -7.097449, 52.6562)
 
 [node name="TeleportPoint" parent="." instance=ExtResource("54_txmqg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9708751, -6.61071, 53.27119)
@@ -4663,47 +4635,8 @@ transform = Transform3D(0.747242, 0, 0.664552, 0, 1, 0, -0.664552, 0, 0.747242, 
 [node name="ChristmasTree2" parent="NPCs" instance=ExtResource("51_3e6am")]
 transform = Transform3D(-0.7685957, 0, 0.6397348, 0, 1, 0, -0.6397348, 0, -0.7685957, -3.0211453, -4.10406, 6.7665405)
 
-[node name="Skeleton3D" parent="NPCs/ChristmasTree2/christmas tree" index="0"]
-bones/0/position = Vector3(2.672779, 4.5430965, -83.68067)
-bones/0/rotation = Quaternion(-0.62287617, -0.4006281, 0.46352792, 0.4864817)
-bones/1/rotation = Quaternion(0.038141873, 0.030663397, -0.076804414, 0.9958444)
-bones/2/rotation = Quaternion(0.044018768, 0.040763088, 0.0077908505, 0.9981684)
-bones/3/rotation = Quaternion(0.04444618, 0.040285476, 0.0078432495, 0.99816847)
-bones/4/rotation = Quaternion(0.05839978, 0.059198372, -0.066554435, 0.99431163)
-bones/5/rotation = Quaternion(-0.07149333, 0.31556973, -0.055866897, 0.9445547)
-bones/7/rotation = Quaternion(-0.5756993, -0.43203375, 0.54204285, -0.4337128)
-bones/8/position = Vector3(-4.512567e-07, 12.933912, -7.1008726e-06)
-bones/8/rotation = Quaternion(0.24382794, -0.26440254, -0.059291355, 0.93119484)
-bones/9/rotation = Quaternion(0.05733477, -0.0003836993, 0.75013465, 0.6587949)
-bones/10/position = Vector3(5.5036656e-07, 28.024996, -1.2858431e-05)
-bones/10/rotation = Quaternion(0.03950177, -0.2095686, -0.08124732, 0.97361165)
-bones/11/position = Vector3(4.2611873e-06, 5.8711886, -5.5102355e-06)
-bones/11/rotation = Quaternion(0.71767336, 0.00398927, -0.13960171, 0.6822319)
-bones/12/position = Vector3(3.5762253e-07, 3.983256, 4.2021275e-06)
-bones/12/rotation = Quaternion(0.47465488, 0.16449551, -0.24565291, 0.82903475)
-bones/13/position = Vector3(-1.4996434, 3.5254083, 2.5415711)
-bones/13/rotation = Quaternion(0.4126194, 0.107314214, 0.028032752, 0.9041256)
-bones/14/position = Vector3(-0.58506703, 3.001192, 1.7481936)
-bones/15/rotation = Quaternion(0.5861491, -0.4360911, 0.52309346, 0.438893)
-bones/16/position = Vector3(-2.6800574e-06, 12.9339075, -1.2367967e-05)
-bones/16/rotation = Quaternion(0.238026, 0.23830986, -0.5044012, 0.795067)
-bones/17/position = Vector3(-1.5708667e-05, 17.823202, 1.4917243e-05)
-bones/17/rotation = Quaternion(-0.024169356, 0.0005205982, -0.8275996, 0.56079817)
-bones/18/position = Vector3(1.3577738e-06, 28.03138, 3.7513382e-07)
-bones/18/rotation = Quaternion(-0.067431346, 0.22725615, -0.010667205, 0.97143906)
-bones/19/position = Vector3(5.269794e-06, 6.191557, -1.4883644e-06)
-bones/19/rotation = Quaternion(0.7453167, 0.006329216, 0.078788534, 0.6620086)
-bones/20/rotation = Quaternion(0.6222591, -0.06424754, 0.14493755, 0.7665892)
-bones/21/position = Vector3(0.41595003, 2.2092695, 0.19396803)
-bones/21/rotation = Quaternion(0.20992751, -0.013878949, -0.03437428, 0.97701395)
-bones/23/rotation = Quaternion(0.09598404, -0.032524295, 0.960236, -0.26014614)
-bones/24/rotation = Quaternion(0.10205059, 0.48826784, -0.48448735, 0.71864617)
-bones/25/rotation = Quaternion(0.45395082, -0.4105545, 0.20400143, 0.76404)
-bones/26/rotation = Quaternion(0.30173218, 0.27759543, -0.08743097, 0.90788454)
-bones/28/rotation = Quaternion(-0.08150008, 0.18653153, 0.9084928, 0.36497223)
-bones/29/rotation = Quaternion(-0.5932549, 0.50030935, -0.06679546, 0.6271185)
-bones/30/rotation = Quaternion(0.4509501, -0.33669552, 0.33747792, 0.75457853)
-bones/31/rotation = Quaternion(0.37203676, -0.19419336, 0.08707677, 0.90349066)
+[node name="Popup" parent="NPCs/ChristmasTree2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8838854, 2, -0.7356949)
 
 [node name="OutdoorAmbience" type="FmodEventEmitter3D" parent="."]
 event_name = "event:/000_SFX/100_Environment/outdoor ambience"
