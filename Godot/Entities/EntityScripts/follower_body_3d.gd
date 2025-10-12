@@ -2,12 +2,13 @@ extends CharacterBody3D
 class_name FollowerBody3D
 
 @export var movement_speed: float = 2.1
+@export var run_multiplier: float = 1.5
 @export var navigation_agent: NavigationAgent3D
 @export var model: Node3D
 @export var animation_tree: AnimationTree
 
 var player_position: Vector3
-var sprint_distance_squared: float = 35.
+var sprint_distance_squared: float = 30
 var blend_speed: float = 8.
 var is_sprinting: bool = false
 
@@ -33,7 +34,7 @@ func _physics_process(delta: float) -> void:
 	var run_scale: float = 1
 	is_sprinting = false
 	if(global_position.distance_squared_to(player_position) > sprint_distance_squared):
-		run_scale = 1.7
+		run_scale = run_multiplier
 		is_sprinting = true
 	
 	var next_path_position: Vector3 = navigation_agent.get_next_path_position()
@@ -68,7 +69,8 @@ func animate_npc(delta: float) -> void:
 		# Moves forward
 		if is_sprinting:
 			change_blend_position(delta, 0, 1)
-		change_blend_position(delta, 1, 0)
+		else:
+			change_blend_position(delta, 1, 0)
 	else:
 		# Moves backward
 		change_blend_position(delta, -1, 0)
