@@ -1,13 +1,11 @@
 class_name PolaroidLayer extends CanvasLayer
 
-
 @export var viewfinder_camera: Camera2D
 #variable hold the image that the camera is looking at  
 @export var Picture: TextureRect
 
 func _ready() -> void:
 	Globals.polaroid_camera_ui = self
-	
 	
 #function for movement of camera
 func _physics_process(delta) -> void:
