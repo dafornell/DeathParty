@@ -3,7 +3,8 @@ class_name ObjectViewerRotatable extends ObjectViewerInteractable
 var dragging : bool = false
 
 # rotate to face the camera
-const START_ROTATION = Vector3(deg_to_rad(90), deg_to_rad(180), 0)
+const START_OFFSET := deg_to_rad(15)
+const START_ROTATION = Vector3(deg_to_rad(90) - START_OFFSET, deg_to_rad(180) + START_OFFSET, 0)
 
 func _ready() -> void:
 	print("Object viewer rotatatble")
