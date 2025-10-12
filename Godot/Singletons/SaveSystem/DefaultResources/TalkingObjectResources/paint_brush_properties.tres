@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="TalkingObjectResource" load_steps=5 format=3 uid="uid://co3xxjb67ucb"]
+
+[ext_resource type="Script" uid="uid://d1yny6oqf2gvp" path="res://Singletons/SaveSystem/ResourceScripts/json_array.gd" id="1_y0ee3"]
+[ext_resource type="JSON" path="res://Assets/InkFiles/storageroom_Olivia_paint_brush_interact.json" id="2_5bfam"]
+[ext_resource type="Script" uid="uid://b3ieaqolkasnx" path="res://Singletons/SaveSystem/ResourceScripts/talking_object_properties_script.gd" id="2_5go25"]
+
+[sub_resource type="Resource" id="Resource_jbkyw"]
+script = ExtResource("1_y0ee3")
+json_array = Array[JSON]([ExtResource("2_5bfam"), null])
+metadata/_custom_type_script = "uid://d1yny6oqf2gvp"
+
+[resource]
+script = ExtResource("2_5go25")
+queue_chats = Dictionary[int, ExtResource("1_y0ee3")]({
+8: SubResource("Resource_jbkyw")
+})
+name = "Paint Brush"
+metadata/_custom_type_script = "uid://b3ieaqolkasnx"

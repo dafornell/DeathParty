@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1kmtpl7lkqjd"]
+
+[ext_resource type="PackedScene" uid="uid://bh12eagb0x4sn" path="res://rooms/Storage Room/Daisy Paint Brush1.glb" id="1_y4t2s"]
+
+[node name="Daisy Paint Brush1" instance=ExtResource("1_y4t2s")]
+
+[node name="DaisyPaintbrush" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0.002506435, 0)
