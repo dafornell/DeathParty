@@ -2,10 +2,12 @@ extends Button
 @export var question_mark : Area3D
 @export var Polaroid_image : MeshInstance3D
 
+#currently closes the scene think because it is taking in the E input when u open the scene 
+#func _physics_process(delta: float) -> void:
+	#if Input.is_action_just_pressed("take_picture"):
+		#_on_pressed()
 func _on_pressed():
-	print("CLICkED BUTTON")
-	#question_mark.visible=false
-	#disabled=true
+	print("CLICKED BUTTON")
 	await get_tree().create_timer(0.3).timeout
 	#code for flash 
 	print("picture taken")

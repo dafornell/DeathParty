@@ -8,6 +8,7 @@ class_name PolaroidLayer extends CanvasLayer
 func _ready() -> void:
 	Globals.polaroid_camera_ui = self
 	
+	
 #function for movement of camera
 func _physics_process(delta) -> void:
 	# picture movement corresponds with player input	

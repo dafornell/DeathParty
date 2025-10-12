@@ -2798,9 +2798,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.407059, 0)
 texture = ExtResource("57_f0vbm")
 
 [node name="NameLabel" parent="CorkBoard/Popup" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08159971, 0.4823072, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13931042, 0.4823072, 0)
 text = "TAKE!"
-font_size = 148
+font_size = 166
 
 [node name="TakeLabel" parent="CorkBoard/Popup" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.29784387, 0.4006183, 0)
