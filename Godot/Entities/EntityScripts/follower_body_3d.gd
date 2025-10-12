@@ -32,7 +32,6 @@ func _physics_process(delta: float) -> void:
 	
 	var run_scale: float = 1
 	is_sprinting = false
-	print(global_position.distance_squared_to(player_position))
 	if(global_position.distance_squared_to(player_position) > sprint_distance_squared):
 		run_scale = 1.7
 		is_sprinting = true
