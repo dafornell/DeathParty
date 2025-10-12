@@ -6,9 +6,9 @@ class_name ObjectViewer extends Control
 @export var parent : CanvasLayer
 
 ## the minimum zoom scale level. The lower this is, the more you can zoom out
-@export var min_zoom : float = 1
+@export var min_zoom : float = 2
 ## the maximum zoom scale level. The higher this is, the more you can zoom in
-@export var max_zoom : float = 10.0
+@export var max_zoom : float = 5
 
 @export var test_path : String
 var pressed : bool = false
