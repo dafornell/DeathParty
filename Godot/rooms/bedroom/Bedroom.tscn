@@ -871,10 +871,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_gvogj")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_w60h2"]
-margin = 0.0
-size = Vector3(4.41, 2.985, 3.965)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lq6du"]
 resource_name = "Material.035"
 cull_mode = 2
@@ -2361,6 +2357,7 @@ on_journal_dialogue = ExtResource("6_yxfps")
 exterior_scene_loader = NodePath("../SceneLoader_Exterior")
 polaroid_camera = NodePath("../PolaroidCamera")
 corkboard_popup = NodePath("../CorkBoard/Popup")
+corkboard = NodePath("../CorkBoard")
 
 [node name="IntroCameraPath" type="Path3D" parent="."]
 curve = SubResource("Curve3D_tluma")
