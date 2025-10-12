@@ -5,6 +5,11 @@ class_name ObjectViewer extends Control
 @export var rotate_off : bool = false
 @export var parent : CanvasLayer
 
+## the minimum zoom scale level. The lower this is, the more you can zoom out
+@export var min_zoom : float = 1
+## the maximum zoom scale level. The higher this is, the more you can zoom in
+@export var max_zoom : float = 10.0
+
 @export var test_path : String
 var pressed : bool = false
 
@@ -107,9 +112,10 @@ func _ready() -> void:
 		)
 
 func zoom(factor : float) -> void:
-	active_item.scale = active_item.scale*factor
+	zoom_absolute(active_item.scale.x * factor)
 
 func zoom_absolute(factor : float) -> void:
+	factor = clamp(factor, min_zoom, max_zoom)
 	active_item.scale = Vector3.ONE*factor
 
 #Scroll in and out of item

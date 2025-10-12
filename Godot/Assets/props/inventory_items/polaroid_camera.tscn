@@ -3,3 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://damm3py04oa6j" path="res://rooms/bedroom/Polaroid Camera.glb" id="1_vndkk"]
 
 [node name="Polaroid Camera" instance=ExtResource("1_vndkk")]
+
+[node name="Camera_001" parent="." index="0"]
+transform = Transform3D(-4.371139e-08, -1, 0, 0, 0, -1, 1, -4.371139e-08, 0, 0.050464407, 0.06914745, -0.0070298947)
