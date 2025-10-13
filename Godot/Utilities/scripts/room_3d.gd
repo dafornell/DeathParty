@@ -4,6 +4,7 @@ class_name Room3D
 
 @export var room_area: CollisionShape3D
 @export var path_follow_node: PathFollow3D
+@export var rowan_spawn: SpawnPoint
 ## The environment resource this room will use.
 ## If left empty, it will use the WorldEnvironment in the Main scene.
 @export var room_environment: Environment
@@ -42,6 +43,7 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	assert(room_area, "Room area not defined! Go to this room's properties in the Inspector and assign a CollisionShape3D containing the room to the Room Area property")
 	call_deferred("calculate_bounds")
+	toggle_follower_npc()
 
 
 func calculate_bounds() -> void:
@@ -223,6 +225,14 @@ func clear_environment(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		var camera: Camera3D = get_tree().current_scene.get_node("MainCamera")
 		camera.environment = null
+
+
+func toggle_follower_npc() -> void:
+	print("---------------TOGGLE NPC ROOM3D-------------------")
+	if rowan_spawn:
+		GlobalPlayerScript.spawn_follower_npc.emit(true, rowan_spawn.global_position)
+	else:
+		GlobalPlayerScript.spawn_follower_npc.emit(false, Vector3.ZERO)
 
 
 ## These functions should be defined in the extended script

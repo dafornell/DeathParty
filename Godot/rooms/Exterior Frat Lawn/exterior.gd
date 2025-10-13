@@ -3,6 +3,7 @@ extends Room3D
 func _ready() -> void:
 	super ()
 	body_entered.connect(handle_player_entrance)
+	print("POSITION SHOULD BE: ", rowan_spawn.global_position)
 
 func handle_player_entrance(body: Node3D) -> void:
 	remove_all_bounds(body)
