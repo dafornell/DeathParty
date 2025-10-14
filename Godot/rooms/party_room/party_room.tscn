@@ -702,7 +702,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31366518, 1, -8.999573)
 shape = SubResource("BoxShape3D_8hjut")
 
 [node name="TeleportPoint3" parent="." instance=ExtResource("2_ir6ct")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.62563, 0.89898, -0.365424)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.628889, 0.89898, 1.7797523)
 spawn_point_number = 2
 
 [node name="TeleportPoint2" parent="." instance=ExtResource("2_ir6ct")]
@@ -738,7 +738,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0715044, 1.23943, 0.079814
 shape = SubResource("BoxShape3D_lucee")
 
 [node name="SceneLoader_Ghost hallway" parent="." instance=ExtResource("24_jpm82")]
-transform = Transform3D(-4.36557e-08, 0, 1, 0, 1, 0, -1, 0, -4.36557e-08, -9.10383, 0, -0.281722)
+transform = Transform3D(-4.3655746e-08, 0, 1, 0, 1, 0, -1, 0, -4.3655746e-08, -9.107091, 0, 1.8634547)
 target_scene = 13
 play_door_sound = true
 
@@ -835,7 +835,7 @@ mesh = SubResource("ArrayMesh_r51iq")
 skeleton = NodePath("")
 
 [node name="LibraryDoor" parent="." instance=ExtResource("30_0yn4t")]
-transform = Transform3D(-4.36557e-08, 0, 1, 0, 1, 0, -1, 0, -4.36557e-08, -8.97159, 1.22099, -0.385067)
+transform = Transform3D(-4.3655746e-08, 0, 1, 0, 1, 0, -1, 0, -4.3655746e-08, -9.17824, 1.22099, 1.7598007)
 
 [node name="BathroomDoor" parent="." instance=ExtResource("30_0yn4t")]
 transform = Transform3D(-4.36557e-08, 0, -1, 0, 1, 0, 1, 0, -4.36557e-08, 10.0822, 1.22099, -0.452776)

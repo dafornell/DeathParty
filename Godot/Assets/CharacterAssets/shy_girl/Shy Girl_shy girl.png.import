@@ -2,21 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://n1vjpfpuf2bh"
-path.s3tc="res://.godot/imported/rowan_aiStandardSurface12_BaseColor.png-b78a8f9b5356482a6c5f80ea37a4fc83.s3tc.ctex"
-path.etc2="res://.godot/imported/rowan_aiStandardSurface12_BaseColor.png-b78a8f9b5356482a6c5f80ea37a4fc83.etc2.ctex"
+uid="uid://bmddjhwyia75e"
+path.s3tc="res://.godot/imported/Shy Girl_shy girl.png-aa588fcfba6a3097c547abcb5161ff76.s3tc.ctex"
+path.etc2="res://.godot/imported/Shy Girl_shy girl.png-aa588fcfba6a3097c547abcb5161ff76.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "48487b17ab71e5e81e4b5a5ebe82e45b"
+"md5": "3ef40e471f04e86c8373fd1d71874130"
 }
 
 [deps]
 
-source_file="res://Assets/CharacterAssets/rowan/rowan_aiStandardSurface12_BaseColor.png"
-dest_files=["res://.godot/imported/rowan_aiStandardSurface12_BaseColor.png-b78a8f9b5356482a6c5f80ea37a4fc83.s3tc.ctex", "res://.godot/imported/rowan_aiStandardSurface12_BaseColor.png-b78a8f9b5356482a6c5f80ea37a4fc83.etc2.ctex"]
+source_file="res://Assets/CharacterAssets/shy_girl/Shy Girl_shy girl.png"
+dest_files=["res://.godot/imported/Shy Girl_shy girl.png-aa588fcfba6a3097c547abcb5161ff76.s3tc.ctex", "res://.godot/imported/Shy Girl_shy girl.png-aa588fcfba6a3097c547abcb5161ff76.etc2.ctex"]
 
 [params]
 

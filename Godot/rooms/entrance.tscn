@@ -50,7 +50,7 @@
 [ext_resource type="PackedScene" uid="uid://bagpax3yb0uf7" path="res://Assets/CharacterAssets/christmas_tree/christmas_tree.tscn" id="47_yqsuh"]
 [ext_resource type="PackedScene" uid="uid://b5sjjc5i61576" path="res://Singletons/ContentLoader/TeleportPoint.tscn" id="49_a6eg1"]
 [ext_resource type="PackedScene" uid="uid://csh7q4aonjs3d" path="res://Assets/CharacterAssets/frat_boys/red_hat_frat_boy/Frat boy red hat.glb" id="49_cygoc"]
-[ext_resource type="PackedScene" uid="uid://cnb05rd1rv7e7" path="res://Assets/CharacterAssets/rowan/rowan.tscn" id="51_1e4ar"]
+[ext_resource type="PackedScene" uid="uid://eyb48ss6xfgu" path="res://Assets/CharacterAssets/shy_girl/shy_girl.tscn" id="51_1e4ar"]
 [ext_resource type="Texture2D" uid="uid://dut3t6ajv8wp" path="res://Assets/textures/entrance_room_environment/two doors_IMG_4472.png" id="51_f4d3f"]
 [ext_resource type="PackedScene" uid="uid://bte4agxfg1yhm" path="res://Assets/CharacterAssets/frat_boys/Long_Hair_frat_boy/Frat boy long hair.glb" id="51_t3a1b"]
 [ext_resource type="PackedScene" uid="uid://cbtntid77jgm0" path="res://Assets/environment/red_carpet.tscn" id="53_t3a1b"]
@@ -1547,8 +1547,13 @@ autoplay = "sitttttt"
 transform = Transform3D(-0.612342, 0, 0.790593, 0, 1, 0, -0.790593, 0, -0.612342, -3.75813, -0.00254369, 4.89165)
 
 [node name="Caleb" parent="NPCs" instance=ExtResource("35_gfuhi")]
-transform = Transform3D(0.828089, 0, 0.560596, 0, 1, 0, -0.560596, 0, 0.828089, 0.419961, 0.0419717, 2.25816)
+transform = Transform3D(0.828089, 0, 0.560596, 0, 1, 0, -0.560596, 0, 0.828089, 1.3614955, 0.0419717, 6.871859)
 character_resource = SubResource("Resource_77dsr")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="NPCs/Caleb"]
+transform = Transform3D(1.0000004, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1.0000004, -0.5238905, 1.5344427, 0.98979855)
+light_color = Color(1, 0.951, 0.86, 1)
+omni_range = 1.973
 
 [node name="Jack" parent="NPCs" instance=ExtResource("41_6fv14")]
 transform = Transform3D(0.967661, 0, -0.252255, 0, 1, 0, 0.252255, 0, 0.967661, 3.59408, 3.54126, -3.38941)
@@ -1903,12 +1908,11 @@ bones/64/position = Vector3(3.40518e-07, 7.30069, -1.31951e-06)
 [node name="AnimationPlayer" parent="NPCs/Frat boy long hair2" index="1"]
 autoplay = "argue a bit"
 
-[node name="Rowan" parent="NPCs" instance=ExtResource("51_1e4ar")]
-transform = Transform3D(0.97848374, 0, 0.20632373, 0, 1, 0, -0.20632373, 0, 0.97848374, 1.9729848, 0.0006573424, 9.15299)
-visible = false
+[node name="Shy Girl" parent="NPCs" instance=ExtResource("51_1e4ar")]
+transform = Transform3D(0.94251317, 0, -0.33416873, 0, 1, 0, 0.33416873, 0, 0.94251317, 6.4502387, -0.0043342425, 7.3209977)
 
-[node name="Popup" parent="NPCs/Rowan" index="0"]
-transform = Transform3D(1.0000019, 0, -3.5762787e-07, 0, 1, 0, 3.5762787e-07, 0, 1.0000019, -1.1252565, 2, -0.23727226)
+[node name="Popup" parent="NPCs/Shy Girl" index="0"]
+transform = Transform3D(1.0000021, 0, -1.4901161e-07, 0, 1, 0, 1.4901161e-07, 0, 1.0000021, -1.0838904, 2, 0.38429356)
 
 [node name="OutdoorAmbience" type="FmodEventEmitter3D" parent="."]
 event_name = "event:/000_SFX/100_Environment/outdoor ambience"
@@ -1991,4 +1995,5 @@ transform = Transform3D(1.28783, 0, 0.000274488, 0, 0.828329, 0, -0.000426944, 0
 [editable path="NPCs/Frat boy red hat"]
 [editable path="NPCs/Frat boy long hair"]
 [editable path="NPCs/Frat boy long hair2"]
-[editable path="NPCs/Rowan"]
+[editable path="NPCs/Shy Girl"]
+[editable path="NPCs/Shy Girl/CharacterBody3D/Model"]

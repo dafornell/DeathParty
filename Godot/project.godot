@@ -12,11 +12,16 @@ config_version=5
 
 General/banks_path="res://audio/fmod banks/Desktop"
 
+[animation]
+
+warnings/check_invalid_track_paths=false
+
 [application]
 
 config/name="Death Party"
 run/main_scene="uid://beuct1pjdlayy"
 config/features=PackedStringArray("4.5", "Forward Plus")
+run/load_shell_environment=true
 config/icon="res://icon.svg"
 
 [autoload]

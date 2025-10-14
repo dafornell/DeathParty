@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="InventoryItemResource" load_steps=3 format=3 uid="uid://c0gs7ypvg3co1"]
+
+[ext_resource type="PackedScene" uid="uid://b1kmtpl7lkqjd" path="res://Assets/props/inventory_items/paint_brush.tscn" id="1_mciyf"]
+[ext_resource type="Script" uid="uid://cwplai8fhufrp" path="res://Singletons/SaveSystem/ResourceScripts/inventory_properties_script.gd" id="2_ynohy"]
+
+[resource]
+script = ExtResource("2_ynohy")
+description = "A wide paintbrush with a light brown wooden handle, splattered with bright paint. It has clumped, hardened bristles."
+model = ExtResource("1_mciyf")
+inventory_position = Vector2(0, 0.6)
+name = "Paint Brush"
+metadata/_custom_type_script = "uid://cwplai8fhufrp"

@@ -1,0 +1,26 @@
+[gd_scene load_steps=7 format=3 uid="uid://iprjr7kw0pf0"]
+
+[ext_resource type="PackedScene" uid="uid://bh12eagb0x4sn" path="res://rooms/Storage Room/Daisy Paint Brush1.glb" id="1_52v0e"]
+[ext_resource type="Script" uid="uid://bea7y4hurcesx" path="res://Utilities/scripts/interactable.gd" id="2_swwfa"]
+[ext_resource type="Resource" uid="uid://co3xxjb67ucb" path="res://Singletons/SaveSystem/DefaultResources/TalkingObjectResources/paint_brush_properties.tres" id="3_htcy3"]
+[ext_resource type="PackedScene" uid="uid://3dt1w7lckdyq" path="res://Entities/interaction_detector.tscn" id="4_xaeli"]
+[ext_resource type="PackedScene" uid="uid://cqxjk5afxrhem" path="res://Common/Popup UI/object_interact_popup.tscn" id="5_cj2di"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yvbm7"]
+resource_local_to_scene = true
+size = Vector3(1.97247, 2.02496, 2.84531)
+
+[node name="Daisy Paint Brush1" instance=ExtResource("1_52v0e")]
+script = ExtResource("2_swwfa")
+talking_object_resource = ExtResource("3_htcy3")
+
+[node name="InteractionDetector" parent="." index="1" instance=ExtResource("4_xaeli")]
+
+[node name="CollisionShape3D" parent="InteractionDetector" index="0"]
+transform = Transform3D(1.295, 0, 0, 0, 1.295, 0, 0, 0, 1.295, -0.193758, 0.512483, 0.362533)
+shape = SubResource("BoxShape3D_yvbm7")
+
+[node name="Popup" parent="." index="2" instance=ExtResource("5_cj2di")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0238509, 0.9224949, -0.15989566)
+
+[editable path="InteractionDetector"]
