@@ -79,10 +79,10 @@
 	</object>
 	<object class="SingleSound" id="{feb0504e-3e64-4e42-a161-fd0f4e5909d1}">
 		<property name="length">
-			<value>103.86451174804627</value>
+			<value>115.55124498427266</value>
 		</property>
 		<relationship name="audioFile">
-			<destination>{4febed4e-e084-48f3-ac2a-cc4ec5f46ea0}</destination>
+			<destination>{aae69133-9b86-4813-aa24-5037de68bd3c}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{c9a91102-fdd2-4763-a908-69a0d6f95f9a}">
@@ -96,7 +96,7 @@
 			<value>0</value>
 		</property>
 		<property name="length">
-			<value>103.66863945578231</value>
+			<value>115.00201378490048</value>
 		</property>
 		<relationship name="timeline">
 			<destination>{3cc66aa7-a407-493a-a497-f48cf8f28629}</destination>
@@ -110,6 +110,7 @@
 			<destination>{80179a10-7c1a-45e7-8509-d16a1ea15474}</destination>
 			<destination>{b1e05026-6153-4aa7-b676-a4814580815e}</destination>
 			<destination>{73c3e26f-d790-475b-b901-f9d734702678}</destination>
+			<destination>{01752775-544f-4ede-98a2-6e8cc074ef1a}</destination>
 			<destination>{7d9fd3d2-f352-4c65-a981-fe53d904e810}</destination>
 		</relationship>
 	</object>
@@ -126,6 +127,20 @@
 		</property>
 		<property name="highCrossover">
 			<value>2500</value>
+		</property>
+	</object>
+	<object class="CompressorEffect" id="{01752775-544f-4ede-98a2-6e8cc074ef1a}">
+		<property name="threshold">
+			<value>-20</value>
+		</property>
+		<property name="ratio">
+			<value>3</value>
+		</property>
+		<property name="attackTime">
+			<value>10</value>
+		</property>
+		<property name="releaseTime">
+			<value>250</value>
 		</property>
 	</object>
 	<object class="SFXReverbEffect" id="{7d9fd3d2-f352-4c65-a981-fe53d904e810}">
