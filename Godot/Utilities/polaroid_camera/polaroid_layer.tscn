@@ -1,18 +1,22 @@
-[gd_scene load_steps=45 format=3 uid="uid://d0sd1bp5esd04"]
+[gd_scene load_steps=49 format=3 uid="uid://d0sd1bp5esd04"]
 
 [ext_resource type="Texture2D" uid="uid://dv6sgae1nmmfj" path="res://Assets/PNGAssets/placeholder_image.png" id="1_8fs6k"]
+[ext_resource type="Script" uid="uid://bjhwro6hrfg4p" path="res://Utilities/polaroid_camera/polaroid_layer.gd" id="1_42nwo"]
 [ext_resource type="Texture2D" uid="uid://g8gi1go6brft" path="res://Assets/PNGAssets/viewfinder_final.png" id="3_42nwo"]
 [ext_resource type="Texture2D" uid="uid://c7sn438n6fn2n" path="res://Assets/PNGAssets/green_lens.png" id="4_a6jrl"]
-[ext_resource type="Script" path="res://Utilities/polaroid_camera/filter_control.gd" id="5_omcg7"]
+[ext_resource type="Script" uid="uid://bd5wy6rj1xank" path="res://Utilities/polaroid_camera/filter_control.gd" id="5_omcg7"]
 [ext_resource type="Shader" uid="uid://dflfu0c1r3cql" path="res://Utilities/pause_menu/background_blur.gdshader" id="5_ph0pu"]
-[ext_resource type="Shader" path="res://Utilities/polaroid_camera/polaroid_layer_unblur.gdshader" id="6_7wtwj"]
+[ext_resource type="Shader" uid="uid://cx7fj2cmeblbc" path="res://Utilities/polaroid_camera/polaroid_layer_unblur.gdshader" id="6_7wtwj"]
 [ext_resource type="Texture2D" uid="uid://cy5s70jehrwrr" path="res://Assets/PNGAssets/viewfinder.png" id="6_8fs6k"]
-[ext_resource type="Shader" path="res://Utilities/polaroid_camera/polaroid_layer.gdshader" id="7_42nwo"]
+[ext_resource type="Shader" uid="uid://ccc6w6g5spnr7" path="res://Utilities/polaroid_camera/polaroid_layer.gdshader" id="7_42nwo"]
 [ext_resource type="Texture2D" uid="uid://bv6px42lbjq5f" path="res://Assets/PNGAssets/temp_rotate_arrow.png" id="11_42nwo"]
 [ext_resource type="Texture2D" uid="uid://djidfl63ug16b" path="res://Assets/PNGAssets/inner_ring.png" id="12_7wtwj"]
 [ext_resource type="Texture2D" uid="uid://cdvberuogb0k" path="res://Assets/PNGAssets/base_final.png" id="13_qpijf"]
+[ext_resource type="Script" uid="uid://j5cloyk2jf2d" path="res://Utilities/polaroid_camera/take_photo_sound.gd" id="14_8fs6k"]
+[ext_resource type="Script" uid="uid://d78muptymdnk" path="res://Utilities/polaroid_camera/open_camera_sound.gd" id="14_ngt84"]
 [ext_resource type="Texture2D" uid="uid://8cmqnmgxkmiu" path="res://Assets/PNGAssets/filter_color_dots.png" id="14_pxotk"]
 [ext_resource type="Texture2D" uid="uid://bvyh22qg3pxas" path="res://Assets/PNGAssets/N.png" id="15_7wtwj"]
+[ext_resource type="Script" uid="uid://qfuy0m0xcjwf" path="res://Utilities/polaroid_camera/picturetake.gd" id="15_ph0pu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_42nwo"]
 shader = ExtResource("7_42nwo")
@@ -89,8 +93,12 @@ radius = 17.0294
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lj084"]
 
-[node name="PolaroidCamera" type="CanvasLayer"]
+[node name="PolaroidCamera" type="CanvasLayer" node_paths=PackedStringArray("viewfinder_camera", "Picture", "shoot")]
 follow_viewport_enabled = true
+script = ExtResource("1_42nwo")
+viewfinder_camera = NodePath("Camera2D")
+Picture = NodePath("body/MainImage")
+shoot = NodePath("body/ViewFinder/filter_control/shoot")
 
 [node name="body" type="Node2D" parent="."]
 
@@ -331,6 +339,7 @@ theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_hx8qq"
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_ngt84")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_8fs6k")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_lj084")
+script = ExtResource("15_ph0pu")
 
 [node name="flash" type="ColorRect" parent="body/ViewFinder/filter_control/shoot"]
 visible = false
@@ -356,9 +365,25 @@ drag_top_margin = 0.0
 drag_right_margin = 0.0
 drag_bottom_margin = 0.0
 
+[node name="OpenCameraSound" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/000_SFX/300_UI/CameraOpen"
+event_guid = "{f66a3a62-ff08-40ec-a9e5-79369f12d281}"
+attached = false
+unique_name_in_owner = true
+script = ExtResource("14_ngt84")
+
+[node name="TakePhotoSound" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/000_SFX/300_UI/TakePhoto"
+event_guid = "{b2a0008b-bd4c-4686-aeac-002d88b62243}"
+attached = false
+unique_name_in_owner = true
+script = ExtResource("14_8fs6k")
+
+[connection signal="visibility_changed" from="." to="OpenCameraSound" method="_on_polaroid_camera_visibility_changed"]
 [connection signal="pressed" from="body/ViewFinder/filter_control/filter_base/filter_base_button" to="body/ViewFinder/filter_control" method="_on_filter_base_button_pressed"]
 [connection signal="input_event" from="body/ViewFinder/filter_control/filter_base/Area2D" to="body/ViewFinder/filter_control" method="_on_area_2d_input_event"]
 [connection signal="pressed" from="body/ViewFinder/filter_control/rotate_left _button/left_button" to="body/ViewFinder/filter_control" method="_on_left_button_pressed"]
 [connection signal="pressed" from="body/ViewFinder/filter_control/rotate_right_button/right_button" to="body/ViewFinder/filter_control" method="_on_right_button_pressed"]
 [connection signal="area_shape_entered" from="body/ViewFinder/filter_control/selector" to="body/ViewFinder/filter_control" method="_on_selector_area_shape_entered"]
 [connection signal="pressed" from="body/ViewFinder/filter_control/shoot" to="body/ViewFinder/filter_control/shoot" method="_on_pressed"]
+[connection signal="pressed" from="body/ViewFinder/filter_control/shoot" to="TakePhotoSound" method="_on_shoot_pressed"]
