@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ddr8f0a45pnoy" path="res://rooms/Exterior Frat Lawn/Exterior_51dc8d5e7ac559bb47ade3dfd3ba5b58.jpg" id="4_s6f1y"]
 [ext_resource type="Texture2D" uid="uid://dj2kkd15yuake" path="res://rooms/Exterior Frat Lawn/Exterior_Door.png" id="5_nnx0v"]
 [ext_resource type="Texture2D" uid="uid://jhfdrr25x8hn" path="res://rooms/Exterior Frat Lawn/Exterior_RoofingTiles014B_1K-JPG_Color-RoofingTiles014B_1K-JPG_Opacity.png" id="7_72fye"]
-[ext_resource type="PackedScene" uid="uid://d0ktctob5o1sk" path="res://Entities/NPCs/rowan_follower.tscn" id="7_a3xny"]
+[ext_resource type="PackedScene" uid="uid://qfybfol6cehb" path="res://Entities/NPCs/rowan_follower.tscn" id="7_a3xny"]
 [ext_resource type="Texture2D" uid="uid://b0to4splsbr7y" path="res://rooms/Exterior Frat Lawn/Exterior_RoofingTiles014B_1K-JPG_Roughness.png" id="8_c8lo3"]
 [ext_resource type="Texture2D" uid="uid://5bpex64vp0vd" path="res://rooms/Exterior Frat Lawn/Exterior_RoofingTiles014B_1K-JPG_NormalGL.jpg" id="9_qhpyv"]
 [ext_resource type="PackedScene" uid="uid://dc7be02jksvfv" path="res://Assets/props/party_here_sign.tscn" id="9_qxka8"]
@@ -4179,7 +4179,7 @@ transform = Transform3D(0.879742, 0, 0, 0, 0.879742, 0, 0, 0, 0.879742, 8.34688,
 transform = Transform3D(6.18685e-08, 0, -0.471798, 0, 0.557144, 0, 0.471798, 0, 6.18685e-08, 0.8496, 0.117743, 12.8237)
 
 [node name="JackOLantern" parent="Props/Pumpkins" instance=ExtResource("28_3h7io")]
-transform = Transform3D(-3.25422, 0, 5.62673, 0, 6.5, 0, -5.62673, 0, -3.25422, -5.7038, -0.203864, -0.0614977)
+transform = Transform3D(-3.25422, 0, 5.62673, 0, 6.4999995, 0, -5.62673, 0, -3.25422, -5.7038, -0.02437687, -0.06149769)
 
 [node name="JackOLanternSquashed" parent="Props/Pumpkins" instance=ExtResource("31_uqhvr")]
 transform = Transform3D(-1.38868, 0, 2.65924, 0, 2.765, 0, -2.65924, 0, -1.38868, 11.5696, -0.333429, -0.981361)
@@ -4191,7 +4191,7 @@ transform = Transform3D(3.81396, 0, 4.63181, 0, 5.685, 0, -4.63181, 0, 3.81396, 
 transform = Transform3D(3.53553, 0, 1.87085, 0, 2.408, 0, -1.87085, 0, 3.53553, -17.1259, -0.307085, -13.1528)
 
 [node name="JackOLanternTall2" parent="Props/Pumpkins" instance=ExtResource("32_3ege1")]
-transform = Transform3D(1.79707, 0, 2.40219, 0, 1.895, 0, -2.40219, 0, 1.79707, 18.8542, -0.311686, -15.0871)
+transform = Transform3D(1.7970704, 0, 2.4021904, 0, 1.8949995, 0, -2.4021904, 0, 1.7970704, 18.854198, -0.13219833, -15.087098)
 
 [node name="JackOLantern3" parent="Props/Pumpkins" instance=ExtResource("28_3h7io")]
 transform = Transform3D(-1.96509, 0, 5.66908, 0, 6, 0, -5.66908, 0, -1.96509, 21.1334, 0, -1.12959)
@@ -4203,7 +4203,7 @@ transform = Transform3D(-2.08787, 0, 2.08787, 0, 2.10232, 0, -2.08787, 0, -2.087
 transform = Transform3D(4.35282, 0, 4.12952, 0, 4.5, 0, -4.12952, 0, 4.35282, 30.4676, -0.203864, -14.3761)
 
 [node name="JackOLanternTall4" parent="Props/Pumpkins" instance=ExtResource("32_3ege1")]
-transform = Transform3D(1.09561, 0, 1.46454, 0, 1.21177, 0, -1.46454, 0, 1.09561, 41.0562, -0.489764, -13.8197)
+transform = Transform3D(1.09561, 0, 1.46454, 0, 1.2117699, 0, -1.46454, 0, 1.09561, 41.056202, -0.310277, -13.819699)
 
 [node name="JackOLantern5" parent="Props/Pumpkins" instance=ExtResource("28_3h7io")]
 transform = Transform3D(-2.62268e-07, 0, 6, 0, 6, 0, -6, 0, -2.62268e-07, 43.8004, -0.179218, -0.750999)
