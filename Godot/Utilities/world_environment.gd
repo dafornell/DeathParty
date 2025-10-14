@@ -1,5 +1,4 @@
-class_name CustomWorldEnvironment
-extends WorldEnvironment
+class_name CustomWorldEnvironment extends WorldEnvironment
 
 func _ready() -> void:
 	init()

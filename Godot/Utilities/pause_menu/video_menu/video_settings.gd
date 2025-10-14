@@ -265,3 +265,7 @@ func _on_shadow_size_option_button_item_selected(index: int) -> void:
 
 func _on_ssao_option_button_item_selected(index: int) -> void:
 	Settings.set_ssao(index)
+
+
+func _on_lighting_option_button_item_selected(index: int) -> void:
+	Settings.set_lighting(index)
