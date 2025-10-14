@@ -1,6 +1,5 @@
-[gd_scene load_steps=45 format=3 uid="uid://d0sd1bp5esd04"]
+[gd_scene load_steps=44 format=3 uid="uid://d0sd1bp5esd04"]
 
-[ext_resource type="Texture2D" uid="uid://dv6sgae1nmmfj" path="res://Assets/PNGAssets/placeholder_image.png" id="1_8fs6k"]
 [ext_resource type="Texture2D" uid="uid://g8gi1go6brft" path="res://Assets/PNGAssets/viewfinder_final.png" id="3_42nwo"]
 [ext_resource type="Texture2D" uid="uid://c7sn438n6fn2n" path="res://Assets/PNGAssets/green_lens.png" id="4_a6jrl"]
 [ext_resource type="Script" path="res://Utilities/polaroid_camera/filter_control.gd" id="5_omcg7"]
@@ -100,7 +99,6 @@ offset_top = -261.0
 offset_right = 1039.0
 offset_bottom = 562.0
 scale = Vector2(1.43, 1.43)
-texture = ExtResource("1_8fs6k")
 expand_mode = 1
 
 [node name="ViewFinder" type="TextureRect" parent="body"]

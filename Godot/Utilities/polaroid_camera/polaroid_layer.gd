@@ -1,7 +1,6 @@
 class_name PolaroidLayer extends CanvasLayer
 
 @export var viewfinder_camera: Camera2D
-#variable hold the image that the camera is looking at  
 @export var Picture: TextureRect
 @export var shoot:Button
 #takes in picture count 
@@ -43,10 +42,12 @@ func _physics_process(delta) -> void:
 			Picture.position.y = -(Picture.size.y*Picture.scale.y-get_viewport().size.y)
 
 #this function need to be called first to set the picture being taken 
-func assign_picture(picture):
-	$body/MainImage.Texture=ImageTexture.create_from_image(picture)
+func start(picture: String):
+	#var image = Image.load_from_file(picture)
+	$body/MainImage.texture=load(picture)
 	Picture=$body/MainImage
 	$body/MainImage.visible=true
+	self.visible=true
 	
 #ignore this function. Was used previously to open the picture taking scene
 func _on_question_mark_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:

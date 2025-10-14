@@ -1,4 +1,4 @@
-[gd_scene load_steps=263 format=4 uid="uid://c7033b4susyvc"]
+[gd_scene load_steps=268 format=4 uid="uid://c7033b4susyvc"]
 
 [ext_resource type="Script" uid="uid://uvrra8rcndm8" path="res://rooms/Storage Room/storageroom.gd" id="1_tlveg"]
 [ext_resource type="PackedScene" uid="uid://bbyg62wymptn6" path="res://Singletons/ContentLoader/scene_loader.tscn" id="2_llsdw"]
@@ -38,6 +38,10 @@
 [ext_resource type="Texture2D" uid="uid://crioixblxctev" path="res://rooms/Storage Room/broken pool table_pool_table_mat_baseColor.png" id="24_vjwkw"]
 [ext_resource type="Texture2D" uid="uid://dwi5o308qjic6" path="res://rooms/Storage Room/broken pool table_pool_table_mat_metallicRoughness.png" id="25_ujawa"]
 [ext_resource type="Texture2D" uid="uid://b4pinofab4yd0" path="res://rooms/Storage Room/broken pool table_pool_table_mat_normal.png" id="26_tdj1f"]
+[ext_resource type="Script" uid="uid://c1pynepeakf1f" path="res://rooms/Storage Room/wine_barrels.gd" id="28_xroff"]
+[ext_resource type="PackedScene" uid="uid://cqxjk5afxrhem" path="res://Common/Popup UI/object_interact_popup.tscn" id="29_kc1yc"]
+[ext_resource type="Texture2D" uid="uid://dyv30oenjkqi8" path="res://Assets/PNGAssets/BackgroundLeft.png" id="30_vjwut"]
+[ext_resource type="Script" uid="uid://dc0eglbdf0sq7" path="res://Utilities/scripts/interaction_detector.gd" id="31_kc1yc"]
 [ext_resource type="PackedScene" uid="uid://1wdjcnj5qyj5" path="res://rooms/Storage Room/crates with drapes over.glb" id="39_34k8s"]
 [ext_resource type="Texture2D" uid="uid://cmlwn34r1xhir" path="res://rooms/Storage Room/Candlestands (1)_0.png" id="40_peelm"]
 [ext_resource type="Texture2D" uid="uid://c8qm5ptl0lio7" path="res://rooms/Storage Room/Candlestands (1)_1.png" id="41_wtehf"]
@@ -1924,6 +1928,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_hjnug")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_do7od"]
+size = Vector3(4.045, 3.837, 3.755)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_puac4"]
 resource_name = "Material.008"
 albedo_texture = ExtResource("6_erfr2")
@@ -3433,8 +3440,73 @@ transform = Transform3D(0.000934166, -0.000988275, 9.32216e-05, 0, -0.00012801, 
 mesh = SubResource("ArrayMesh_osjnd")
 skeleton = NodePath("")
 
-[node name="wine barrels" type="Node3D" parent="."]
+[node name="wine barrels" type="Node3D" parent="." node_paths=PackedStringArray("take")]
 transform = Transform3D(0.951302, 0, 0, 0, 0.951302, 0, 0, 0, 0.951302, 1.52404, -1.16917, -0.527863)
+script = ExtResource("28_xroff")
+take = NodePath("Popup")
+metadata/_custom_type_script = "uid://bea7y4hurcesx"
+
+[node name="Popup" parent="wine barrels" instance=ExtResource("29_kc1yc")]
+transform = Transform3D(0.3255665, -0.00021812768, 0.7410976, -0.7410973, 3.249901e-08, 0.32556653, 8.776151e-05, 0.80945635, 0.0001996938, 0.3469596, 1.4628822, -0.6796209)
+
+[node name="Background" parent="wine barrels/Popup" index="0"]
+transform = Transform3D(1, -7.275958e-12, -3.0549074e-09, 0, 0.99999994, 2.910383e-11, -3.0549039e-09, 0, 1, -0.15788627, 0, 0.06935996)
+texture = ExtResource("30_vjwut")
+
+[node name="NameLabel" parent="wine barrels/Popup" index="1"]
+transform = Transform3D(1, -7.275958e-12, -1.5206652e-07, -4.3655746e-11, 0.9999996, -1.1641532e-10, -6.2659566e-08, 8.731149e-11, 0.9999996, -0.20424831, -2.193451e-05, 0.17846876)
+text = "take"
+font_size = 190
+
+[node name="TakeLabel" parent="wine barrels/Popup" index="2"]
+transform = Transform3D(1, -7.275958e-12, -3.606828e-07, -1.0186341e-10, 0.99999905, -2.3283064e-10, -6.265958e-08, 1.4551915e-10, 0.99999917, -0.102368355, -5.1617622e-05, 0.254049)
+text = "photo"
+font_size = 65
+
+[node name="Popup2" parent="wine barrels" instance=ExtResource("29_kc1yc")]
+transform = Transform3D(0.32556662, -0.00021812774, 0.7410978, -0.74109745, 3.249902e-08, 0.32556665, 8.776153e-05, 0.8094566, 0.00019969382, 0.012327433, 2.4462414, -0.67962104)
+
+[node name="Background" parent="wine barrels/Popup2" index="0"]
+transform = Transform3D(1, -7.275958e-12, -3.0549074e-09, 0, 0.99999994, 2.910383e-11, -3.0549039e-09, 0, 1, -0.15788627, 0, 0.06935996)
+texture = ExtResource("30_vjwut")
+
+[node name="NameLabel" parent="wine barrels/Popup2" index="1"]
+transform = Transform3D(1, -7.275958e-12, -1.5206652e-07, -4.3655746e-11, 0.9999996, -1.1641532e-10, -6.2659566e-08, 8.731149e-11, 0.9999996, -0.20424831, -2.193451e-05, 0.17846876)
+text = "take"
+font_size = 190
+
+[node name="TakeLabel" parent="wine barrels/Popup2" index="2"]
+transform = Transform3D(1, -7.275958e-12, -3.606828e-07, -1.0186341e-10, 0.99999905, -2.3283064e-10, -6.265958e-08, 1.4551915e-10, 0.99999917, -0.102368355, -5.1617622e-05, 0.254049)
+text = "photo"
+font_size = 65
+
+[node name="Popup3" parent="wine barrels" instance=ExtResource("29_kc1yc")]
+transform = Transform3D(0.3255665, -0.00021812768, 0.7410976, -0.7410973, 3.249901e-08, 0.32556653, 8.776151e-05, 0.80945635, 0.0001996938, 0.3469596, 1.4628822, -0.6796209)
+
+[node name="Background" parent="wine barrels/Popup3" index="0"]
+transform = Transform3D(1, -7.275958e-12, -3.0549074e-09, 0, 0.99999994, 2.910383e-11, -3.0549039e-09, 0, 1, -0.15788627, 0, 0.06935996)
+texture = ExtResource("30_vjwut")
+
+[node name="NameLabel" parent="wine barrels/Popup3" index="1"]
+transform = Transform3D(1, -7.275958e-12, -1.5206652e-07, -4.3655746e-11, 0.9999996, -1.1641532e-10, -6.2659566e-08, 8.731149e-11, 0.9999996, -0.20424831, -2.193451e-05, 0.17846876)
+text = "take"
+font_size = 190
+
+[node name="TakeLabel" parent="wine barrels/Popup3" index="2"]
+transform = Transform3D(1, -7.275958e-12, -3.606828e-07, -1.0186341e-10, 0.99999905, -2.3283064e-10, -6.265958e-08, 1.4551915e-10, 0.99999917, -0.102368355, -5.1617622e-05, 0.254049)
+text = "photo"
+font_size = 65
+
+[node name="InteractionDetector" type="Area3D" parent="wine barrels" node_paths=PackedStringArray("collision_shape")]
+transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0)
+script = ExtResource("31_kc1yc")
+collision_shape = NodePath("CollisionShape3D")
+metadata/_custom_type_script = "uid://dc0eglbdf0sq7"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wine barrels/InteractionDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33463228, 0.9833588, 0)
+shape = SubResource("BoxShape3D_do7od")
+debug_color = Color(0.99300927, 0.45221817, 0.7367748, 0.41960785)
 
 [node name="Circle_001" type="MeshInstance3D" parent="wine barrels"]
 transform = Transform3D(0.924905, -0.000619684, 2.10539, -2.10539, 1.69425e-08, 0.924905, 0.000249255, 2.29959, 0.000567345, -1.29942, 0.00170678, -0.679941)
@@ -3769,6 +3841,9 @@ transform = Transform3D(0.9749775, 0.17732906, 0.5623818, 0, 1.0866873, -0.34265
 
 [editable path="SceneLoader_Basement"]
 [editable path="SceneLoader_Basement/InteractionDetector"]
+[editable path="wine barrels/Popup"]
+[editable path="wine barrels/Popup2"]
+[editable path="wine barrels/Popup3"]
 [editable path="hang lights"]
 [editable path="crates with drapes over"]
 [editable path="SceneLoader_Hourhand hallway"]
