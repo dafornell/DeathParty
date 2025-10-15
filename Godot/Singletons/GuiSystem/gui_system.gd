@@ -79,7 +79,7 @@ func restrict_environment_effects(toggle : bool) -> void:
 		world_environment.set_sdfgi(0)
 		world_environment.set_ssil(0)
 	else:
-		world_environment.set_sdfgi(1)
+		world_environment.set_sdfgi(Settings.lighting)
 		world_environment.set_ssil(1)
 
 func show_journal(inventory_open: bool = false) -> void:

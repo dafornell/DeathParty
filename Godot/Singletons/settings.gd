@@ -32,6 +32,7 @@ var fps: float = 0.0
 var stats: int = 0
 
 # effects
+var lighting: int = 1
 var filtering: int = 3
 var aa: int = 3
 var lod: int = 2
@@ -84,6 +85,9 @@ func apply_settings_from_cfg() -> void:
 	ssao = config.get_value("video", "ssao", ssao)
 	apply_ssao(ssao)
 
+	lighting = config.get_value("video", "lighting", lighting)
+	apply_lighting(lighting)
+
 	# display
 	vsync = config.get_value("video", "vsync", vsync)
 	apply_vsync(vsync)
@@ -133,6 +137,7 @@ func save_settings() -> void:
 	config.set_value("video", "lod", lod)
 	config.set_value("video", "shadows", shadows)
 	config.set_value("video", "ssao", ssao)
+	config.set_value("video", "lighting", lighting)
 
 	# audio
 	config.set_value("audio", "volume", volume)
@@ -399,3 +404,29 @@ func set_volume(value: float) -> void:
 	volume = value
 	apply_volume(volume)
 	save_settings()
+
+
+func set_lighting(level: int) -> void:
+	lighting = level
+	apply_lighting(lighting)
+	save_settings()
+
+
+# the 'lighting' setting just enables and disables SDFGI (for now at least)
+func apply_lighting(level: int) -> void:
+	var environments: Array[Environment] = [
+		# NOTE: this setting just directly changes each environment resource so
+		#		add any new environment resources here
+		#		(theres probably a smarter way that would avoid having to do
+		#		this but im not sure what that is sorry lol)
+		#				- jack
+		preload("uid://dg6cs3u27vudl"),
+		preload("uid://x61s5mmwqag1"),
+		preload("uid://ca3e8txjiikuc"),
+	]
+
+	for environment in environments:
+		if level == 0:
+			environment.sdfgi_enabled = false
+		else:
+			environment.sdfgi_enabled = true

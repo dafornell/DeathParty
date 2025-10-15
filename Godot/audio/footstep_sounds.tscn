@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7mreior0p6wi"]
+
+[ext_resource type="Script" uid="uid://cs01ojctwo1d3" path="res://Entities/footstep_sounds.gd" id="1_8ddu6"]
+
+[node name="FootstepSounds" type="FmodEventEmitter3D"]
+event_name = "event:/000_SFX/000_Demo_Test/003_SFX_Footstep"
+event_guid = "{d7200d50-b6d8-44af-b302-89eb1f6f2060}"
+volume = 0.15
+fmod_parameters/LandTexture/id = 9247119926271152
+fmod_parameters/LandTexture = "Concrete"
+fmod_parameters/LandTexture/labels = PackedStringArray("Concrete", "Carpet", "Tile", "Wood", "Grass")
+fmod_parameters/LandTexture/variant_type = 4
+script = ExtResource("1_8ddu6")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+unique_name_in_owner = true
