@@ -93,6 +93,8 @@ func _on_preset_1_pressed() -> void:
 	ssao_option_button.emit_signal("item_selected", ssao_option_button.selected)
 	lod_option_button.selected = 0 # low LOD
 	lod_option_button.emit_signal("item_selected", lod_option_button.selected)
+	lighting_option_button.selected = 0 # Low Lighting
+	lighting_option_button.emit_signal("item_selected", lighting_option_button.selected)
 
 
 # low
@@ -105,6 +107,8 @@ func _on_preset_2_pressed() -> void:
 	ssao_option_button.emit_signal("item_selected", ssao_option_button.selected)
 	lod_option_button.selected = 0 # low LOD
 	lod_option_button.emit_signal("item_selected", lod_option_button.selected)
+	lighting_option_button.selected = 0 # Low Lighting
+	lighting_option_button.emit_signal("item_selected", lighting_option_button.selected)
 
 
 # medium
@@ -117,6 +121,8 @@ func _on_preset_3_pressed() -> void:
 	ssao_option_button.emit_signal("item_selected", ssao_option_button.selected)
 	lod_option_button.selected = 1 # medium LOD
 	lod_option_button.emit_signal("item_selected", lod_option_button.selected)
+	lighting_option_button.selected = 1 # High Lighting
+	lighting_option_button.emit_signal("item_selected", lighting_option_button.selected)
 
 
 # high
@@ -129,6 +135,8 @@ func _on_preset_4_pressed() -> void:
 	ssao_option_button.emit_signal("item_selected", ssao_option_button.selected)
 	lod_option_button.selected = 2 # high LOD
 	lod_option_button.emit_signal("item_selected", lod_option_button.selected)
+	lighting_option_button.selected = 1 # High Lighting
+	lighting_option_button.emit_signal("item_selected", lighting_option_button.selected)
 
 
 # ultra
@@ -141,6 +149,8 @@ func _on_preset_5_pressed() -> void:
 	ssao_option_button.emit_signal("item_selected", ssao_option_button.selected)
 	lod_option_button.selected = 2 # high LOD
 	lod_option_button.emit_signal("item_selected", lod_option_button.selected)
+	lighting_option_button.selected = 1 # High Lighting
+	lighting_option_button.emit_signal("item_selected", lighting_option_button.selected)
 
 
 # DISPLAY SETTINGS
