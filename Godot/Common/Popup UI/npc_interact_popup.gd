@@ -38,7 +38,6 @@ extends Node3D
 func _enter_tree() -> void:
 	Events.toggle_quest_marker.connect(_on_toggle_quest_marker)
 
-	await get_tree().process_frame
 	match_quest_marker_var_to_value_in_resource()
 
 
@@ -69,7 +68,12 @@ func _on_toggle_quest_marker(npc_name: String, value: bool) -> void:
 
 
 func match_quest_marker_var_to_value_in_resource() -> void:
-	parent_npc = get_parent()
+	# NOTE: this didnt work until i added this line to wait a frame - i think
+	#		maybe values in resources don't get properly initialised
+	#		on the first ready frame or whatever, so it'll always read this
+	#		var as false if you don't wait first 🤓
+	#				- jack
+	await get_tree().process_frame
 
 	var char_resource: CharacterResource = parent_npc.character_resource
 
