@@ -1,4 +1,4 @@
-[gd_scene load_steps=263 format=4 uid="uid://c7033b4susyvc"]
+[gd_scene load_steps=264 format=4 uid="uid://c7033b4susyvc"]
 
 [ext_resource type="Script" uid="uid://uvrra8rcndm8" path="res://rooms/Storage Room/storageroom.gd" id="1_tlveg"]
 [ext_resource type="PackedScene" uid="uid://bbyg62wymptn6" path="res://Singletons/ContentLoader/scene_loader.tscn" id="2_llsdw"]
@@ -66,6 +66,7 @@
 [ext_resource type="PackedScene" uid="uid://b5sjjc5i61576" path="res://Singletons/ContentLoader/TeleportPoint.tscn" id="64_x0wqr"]
 [ext_resource type="Texture2D" uid="uid://ccuxjk7edg5dg" path="res://Assets/pop_ups/EnterArrowDown.png" id="65_g0t3m"]
 [ext_resource type="PackedScene" uid="uid://xef5l0oe30i" path="res://rooms/Storage Room/glove.tscn" id="66_ileeo"]
+[ext_resource type="PackedScene" uid="uid://c0yymefyfdnd6" path="res://rooms/Storage Room/Josef Scale.glb" id="67_myxfd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_od2cs"]
 size = Vector3(19.865, 6, 11.194)
@@ -2757,7 +2758,6 @@ interactable = false
 target_scene = 6
 local_spawn_point = 1
 door_sound_type = 1
-free_on_interact = null
 
 [node name="Popup" parent="SceneLoader_Basement" index="1"]
 transform = Transform3D(-6.55671e-09, 0, -0.15, 0, 0.15, 0, 0.15, 0, -6.55671e-09, 0, 1.75, -1.25)
@@ -3692,7 +3692,7 @@ spot_angle = 22.5
 transform = Transform3D(1.13943, 0, 0, 0, 1.13943, 0, 0, 0, 1.13943, -5.88577, -0.519239, 0.0586889)
 
 [node name="box suitcase" parent="." instance=ExtResource("53_4jmcr")]
-transform = Transform3D(1.28815, 0, -0.903683, 0, 1.57352, 0, 0.903683, 0, 1.28815, 8.71435, 1.4638, 2.24172)
+transform = Transform3D(-0.44093287, 0, -0.093015336, 0, 0.45063612, 0, 0.093015336, 0, -0.44093287, 8.815218, 1.2470455, 1.9945606)
 
 [node name="Bar" parent="." instance=ExtResource("54_r3jok")]
 transform = Transform3D(-0.361357, 0, -0.365021, 0, 0.513633, 0, 0.365021, 0, -0.361357, 7.65794, -1.62425, 5.40385)
@@ -3756,7 +3756,6 @@ transform = Transform3D(0.599649, -0.365484, -0.897297, 0.26079, 1.07719, -0.264
 [node name="SceneLoader_Hourhand hallway" parent="." instance=ExtResource("2_llsdw")]
 transform = Transform3D(1.13943, 0, 0, 0, 1.13943, 0, 0, 0, 1.13943, 0.974497, -1.74971, 1.00802)
 target_scene = 11
-free_on_interact = null
 
 [node name="Popup" parent="SceneLoader_Hourhand hallway" index="1"]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 1.75, 0)
@@ -3768,6 +3767,9 @@ shape = SubResource("BoxShape3D_e0eie")
 
 [node name="glove" parent="." instance=ExtResource("66_ileeo")]
 transform = Transform3D(0.9749775, 0.17732906, 0.5623818, 0, 1.0866873, -0.34265202, -0.58967686, 0.2931976, 0.9298475, -2.6548386, -0.97094053, 4.2998486)
+
+[node name="Josef Scale" parent="." instance=ExtResource("67_myxfd")]
+transform = Transform3D(1.16971, 1.0490985, -0.4734334, -1.0367534, 0.66720027, -1.08303, -0.49988854, 1.0710764, 1.1383651, 3.4744396, -0.96784997, 3.942752)
 
 [editable path="SceneLoader_Basement"]
 [editable path="SceneLoader_Basement/InteractionDetector"]
