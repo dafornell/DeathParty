@@ -13,13 +13,10 @@ metadata/_custom_type_script = "uid://d1yny6oqf2gvp"
 
 [resource]
 script = ExtResource("1_5gmr0")
+quest_marker_enabled = true
 image_polaroid = ExtResource("1_ecyof")
 image_polaroid_popout = ExtResource("2_0c5ri")
 image_profile = ExtResource("1_ecyof")
-profile_tag = null
-profile_quote = null
-profile_join_date = null
-profile_friends = null
 queue_chats = Dictionary[int, ExtResource("3_npws7")]({
 0: SubResource("Resource_eyuf2")
 })

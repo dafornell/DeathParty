@@ -1,6 +1,7 @@
 class_name CharacterResource extends TalkingObjectResource
 
 @export var character_location : Globals.SCENES = Globals.SCENES.Everywhere
+@export var quest_marker_enabled: bool = false
 
 @export var image_full : CompressedTexture2D
 @export var image_polaroid : CompressedTexture2D

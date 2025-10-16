@@ -26,6 +26,8 @@ extends Node3D
 			if not Engine.is_editor_hint():
 				hide()
 
+
+
 @export var x_offset: float = -1.15
 @export var y_offset: float = 2
 
@@ -36,9 +38,8 @@ extends Node3D
 func _enter_tree() -> void:
 	Events.toggle_quest_marker.connect(_on_toggle_quest_marker)
 
-
-func _ready() -> void:
-	quest_marker_enabled = quest_marker_enabled
+	await get_tree().process_frame
+	match_quest_marker_var_to_value_in_resource()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -65,3 +66,12 @@ func _on_toggle_quest_marker(npc_name: String, value: bool) -> void:
 		return
 
 	quest_marker_enabled = value
+
+
+func match_quest_marker_var_to_value_in_resource() -> void:
+	parent_npc = get_parent()
+
+	var char_resource: CharacterResource = parent_npc.character_resource
+
+	if char_resource:
+		quest_marker_enabled = char_resource.quest_marker_enabled
