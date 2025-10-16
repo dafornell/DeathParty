@@ -64,6 +64,7 @@ func _ready() -> void:
 
 		# if it doesn't, turn some settings to low by default
 		if adapter_type == RenderingDevice.DeviceType.DEVICE_TYPE_INTEGRATED_GPU:
+			# TODO: make this just apply the full low preset from video settings
 			lighting = 0
 			aa = 0
 			lod = 0
