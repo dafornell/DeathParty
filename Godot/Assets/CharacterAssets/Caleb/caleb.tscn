@@ -2130,9 +2130,6 @@ _data = {
 [node name="Caleb" instance=ExtResource("1_hq7c8")]
 character_resource = ExtResource("2_col57")
 
-[node name="Popup" parent="." index="0"]
-quest_marker_enabled = false
-
 [node name="Skateboard" type="MeshInstance3D" parent="CharacterBody3D" index="1"]
 transform = Transform3D(0.0064359903, 0, -0.9999793, 0, 1, 0, 0.9999793, 0, 0.0064359903, -0.028134704, 0.02840384, 0.11068638)
 lod_bias = 0.25
