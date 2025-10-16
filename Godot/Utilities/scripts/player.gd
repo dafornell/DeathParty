@@ -154,7 +154,7 @@ func rotate_model(delta: float) -> void:
 		model.rotation.y = lerp_angle(model.rotation.y, basis.z.signed_angle_to(velocity, basis.y), blend_speed * delta)
 
 
-func reset_position():
+func reset_position() -> void:
 	global_position = spawn_position
 	##ALSO MAKE IT SO IT LOADS THE ORIGINAL SCENES
 	ContentLoader.reset()
