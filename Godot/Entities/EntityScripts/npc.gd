@@ -23,6 +23,7 @@ func on_unread(_unread: bool) -> void:
 	#$SpeechBubble.visible = true
 	pass
 
+
 ##INHERITED
 func on_in_range(in_range: bool) -> void:
 	##only show the outline if NPC has something to say
@@ -33,10 +34,14 @@ func on_in_range(in_range: bool) -> void:
 	if show_outline:
 		super(in_range)
 
+
 func on_interact() -> void:
 	super()
 	if character_resource:
 		character_resource.start_chat()
-		
+
+	Events.toggle_quest_marker.emit(name, false)
+
+
 func play_animation(anim_name: String) -> void:
 	animation_player.play(anim_name)
