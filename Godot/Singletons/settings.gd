@@ -58,6 +58,17 @@ func _ready() -> void:
 
 	# if it doesnt load, print error and create new cfg with current settings
 	else:
+		# before we create the new cfg, we check if the pc has a dedicated
+		# graphics card
+		var adapter_type: RenderingDevice.DeviceType = RenderingServer.get_video_adapter_type()
+
+		# if it doesn't, turn some settings to low by default
+		if adapter_type == RenderingDevice.DeviceType.DEVICE_TYPE_INTEGRATED_GPU:
+			lighting = 0
+			aa = 0
+			lod = 0
+			shadows = 0
+
 		print("failed to load settings.cfg (" + error_string(err) + ")")
 		print("creating new settings.cfg file with default settings . . .")
 		save_settings()
