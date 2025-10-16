@@ -288,11 +288,13 @@ func set_fps(cap: float) -> void:
 	apply_fps(fps)
 	save_settings()
 
+
 func apply_stats(_mode: int) -> void:
 	var stats_node: Node = get_tree().current_scene.find_child("Stats")
 	if stats_node is StatsDisplay:
 		var stats_display: StatsDisplay = stats_node
 		stats_display.init()
+
 
 func set_stats(mode: int) -> void:
 	stats = mode
@@ -368,7 +370,7 @@ func apply_shadows(level: int) -> void:
 		# Shadow size
 		RenderingServer.directional_shadow_atlas_set_size(2048, true)
 		get_viewport().positional_shadow_atlas_size = 2048
-		
+
 		# Shadow filtering
 		# RenderingServer.directional_soft_shadow_filter_set_quality(RenderingServer.SHADOW_QUALITY_SOFT_LOW)
 		# RenderingServer.positional_soft_shadow_filter_set_quality(RenderingServer.SHADOW_QUALITY_SOFT_LOW)
@@ -376,7 +378,7 @@ func apply_shadows(level: int) -> void:
 		# Shadow size
 		RenderingServer.directional_shadow_atlas_set_size(4096, true)
 		get_viewport().positional_shadow_atlas_size = 4096
-		
+
 		# Shadow filtering
 		# RenderingServer.directional_soft_shadow_filter_set_quality(RenderingServer.SHADOW_QUALITY_SOFT_MEDIUM)
 		# RenderingServer.positional_soft_shadow_filter_set_quality(RenderingServer.SHADOW_QUALITY_SOFT_MEDIUM)
@@ -392,7 +394,7 @@ func apply_ssao(level: int) -> void:
 	# disabled for now
 	return
 	var world_environment_node: Node = get_tree().current_scene.find_child("WorldEnvironment")
-	
+
 	if world_environment_node is CustomWorldEnvironment:
 		var world_environment: CustomWorldEnvironment = world_environment_node
 		world_environment.set_ssao(level)
@@ -434,7 +436,7 @@ func apply_lighting(level: int) -> void:
 		#				- jack
 		preload("uid://dg6cs3u27vudl"),
 		preload("uid://x61s5mmwqag1"),
-		preload("uid://ca3e8txjiikuc"),
+		preload("uid://ca3e8txjiikuc")
 	]
 
 	for environment in environments:
