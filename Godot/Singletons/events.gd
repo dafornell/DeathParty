@@ -1,6 +1,12 @@
 extends Node
 
 
+## emitted every time a character is printed to the main dialogue boxes
+## (or when new text is loaded by skipping dialogue)
 signal dialogue_box_text_changed
 
+## toggle the quest marker on an NPC's interact popup
+## - npc_name should match the spelling/capitalisation of the root node of
+## the NPC scene (but we can change this to use the name in their character
+## resource if that seems better)
 signal toggle_quest_marker(npc_name: String, value: bool)
