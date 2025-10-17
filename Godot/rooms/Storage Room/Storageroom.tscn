@@ -61,12 +61,12 @@
 [ext_resource type="Texture2D" uid="uid://bs6b6l2er7cvd" path="res://rooms/Storage Room/spiderwebs_dsf.png" id="59_fat75"]
 [ext_resource type="PackedScene" uid="uid://bewi8xed4xchk" path="res://Assets/props/chairs/folded chairs/folded chairs.glb" id="60_fat75"]
 [ext_resource type="PackedScene" uid="uid://04h45wmndeqi" path="res://rooms/Kitchen/beerpong trophie.glb" id="61_ntvq4"]
-[ext_resource type="PackedScene" uid="uid://iprjr7kw0pf0" path="res://rooms/Storage Room/daisy_paint_brush.tscn" id="62_xs4sd"]
+[ext_resource type="PackedScene" path="res://rooms/Storage Room/daisy_paint_brush_1.tscn" id="62_xs4sd"]
 [ext_resource type="PackedScene" uid="uid://bhbpw48nifdkp" path="res://rooms/Storage Room/brush_2.tscn" id="63_81kv4"]
 [ext_resource type="PackedScene" uid="uid://b5sjjc5i61576" path="res://Singletons/ContentLoader/TeleportPoint.tscn" id="64_x0wqr"]
 [ext_resource type="Texture2D" uid="uid://ccuxjk7edg5dg" path="res://Assets/pop_ups/EnterArrowDown.png" id="65_g0t3m"]
 [ext_resource type="PackedScene" uid="uid://xef5l0oe30i" path="res://rooms/Storage Room/glove.tscn" id="66_ileeo"]
-[ext_resource type="PackedScene" uid="uid://c0yymefyfdnd6" path="res://rooms/Storage Room/Josef Scale.glb" id="67_myxfd"]
+[ext_resource type="PackedScene" uid="uid://1j22k1de80bs" path="res://rooms/Storage Room/josef_scale.tscn" id="67_myxfd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_od2cs"]
 size = Vector3(19.865, 6, 11.194)
@@ -3769,7 +3769,7 @@ shape = SubResource("BoxShape3D_e0eie")
 transform = Transform3D(0.9749775, 0.17732906, 0.5623818, 0, 1.0866873, -0.34265202, -0.58967686, 0.2931976, 0.9298475, -2.6548386, -0.97094053, 4.2998486)
 
 [node name="Josef Scale" parent="." instance=ExtResource("67_myxfd")]
-transform = Transform3D(1.16971, 1.0490985, -0.4734334, -1.0367534, 0.66720027, -1.08303, -0.49988854, 1.0710764, 1.1383651, 3.4744396, -0.96784997, 3.942752)
+transform = Transform3D(1.6410261, 0, 0, 0, 1.6410266, 0, 0, 0, 1.6410266, 3.625619, -0.96784997, 3.8131843)
 
 [editable path="SceneLoader_Basement"]
 [editable path="SceneLoader_Basement/InteractionDetector"]
