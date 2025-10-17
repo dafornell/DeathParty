@@ -9,10 +9,8 @@ class_name PolaroidLayer extends CanvasLayer
 # takes in picture count 
 var count =0
 
-
 func _ready() -> void:
 	Globals.polaroid_camera_ui = self
-
 
 # function for movement of camera
 func _physics_process(delta) -> void:
@@ -47,10 +45,11 @@ func _physics_process(delta) -> void:
 			Picture.position.y = -(Picture.size.y*Picture.scale.y-get_viewport().size.y)
 
 #this function need to be called first to set the picture being taken 
-func start(picture: String):
+func start(picture: String,filter: String,filter_picture:String):
 	#var image = Image.load_from_file(picture)
 	$body/MainImage.texture=load(picture)
 	Picture=$body/MainImage
+#	calls function that takes in the filtered image and the associated filter color
 	$body/MainImage.visible=true
 	self.visible=true
 	

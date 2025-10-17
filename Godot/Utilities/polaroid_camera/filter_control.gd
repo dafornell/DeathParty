@@ -25,6 +25,17 @@ var lens_color=""
 
 #left and right buttons not in use right now buy may change later in game.
 #function for when the player turns the filter wheel left 
+func filter_image(filter_image:String, color:String):
+	if color=="N":
+		N = load(filter_image)
+	if color=="R":
+		R = load(filter_image)
+	if color=="G":
+		G = load(filter_image)	
+	if color=="B":
+		B = load(filter_image)
+	
+	
 func _on_left_button_pressed() -> void:
 	left_button.disabled=true
 	#turns wheel 90 degrees to the left from its current orientation	
