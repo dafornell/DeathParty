@@ -19,8 +19,15 @@ extends Node3D
 
 		if quest_marker_enabled:
 			quest_marker.show()
+
+			var tween: Tween = create_tween()
+			tween.set_loops()
+			tween.tween_property(quest_marker, "transparency", 1.0, quest_marker_tween_duration)
+			tween.tween_property(quest_marker, "transparency", 0.0, quest_marker_tween_duration)
+
 			if not Engine.is_editor_hint():
 				show()
+
 		else:
 			quest_marker.hide()
 			if not Engine.is_editor_hint():
@@ -33,6 +40,8 @@ extends Node3D
 
 @onready var parent_npc: NPC = get_parent()
 @onready var quest_marker: Sprite3D = %QuestMarker
+
+var quest_marker_tween_duration := 1.0
 
 
 func _enter_tree() -> void:

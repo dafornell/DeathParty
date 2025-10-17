@@ -1,10 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://bslr2tafqki5h"]
+[gd_scene load_steps=7 format=3 uid="uid://bslr2tafqki5h"]
 
 [ext_resource type="Texture2D" uid="uid://dts4qro0icnli" path="res://Assets/pop_ups/BackgroundRight.png" id="1_nalsp"]
 [ext_resource type="Script" uid="uid://ky4mrinxbgda" path="res://Common/Popup UI/npc_interact_popup.gd" id="1_qy6lp"]
 [ext_resource type="FontFile" uid="uid://csg2vlq4u84fp" path="res://Assets/Fonts/Permanent_Marker/PermanentMarker-Regular.ttf" id="2_j70qr"]
 [ext_resource type="FontFile" uid="uid://cq0tjqh2bcwar" path="res://Assets/Fonts/Gantari/static/Gantari-Thin.ttf" id="3_lfcvq"]
 [ext_resource type="Texture2D" uid="uid://bik8ipljpgqjx" path="res://Assets/pop_ups/quest_marker.png" id="5_smkl4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_smkl4"]
+render_priority = 2
+transparency = 4
+albedo_texture = ExtResource("5_smkl4")
+emission_enabled = true
+emission = Color(1.353256, 1.2223895, 0.6046988, 1)
+emission_energy_multiplier = 5.0
+emission_operator = 1
+emission_texture = ExtResource("5_smkl4")
 
 [node name="Popup" type="Node3D"]
 script = ExtResource("1_qy6lp")
@@ -49,6 +59,7 @@ font_size = 82
 unique_name_in_owner = true
 visible = false
 sorting_offset = 2.0
+material_override = SubResource("StandardMaterial3D_smkl4")
 cast_shadow = 0
 gi_mode = 0
 offset = Vector2(550, 500)
