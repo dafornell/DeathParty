@@ -2,21 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8leuqt0vm8g6"
-path.s3tc="res://.godot/imported/box suitcase_Image_0.png-3c1df2dbf5ca4e3873074c8e81d189da.s3tc.ctex"
-path.etc2="res://.godot/imported/box suitcase_Image_0.png-3c1df2dbf5ca4e3873074c8e81d189da.etc2.ctex"
+uid="uid://dwodutfrpgjus"
+path.s3tc="res://.godot/imported/bean bag_Beanbag_IMGtextureColor.png-69b8cf3bb171a6ed40a3224ba0cad766.s3tc.ctex"
+path.etc2="res://.godot/imported/bean bag_Beanbag_IMGtextureColor.png-69b8cf3bb171a6ed40a3224ba0cad766.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "551b4bb5ab6267336c3e85b0451e406f"
+"md5": "8feb14b1bd267117c9876eb48b94b91c"
 }
 
 [deps]
 
-source_file="res://rooms/bedroom/box suitcase_Image_0.png"
-dest_files=["res://.godot/imported/box suitcase_Image_0.png-3c1df2dbf5ca4e3873074c8e81d189da.s3tc.ctex", "res://.godot/imported/box suitcase_Image_0.png-3c1df2dbf5ca4e3873074c8e81d189da.etc2.ctex"]
+source_file="res://rooms/Basement/bean bag_Beanbag_IMGtextureColor.png"
+dest_files=["res://.godot/imported/bean bag_Beanbag_IMGtextureColor.png-69b8cf3bb171a6ed40a3224ba0cad766.s3tc.ctex", "res://.godot/imported/bean bag_Beanbag_IMGtextureColor.png-69b8cf3bb171a6ed40a3224ba0cad766.etc2.ctex"]
 
 [params]
 
