@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://beuct1pjdlayy"]
+[gd_scene load_steps=32 format=3 uid="uid://beuct1pjdlayy"]
 
 [ext_resource type="PackedScene" uid="uid://b8kaqd0dtqsp1" path="res://Entities/player.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://yory4i5rrii2" path="res://Common/Object Viewer/object_viewer.tscn" id="2_a6jrf"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bqae87n6emy8q" path="res://rooms/Hourhand hallway/Hourhand hallway.tscn" id="27_xuqvo"]
 [ext_resource type="PackedScene" uid="uid://bpjb4k8tcm014" path="res://rooms/control room/Controlroom.tscn" id="28_kq58d"]
 [ext_resource type="Script" uid="uid://kp3w3bjsanur" path="res://cell_visualizer.gd" id="28_qsp4k"]
+[ext_resource type="Script" uid="uid://bn6ojm4yr3e6v" path="res://audio/party_room_music.gd" id="28_seu75"]
 [ext_resource type="PackedScene" uid="uid://c7033b4susyvc" path="res://rooms/Storage Room/Storageroom.tscn" id="28_xuqvo"]
 [ext_resource type="PackedScene" uid="uid://ch4fuk8qiva6x" path="res://rooms/Ghost hallway/Ghost hallway.tscn" id="29_qsp4k"]
 [ext_resource type="PackedScene" uid="uid://b8jbowdnorp1f" path="res://Utilities/pause_menu/pause_menu.tscn" id="37_h8e4i"]
@@ -166,6 +167,7 @@ event_guid = "{757f62e0-b188-491e-9503-6ad99b13690a}"
 autoplay = true
 volume = 0.65
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.4073, 2.53713, -21.0312)
+script = ExtResource("28_seu75")
 
 [node name="CellVisualizer" type="CanvasLayer" parent="."]
 script = ExtResource("28_qsp4k")
@@ -360,6 +362,8 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [connection signal="body_entered" from="WorldBoundary" to="Player" method="_on_world_boundary_body_entered"]
+[connection signal="start_failed" from="PartyRoomMusic" to="PartyRoomMusic" method="_on_start_failed"]
+[connection signal="stopped" from="PartyRoomMusic" to="PartyRoomMusic" method="_on_stopped"]
 
 [editable path="ObjectViewerCanvasLayer"]
 [editable path="Polaroid"]
