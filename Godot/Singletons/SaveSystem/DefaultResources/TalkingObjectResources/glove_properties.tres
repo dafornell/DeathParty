@@ -14,4 +14,5 @@ script = ExtResource("2_lsmg6")
 queue_chats = Dictionary[int, ExtResource("1_7sl0l")]({
 8: SubResource("Resource_8raev")
 })
+name = "Glove"
 metadata/_custom_type_script = "uid://b3ieaqolkasnx"

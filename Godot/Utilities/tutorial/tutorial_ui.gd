@@ -71,7 +71,6 @@ var state: States:
 			States.TAKE_PICTURE:
 				print("TUTORIAL STEP: TAKE PICTURE")
 				corkboard.enabled = true
-				polaroid_camera.queue_free()
 				toggle_corkboard_interactable.emit(true)
 			States.TUTORIAL_FINISHED:
 				print("TUTORIAL STEP: FINISHED")

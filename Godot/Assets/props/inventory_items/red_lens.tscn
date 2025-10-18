@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnoh3r2mpqo7e"]
+
+[ext_resource type="PackedScene" uid="uid://ivhm83ye0i61" path="res://rooms/Storage Room/Red Lense.glb" id="1_uxap7"]
+
+[node name="RedLens" type="Node3D"]
+
+[node name="Red Lense" parent="." instance=ExtResource("1_uxap7")]

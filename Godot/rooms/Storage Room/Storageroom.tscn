@@ -66,8 +66,8 @@
 [ext_resource type="PackedScene" uid="uid://b5sjjc5i61576" path="res://Singletons/ContentLoader/TeleportPoint.tscn" id="64_x0wqr"]
 [ext_resource type="Texture2D" uid="uid://ccuxjk7edg5dg" path="res://Assets/pop_ups/EnterArrowDown.png" id="65_g0t3m"]
 [ext_resource type="PackedScene" uid="uid://xef5l0oe30i" path="res://rooms/Storage Room/glove.tscn" id="66_ileeo"]
-[ext_resource type="PackedScene" uid="uid://1j22k1de80bs" path="res://rooms/Storage Room/josef_scale.tscn" id="67_myxfd"]
-[ext_resource type="PackedScene" uid="uid://ivhm83ye0i61" path="res://rooms/Storage Room/Red Lense.glb" id="68_xroff"]
+[ext_resource type="PackedScene" uid="uid://dtj8lypd7bt52" path="res://rooms/Storage Room/josef_scale.tscn" id="67_myxfd"]
+[ext_resource type="PackedScene" uid="uid://dw0gskxal7f66" path="res://rooms/Storage Room/red_lense.tscn" id="68_5kkw3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_od2cs"]
 size = Vector3(19.865, 6, 11.194)
@@ -3797,19 +3797,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.41829, 2.27886)
 [node name="beerpong trophie" parent="." instance=ExtResource("61_ntvq4")]
 transform = Transform3D(0.311296, 0, 0.34852, 0, 0.467302, 0, -0.34852, 0, 0.311296, -4.11684, 1.03161, 3.12317)
 
-[node name="Daisy Paint Brush1" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-transform = Transform3D(0.930178, 0.240213, -0.191199, -0.138683, 0.872984, 0.422088, 0.27391, -0.373749, 0.863004, 5.79299, -1.27139, 0.764982)
-script = null
-
 [node name="brush2" parent="." instance=ExtResource("63_81kv4")]
 transform = Transform3D(0.599649, -0.365484, -0.897297, 0.26079, 1.07719, -0.264477, 0.933118, -0.0661845, 0.650546, -3.60937, -0.105501, 3.40987)
 
@@ -3831,7 +3818,7 @@ transform = Transform3D(0.9749775, 0.17732906, 0.5623818, 0, 1.0866873, -0.34265
 [node name="Josef Scale" parent="." instance=ExtResource("67_myxfd")]
 transform = Transform3D(1.6410261, 0, 0, 0, 1.6410266, 0, 0, 0, 1.6410266, 3.625619, -0.96784997, 3.8131843)
 
-[node name="Red Lense" parent="." instance=ExtResource("68_xroff")]
+[node name="Red Lense" parent="." instance=ExtResource("68_5kkw3")]
 transform = Transform3D(0.7346666, 0.4459977, -0.74809825, -0.31249833, 1.048516, 0.31821162, 0.81296355, -1.2087218e-09, 0.79836726, 7.3473372, -0.85976493, 5.488008)
 
 [editable path="SceneLoader_Basement"]
