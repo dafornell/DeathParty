@@ -66,6 +66,7 @@ func set_item_properties(scene : Node3D) -> Node3D:
 	visible = true
 	Interact.set_active_subviewport(sub_viewport)
 	remove_current_item()
+	close_item_info()
 	
 	model_holder.add_child(scene)
 
