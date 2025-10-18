@@ -24,7 +24,6 @@ signal toggle_corkboard_interactable(value: bool)
 @export var corkboard_popup: Node3D
 @export var corkboard: Interactable
 
-@onready var loading_timer: Timer = %LoadingTimer
 @onready var move_controls_popup: PanelContainer = %MoveControlsPopup
 @onready var walk_complete_timer: Timer = %WalkCompleteTimer
 @onready var phone_controls_popup: PanelContainer = %PhoneControlsPopup

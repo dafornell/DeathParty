@@ -21,13 +21,9 @@ var time_elapsed := 0.0
 
 
 func _ready() -> void:
-	# get a reference to the timer and connect it to the function below
-	var timer: Timer = $Timer
-	timer.timeout.connect(_on_timer_timeout)
-
 	# get a reference to the circular filter below the spotlight
 	# (if there is one and its node is a child of the light and named "Filter")
-	filter = $Filter
+	filter = get_node_or_null("Filter") as MeshInstance3D
 
 
 func _physics_process(delta: float) -> void:
