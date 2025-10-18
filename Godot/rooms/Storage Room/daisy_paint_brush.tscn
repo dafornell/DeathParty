@@ -21,6 +21,6 @@ transform = Transform3D(1.295, 0, 0, 0, 1.295, 0, 0, 0, 1.295, -0.193758, 0.5124
 shape = SubResource("BoxShape3D_yvbm7")
 
 [node name="Popup" parent="." index="2" instance=ExtResource("5_cj2di")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0238509, 0.9224949, -0.15989566)
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -1.1179204, 0.9224949, 0.0073387623)
 
 [editable path="InteractionDetector"]
