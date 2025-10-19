@@ -59,7 +59,7 @@
 [ext_resource type="Texture2D" uid="uid://bs6b6l2er7cvd" path="res://rooms/Storage Room/spiderwebs_dsf.png" id="55_hu7nt"]
 [ext_resource type="PackedScene" uid="uid://cno0dyov1i6bm" path="res://Assets/CharacterAssets/witch/witch.tscn" id="56_hu7nt"]
 [ext_resource type="PackedScene" uid="uid://b36wsq6enc3vs" path="res://Assets/CharacterAssets/chi_omega_girl/chi_omega_girl.tscn" id="57_twmdx"]
-[ext_resource type="PackedScene" uid="uid://5ssjaesop020" path="res://Assets/CharacterAssets/free_hug_guy/free_hug_guy.tscn" id="58_ddclk"]
+[ext_resource type="PackedScene" uid="uid://d1lmv76sg8rx0" path="res://Assets/CharacterAssets/free_hug_guy/free_hug_guy.tscn" id="58_ddclk"]
 [ext_resource type="PackedScene" uid="uid://s3crydfiatmy" path="res://Assets/CharacterAssets/cone_ghost/cone_ghost.tscn" id="58_dsi3o"]
 [ext_resource type="PackedScene" uid="uid://bagpax3yb0uf7" path="res://Assets/CharacterAssets/christmas_tree/christmas_tree.tscn" id="59_oa8vk"]
 [ext_resource type="PackedScene" uid="uid://cfen8ypgv1gjf" path="res://Assets/CharacterAssets/gamers/shark_gamer/shark_gamer.tscn" id="60_ullqy"]
@@ -2218,6 +2218,9 @@ bones/61/rotation = Quaternion(-0.82390505, 0.07823487, -0.07144275, 0.55673677)
 bones/62/rotation = Quaternion(0.23391794, -0.15798484, 0.011685853, 0.9592637)
 bones/63/rotation = Quaternion(0.33005735, 0.16297139, -0.0585541, 0.9279408)
 
+[node name="BoneAttachment3D" parent="NPCs/free hug2/CharacterBody3D/free hug/Skeleton3D" index="4"]
+transform = Transform3D(0.068976425, -0.99549127, 0.06510828, 0.98190415, 0.05620706, -0.18084607, 0.1763713, 0.076404095, 0.9813538, -18.67548, 47.48279, -4.1805515)
+
 [node name="AnimationPlayer" parent="NPCs/free hug2/CharacterBody3D" index="2"]
 autoplay = "sleep"
 
@@ -2447,6 +2450,9 @@ autoplay = "sit laugh"
 [node name="Shy Girl" parent="NPCs" instance=ExtResource("67_6vgeg")]
 transform = Transform3D(0.47852325, 0, -0.8780749, 0, 1, 0, 0.8780749, 0, 0.47852325, 6.5115376, -0.014268398, 3.532743)
 
+[node name="AlbertoMa" parent="NPCs" instance=ExtResource("67_snomx")]
+transform = Transform3D(0.97782713, 0, -0.20941377, 0, 1, 0, 0.20941377, 0, 0.97782713, 4.9384937, 0.035411358, -0.16834867)
+
 [node name="WoodCreakSound" type="FmodEventEmitter3D" parent="."]
 event_name = "event:/000_SFX/000_Demo_Test/009_SFX_WoodCreak"
 event_guid = "{f38bbadd-9a04-4803-8491-24000f134dfa}"
@@ -2470,9 +2476,6 @@ event_guid = "{a9afe7a1-32a6-4520-90b1-e43b257c86b0}"
 autoplay = true
 volume = 0.1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 10)
-
-[node name="AlbertoMa" parent="." instance=ExtResource("67_snomx")]
-transform = Transform3D(0.97782713, 0, -0.20941377, 0, 1, 0, 0.20941377, 0, 0.97782713, -0.06749654, -4.3511186, 1.2656513)
 
 [connection signal="timeout" from="WoodCreakSound/Timer" to="WoodCreakSound" method="_on_timer_timeout"]
 
