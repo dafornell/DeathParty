@@ -1,4 +1,4 @@
-[gd_scene load_steps=142 format=4 uid="uid://d3cv36i34m681"]
+[gd_scene load_steps=144 format=4 uid="uid://d3cv36i34m681"]
 
 [ext_resource type="Script" uid="uid://bf53h1kpy8ay4" path="res://rooms/Library/library.gd" id="1_508o3"]
 [ext_resource type="PackedScene" uid="uid://bbyg62wymptn6" path="res://Singletons/ContentLoader/scene_loader.tscn" id="1_j03r7"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b5sjjc5i61576" path="res://Singletons/ContentLoader/TeleportPoint.tscn" id="2_mwspb"]
 [ext_resource type="Texture2D" uid="uid://d2qmky6uvbv5h" path="res://rooms/Library/library layout_woodlight1.png" id="2_nt7ft"]
 [ext_resource type="Texture2D" uid="uid://cbpg3gmjegrqw" path="res://rooms/Library/library layout_wooddark.png" id="3_1lqw2"]
+[ext_resource type="Script" uid="uid://gq7614xvk2hc" path="res://Utilities/spawn_point.gd" id="3_6vgeg"]
 [ext_resource type="PackedScene" uid="uid://cujkdwu7yl672" path="res://rooms/Library/bookshelf top floor.glb" id="3_mjo1y"]
 [ext_resource type="PackedScene" uid="uid://s8nqkwhr8xqp" path="res://Assets/environment/chandelier.tscn" id="4_30q20"]
 [ext_resource type="Texture2D" uid="uid://di4lenj2tr56j" path="res://rooms/Library/library layout_standardwood.png" id="4_a1w3s"]
@@ -70,6 +71,10 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_obdan"]
 size = Vector3(15.626, 10, 12)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_obo1m"]
+vertices = PackedVector3Array(-9.236448, -4.07936, -3.337801, -9.236448, -4.07936, -2.337801, -3.7364483, -4.07936, -2.337801, -2.4864483, -4.07936, -3.087801, 5.5135517, 6.42064, 3.662199, 5.7635517, 5.67064, 4.662199, 5.7635517, 5.67064, -2.587801, 5.6635513, 6.67064, -0.08780098, 5.563551, 6.67064, 2.412199, 5.7635517, 6.42064, 3.2121992, 5.7635517, 6.67064, 0.31219912, 4.5135517, 6.67064, 3.662199, 5.5135517, 6.42064, -1.337801, 5.0135517, 6.92064, 1.162199, 5.2635517, 5.67064, -2.837801, -10.736448, 5.67064, -3.087801, -10.736448, 6.17064, 4.662199, -10.736448, 7.17064, 0.787199, -10.736448, 6.67064, 3.370532, 3.7537813, 6.92064, 0.14595366, 3.7536602, 6.67064, -1.3139164, -9.761448, 6.67064, -1.3628011, 4.5135517, 6.17064, 4.662199, -9.236448, -1.07936, -2.587801, -9.236448, -1.07936, -1.837801, -3.4864483, -1.07936, -1.587801, -1.9864483, -1.07936, -2.337801, -7.9864483, -4.07936, 1.162199, -7.4864483, -4.07936, 0.41219902, -8.486448, -4.07936, 1.162199, -7.2364483, -4.07936, 6.662199, -7.7364483, -4.07936, 6.912199, -7.7364483, -4.07936, 7.662199, -5.9864483, -4.07936, -0.837801, -5.9864483, -4.07936, -0.33780098, -4.9864483, -4.07936, -0.08780098, -4.4864483, -4.07936, -0.587801, -4.2364483, -4.07936, 2.162199, 3.7635517, -4.07936, 7.662199, 0.5135517, -4.07936, 5.412199, -4.2364483, -4.07936, 0.912199, -1.2364483, -4.07936, -0.837801, -1.2364483, -4.07936, -1.587801, 1.2635517, -4.07936, 3.912199, 1.5135517, -4.07936, 2.412199, 0.5135517, -4.07936, 2.412199, -7.7364483, -4.07936, 2.662199, 0.5135517, -4.07936, 4.162199, -0.4864483, -4.07936, 1.662199, -9.736448, -4.07936, 1.162199, -0.4864483, -4.07936, -0.08780098, -5.9864483, -4.07936, 3.162199, -7.2364483, -4.07936, 3.162199, -7.4864483, -4.07936, 4.912199, -8.986448, -4.07936, 4.912199, -9.736448, -4.07936, 6.412199, 3.7635517, -1.07936, 3.162199, 4.5135517, -1.07936, 3.662199, 4.7635517, -1.07936, 2.662199, 4.5135517, -1.07936, -0.837801, 3.7635517, -1.07936, 0.41219902, -6.7364483, -3.07936, 1.412199, -6.7364483, -2.82936, 2.162199, -6.2364483, -2.82936, 1.912199, -6.2364483, -3.07936, 1.412199)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 9), PackedInt32Array(9, 4, 8), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 7), PackedInt32Array(10, 7, 6), PackedInt32Array(4, 11, 8), PackedInt32Array(8, 11, 13), PackedInt32Array(8, 13, 7), PackedInt32Array(7, 13, 12), PackedInt32Array(7, 12, 6), PackedInt32Array(18, 11, 16), PackedInt32Array(11, 19, 13), PackedInt32Array(13, 19, 12), PackedInt32Array(12, 14, 6), PackedInt32Array(14, 20, 15), PackedInt32Array(15, 21, 17), PackedInt32Array(17, 21, 18), PackedInt32Array(18, 19, 11), PackedInt32Array(19, 20, 12), PackedInt32Array(12, 20, 14), PackedInt32Array(20, 21, 15), PackedInt32Array(21, 19, 18), PackedInt32Array(19, 21, 20), PackedInt32Array(11, 22, 16), PackedInt32Array(24, 23, 25), PackedInt32Array(25, 23, 26), PackedInt32Array(29, 28, 27), PackedInt32Array(32, 31, 30), PackedInt32Array(34, 33, 35), PackedInt32Array(35, 33, 36), PackedInt32Array(30, 37, 32), PackedInt32Array(32, 37, 39), PackedInt32Array(32, 39, 38), PackedInt32Array(35, 36, 40), PackedInt32Array(40, 36, 41), PackedInt32Array(41, 36, 42), PackedInt32Array(45, 44, 43), PackedInt32Array(46, 29, 27), PackedInt32Array(43, 47, 45), PackedInt32Array(45, 47, 48), PackedInt32Array(49, 29, 46), PackedInt32Array(50, 48, 41), PackedInt32Array(41, 48, 40), PackedInt32Array(40, 48, 37), PackedInt32Array(53, 52, 51), PackedInt32Array(52, 53, 46), PackedInt32Array(46, 53, 54), PackedInt32Array(46, 54, 49), PackedInt32Array(53, 51, 30), PackedInt32Array(30, 51, 37), PackedInt32Array(47, 39, 48), PackedInt32Array(48, 39, 37), PackedInt32Array(49, 54, 55), PackedInt32Array(57, 56, 58), PackedInt32Array(58, 56, 60), PackedInt32Array(58, 60, 59), PackedInt32Array(64, 63, 61), PackedInt32Array(61, 63, 62)]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vinq0"]
 size = Vector3(10, 2, 0.1)
@@ -1175,15 +1180,24 @@ func _on_timer_timeout() -> void:
 	timer.wait_time = randf_range(min_time, max_time)
 "
 
-[node name="Library" type="Area3D" node_paths=PackedStringArray("room_area")]
+[node name="Library" type="Area3D" node_paths=PackedStringArray("room_area", "rowan_spawn")]
 collision_mask = 2
 script = ExtResource("1_508o3")
 room_area = NodePath("RoomArea")
+rowan_spawn = NodePath("RowanSpawn")
 first_visit_json = ExtResource("2_8rbln")
 
 [node name="RoomArea" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.31299, 0, 2)
 shape = SubResource("BoxShape3D_obdan")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_obo1m")
+
+[node name="RowanSpawn" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.958791, -4.3124847, 2.1944976)
+script = ExtResource("3_6vgeg")
+metadata/_custom_type_script = "uid://gq7614xvk2hc"
 
 [node name="Boundaries" type="StaticBody3D" parent="."]
 
