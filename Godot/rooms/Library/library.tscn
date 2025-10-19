@@ -1,6 +1,6 @@
-[gd_scene load_steps=142 format=4 uid="uid://d3cv36i34m681"]
+[gd_scene load_steps=141 format=4 uid="uid://d3cv36i34m681"]
 
-[ext_resource type="Script" uid="uid://bf53h1kpy8ay4" path="res://rooms/Library/library.gd" id="1_508o3"]
+[ext_resource type="Script" path="res://rooms/Library/library.gd" id="1_508o3"]
 [ext_resource type="PackedScene" uid="uid://bbyg62wymptn6" path="res://Singletons/ContentLoader/scene_loader.tscn" id="1_j03r7"]
 [ext_resource type="Texture2D" uid="uid://pscjmfwes04o" path="res://rooms/Library/library layout_IMG_4352.png" id="1_yidfh"]
 [ext_resource type="PackedScene" uid="uid://bt12f14jam32q" path="res://rooms/Library/blackraillings.glb" id="2_6fo57"]
@@ -48,7 +48,6 @@
 [ext_resource type="PackedScene" uid="uid://cwjfbxbvm4u45" path="res://Assets/props/cobwebs/cobweb_corner.tscn" id="42_fh3n2"]
 [ext_resource type="PackedScene" uid="uid://gu7mwgusye5o" path="res://Assets/CharacterAssets/sam/sam.tscn" id="43_obdan"]
 [ext_resource type="PackedScene" uid="uid://dvox0p4f1j5l1" path="res://rooms/bedroom/teddy bear.glb" id="44_dffff"]
-[ext_resource type="PackedScene" uid="uid://cfxvpoegl0xb5" path="res://Assets/CharacterAssets/nora/nora.tscn" id="44_j03r7"]
 [ext_resource type="PackedScene" uid="uid://beusior7ym8c4" path="res://Assets/props/chairs/chair/chair.tscn" id="45_jpbuu"]
 [ext_resource type="PackedScene" uid="uid://d1ao6n4p81227" path="res://Assets/CharacterAssets/bunnies/white_bunny/white_bunny.tscn" id="45_owm1a"]
 [ext_resource type="PackedScene" uid="uid://ddiqilmdbakfb" path="res://Assets/CharacterAssets/angel/angel.tscn" id="50_m1j1w"]
@@ -1995,9 +1994,6 @@ bones/63/rotation = Quaternion(0.24497856, 0.038278747, -0.010859033, 0.9687117)
 
 [node name="AnimationPlayer" parent="NPCs/shark/CharacterBody3D" index="2"]
 autoplay = "sit chill"
-
-[node name="Nora" parent="NPCs" instance=ExtResource("44_j03r7")]
-transform = Transform3D(0.789084, 0, -0.614285, 0, 1, 0, 0.614285, 0, 0.789084, 0.631361, -0.0234952, 0.565242)
 
 [node name="Sam" parent="NPCs" instance=ExtResource("43_obdan")]
 transform = Transform3D(0.858978, 0, 0.512013, 0, 1, 0, -0.512013, 0, 0.858978, -0.672603, 0.0335598, 0.825987)
