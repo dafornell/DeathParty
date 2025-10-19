@@ -1,8 +1,8 @@
-[gd_scene load_steps=40 format=4 uid="uid://fue5mn2yitn7"]
+[gd_scene load_steps=40 format=4 uid="uid://cujn06i5nwodv"]
 
 [ext_resource type="Texture2D" uid="uid://djwkac8swkytt" path="res://Assets/environment/disco_light_decoration/drapes_TCom_OrnamentBorder0333_1_S.png" id="1_lecv7"]
 [ext_resource type="PackedScene" uid="uid://cxntcyf3l15nw" path="res://Assets/props/drapes/added drapes.glb" id="2_cjtdp"]
-[ext_resource type="Script" path="res://Assets/environment/disco_light_decoration/spotlight_colour_cycle.gd" id="2_lecv7"]
+[ext_resource type="Script" uid="uid://bmj5r3eqlj608" path="res://Assets/environment/disco_light_decoration/spotlight_colour_cycle.gd" id="2_lecv7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dn7ku"]
 resource_name = "Material.003"
@@ -1159,8 +1159,3 @@ metadata/extras = {
 
 [node name="added drapes" parent="." instance=ExtResource("2_cjtdp")]
 transform = Transform3D(0.990929, 0, 0.134402, 0, 1, 0, -0.134402, 0, 0.990929, -0.229598, -0.567204, -0.139616)
-
-[connection signal="timeout" from="Spot/Timer" to="Spot" method="_on_timer_timeout"]
-[connection signal="timeout" from="Spot_001/Timer" to="Spot" method="_on_timer_timeout"]
-[connection signal="timeout" from="Spot_002/Timer" to="Spot" method="_on_timer_timeout"]
-[connection signal="timeout" from="Spot_003/Timer" to="Spot" method="_on_timer_timeout"]

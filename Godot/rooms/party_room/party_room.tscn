@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cntrtwnpfw210" path="res://rooms/party_room/PartyRoom layout_wood.png" id="3_yruca"]
 [ext_resource type="Texture2D" uid="uid://b04lep1n5ghw5" path="res://rooms/party_room/PartyRoom layout_TCom_WoodFine0032_1_seamless_S.jpg" id="4_pmr6i"]
 [ext_resource type="PackedScene" uid="uid://ci0x5744ru78a" path="res://Assets/environment/marble_pillar/marble_pillar.tscn" id="4_yruca"]
-[ext_resource type="PackedScene" uid="uid://fue5mn2yitn7" path="res://Assets/environment/disco_light_decoration/drapes.tscn" id="6_j7flo"]
+[ext_resource type="PackedScene" uid="uid://cujn06i5nwodv" path="res://Assets/environment/disco_light_decoration/drapes.tscn" id="6_j7flo"]
 [ext_resource type="Texture2D" uid="uid://d00kdcxh6yxll" path="res://Assets/environment/stage/stage_wood.png" id="6_w7xb7"]
 [ext_resource type="Texture2D" uid="uid://bvm22y4jmvpjo" path="res://Assets/environment/stage/stage_red textures.png" id="7_x2x32"]
 [ext_resource type="PackedScene" uid="uid://bqc5dcb57bpmk" path="res://Assets/environment/patterned_wall.tscn" id="8_mc5eb"]
@@ -47,7 +47,7 @@
 [ext_resource type="PackedScene" uid="uid://b36wsq6enc3vs" path="res://Assets/CharacterAssets/chi_omega_girl/chi_omega_girl.tscn" id="48_2fylr"]
 [ext_resource type="PackedScene" uid="uid://cnb05rd1rv7e7" path="res://Assets/CharacterAssets/rowan/rowan.tscn" id="48_lucee"]
 [ext_resource type="PackedScene" uid="uid://bte4agxfg1yhm" path="res://Assets/CharacterAssets/frat_boys/Long_Hair_frat_boy/Frat boy long hair.glb" id="48_prrke"]
-[ext_resource type="PackedScene" uid="uid://5ssjaesop020" path="res://Assets/CharacterAssets/free_hug_guy/free_hug_guy.tscn" id="49_prrke"]
+[ext_resource type="PackedScene" uid="uid://d1lmv76sg8rx0" path="res://Assets/CharacterAssets/free_hug_guy/free_hug_guy.tscn" id="49_prrke"]
 
 [sub_resource type="GDScript" id="GDScript_yyfmc"]
 script/source = "extends Room3D
