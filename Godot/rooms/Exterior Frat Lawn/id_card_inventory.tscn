@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://csfwlkqi6e20"]
+
+[ext_resource type="PackedScene" uid="uid://dyu7jnww1pkd6" path="res://rooms/Exterior Frat Lawn/wallet and ID.glb" id="1_8bymr"]
+[ext_resource type="Script" uid="uid://bea7y4hurcesx" path="res://Utilities/scripts/interactable.gd" id="2_8phbc"]
+[ext_resource type="Resource" uid="uid://6y3d0fbgk6f4" path="res://Singletons/SaveSystem/DefaultResources/TalkingObjectResources/idcard_properties.tres" id="3_ieua3"]
+[ext_resource type="Texture2D" uid="uid://bvqt45fuhspqd" path="res://rooms/Exterior Frat Lawn/ID card_Jack ID Texture.png" id="4_py1o2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ugwxy"]
+albedo_texture = ExtResource("4_py1o2")
+
+[node name="ID card" instance=ExtResource("1_8bymr")]
+transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 0, 0, 0)
+script = ExtResource("2_8phbc")
+talking_object_resource = ExtResource("3_ieua3")
+
+[node name="IDcard" parent="." index="0"]
+transform = Transform3D(0.11489265, 0, 0.05786099, 0, -0.0010000003, 0, -0.096434996, 0, 0.06893558, 0.048390344, 0.18886743, 0.22975682)
+surface_material_override/0 = SubResource("StandardMaterial3D_ugwxy")
+
+[node name="Wallet" parent="." index="1"]
+transform = Transform3D(0.3438422, -2.6887484e-10, 0.008889403, 0.008889403, 2.0805413e-08, -0.3438422, -2.6887495e-10, 0.34395698, 2.0805421e-08, 0, 0, 0)

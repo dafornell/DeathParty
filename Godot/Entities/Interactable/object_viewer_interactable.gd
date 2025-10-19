@@ -1,5 +1,7 @@
 class_name ObjectViewerInteractable extends Area3D
 
+var item_resource : InventoryItemResource
+
 #The interactable class is any object that is interactable. This means that if the mouse hovers over it
 #it will become highlighted and the player can click on it to get some event
 func _init() -> void:

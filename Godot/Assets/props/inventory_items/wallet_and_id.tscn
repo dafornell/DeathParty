@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbd08dq7s35fg"]
+
+[ext_resource type="PackedScene" uid="uid://psh336exq4ts" path="res://Assets/props/inventory_items/inventory_item_base.tscn" id="1_c5nah"]
+[ext_resource type="PackedScene" uid="uid://csfwlkqi6e20" path="res://rooms/Exterior Frat Lawn/id_card_inventory.tscn" id="2_c5nah"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aq8ka"]
+resource_local_to_scene = true
+size = Vector3(0.8652344, 0.60839844, 0.2)
+
+[node name="InventoryItemBase" instance=ExtResource("1_c5nah")]
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011505127, 0.012908936, 0)
+shape = SubResource("BoxShape3D_aq8ka")
+
+[node name="ID card" parent="MeshContainer" index="0" instance=ExtResource("2_c5nah")]
+transform = Transform3D(-1.6404341e-08, -0.3752876, 1.4005923, 1.4499998, -6.33815e-08, 3.0704943e-22, 6.1221826e-08, 1.4005923, 0.3752876, -0.049230814, 0.019692317, 0)

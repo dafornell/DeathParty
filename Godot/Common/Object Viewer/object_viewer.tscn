@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://b3v8ab5ipsaa" path="res://Common/Object Viewer/journal_item_info.gd" id="4_1fteh"]
 [ext_resource type="Texture2D" uid="uid://dcud5d3stalvt" path="res://Common/Object Viewer/display box.tres" id="4_8yl1a"]
 [ext_resource type="FontFile" uid="uid://bbnxos5pn23n1" path="res://Assets/Fonts/Patrick_Hand_SC/PatrickHandSC-Regular.ttf" id="4_km8sy"]
-[ext_resource type="Script" uid="uid://dw58hnvvcb3px" path="res://Common/Object Viewer/richtext_increase_size_until_visible.gd" id="5_8yl1a"]
+[ext_resource type="Script" path="res://Common/Object Viewer/richtext_increase_size_until_visible.gd" id="5_8yl1a"]
 [ext_resource type="Texture2D" uid="uid://cm2qh7ey3npqp" path="res://Common/Object Viewer/icon_close.png" id="6_1fteh"]
 
 [sub_resource type="Shader" id="Shader_o7dqn"]

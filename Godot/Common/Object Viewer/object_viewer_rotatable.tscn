@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://drd4odlq5u4uj"]
+
+[ext_resource type="Script" uid="uid://de2asi0rdni8c" path="res://Entities/Interactable/rotation_object_viewer_interactable.gd" id="1_xkrnc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c5jd4"]
+size = Vector3(3.0449219, 2.7106934, 0.787)
+
+[node name="ObjectViewerRotatable" type="Area3D" node_paths=PackedStringArray("mesh_root")]
+script = ExtResource("1_xkrnc")
+mesh_root = NodePath("MeshRoot")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_c5jd4")
+
+[node name="MeshRoot" type="Node3D" parent="."]
+transform = Transform3D(0.9659258, 0.0669873, 0.25, 0, 0.9659258, -0.25881904, -0.25881904, 0.25, 0.93301266, 0, 0, 0)

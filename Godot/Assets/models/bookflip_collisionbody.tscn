@@ -1,13 +1,22 @@
-[gd_scene load_steps=15 format=3 uid="uid://bgrnyakmgghyq"]
+[gd_scene load_steps=26 format=3 uid="uid://bgrnyakmgghyq"]
 
 [ext_resource type="Script" uid="uid://bxxt4jkxn55ob" path="res://Assets/models/journal_root.gd" id="1_47kpb"]
 [ext_resource type="Script" uid="uid://12xwkrptykvs" path="res://Assets/models/journal_show_inventory.gd" id="1_jth6w"]
 [ext_resource type="PackedScene" uid="uid://ctxn4d5hysbqv" path="res://Assets/models/bookflip_model.tscn" id="2_7ovfm"]
 [ext_resource type="Script" uid="uid://wi8scqg3b40v" path="res://Assets/models/inventory_items.gd" id="3_7ovfm"]
 [ext_resource type="Texture2D" uid="uid://b10xkyr1i6p24" path="res://Assets/JournalTextures/olivia_backpack.png" id="4_e2q15"]
+[ext_resource type="Script" uid="uid://buku5tvg1gfb4" path="res://Assets/models/inventory_item_slot.gd" id="5_r58e7"]
 [ext_resource type="Material" uid="uid://dlhvvfgrqs5ib" path="res://Assets/Shaders/LightUpShader.tres" id="6_0upgx"]
+[ext_resource type="Resource" uid="uid://bisc78i8lblcq" path="res://Singletons/SaveSystem/DefaultResources/InventoryItemResources/polaroid_camera_properties.tres" id="6_w436v"]
+[ext_resource type="Texture2D" uid="uid://dnb1nh6b8pg8j" path="res://Assets/JournalTextures/front_bag.png" id="7_8c4l8"]
+[ext_resource type="Resource" uid="uid://c352de41ecj6e" path="res://Singletons/SaveSystem/DefaultResources/InventoryItemResources/id_card_properties.tres" id="7_am6f0"]
+[ext_resource type="Shader" uid="uid://ddcx35eckfbrh" path="res://Assets/Shaders/brightness_shader.gdshader" id="7_qun6a"]
 [ext_resource type="Script" uid="uid://b8bi3jgsmswia" path="res://Assets/models/hide_inventory_area.gd" id="7_xwflh"]
+[ext_resource type="Resource" uid="uid://c26y03oxtu758" path="res://Singletons/SaveSystem/DefaultResources/InventoryItemResources/glove_properties.tres" id="8_pumia"]
 [ext_resource type="PackedScene" uid="uid://xoifv6ugs47r" path="res://new_book_static.tscn" id="9_8c4l8"]
+[ext_resource type="Resource" uid="uid://c0gs7ypvg3co1" path="res://Singletons/SaveSystem/DefaultResources/InventoryItemResources/paint_brush_properties.tres" id="9_m4qnh"]
+[ext_resource type="Resource" uid="uid://c67a1m6fudgvb" path="res://Singletons/SaveSystem/DefaultResources/InventoryItemResources/triangle_properties.tres" id="10_rr134"]
+[ext_resource type="Resource" uid="uid://b53nky5n3yxdj" path="res://Singletons/SaveSystem/DefaultResources/InventoryItemResources/red_lens_properties.tres" id="10_w436v"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_0upgx"]
 viewport_path = NodePath("Armature/Skeleton3D/AnimatableBody3D/Cube_004/SubViewport")
@@ -23,6 +32,19 @@ size = Vector3(8.8883, 0.300507, 3.58045)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_47kpb"]
 transparency = 1
 albedo_texture = ExtResource("4_e2q15")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e7rhw"]
+resource_local_to_scene = true
+render_priority = 1
+shader = ExtResource("7_qun6a")
+shader_parameter/ignore_lighting = true
+shader_parameter/albedo_texture = ExtResource("7_8c4l8")
+shader_parameter/brightness = 1.0000000149012
+shader_parameter/contrast = 1.0
+shader_parameter/depth_adjust = 0.27
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qun6a"]
+size = Vector2(2, 0.905)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_47kpb"]
 size = Vector3(7.30997, 0.285156, 2.29163)
@@ -112,10 +134,51 @@ transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.0318329, -0.302822, 1
 shape = SubResource("BoxShape3D_rss8h")
 debug_color = Color(0.784314, 0, 0.0745098, 1)
 
-[node name="InventoryItems" type="Node3D" parent="." node_paths=PackedStringArray("bookflip_instance")]
+[node name="InventoryItems" type="Node3D" parent="." node_paths=PackedStringArray("bookflip_instance", "item_slot_parent")]
 transform = Transform3D(0.9469822, 0, 0, 0, 0.9469822, 3.5527137e-15, 0, -3.5527137e-15, 0.9469822, -0.0024470873, 0.5947156, 1.5575532)
 script = ExtResource("3_7ovfm")
 bookflip_instance = NodePath("../bookflip")
+item_slot_parent = NodePath("Slots")
+
+[node name="Slots" type="Node3D" parent="InventoryItems"]
+
+[node name="1" type="Node3D" parent="InventoryItems/Slots"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.34195608, -0.2040127)
+script = ExtResource("5_r58e7")
+item_resource = ExtResource("6_w436v")
+
+[node name="2" type="Node3D" parent="InventoryItems/Slots"]
+transform = Transform3D(0.97271925, -0.23198555, 0, -1.0140412e-08, -4.2518906e-08, 1, -0.23198555, -0.97271925, -4.371139e-08, -0.9374776, 4.39568e-09, -0.14268467)
+script = ExtResource("5_r58e7")
+item_resource = ExtResource("7_am6f0")
+
+[node name="3" type="Node3D" parent="InventoryItems/Slots"]
+transform = Transform3D(0.9532171, 0.3022867, 0, 1.3213372e-08, -4.1666446e-08, 1, 0.3022867, -0.9532171, -4.371139e-08, 0.71775997, 0.12823334, -0.09911617)
+script = ExtResource("5_r58e7")
+item_resource = ExtResource("8_pumia")
+
+[node name="4" type="Node3D" parent="InventoryItems/Slots"]
+transform = Transform3D(0.9423732, 0.33456355, 0, 1.4624238e-08, -4.1192443e-08, 1, 0.33456355, -0.9423732, -4.371139e-08, -1.0074639, 2.0710601e-08, 0.4581102)
+script = ExtResource("5_r58e7")
+
+[node name="5" type="Node3D" parent="InventoryItems/Slots"]
+transform = Transform3D(0.8241756, 0.5663343, 0, 2.475526e-08, -3.602586e-08, 1, 0.5663343, -0.8241756, -4.371139e-08, 1.2727041, 7.491371e-10, 0.064218536)
+script = ExtResource("5_r58e7")
+item_resource = ExtResource("9_m4qnh")
+
+[node name="6" type="Node3D" parent="InventoryItems/Slots"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.53357106, 6.406349e-08, 0.6120392)
+script = ExtResource("5_r58e7")
+item_resource = ExtResource("10_w436v")
+
+[node name="7" type="Node3D" parent="InventoryItems/Slots"]
+transform = Transform3D(-0.96592593, -0.2588191, 0, -1.1313346e-08, 4.2221952e-08, 1, -0.25881916, 0.9659257, -4.3711385e-08, 0.46606612, 0.39182514, 0.7284547)
+script = ExtResource("5_r58e7")
+item_resource = ExtResource("10_rr134")
+
+[node name="8" type="Node3D" parent="InventoryItems/Slots"]
+transform = Transform3D(0.9361823, -0.35151488, 0, -1.5365202e-08, -4.092183e-08, 1, -0.35151488, -0.9361823, -4.371139e-08, -0.16447482, 1.6049094e-07, 0.5381105)
+script = ExtResource("5_r58e7")
 
 [node name="BackpackBackground" type="MeshInstance3D" parent="."]
 transform = Transform3D(2.7895782, 0, 0, 0, 3.1566074, 0, 0, 0, 2.9871607, 6.224727e-05, 0.035491776, 0.58659434)
@@ -123,6 +186,12 @@ material_overlay = ExtResource("6_0upgx")
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_ngl8b")
 surface_material_override/0 = SubResource("StandardMaterial3D_47kpb")
+
+[node name="BackpackForeground" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.0918744, 0, 0, 0, 1, 0, 0, 0, 2.063017, 0.047, 0.035, 2.44)
+material_override = SubResource("ShaderMaterial_e7rhw")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_qun6a")
 
 [node name="HideInventoryArea" type="Area3D" parent="." node_paths=PackedStringArray("inventory_items_container", "journal_root")]
 transform = Transform3D(1.0522025, 0, 0, 0, 1.0522025, 0, 0, 0, 1.0522025, 6.224727e-05, 0.17091477, -1.9052768)
