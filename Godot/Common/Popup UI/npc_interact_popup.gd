@@ -6,8 +6,13 @@ extends Node3D
 ## so i think its ok to leave it like this for now
 ##		- jack
 
+@export var x_offset: float = -1.15
+@export var y_offset: float = 2
 
-@export var quest_marker_enabled := false:
+@onready var parent_npc: NPC = get_parent()
+@onready var quest_marker: Sprite3D = %QuestMarker
+
+var quest_marker_enabled := false:
 	set(value):
 		quest_marker_enabled = value
 
@@ -32,12 +37,6 @@ extends Node3D
 
 		else:
 			quest_marker.hide()
-
-@export var x_offset: float = -1.15
-@export var y_offset: float = 2
-
-@onready var parent_npc: NPC = get_parent()
-@onready var quest_marker: Sprite3D = %QuestMarker
 
 var quest_marker_tween_duration := 1.0
 
