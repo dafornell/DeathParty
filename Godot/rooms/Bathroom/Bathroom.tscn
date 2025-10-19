@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=4 uid="uid://o1miuonfuk7"]
+[gd_scene load_steps=85 format=4 uid="uid://o1miuonfuk7"]
 
 [ext_resource type="Texture2D" uid="uid://bwyduh5ck58ao" path="res://rooms/Bathroom/Bathroom layout_IMG_4144.png" id="1_3eiq5"]
 [ext_resource type="Script" uid="uid://c00klyh6eq146" path="res://rooms/Bathroom/bathroom.gd" id="1_qgpod"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bekk2pej44hkd" path="res://rooms/Bathroom/Bathroom layout_wooddark.png" id="3_moj8i"]
 [ext_resource type="Texture2D" uid="uid://6sxva7xhuvix" path="res://Assets/pop_ups/EnterArrowRight.png" id="4_dbaul"]
 [ext_resource type="Texture2D" uid="uid://bqar6l142xdsc" path="res://rooms/Bathroom/Bathroom layout_IMG_4162.png" id="4_qgpod"]
+[ext_resource type="Script" uid="uid://gq7614xvk2hc" path="res://Utilities/spawn_point.gd" id="5_fpl0f"]
 [ext_resource type="Texture2D" uid="uid://cfw17stkpko7w" path="res://rooms/Bathroom/Bathroom layout_IMG_0536.png" id="5_uea66"]
 [ext_resource type="PackedScene" uid="uid://d1dmvsqupb3xm" path="res://Assets/CharacterAssets/Jesus/jesus.tscn" id="5_uyvi5"]
 [ext_resource type="Texture2D" uid="uid://bmub61elciuu6" path="res://rooms/Bathroom/Bathroom layout_woodlight1.png" id="6_duuvr"]
@@ -46,6 +47,52 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qlpr6"]
 size = Vector3(13.2642, 4.39355, 10.2759)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_sjkt2"]
+vertices = PackedVector3Array(-10.575243, 0.3335762, 2.8754692, -11.825243, 0.3335762, 2.8754692, -11.825243, 0.3335762, 3.8754692, -8.325243, 0.3335762, 0.6254692, -9.825243, 0.3335762, 1.3754692, -9.825243, 0.3335762, 2.1254692, -6.075243, 0.3335762, -0.3745308, -8.075243, 0.3335762, -0.3745308, 1.174757, 0.3335762, -2.6245308, -4.825243, 0.3335762, -2.1245308, 1.174757, 0.3335762, 3.8754692)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 5), PackedInt32Array(5, 3, 6), PackedInt32Array(3, 7, 6), PackedInt32Array(6, 9, 8), PackedInt32Array(0, 5, 6), PackedInt32Array(0, 6, 2), PackedInt32Array(2, 6, 10), PackedInt32Array(10, 6, 8)]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3eiq5"]
+size = Vector3(15.6483, 1.21381, 11.2892)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_32qgd"]
+resource_name = "Material.042"
+cull_mode = 2
+albedo_texture = ExtResource("1_3eiq5")
+normal_enabled = true
+normal_scale = 0.1
+normal_texture = ExtResource("2_qlpr6")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_vtrip"]
+_surfaces = [{
+"aabb": AABB(-7.49457, -2.48438, -4.52576, 14.9891, 1e-05, 9.05153),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAAAAIABAACAAUA"),
+"name": "Material.042",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("AAAAAEDcAAD//wAA//8AAP//AABA3AAAAAAAAP//AAAAAAAAAAAAAP//AAAAAAAA")
+}]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_kve7a"]
+resource_name = "Bathroom layout_Cube_076"
+_surfaces = [{
+"aabb": AABB(-7.49457, -2.48438, -4.52576, 14.9891, 1e-05, 9.05153),
+"attribute_data": PackedByteArray("Y05/uP//uKf//3+4Y064p2NOYGf//wAA//9gZ2NOAAA="),
+"format": 34896613399,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUA"),
+"material": SubResource("StandardMaterial3D_32qgd"),
+"name": "Material.042",
+"primitive": 3,
+"uv_scale": Vector4(1.63283, 1.77807, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAEDc/7///wAA////v///AABA3P+/AAAAAP///78AAAAAAAD/v///AABA3P+///8AAAAA/78AAAAAQNz/vwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_vtrip")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o8af5"]
 size = Vector3(2.5, 2, 0.1)
@@ -112,48 +159,6 @@ radius = 0.008
 height = 0.015
 radial_segments = 12
 rings = 12
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_3eiq5"]
-size = Vector3(15.6483, 1.21381, 11.2892)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_32qgd"]
-resource_name = "Material.042"
-cull_mode = 2
-albedo_texture = ExtResource("1_3eiq5")
-normal_enabled = true
-normal_scale = 0.1
-normal_texture = ExtResource("2_qlpr6")
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_vtrip"]
-_surfaces = [{
-"aabb": AABB(-7.49457, -2.48438, -4.52576, 14.9891, 1e-05, 9.05153),
-"format": 34896613377,
-"index_count": 12,
-"index_data": PackedByteArray("AAABAAIAAAADAAEABAAAAAIABAACAAUA"),
-"name": "Material.042",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 6,
-"vertex_data": PackedByteArray("AAAAAEDcAAD//wAA//8AAP//AABA3AAAAAAAAP//AAAAAAAAAAAAAP//AAAAAAAA")
-}]
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_kve7a"]
-resource_name = "Bathroom layout_Cube_076"
-_surfaces = [{
-"aabb": AABB(-7.49457, -2.48438, -4.52576, 14.9891, 1e-05, 9.05153),
-"attribute_data": PackedByteArray("Y05/uP//uKf//3+4Y064p2NOYGf//wAA//9gZ2NOAAA="),
-"format": 34896613399,
-"index_count": 12,
-"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUA"),
-"material": SubResource("StandardMaterial3D_32qgd"),
-"name": "Material.042",
-"primitive": 3,
-"uv_scale": Vector4(1.63283, 1.77807, 0, 0),
-"vertex_count": 8,
-"vertex_data": PackedByteArray("AAAAAEDc/7///wAA////v///AABA3P+/AAAAAP///78AAAAAAAD/v///AABA3P+///8AAAAA/78AAAAAQNz/vwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_vtrip")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0vsl4"]
 resource_name = "Material.043"
@@ -558,15 +563,46 @@ shadow_mesh = SubResource("ArrayMesh_vwuk5")
 resource_local_to_scene = true
 size = Vector3(2.56747, 3.33673, 5.72421)
 
-[node name="Bathroom" type="Area3D" node_paths=PackedStringArray("room_area")]
+[node name="Bathroom" type="Area3D" node_paths=PackedStringArray("room_area", "rowan_spawn")]
 collision_mask = 2
 script = ExtResource("1_qgpod")
 room_area = NodePath("RoomArea")
+rowan_spawn = NodePath("RowanSpawn")
 first_visit_json = ExtResource("2_16j1d")
 
 [node name="RoomArea" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.11203, -0.146205, 0.0554049)
 shape = SubResource("BoxShape3D_qlpr6")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.532604, -2.312029, 1.0170867)
+navigation_mesh = SubResource("NavigationMesh_sjkt2")
+
+[node name="Floor" type="StaticBody3D" parent="NavigationRegion3D" groups=["material_tile"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.532604, 2.312029, -1.0170867)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Floor"]
+transform = Transform3D(0.888331, 0, 0, 0, 0.888331, 0, 0, 0, 0.888331, -0.842203, -2.93932, 0.156829)
+shape = SubResource("BoxShape3D_3eiq5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Floor"]
+transform = Transform3D(0.888331, 0, 0, 0, 0.888331, 0, 0, 0, 0.888331, -1.08867, -0.179583, -0.581938)
+mesh = SubResource("ArrayMesh_kve7a")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="NavigationRegion3D/Floor"]
+transform = Transform3D(-0.888331, 0, -7.76604e-08, 0, 0.888331, 0, 7.76604e-08, 0, -0.888331, -1.08867, -0.179583, 7.45717)
+mesh = SubResource("ArrayMesh_kve7a")
+skeleton = NodePath("")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="NavigationRegion3D"]
+vertices = PackedVector3Array(-12.119592, 0, -5.43464, 0.81551456, 0, -5.3681316, 0.9893484, 0, -3.2150476, -3.1186628, 0, -2.8657498, -5.118716, 0, -2.5365837, -6.3935227, 0, -0.9396622, -8.332354, 0, -0.89639115, -8.915676, 0, 0.42390013, -10.038841, 0, 0.58675075, -10.616208, 0, 2.246569, -11.993143, 0, 2.271269)
+affect_navigation_mesh = true
+
+[node name="RowanSpawn" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.532604, -2.312029, 1.0170867)
+script = ExtResource("5_fpl0f")
+metadata/_custom_type_script = "uid://gq7614xvk2hc"
 
 [node name="Boundaries" type="StaticBody3D" parent="."]
 
@@ -702,22 +738,6 @@ process_material = SubResource("ParticleProcessMaterial_o8af5")
 draw_pass_1 = SubResource("SphereMesh_jy5jw")
 
 [node name="Room" type="Node3D" parent="."]
-
-[node name="Floor" type="StaticBody3D" parent="Room" groups=["material_tile"]]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/Floor"]
-transform = Transform3D(0.888331, 0, 0, 0, 0.888331, 0, 0, 0, 0.888331, -0.842203, -2.93932, 0.156829)
-shape = SubResource("BoxShape3D_3eiq5")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Room/Floor"]
-transform = Transform3D(0.888331, 0, 0, 0, 0.888331, 0, 0, 0, 0.888331, -1.08867, -0.179583, -0.581938)
-mesh = SubResource("ArrayMesh_kve7a")
-skeleton = NodePath("")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Room/Floor"]
-transform = Transform3D(-0.888331, 0, -7.76604e-08, 0, 0.888331, 0, 7.76604e-08, 0, -0.888331, -1.08867, -0.179583, 7.45717)
-mesh = SubResource("ArrayMesh_kve7a")
-skeleton = NodePath("")
 
 [node name="LeftWall" type="MeshInstance3D" parent="Room"]
 transform = Transform3D(0.888331, 0, 0, 0, 0.888331, 0, 0, 0, 0.888331, -1.08867, -0.179583, -0.581938)

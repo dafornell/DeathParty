@@ -1,6 +1,7 @@
-[gd_scene load_steps=171 format=4 uid="uid://ch4fuk8qiva6x"]
+[gd_scene load_steps=173 format=4 uid="uid://ch4fuk8qiva6x"]
 
 [ext_resource type="Texture2D" uid="uid://bcg3mnugm862f" path="res://rooms/Ghost hallway/ghost hallway_wooddark.png" id="2_p1n0h"]
+[ext_resource type="Script" uid="uid://gq7614xvk2hc" path="res://Utilities/spawn_point.gd" id="2_q5rb6"]
 [ext_resource type="Script" uid="uid://bwumtfq5s3fh3" path="res://rooms/Ghost hallway/ghost_hallway.gd" id="2_rj2l7"]
 [ext_resource type="Texture2D" uid="uid://cdi05i7plecy4" path="res://rooms/Ghost hallway/ghost hallway_woodmedium.png" id="3_ds0tn"]
 [ext_resource type="Material" uid="uid://smspftufnjp2" path="res://rooms/Ghost hallway/floor wood.tres" id="4_ds0tn"]
@@ -67,6 +68,10 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dxaoo"]
 size = Vector3(13.7318, 4.49936, 7.14718)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_o3d6w"]
+vertices = PackedVector3Array(-0.101719856, -0.75872624, -0.05986929, -0.101719856, -0.75872624, 0.6901307, 2.1482801, -0.75872624, 0.4401307, 2.1482801, -0.75872624, -0.3098693, -7.60172, -0.75872624, 1.4401307, -7.60172, -0.75872624, 1.9401307, -6.60172, -0.75872624, 2.1901307, -1.8517199, -0.75872624, 1.6901307, -1.6017199, -0.75872624, 0.9401307, 0.14828014, -0.75872624, 2.6901307, -6.60172, -0.75872624, 4.6901307, 4.89828, -0.75872624, 1.1901307, 4.39828, -0.75872624, 1.1901307, 3.1482801, -0.75872624, 2.6901307, 4.64828, -0.75872624, 4.6901307, -7.10172, -0.75872624, 4.9401307, -7.10172, -0.75872624, 10.69013, 4.89828, -0.75872624, 10.69013, 5.14828, -0.75872624, 9.19013, 5.14828, -0.75872624, 4.9401307)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(8, 1, 7), PackedInt32Array(7, 1, 9), PackedInt32Array(6, 7, 10), PackedInt32Array(10, 7, 9), PackedInt32Array(12, 11, 13), PackedInt32Array(13, 11, 14), PackedInt32Array(15, 10, 16), PackedInt32Array(16, 10, 9), PackedInt32Array(16, 9, 14), PackedInt32Array(16, 14, 17), PackedInt32Array(19, 18, 14), PackedInt32Array(14, 18, 17), PackedInt32Array(9, 13, 14)]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qn2ls"]
 size = Vector3(13, 2, 0.1)
@@ -1608,14 +1613,33 @@ size = Vector3(5.52692, 0.130005, 2.42374)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_urdp6"]
 
-[node name="Ghost hallway" type="Area3D" node_paths=PackedStringArray("room_area") groups=["loadable_scene"]]
+[node name="Ghost hallway" type="Area3D" node_paths=PackedStringArray("room_area", "rowan_spawn") groups=["loadable_scene"]]
 collision_mask = 2
 script = ExtResource("2_rj2l7")
 room_area = NodePath("RoomArea")
+rowan_spawn = NodePath("RowanSpawn")
 
 [node name="RoomArea" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.02458, 0.225039, 1.8185)
 shape = SubResource("BoxShape3D_dxaoo")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_o3d6w")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1720276, 0)
+vertices = PackedVector3Array(-6.5008097, 0, -0.28193974, -6.528797, 0, 0.9349186, -5.2084465, 0, 1.1449833, -2.1589122, 0, 1.2511529, -2.0583925, 0, 0.43333185, -0.6421275, 0, 0.35637754, -0.42590356, 0, -0.50993216)
+affect_navigation_mesh = true
+
+[node name="NavigationObstacle3D2" type="NavigationObstacle3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1601098, 0)
+vertices = PackedVector3Array(0.40692532, 0, 0.90592706, 0.41064215, 0, 2.1289065, 2.7213202, 0, 2.1364713, 4.5529685, 0, 0.57516587, 4.5255604, 0, 0.05082059, 2.7587, 0, -0.036758423, 2.3861117, 0, 0.95345104)
+affect_navigation_mesh = true
+
+[node name="RowanSpawn" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.1757145, -0.9452327, 4.1030483)
+script = ExtResource("2_q5rb6")
+metadata/_custom_type_script = "uid://gq7614xvk2hc"
 
 [node name="Boundaries" type="StaticBody3D" parent="."]
 
