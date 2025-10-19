@@ -116,6 +116,54 @@ script = ExtResource("3_cyx1q")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.786, 0.0322108, 25.2049)
 floor_constant_speed = true
 
+[node name="Skeleton3D" parent="Player/PlayerModel/Final Olivia/model Olivia" index="0"]
+bones/0/position = Vector3(-0.2643031, 0.37730932, -93.40106)
+bones/0/rotation = Quaternion(-0.73045474, -0.048832025, 0.028456546, 0.68061846)
+bones/1/rotation = Quaternion(-0.05320376, -0.0064330506, 0.018840266, 0.9983852)
+bones/2/rotation = Quaternion(0.019431818, -0.010589718, 0.02324572, 0.9994849)
+bones/3/rotation = Quaternion(0.019606274, -0.0097311465, 0.023529457, 0.9994835)
+bones/4/rotation = Quaternion(0.092711404, 0.01082787, -0.021303926, 0.99540627)
+bones/5/rotation = Quaternion(-0.031123176, 0.016650569, -0.05174238, 0.9980365)
+bones/7/rotation = Quaternion(-0.58955926, -0.3788264, 0.6217846, -0.349706)
+bones/8/rotation = Quaternion(0.32259947, 0.0727512, 0.043500412, 0.9427325)
+bones/9/rotation = Quaternion(0.015791921, -0.037502695, 0.10423419, 0.99372005)
+bones/10/rotation = Quaternion(0.057896566, 0.042229824, -0.036508966, 0.9967606)
+bones/23/rotation = Quaternion(0.12643524, -0.0038502696, 0.02992873, 0.9915159)
+bones/24/rotation = Quaternion(0.33458555, 8.4904445e-05, -0.05885685, 0.9405256)
+bones/25/rotation = Quaternion(0.26870286, -1.5689478e-05, -0.046512917, 0.96209943)
+bones/27/rotation = Quaternion(0.16056249, -0.014903005, 0.00016784776, 0.9869132)
+bones/28/rotation = Quaternion(0.24746059, 0.008626084, -0.013923619, 0.9687596)
+bones/29/rotation = Quaternion(0.42677152, 0.0002733556, -0.08573903, 0.900286)
+bones/31/rotation = Quaternion(0.6371896, -0.3449993, 0.5800733, 0.37212887)
+bones/32/rotation = Quaternion(0.2568021, -0.09403185, -0.011206744, 0.96181345)
+bones/33/rotation = Quaternion(0.0103939725, 0.025825964, -0.07035767, 0.9971334)
+bones/34/rotation = Quaternion(0.040852495, 0.046837002, 0.03357201, 0.9975021)
+bones/35/rotation = Quaternion(0.15408513, -0.06260947, -0.19381495, 0.9668369)
+bones/36/rotation = Quaternion(-0.024790889, -0.054294284, 0.20682481, 0.9765557)
+bones/37/rotation = Quaternion(0.006371716, -0.0378738, 0.04638043, 0.99818534)
+bones/39/rotation = Quaternion(0.06014139, -0.00071863085, -0.048685268, 0.99700165)
+bones/40/rotation = Quaternion(0.17439552, 0.00022022735, 0.029820992, 0.984224)
+bones/41/rotation = Quaternion(0.09155476, -8.086653e-05, 0.016632738, 0.9956612)
+bones/43/rotation = Quaternion(0.071287915, 0.00068568595, -0.037717327, 0.99674225)
+bones/44/rotation = Quaternion(0.2729784, 6.4213295e-05, 0.0437304, 0.9610257)
+bones/45/rotation = Quaternion(0.1649078, -0.00011103113, 0.02640005, 0.9859556)
+bones/47/rotation = Quaternion(0.14912075, -0.00043792516, -0.019852787, 0.98861957)
+bones/48/rotation = Quaternion(0.32236663, -1.7490376e-05, 0.054380193, 0.9450516)
+bones/49/rotation = Quaternion(0.32010907, -4.3540287e-05, 0.053848248, 0.9458491)
+bones/51/rotation = Quaternion(0.19708419, 0.005251446, -0.017681003, 0.9802131)
+bones/52/rotation = Quaternion(0.26933727, 1.2773557e-05, 0.046944227, 0.9619011)
+bones/53/rotation = Quaternion(0.4670152, 0.0002566285, 0.083387695, 0.8803086)
+bones/55/rotation = Quaternion(0.13408175, 0.11894247, 0.9809033, -0.07552118)
+bones/56/rotation = Quaternion(-0.16960797, 0.022639908, 0.04627847, 0.9841641)
+bones/57/rotation = Quaternion(0.41940504, -0.088743664, 0.006875282, 0.90342504)
+bones/60/rotation = Quaternion(-0.09281647, -0.0008079725, 0.99516207, -0.032202084)
+bones/61/rotation = Quaternion(-0.19913082, 0.04995468, -0.026282346, 0.97834593)
+bones/62/rotation = Quaternion(0.5582629, 0.07011415, -0.069179945, 0.82379663)
+bones/63/rotation = Quaternion(0.34191823, 0.11047225, -0.039617334, 0.9323725)
+
+[node name="RowanFollower" parent="Player" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.786, -3.9677892, 25.2049)
+
 [node name="MainCamera" parent="." node_paths=PackedStringArray("main_camera", "player") instance=ExtResource("3_dg77c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.8502, 1.51749, 24.6872)
 fov = 30.0
@@ -367,3 +415,5 @@ grow_vertical = 2
 
 [editable path="ObjectViewerCanvasLayer"]
 [editable path="Polaroid"]
+[editable path="Player"]
+[editable path="Player/PlayerModel/Final Olivia"]

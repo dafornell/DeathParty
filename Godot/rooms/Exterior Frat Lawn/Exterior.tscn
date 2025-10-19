@@ -7,8 +7,8 @@
 [ext_resource type="Script" uid="uid://cyn7mdbv1saaq" path="res://rooms/Exterior Frat Lawn/jog_controls_popup.gd" id="4_81i5n"]
 [ext_resource type="Texture2D" uid="uid://ddr8f0a45pnoy" path="res://rooms/Exterior Frat Lawn/Exterior_51dc8d5e7ac559bb47ade3dfd3ba5b58.jpg" id="4_s6f1y"]
 [ext_resource type="Texture2D" uid="uid://dj2kkd15yuake" path="res://rooms/Exterior Frat Lawn/Exterior_Door.png" id="5_nnx0v"]
+[ext_resource type="Script" uid="uid://gq7614xvk2hc" path="res://Utilities/spawn_point.gd" id="5_pkvil"]
 [ext_resource type="Texture2D" uid="uid://jhfdrr25x8hn" path="res://rooms/Exterior Frat Lawn/Exterior_RoofingTiles014B_1K-JPG_Color-RoofingTiles014B_1K-JPG_Opacity.png" id="7_72fye"]
-[ext_resource type="PackedScene" uid="uid://qfybfol6cehb" path="res://Entities/NPCs/rowan_follower.tscn" id="7_a3xny"]
 [ext_resource type="Texture2D" uid="uid://b0to4splsbr7y" path="res://rooms/Exterior Frat Lawn/Exterior_RoofingTiles014B_1K-JPG_Roughness.png" id="8_c8lo3"]
 [ext_resource type="Texture2D" uid="uid://5bpex64vp0vd" path="res://rooms/Exterior Frat Lawn/Exterior_RoofingTiles014B_1K-JPG_NormalGL.jpg" id="9_qhpyv"]
 [ext_resource type="PackedScene" uid="uid://dc7be02jksvfv" path="res://Assets/props/party_here_sign.tscn" id="9_qxka8"]
@@ -2867,10 +2867,11 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_owyw4")
 
-[node name="Exterior" type="Area3D" node_paths=PackedStringArray("room_area")]
+[node name="Exterior" type="Area3D" node_paths=PackedStringArray("room_area", "rowan_spawn")]
 collision_mask = 2
 script = ExtResource("1_nnx0v")
 room_area = NodePath("RoomArea")
+rowan_spawn = NodePath("RowanSpawn")
 room_environment = ExtResource("2_maypx")
 first_visit_json = ExtResource("3_42tb4")
 
@@ -2950,8 +2951,10 @@ debug_color = Color(0.980392, 0, 0.196078, 1)
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_81i5n")
 
-[node name="RowanFollower" parent="." instance=ExtResource("7_a3xny")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.78048885, -7.097449, 52.6562)
+[node name="RowanSpawn" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5766592, -7.033411, 53.88004)
+script = ExtResource("5_pkvil")
+metadata/_custom_type_script = "uid://gq7614xvk2hc"
 
 [node name="TeleportPoint" parent="." instance=ExtResource("54_txmqg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9708751, -6.61071, 53.27119)

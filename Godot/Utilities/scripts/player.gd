@@ -11,6 +11,7 @@ class_name Player extends CharacterBody3D
 @export var horizontal_offset: float = 1.3
 
 @export var player_camera_location: Node3D
+@export var rowan_follower: Node3D
 
 var player_velocity: Vector3 = Vector3.ZERO
 var original_camera_position: Vector3 = Vector3.ZERO
@@ -29,6 +30,9 @@ var jog_blend: float = 0
 var current_animation: AnimationState = AnimationState.IDLE
 
 var movement_disabled: bool = false
+
+func _ready() -> void:
+	GlobalPlayerScript.spawn_follower_npc.connect(_toggle_follower_npc)
 
 func _enter_tree() -> void:
 	original_camera_position = player_camera_location.position
@@ -164,3 +168,11 @@ func _on_world_boundary_body_entered(body: Node3D) -> void:
 	if body == self:
 		print("player out of bounds, resetting position . . .")
 		reset_position()
+
+
+func _toggle_follower_npc(should_spawn: bool, g_position: Vector3) -> void:
+	if should_spawn:
+		rowan_follower.process_mode = Node.PROCESS_MODE_INHERIT
+		rowan_follower.global_position = g_position
+	else:
+		rowan_follower.process_mode = Node.PROCESS_MODE_DISABLED
