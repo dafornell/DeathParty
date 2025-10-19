@@ -1,9 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://qhxefncatca4"]
+[gd_scene load_steps=8 format=3 uid="uid://qhxefncatca4"]
 
 [ext_resource type="PackedScene" uid="uid://csqggihyt1cgk" path="res://Entities/Interactable/interactable.tscn" id="1_mky6d"]
 [ext_resource type="PackedScene" uid="uid://bslr2tafqki5h" path="res://Common/Popup UI/npc_interact_popup.tscn" id="2_hnw2t"]
 [ext_resource type="Script" uid="uid://d10fwvktnsx7m" path="res://Entities/EntityScripts/npc.gd" id="2_wsr1g"]
 [ext_resource type="Resource" uid="uid://ctm37ktmfb1yn" path="res://Assets/Resources/DialogueBoxResources/main_dialogue_box_properties.tres" id="3_n5nax"]
+[ext_resource type="Texture2D" uid="uid://bik8ipljpgqjx" path="res://Assets/pop_ups/quest_marker.png" id="5_n5nax"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n5nax"]
+render_priority = 2
+transparency = 4
+albedo_texture = ExtResource("5_n5nax")
+emission_enabled = true
+emission = Color(1.353256, 1.2223895, 0.6046988, 1)
+emission_energy_multiplier = 5.0
+emission_operator = 1
+emission_texture = ExtResource("5_n5nax")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wsr1g"]
 
@@ -15,7 +26,21 @@ dialogue_box = ExtResource("3_n5nax")
 [node name="Popup" parent="." index="0" instance=ExtResource("2_hnw2t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.15, 2, 0)
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." index="1"]
+[node name="QuestMarker" type="Sprite3D" parent="." index="1"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2999997, 0)
+visible = false
+sorting_offset = 2.0
+material_override = SubResource("StandardMaterial3D_n5nax")
+cast_shadow = 0
+gi_mode = 0
+pixel_size = 0.001
+billboard = 1
+no_depth_test = true
+render_priority = 2
+texture = ExtResource("5_n5nax")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." index="2"]
 collision_layer = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" index="0"]

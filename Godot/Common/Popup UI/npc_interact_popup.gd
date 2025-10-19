@@ -1,5 +1,10 @@
 @tool
 extends Node3D
+## this script handles the logic for the quest marker as well as the pop-up
+## because the marker was previously part of the pop-up - the marker could have
+## its own script but most of the old logic didn't change with the new setup
+## so i think its ok to leave it like this for now
+##		- jack
 
 
 @export var quest_marker_enabled := false:
@@ -10,7 +15,7 @@ extends Node3D
 		# isnt null in case it tries to hide this before it exists and causes
 		# an error ↓
 
-		# TODO: maybe make this script just send a signal down and have the
+		# TODO: maybe make this script just send a signal and have the
 		#		quest marker just show/hide itself to avoid any weird stuff
 		#		like this
 		#				- jack
@@ -25,15 +30,8 @@ extends Node3D
 			tween.tween_property(quest_marker, "transparency", 1.0, quest_marker_tween_duration)
 			tween.tween_property(quest_marker, "transparency", 0.0, quest_marker_tween_duration)
 
-			if not Engine.is_editor_hint():
-				show()
-
 		else:
 			quest_marker.hide()
-			if not Engine.is_editor_hint():
-				hide()
-
-
 
 @export var x_offset: float = -1.15
 @export var y_offset: float = 2
@@ -57,16 +55,6 @@ func _physics_process(_delta: float) -> void:
 	# keep its position consistent
 	if parent_npc:
 		global_position = parent_npc.global_position + Vector3(x_offset, y_offset, 0)
-
-
-# make the popup always show (regardless of player distance to npc) if the
-# quest marker is enabled by forcing it back to visible if it gets hidden
-func _on_visibility_changed() -> void:
-	if visible:
-		return
-
-	if quest_marker_enabled:
-		show()
 
 
 func _on_toggle_quest_marker(npc_name: String, value: bool) -> void:
