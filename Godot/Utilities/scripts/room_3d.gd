@@ -228,7 +228,6 @@ func clear_environment(body: Node3D) -> void:
 
 
 func toggle_follower_npc() -> void:
-	print("---------------TOGGLE NPC ROOM3D-------------------")
 	if rowan_spawn:
 		GlobalPlayerScript.spawn_follower_npc.emit(true, rowan_spawn.global_position)
 	else:

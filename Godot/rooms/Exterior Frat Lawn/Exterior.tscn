@@ -2950,7 +2950,7 @@ debug_color = Color(0.980392, 0, 0.196078, 1)
 navigation_mesh = SubResource("NavigationMesh_81i5n")
 
 [node name="RowanSpawn" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2422855, -7.682988, 52)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5766592, -7.033411, 53.88004)
 script = ExtResource("5_pkvil")
 metadata/_custom_type_script = "uid://gq7614xvk2hc"
 

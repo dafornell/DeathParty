@@ -172,10 +172,7 @@ func _on_world_boundary_body_entered(body: Node3D) -> void:
 
 func _toggle_follower_npc(should_spawn: bool, g_position: Vector3) -> void:
 	if should_spawn:
-		print("----------------- should move -----------------")
 		rowan_follower.process_mode = Node.PROCESS_MODE_INHERIT
 		rowan_follower.global_position = g_position
-		print(g_position)
 	else:
-		print("----------------- disable -----------------")
 		rowan_follower.process_mode = Node.PROCESS_MODE_DISABLED
