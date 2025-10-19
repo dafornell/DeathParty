@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="InventoryItemResource" load_steps=3 format=3 uid="uid://c67a1m6fudgvb"]
+
+[ext_resource type="PackedScene" uid="uid://ku64ba50p1s3" path="res://Assets/props/inventory_items/triangle.tscn" id="1_j4rk3"]
+[ext_resource type="Script" uid="uid://cwplai8fhufrp" path="res://Singletons/SaveSystem/ResourceScripts/inventory_properties_script.gd" id="3_yxmxr"]
+
+[resource]
+script = ExtResource("3_yxmxr")
+description = "Triangle"
+model = ExtResource("1_j4rk3")
+inventory_scale = 2.0
+inventory_position = Vector2(-1, 0.6)
+name = "Triangle"

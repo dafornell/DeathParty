@@ -63,6 +63,7 @@ var UI_STATES : Dictionary[String, String] = {
 var local_choice_buttons : Array[LocalChoiceButton] = []
 var current_ui_state : String
 
+
 func _ready() -> void:
 	protag_animated_label = AnimatedTextLabel.new(self, protag_text_label, DialogueSystem.ANIMATION_STYLES.TYPEWRITER)
 	npc_animated_label = AnimatedTextLabel.new(self, npc_text_label, DialogueSystem.ANIMATION_STYLES.TYPEWRITER)
@@ -163,9 +164,12 @@ func set_choices(choices : Array[InkChoiceInfo]) -> void:
 		choice_rect.visible = false
 	assign_menu_focus(choice_count)
 
+
 func on_text_animator_finish() -> void:
 	super()
 	arrow.visible = true
+	Events.dialogue_box_text_changed.emit()
+
 
 #CLICK TO ADVANCE DIALOGUE
 var pressed : bool = false

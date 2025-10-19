@@ -43,3 +43,5 @@ modulate = Color(0, 0, 0, 1)
 text = "Talk"
 font = ExtResource("3_lfcvq")
 font_size = 82
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

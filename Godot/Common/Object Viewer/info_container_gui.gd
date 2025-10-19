@@ -1,5 +1,5 @@
 class_name InfoContainerGUI extends Control
-@export var button : Button
+@export var button : BaseButton
 @export var object_viewer : ObjectViewer
 
 var show_inventory_on_close : bool = true

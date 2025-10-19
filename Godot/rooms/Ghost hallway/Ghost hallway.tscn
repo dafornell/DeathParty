@@ -62,6 +62,7 @@
 [ext_resource type="Texture2D" uid="uid://bmiif8wj0okkg" path="res://rooms/Ghost hallway/fire/fire-9.png" id="57_6phai"]
 [ext_resource type="Texture2D" uid="uid://b6nkql64iwq61" path="res://rooms/Ghost hallway/fire/fire-10.png" id="58_urdp6"]
 [ext_resource type="Texture2D" uid="uid://dcyx6nxctxmpd" path="res://rooms/Ghost hallway/fire/fire-11.png" id="59_65wwx"]
+[ext_resource type="PackedScene" uid="uid://eyb48ss6xfgu" path="res://Assets/CharacterAssets/shy_girl/shy_girl.tscn" id="59_q5rb6"]
 [ext_resource type="Texture2D" uid="uid://bp4plqqk6pcdx" path="res://rooms/Ghost hallway/fire/fire-12.png" id="60_5rqn6"]
 [ext_resource type="PackedScene" uid="uid://i7gdcbnkh0w4" path="res://rooms/Ghost hallway/blue_sky.tscn" id="61_u8eoh"]
 [ext_resource type="Material" uid="uid://coyo0xu1lvjq2" path="res://rooms/Ghost hallway/floor wood2.tres" id="65_o3d6w"]
@@ -2110,6 +2111,9 @@ bones/64/rotation = Quaternion(0.30342937, 0.04022034, -0.013146175, 0.9519139)
 
 [node name="phone_001" parent="NPCs/RedBunny/CharacterBody3D/model_001/Skeleton3D" index="0"]
 transform = Transform3D(0.08047919, 0.48733523, 0.013463233, -0.21900626, 0.023948364, 0.44228548, 0.43556064, -0.07800407, 0.21989976, -14.846732, 4.8629503, -140.88802)
+
+[node name="Shy Girl" parent="NPCs" instance=ExtResource("59_q5rb6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.84934795, -1.183048, 1.3586696)
 
 [node name="SceneLoaders" type="Node3D" parent="."]
 

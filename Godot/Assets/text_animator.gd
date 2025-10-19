@@ -56,6 +56,10 @@ func typewriter() -> void:
 	if full_text[text_index - 1] != " ":
 		Sounds.play_dialogue_print()
 
+	# this signal is used to tell the scroll containers to scroll down to keep
+	# the text on screen as its printed
+	Events.dialogue_box_text_changed.emit()
+
 
 func skip() -> void:
 	print("Skipping")

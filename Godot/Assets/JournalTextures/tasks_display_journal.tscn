@@ -3,9 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://d4btfe8aohfoi" path="res://Assets/JournalTextures/journal_bg.png" id="1_y3vup"]
 [ext_resource type="Texture2D" uid="uid://6xjaxqclr2l0" path="res://Assets/JournalTextures/To-Do.png" id="3_7jmn4"]
 [ext_resource type="Texture2D" uid="uid://cavfm1quih2l6" path="res://Assets/JournalTextures/To-Do-Desc_backer.png" id="4_nsc2u"]
-[ext_resource type="Texture2D" uid="uid://b5e1vw3cjfqeh" path="res://Assets/JournalTextures/CompletedTasks.png" id="4_resmi"]
+[ext_resource type="Texture2D" uid="uid://dv67x2307768m" path="res://Assets/JournalTextures/CompletedTaskBacker.png" id="4_resmi"]
 [ext_resource type="FontFile" uid="uid://csg2vlq4u84fp" path="res://Assets/Fonts/Permanent_Marker/PermanentMarker-Regular.ttf" id="5_gxxjj"]
-[ext_resource type="Texture2D" uid="uid://urdip1kmoh14" path="res://Assets/JournalTextures/ActiveTasks.png" id="5_jto3t"]
+[ext_resource type="Texture2D" uid="uid://b0t2783ypwlak" path="res://Assets/JournalTextures/ActiveTaskBacker.png" id="5_jto3t"]
 [ext_resource type="Script" uid="uid://br2ob5t1hy2ya" path="res://task_display_script.gd" id="5_nsc2u"]
 [ext_resource type="FontFile" uid="uid://dfd4r55gnpp15" path="res://Assets/Fonts/Patrick_Hand/PatrickHand-Regular.ttf" id="6_gvgsi"]
 

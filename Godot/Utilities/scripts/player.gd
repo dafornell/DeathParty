@@ -4,7 +4,7 @@ class_name Player extends CharacterBody3D
 @onready var animation_tree: AnimationTree = %AnimationTree
 @onready var previous_position: Vector3 = global_position
 @onready var cell_position: Vector3 = global_position
-@onready var footstep_sounds: FmodEventEmitter3D = $FootstepSounds
+@onready var footstep_sounds: FmodEventEmitter3D = get_node_or_null("FootstepSounds") as FmodEventEmitter3D
 @onready var spawn_position: Vector3 = global_position
 
 @export var player_speed := 2.3
@@ -158,7 +158,7 @@ func rotate_model(delta: float) -> void:
 		model.rotation.y = lerp_angle(model.rotation.y, basis.z.signed_angle_to(velocity, basis.y), blend_speed * delta)
 
 
-func reset_position():
+func reset_position() -> void:
 	global_position = spawn_position
 	##ALSO MAKE IT SO IT LOADS THE ORIGINAL SCENES
 	ContentLoader.reset()

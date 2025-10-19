@@ -19,6 +19,7 @@ extends Control
 
 @onready var stats_option_button: OptionButton = %StatsOptionButton
 
+@onready var lighting_option_button: OptionButton = %LightingOptionButton
 @onready var filtering_option_button: OptionButton = %FilteringOptionButton
 @onready var aa_option_button: OptionButton = %AAOptionButton
 @onready var lod_option_button: OptionButton = %LODOptionButton
@@ -33,10 +34,10 @@ func _ready() -> void:
 	fullscreen_option_button.selected = Settings.fullscreen
 
 	vsync_option_button.selected = Settings.vsync
-	
+
 	scale_slider.value = Settings.scale
 	upscale_option_button.selected = Settings.upscale
-	
+
 	sharpness_slider.value = Settings.sharpness
 	sharpness_spin_box.value = sharpness_slider.value
 	hide_or_show_fsr_sharpness(upscale_option_button.selected)
@@ -44,16 +45,17 @@ func _ready() -> void:
 	fps_slider.value = Settings.fps
 	fps_spin_box.value = fps_slider.value
 	hide_or_show_fps_limit_label(fps_spin_box.value)
-	
+
 	stats_option_button.selected = Settings.stats
 
+	lighting_option_button.selected = Settings.lighting
 	filtering_option_button.selected = Settings.filtering
 	aa_option_button.selected = Settings.aa
 	lod_option_button.selected = Settings.lod
 	shadow_size_option_button.selected = Settings.shadows
-	
+
 	ssao_option_button.selected = Settings.ssao
-	
+
 	set_monitor_options()
 
 
@@ -91,6 +93,8 @@ func _on_preset_1_pressed() -> void:
 	ssao_option_button.emit_signal("item_selected", ssao_option_button.selected)
 	lod_option_button.selected = 0 # low LOD
 	lod_option_button.emit_signal("item_selected", lod_option_button.selected)
+	lighting_option_button.selected = 0 # Low Lighting
+	lighting_option_button.emit_signal("item_selected", lighting_option_button.selected)
 
 
 # low
@@ -103,6 +107,8 @@ func _on_preset_2_pressed() -> void:
 	ssao_option_button.emit_signal("item_selected", ssao_option_button.selected)
 	lod_option_button.selected = 0 # low LOD
 	lod_option_button.emit_signal("item_selected", lod_option_button.selected)
+	lighting_option_button.selected = 0 # Low Lighting
+	lighting_option_button.emit_signal("item_selected", lighting_option_button.selected)
 
 
 # medium
@@ -115,6 +121,8 @@ func _on_preset_3_pressed() -> void:
 	ssao_option_button.emit_signal("item_selected", ssao_option_button.selected)
 	lod_option_button.selected = 1 # medium LOD
 	lod_option_button.emit_signal("item_selected", lod_option_button.selected)
+	lighting_option_button.selected = 1 # High Lighting
+	lighting_option_button.emit_signal("item_selected", lighting_option_button.selected)
 
 
 # high
@@ -127,6 +135,8 @@ func _on_preset_4_pressed() -> void:
 	ssao_option_button.emit_signal("item_selected", ssao_option_button.selected)
 	lod_option_button.selected = 2 # high LOD
 	lod_option_button.emit_signal("item_selected", lod_option_button.selected)
+	lighting_option_button.selected = 1 # High Lighting
+	lighting_option_button.emit_signal("item_selected", lighting_option_button.selected)
 
 
 # ultra
@@ -139,6 +149,8 @@ func _on_preset_5_pressed() -> void:
 	ssao_option_button.emit_signal("item_selected", ssao_option_button.selected)
 	lod_option_button.selected = 2 # high LOD
 	lod_option_button.emit_signal("item_selected", lod_option_button.selected)
+	lighting_option_button.selected = 1 # High Lighting
+	lighting_option_button.emit_signal("item_selected", lighting_option_button.selected)
 
 
 # DISPLAY SETTINGS
@@ -265,3 +277,7 @@ func _on_shadow_size_option_button_item_selected(index: int) -> void:
 
 func _on_ssao_option_button_item_selected(index: int) -> void:
 	Settings.set_ssao(index)
+
+
+func _on_lighting_option_button_item_selected(index: int) -> void:
+	Settings.set_lighting(index)

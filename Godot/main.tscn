@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://beuct1pjdlayy"]
+[gd_scene load_steps=32 format=3 uid="uid://beuct1pjdlayy"]
 
 [ext_resource type="PackedScene" uid="uid://b8kaqd0dtqsp1" path="res://Entities/player.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://yory4i5rrii2" path="res://Common/Object Viewer/object_viewer.tscn" id="2_a6jrf"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://cmink41yr1q8i" path="res://Utilities/dev_menu/dev_menu.tscn" id="4_h8e4i"]
 [ext_resource type="PackedScene" uid="uid://vkp1p25gspml" path="res://Utilities/dev_menu/dev_menu_teleport_button.tscn" id="5_xuqvo"]
 [ext_resource type="PackedScene" uid="uid://cus1t6k7nkpyv" path="res://phone_notifications.tscn" id="9_kq58d"]
-[ext_resource type="Script" uid="uid://qfuy0m0xcjwf" path="res://Utilities/polaroid_camera/picturetake.gd" id="12_kq58d"]
 [ext_resource type="Environment" uid="uid://x61s5mmwqag1" path="res://Assets/environments/main_world_environment.tres" id="15_a6jrf"]
 [ext_resource type="PackedScene" uid="uid://bm1q5w4b7f5ma" path="res://phone_gui.tscn" id="20_d13ii"]
 [ext_resource type="Script" uid="uid://bsmd1wgqjsl83" path="res://game_logic.gd" id="26_lswn8"]
@@ -16,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bqae87n6emy8q" path="res://rooms/Hourhand hallway/Hourhand hallway.tscn" id="27_xuqvo"]
 [ext_resource type="PackedScene" uid="uid://bpjb4k8tcm014" path="res://rooms/control room/Controlroom.tscn" id="28_kq58d"]
 [ext_resource type="Script" uid="uid://kp3w3bjsanur" path="res://cell_visualizer.gd" id="28_qsp4k"]
+[ext_resource type="Script" uid="uid://bn6ojm4yr3e6v" path="res://audio/party_room_music.gd" id="28_seu75"]
 [ext_resource type="PackedScene" uid="uid://c7033b4susyvc" path="res://rooms/Storage Room/Storageroom.tscn" id="28_xuqvo"]
 [ext_resource type="PackedScene" uid="uid://ch4fuk8qiva6x" path="res://rooms/Ghost hallway/Ghost hallway.tscn" id="29_qsp4k"]
 [ext_resource type="PackedScene" uid="uid://b8jbowdnorp1f" path="res://Utilities/pause_menu/pause_menu.tscn" id="37_h8e4i"]
@@ -28,7 +28,6 @@
 [ext_resource type="PackedScene" uid="uid://d0sd1bp5esd04" path="res://Utilities/polaroid_camera/polaroid_layer.tscn" id="55_e71vb"]
 [ext_resource type="PackedScene" uid="uid://bgcdtx87j476" path="res://Utilities/stats.tscn" id="56_e71vb"]
 [ext_resource type="PackedScene" uid="uid://byfsccg4kb4bw" path="res://polaroid_pop_up.tscn" id="57_vke2r"]
-[ext_resource type="Script" uid="uid://bjhwro6hrfg4p" path="res://Utilities/polaroid_camera/polaroid_layer.gd" id="65_uatky"]
 [ext_resource type="PackedScene" uid="uid://c4aonpguu6u11" path="res://Assets/CharacterAssets/bartender/Kitchen.tscn" id="67_rqtf5"]
 
 [sub_resource type="Resource" id="Resource_a6jrf"]
@@ -93,15 +92,8 @@ visible = false
 [node name="Stats" parent="." instance=ExtResource("56_e71vb")]
 process_mode = 3
 
-[node name="PolaroidCamera" parent="." node_paths=PackedStringArray("viewfinder_camera", "Picture", "shoot") instance=ExtResource("55_e71vb")]
+[node name="PolaroidCamera" parent="." instance=ExtResource("55_e71vb")]
 visible = false
-script = ExtResource("65_uatky")
-viewfinder_camera = NodePath("Camera2D")
-Picture = NodePath("body/MainImage")
-shoot = NodePath("body/ViewFinder/filter_control/shoot")
-
-[node name="shoot" parent="PolaroidCamera/body/ViewFinder/filter_control" index="6"]
-script = ExtResource("12_kq58d")
 
 [node name="Polaroid" parent="." instance=ExtResource("57_vke2r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -24.2135, 0)
@@ -223,6 +215,7 @@ event_guid = "{757f62e0-b188-491e-9503-6ad99b13690a}"
 autoplay = true
 volume = 0.65
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.4073, 2.53713, -21.0312)
+script = ExtResource("28_seu75")
 
 [node name="CellVisualizer" type="CanvasLayer" parent="."]
 script = ExtResource("28_qsp4k")
@@ -417,9 +410,10 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [connection signal="body_entered" from="WorldBoundary" to="Player" method="_on_world_boundary_body_entered"]
+[connection signal="start_failed" from="PartyRoomMusic" to="PartyRoomMusic" method="_on_start_failed"]
+[connection signal="stopped" from="PartyRoomMusic" to="PartyRoomMusic" method="_on_stopped"]
 
 [editable path="ObjectViewerCanvasLayer"]
-[editable path="PolaroidCamera"]
 [editable path="Polaroid"]
 [editable path="Player"]
 [editable path="Player/PlayerModel/Final Olivia"]

@@ -1,0 +1,31 @@
+[gd_scene load_steps=8 format=3 uid="uid://dw0gskxal7f66"]
+
+[ext_resource type="PackedScene" uid="uid://ivhm83ye0i61" path="res://rooms/Storage Room/Red Lense.glb" id="1_e0drl"]
+[ext_resource type="PackedScene" uid="uid://3dt1w7lckdyq" path="res://Entities/interaction_detector.tscn" id="2_4e7qd"]
+[ext_resource type="Script" uid="uid://bea7y4hurcesx" path="res://Utilities/scripts/interactable.gd" id="2_8ik4l"]
+[ext_resource type="PackedScene" uid="uid://cqxjk5afxrhem" path="res://Common/Popup UI/object_interact_popup.tscn" id="3_8ik4l"]
+[ext_resource type="Resource" uid="uid://dtsm54hu8p02a" path="res://Singletons/SaveSystem/DefaultResources/TalkingObjectResources/red_lens_properties.tres" id="3_a6l02"]
+[ext_resource type="Resource" uid="uid://b53nky5n3yxdj" path="res://Singletons/SaveSystem/DefaultResources/InventoryItemResources/red_lens_properties.tres" id="4_p7qq5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a6l02"]
+resource_local_to_scene = true
+size = Vector3(1.97247, 2.02496, 2.84531)
+
+[node name="Red Lense" instance=ExtResource("1_e0drl")]
+script = ExtResource("2_8ik4l")
+talking_object_resource = ExtResource("3_a6l02")
+inventory_item = ExtResource("4_p7qq5")
+
+[node name="Cylinder" parent="." index="0"]
+transform = Transform3D(1, -9.09577e-09, -3.821371e-15, 0, 4.547885e-09, -1, -8.742278e-08, -0.104043484, -4.371139e-08, 0, 0, 0)
+
+[node name="InteractionDetector" parent="." index="1" instance=ExtResource("2_4e7qd")]
+
+[node name="CollisionShape3D" parent="InteractionDetector" index="0"]
+transform = Transform3D(1.295, 0, 0, 0, 1.295, 0, 0, 0, 1.295, -0.193758, 0.512483, 0.362533)
+shape = SubResource("BoxShape3D_a6l02")
+
+[node name="Popup" parent="." index="2" instance=ExtResource("3_8ik4l")]
+transform = Transform3D(0.91, 0, 0, 0, 0.91, 0, 0, 0, 0.91, -0.47599292, 0.012758166, 0.8852445)
+
+[editable path="InteractionDetector"]

@@ -1,0 +1,28 @@
+[gd_scene load_steps=8 format=3 uid="uid://xef5l0oe30i"]
+
+[ext_resource type="PackedScene" uid="uid://dsti2l63426xr" path="res://rooms/Storage Room/glove.glb" id="1_mxi0o"]
+[ext_resource type="PackedScene" uid="uid://3dt1w7lckdyq" path="res://Entities/interaction_detector.tscn" id="2_8cdps"]
+[ext_resource type="Script" uid="uid://bea7y4hurcesx" path="res://Utilities/scripts/interactable.gd" id="2_gnh0l"]
+[ext_resource type="Resource" uid="uid://ylig7tvtayms" path="res://Singletons/SaveSystem/DefaultResources/TalkingObjectResources/glove_properties.tres" id="3_7rtiv"]
+[ext_resource type="PackedScene" uid="uid://cqxjk5afxrhem" path="res://Common/Popup UI/object_interact_popup.tscn" id="3_gnh0l"]
+[ext_resource type="Resource" uid="uid://c26y03oxtu758" path="res://Singletons/SaveSystem/DefaultResources/InventoryItemResources/glove_properties.tres" id="4_co1mp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7rtiv"]
+resource_local_to_scene = true
+size = Vector3(1.97247, 2.02496, 2.84531)
+
+[node name="glove" instance=ExtResource("1_mxi0o")]
+script = ExtResource("2_gnh0l")
+talking_object_resource = ExtResource("3_7rtiv")
+inventory_item = ExtResource("4_co1mp")
+
+[node name="InteractionDetector" parent="." index="1" instance=ExtResource("2_8cdps")]
+
+[node name="CollisionShape3D" parent="InteractionDetector" index="0"]
+transform = Transform3D(1.295, 0, 0, 0, 1.295, 0, 0, 0, 1.295, -0.193758, 0.512483, 0.362533)
+shape = SubResource("BoxShape3D_7rtiv")
+
+[node name="Popup" parent="." index="2" instance=ExtResource("3_gnh0l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.083195, 0.4405334, -0.12999201)
+
+[editable path="InteractionDetector"]

@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://btdxsedihjw8m" path="res://Utilities/scripts/player.gd" id="1_4flbx"]
 [ext_resource type="PackedScene" uid="uid://c84xfidqb6t5a" path="res://Assets/CharacterAssets/olivia/Final Olivia.glb" id="2_xd3k7"]
-[ext_resource type="Script" uid="uid://cs01ojctwo1d3" path="res://Entities/footstep_sounds.gd" id="3_xd3k7"]
 [ext_resource type="PackedScene" uid="uid://d0ktctob5o1sk" path="res://Entities/NPCs/rowan_follower.tscn" id="4_taegk"]
+[ext_resource type="PackedScene" uid="uid://b7mreior0p6wi" path="res://audio/footstep_sounds.tscn" id="3_xd3k7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gb1tc"]
 radius = 0.2
@@ -162,19 +162,8 @@ bones/63/rotation = Quaternion(0.34198886, 0.110489935, -0.039612476, 0.9323446)
 [node name="AnimationPlayer" parent="PlayerModel/Final Olivia" index="1"]
 callback_mode_method = 1
 
-[node name="FootstepSounds" type="FmodEventEmitter3D" parent="PlayerModel"]
-event_name = "event:/000_SFX/000_Demo_Test/003_SFX_Footstep"
-event_guid = "{d7200d50-b6d8-44af-b302-89eb1f6f2060}"
-volume = 0.15
-fmod_parameters/LandTexture/id = 9247119926271152
-fmod_parameters/LandTexture = "Concrete"
-fmod_parameters/LandTexture/labels = PackedStringArray("Concrete", "Carpet", "Tile", "Wood", "Grass")
-fmod_parameters/LandTexture/variant_type = 4
+[node name="FootstepSounds" parent="PlayerModel" instance=ExtResource("3_xd3k7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00943396, 0)
-script = ExtResource("3_xd3k7")
-
-[node name="RayCast3D" type="RayCast3D" parent="PlayerModel/FootstepSounds"]
-unique_name_in_owner = true
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 unique_name_in_owner = true

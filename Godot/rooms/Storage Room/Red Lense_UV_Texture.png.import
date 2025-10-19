@@ -2,21 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8leuqt0vm8g6"
-path.s3tc="res://.godot/imported/box suitcase_Image_0.png-3c1df2dbf5ca4e3873074c8e81d189da.s3tc.ctex"
-path.etc2="res://.godot/imported/box suitcase_Image_0.png-3c1df2dbf5ca4e3873074c8e81d189da.etc2.ctex"
+uid="uid://b51lr2ykovomt"
+path.s3tc="res://.godot/imported/Red Lense_UV_Texture.png-5aabde0f80c1698cbdbc88e239150e79.s3tc.ctex"
+path.etc2="res://.godot/imported/Red Lense_UV_Texture.png-5aabde0f80c1698cbdbc88e239150e79.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "551b4bb5ab6267336c3e85b0451e406f"
+"md5": "edf9ab05a30b2af99def948067b3d72f"
 }
 
 [deps]
 
-source_file="res://rooms/bedroom/box suitcase_Image_0.png"
-dest_files=["res://.godot/imported/box suitcase_Image_0.png-3c1df2dbf5ca4e3873074c8e81d189da.s3tc.ctex", "res://.godot/imported/box suitcase_Image_0.png-3c1df2dbf5ca4e3873074c8e81d189da.etc2.ctex"]
+source_file="res://rooms/Storage Room/Red Lense_UV_Texture.png"
+dest_files=["res://.godot/imported/Red Lense_UV_Texture.png-5aabde0f80c1698cbdbc88e239150e79.s3tc.ctex", "res://.godot/imported/Red Lense_UV_Texture.png-5aabde0f80c1698cbdbc88e239150e79.etc2.ctex"]
 
 [params]
 

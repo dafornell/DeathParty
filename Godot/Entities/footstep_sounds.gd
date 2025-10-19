@@ -5,16 +5,11 @@ class_name FootstepSounds extends FmodEventEmitter3D
 ## the character is stepping on, and playing the corresponding sounds.
 ## use by calling this class's play_footstep_sound() function from an AnimationPlayer on the frame
 ## where the character's foot touches the ground
-##
-## NOTE: i made some changes to this script to avoid some issues with how the sounds get played
-##		 during animation blending when we added jogging - these will probably make this class
-##		 not work for NPC footstep sounds so we'll have to rework some things or do something else
-##		 for those srry D:
-##		 	- jack
+
 
 @onready var ray_cast: RayCast3D = %RayCast3D
 
-var previous_position: Vector3 = global_position
+@onready var previous_position: Vector3 = global_position
 var speed: Vector3
 
 

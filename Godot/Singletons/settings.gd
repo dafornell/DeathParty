@@ -32,6 +32,7 @@ var fps: float = 0.0
 var stats: int = 0
 
 # effects
+var lighting: int = 1
 var filtering: int = 3
 var aa: int = 3
 var lod: int = 2
@@ -57,6 +58,18 @@ func _ready() -> void:
 
 	# if it doesnt load, print error and create new cfg with current settings
 	else:
+		# before we create the new cfg, we check if the pc has a dedicated
+		# graphics card
+		var adapter_type: RenderingDevice.DeviceType = RenderingServer.get_video_adapter_type()
+
+		# if it doesn't, turn some settings to low by default
+		if adapter_type == RenderingDevice.DeviceType.DEVICE_TYPE_INTEGRATED_GPU:
+			# TODO: make this just apply the full low preset from video settings
+			lighting = 0
+			aa = 0
+			lod = 0
+			shadows = 0
+
 		print("failed to load settings.cfg (" + error_string(err) + ")")
 		print("creating new settings.cfg file with default settings . . .")
 		save_settings()
@@ -83,6 +96,9 @@ func apply_settings_from_cfg() -> void:
 
 	ssao = config.get_value("video", "ssao", ssao)
 	apply_ssao(ssao)
+
+	lighting = config.get_value("video", "lighting", lighting)
+	apply_lighting(lighting)
 
 	# display
 	vsync = config.get_value("video", "vsync", vsync)
@@ -133,6 +149,7 @@ func save_settings() -> void:
 	config.set_value("video", "lod", lod)
 	config.set_value("video", "shadows", shadows)
 	config.set_value("video", "ssao", ssao)
+	config.set_value("video", "lighting", lighting)
 
 	# audio
 	config.set_value("audio", "volume", volume)
@@ -271,11 +288,13 @@ func set_fps(cap: float) -> void:
 	apply_fps(fps)
 	save_settings()
 
+
 func apply_stats(_mode: int) -> void:
 	var stats_node: Node = get_tree().current_scene.find_child("Stats")
 	if stats_node is StatsDisplay:
 		var stats_display: StatsDisplay = stats_node
 		stats_display.init()
+
 
 func set_stats(mode: int) -> void:
 	stats = mode
@@ -351,7 +370,7 @@ func apply_shadows(level: int) -> void:
 		# Shadow size
 		RenderingServer.directional_shadow_atlas_set_size(2048, true)
 		get_viewport().positional_shadow_atlas_size = 2048
-		
+
 		# Shadow filtering
 		# RenderingServer.directional_soft_shadow_filter_set_quality(RenderingServer.SHADOW_QUALITY_SOFT_LOW)
 		# RenderingServer.positional_soft_shadow_filter_set_quality(RenderingServer.SHADOW_QUALITY_SOFT_LOW)
@@ -359,7 +378,7 @@ func apply_shadows(level: int) -> void:
 		# Shadow size
 		RenderingServer.directional_shadow_atlas_set_size(4096, true)
 		get_viewport().positional_shadow_atlas_size = 4096
-		
+
 		# Shadow filtering
 		# RenderingServer.directional_soft_shadow_filter_set_quality(RenderingServer.SHADOW_QUALITY_SOFT_MEDIUM)
 		# RenderingServer.positional_soft_shadow_filter_set_quality(RenderingServer.SHADOW_QUALITY_SOFT_MEDIUM)
@@ -375,7 +394,7 @@ func apply_ssao(level: int) -> void:
 	# disabled for now
 	return
 	var world_environment_node: Node = get_tree().current_scene.find_child("WorldEnvironment")
-	
+
 	if world_environment_node is CustomWorldEnvironment:
 		var world_environment: CustomWorldEnvironment = world_environment_node
 		world_environment.set_ssao(level)
@@ -399,3 +418,29 @@ func set_volume(value: float) -> void:
 	volume = value
 	apply_volume(volume)
 	save_settings()
+
+
+func set_lighting(level: int) -> void:
+	lighting = level
+	apply_lighting(lighting)
+	save_settings()
+
+
+# the 'lighting' setting just enables and disables SDFGI (for now at least)
+func apply_lighting(level: int) -> void:
+	var environments: Array[Environment] = [
+		# NOTE: this setting just directly changes each environment resource so
+		#		add any new environment resources here
+		#		(theres probably a smarter way that would avoid having to do
+		#		this but im not sure what that is sorry lol)
+		#				- jack
+		preload("uid://dg6cs3u27vudl"),
+		preload("uid://x61s5mmwqag1"),
+		preload("uid://ca3e8txjiikuc")
+	]
+
+	for environment in environments:
+		if level == 0:
+			environment.sdfgi_enabled = false
+		else:
+			environment.sdfgi_enabled = true

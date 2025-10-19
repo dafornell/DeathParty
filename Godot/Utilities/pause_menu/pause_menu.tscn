@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8jbowdnorp1f"]
+[gd_scene load_steps=6 format=3 uid="uid://b8jbowdnorp1f"]
 
 [ext_resource type="Script" uid="uid://dkwxukji4mmmu" path="res://Utilities/pause_menu/pause_menu.gd" id="1_52f8u"]
 [ext_resource type="Theme" uid="uid://dr1yk2pxxkcq3" path="res://Assets/themes/theme.tres" id="2_qpukh"]
+[ext_resource type="FontFile" uid="uid://lawoxng8apwr" path="res://Assets/Fonts/Inknut_Antiqua/InknutAntiqua-Bold.ttf" id="3_srdyt"]
 [ext_resource type="PackedScene" uid="uid://ica25dt1nph6" path="res://Utilities/pause_menu/input_menu/input_rebinding_menu.tscn" id="3_ua3y5"]
 [ext_resource type="PackedScene" uid="uid://b7mfbhjbnelg1" path="res://Utilities/pause_menu/video_menu/video_settings.tscn" id="4_53meo"]
 
@@ -35,6 +36,11 @@ layout_mode = 2
 [node name="PausedText" type="Label" parent="MarginContainer/MainPauseMenu"]
 layout_mode = 2
 theme = ExtResource("2_qpukh")
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("3_srdyt")
+theme_override_font_sizes/font_size = 48
 text = "paused"
 horizontal_alignment = 1
 
