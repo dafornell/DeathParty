@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cqicfnadd1nh4" path="res://Assets/JournalTextures/Diary tab.png" id="9_fq2mh"]
 [ext_resource type="Texture2D" uid="uid://dainc1le7ahoe" path="res://Assets/JournalTextures/TodoTabClosed.png" id="10_hbhch"]
 [ext_resource type="Texture2D" uid="uid://bi4ih11gjungx" path="res://Assets/JournalTextures/DiaryTabClosed.png" id="10_mp1ih"]
-[ext_resource type="Script" path="res://Assets/GUIFunctionalityScripts/toggle_inventory_button.gd" id="12_hbhch"]
+[ext_resource type="Script" uid="uid://bts0ul42uo1me" path="res://Assets/GUIFunctionalityScripts/toggle_inventory_button.gd" id="12_hbhch"]
 [ext_resource type="Texture2D" uid="uid://bc2xbya4n41la" path="res://Assets/JournalTextures/InventoryTab.png" id="13_hbhch"]
 [ext_resource type="PackedScene" uid="uid://bl6eco6i5wbuc" path="res://Assets/models/new_book_animated.tscn" id="14_n4ygd"]
 
@@ -82,7 +82,7 @@ texture_closed = ExtResource("10_mp1ih")
 flip_to_page = 1
 
 [node name="ToggleInventoryButton" type="Area3D" parent="."]
-transform = Transform3D(0.07, -5.6492223e-24, 8.881784e-16, 8.881784e-16, -3.059797e-09, -0.07, 2.646978e-23, 0.07, -3.059797e-09, -8.7422805e-08, 1.3307316, -1.0674355)
+transform = Transform3D(0.07, 1.2353729e-23, -5.3999864e-31, 0, -3.059797e-09, -0.07, -1.2353729e-23, 0.07, -3.059797e-09, 0, 1.331, -1.32)
 script = ExtResource("12_hbhch")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ToggleInventoryButton"]

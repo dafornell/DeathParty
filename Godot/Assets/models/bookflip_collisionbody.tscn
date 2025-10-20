@@ -120,7 +120,7 @@ item_slot_parent = NodePath("Slots")
 [node name="Slots" type="Node3D" parent="InventoryItems"]
 
 [node name="1" type="Node3D" parent="InventoryItems/Slots"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.34195608, -0.2040127)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.085, 0.342, -0.125)
 script = ExtResource("5_r58e7")
 item_resource = ExtResource("6_w436v")
 
