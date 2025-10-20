@@ -10,6 +10,7 @@ signal dialogue_box_text_changed
 ## the NPC scene AND the name in the character resource
 signal toggle_quest_marker(npc_name: String, value: bool)
 
+signal title_screen_start_game_button_pressed
 signal title_screen_settings_button_pressed
 
 signal open_inventory
