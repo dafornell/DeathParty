@@ -1,5 +1,6 @@
-[gd_scene load_steps=15 format=4 uid="uid://4au417aywrdh"]
+[gd_scene load_steps=16 format=4 uid="uid://4au417aywrdh"]
 
+[ext_resource type="Script" uid="uid://bh5bh38a45mj" path="res://Utilities/title_screen.gd" id="1_05l2w"]
 [ext_resource type="Texture2D" uid="uid://b5evdr7vcsetd" path="res://Assets/PNGAssets/titlescreen.png" id="1_v6p8y"]
 [ext_resource type="Theme" uid="uid://dy4pwf3gcuc6g" path="res://Assets/themes/title_screen_button.tres" id="2_ak2if"]
 [ext_resource type="Script" uid="uid://dqt26gjftvclo" path="res://Utilities/title_screen_settings_button.gd" id="3_ig5kc"]
@@ -1111,6 +1112,7 @@ Button/styles/normal = SubResource("StyleBoxFlat_013yr")
 Button/styles/pressed = SubResource("StyleBoxFlat_8vmu4")
 
 [node name="TitleScreen" type="CanvasLayer" groups=["title_screen"]]
+script = ExtResource("1_05l2w")
 
 [node name="FadeThisOut" type="Control" parent="."]
 layout_mode = 3

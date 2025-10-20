@@ -71,6 +71,7 @@ func _on_play() -> void:
 	bind_camera_y(null, 1.2, 1.35)
 	
 	GlobalCameraScript.camera_on_player.emit(true)
+	GuiSystem.in_title_screen = false
 	intro_finished.emit()
 
 

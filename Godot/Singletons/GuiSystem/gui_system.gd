@@ -17,6 +17,7 @@ var journal_music: FmodEventEmitter3D
 var journal_backpack_bg: PackedScene = preload("res://Assets/JournalTextures/backpack_background.tscn")
 
 ##STATES
+var in_title_screen: bool = false
 var in_journal: bool = false
 var inventory_showing: bool = false # used within journal scripts
 var in_gui: bool = false

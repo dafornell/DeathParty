@@ -51,9 +51,7 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
-		var title_screen = get_tree().get_first_node_in_group("title_screen")
-
-		if title_screen != null and title_screen.visible == true:
+		if GuiSystem.in_title_screen == true:
 			return
 
 		elif GuiSystem.loading_screen_visible:
@@ -95,14 +93,14 @@ func _physics_process(_delta: float) -> void:
 
 
 func toggle_pause() -> void:
-	if not get_tree().get_first_node_in_group("title_screen").visible:
+	if not GuiSystem.in_title_screen:
 		get_tree().paused = !get_tree().paused
 
 	visible = !visible
 
 	if visible:
 		resume_button.grab_focus()
-		if get_tree().get_first_node_in_group("title_screen").visible:
+		if GuiSystem.in_title_screen:
 			_on_settings_button_pressed()
 
 
@@ -147,7 +145,8 @@ func _on_settings_back_button_pressed() -> void:
 	settings_menu.hide()
 	main_pause_menu.show()
 	settings_button.grab_focus()
-	if get_tree().get_first_node_in_group("title_screen").visible:
+
+	if GuiSystem.in_title_screen:
 		toggle_pause()
 
 
