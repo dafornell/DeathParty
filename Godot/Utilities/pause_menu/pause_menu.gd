@@ -95,7 +95,8 @@ func _physics_process(_delta: float) -> void:
 
 
 func toggle_pause() -> void:
-	get_tree().paused = !get_tree().paused
+	if not get_tree().get_first_node_in_group("title_screen").visible:
+		get_tree().paused = !get_tree().paused
 
 	visible = !visible
 
