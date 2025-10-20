@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://n8spnwmpcgt0" path="res://Assets/textures/entrance_room_props/entrance room props_pumpkin1.png" id="1_u04hl"]
 [ext_resource type="Material" uid="uid://dtjo15ph3udf5" path="res://Assets/props/jack_o_lanterns/inner pump.tres" id="2_nj6gn"]
+[ext_resource type="PackedScene" uid="uid://cale4r4qxecu2" path="res://Assets/props/jack_o_lanterns/JackOLantern.glb" id="3_3xag5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sfofh"]
 resource_name = "Material.077"
@@ -94,9 +95,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_7cvgf")
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nj6gn"]
-height = 1.0
-
 [node name="JackOLanternTall" type="StaticBody3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -105,5 +103,5 @@ lod_bias = 0.25
 mesh = SubResource("ArrayMesh_80v84")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_nj6gn")
+[node name="JackOLantern" parent="." instance=ExtResource("3_3xag5")]
+transform = Transform3D(0.2, 0, 0, 0, 0.29, 0, 0, 0, 0.2, 0.016790211, -0.017152756, 0.00053957105)
