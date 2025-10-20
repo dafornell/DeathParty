@@ -76,6 +76,7 @@ func animate_npc(delta: float) -> void:
 	var npc_to_player: Vector3 = global_position.direction_to(player_position)
 	var npc_to_movement_direction: Vector3 = global_position.direction_to(movement_point)
 	model.look_at(movement_point.min(Vector3(INF, player_position.y, INF)), Vector3.UP, true)
+	model.rotation = Vector3(0, model.rotation.y, 0)
 	
 	if npc_to_player.angle_to(npc_to_movement_direction) < PI/2:
 		# Moves forward
