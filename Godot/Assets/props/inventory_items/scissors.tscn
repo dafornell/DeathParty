@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b0rxhbqfjj1l8"]
 
-[ext_resource type="PackedScene" uid="uid://psh336exq4ts" path="res://Assets/props/inventory_items/inventory_item_base.tscn" id="1_6f6qk"]
+[ext_resource type="PackedScene" uid="uid://l0ljp7dxs4g4" path="res://Assets/props/inventory_items/inventory_item_base.tscn" id="1_6f6qk"]
 [ext_resource type="PackedScene" uid="uid://bokow8t5s5868" path="res://Assets/models/scissors.glb" id="1_bwnn8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vqv4l"]
@@ -15,3 +15,7 @@ shape = SubResource("BoxShape3D_vqv4l")
 
 [node name="scissors" parent="MeshContainer" index="0" instance=ExtResource("1_bwnn8")]
 transform = Transform3D(-2.6226832e-09, 0, 0.06, 0, 0.06, 0, -0.06, 0, -2.6226832e-09, 0.07435474, -0.14992861, 0)
+
+[node name="HoverSound" parent="." index="2"]
+event_name = "event:/000_SFX/000_Demo_Test/008_SFX_Scissor_B"
+event_guid = "{cbb75276-196e-45c0-86f7-e974fa5290e2}"

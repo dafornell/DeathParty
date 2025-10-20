@@ -6,6 +6,8 @@ class_name ClickableInventoryItem extends ObjectViewerInteractable
 @export var outline_shader : ShaderMaterial = preload("res://Assets/Shaders/OutlineShader/TestOutlineShader.tres")
 @export var outline_thickness : float = 3
 
+@onready var hover_sound: FmodEventEmitter3D = %HoverSound
+
 var hovered_amount : float = 0.0:
 	set(value):
 		hovered_amount = clampf(value, 0.0, 1.0)
@@ -38,10 +40,13 @@ func _initialize() -> void:
 	_apply_outline_shader()
 	_hide_outline()
 
+
 func enter_hover() -> void:
 	var tween : Tween = get_tree().create_tween()
 	tween.tween_property(self, "hovered_amount", 1.0, hover_tween_duration)
-	
+	hover_sound.play()
+
+
 func exit_hover() -> void:
 	# this happens when we deparent the object
 	# (note: enter hover should not happen if it is not in the scene tree)

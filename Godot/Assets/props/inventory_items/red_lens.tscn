@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cnoh3r2mpqo7e"]
 
-[ext_resource type="PackedScene" uid="uid://psh336exq4ts" path="res://Assets/props/inventory_items/inventory_item_base.tscn" id="1_150nt"]
+[ext_resource type="PackedScene" uid="uid://l0ljp7dxs4g4" path="res://Assets/props/inventory_items/inventory_item_base.tscn" id="1_150nt"]
 [ext_resource type="PackedScene" uid="uid://ivhm83ye0i61" path="res://rooms/Storage Room/Red Lense.glb" id="1_uxap7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h777x"]
