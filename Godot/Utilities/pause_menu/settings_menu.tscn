@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://bply1pdx8i1fx"]
+
+[ext_resource type="Theme" uid="uid://dr1yk2pxxkcq3" path="res://Assets/themes/theme.tres" id="1_010d4"]
+[ext_resource type="Script" path="res://Utilities/pause_menu/settings_menu.gd" id="1_sfvts"]
+
+[node name="SettingsMenu" type="VBoxContainer"]
+script = ExtResource("1_sfvts")
+
+[node name="InputButton" type="Button" parent="." groups=["buttons"]]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_top = NodePath("../SettingsBackButton")
+focus_neighbor_bottom = NodePath("../VideoButton")
+theme = ExtResource("1_010d4")
+text = "inputs"
+
+[node name="VideoButton" type="Button" parent="." groups=["buttons"]]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_top = NodePath("../InputButton")
+focus_neighbor_bottom = NodePath("../VolumeSlider")
+theme = ExtResource("1_010d4")
+text = "video"
+
+[node name="VolumeText" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("1_010d4")
+text = "volume"
+horizontal_alignment = 1
+
+[node name="VolumeSlider" type="HSlider" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_bottom = NodePath("../SettingsBackButton")
+value = 75.0
+rounded = true
+tick_count = 10
+ticks_on_borders = true
+
+[node name="VolumeNumber" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+focus_neighbor_bottom = NodePath("../SettingsBackButton")
+theme = ExtResource("1_010d4")
+theme_override_font_sizes/font_size = 20
+text = "75"
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+
+[node name="SettingsBackButton" type="Button" parent="." groups=["buttons"]]
+layout_mode = 2
+focus_neighbor_top = NodePath("../VolumeSlider")
+focus_neighbor_bottom = NodePath("../InputButton")
+theme = ExtResource("1_010d4")
+text = "back"

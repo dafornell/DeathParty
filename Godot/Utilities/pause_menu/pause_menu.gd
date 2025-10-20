@@ -29,6 +29,10 @@ extends CanvasLayer
 @onready var focus_sound: FmodEventEmitter2D = %FocusSound
 
 
+func _enter_tree() -> void:
+	Events.title_screen_settings_button_pressed.connect(toggle_pause)
+
+
 func _ready() -> void:
 	volume_slider.value = Settings.volume
 
@@ -94,17 +98,11 @@ func toggle_pause() -> void:
 	get_tree().paused = !get_tree().paused
 
 	visible = !visible
-	bottom_ui_bar.visible = !bottom_ui_bar.visible
 
 	if visible:
 		resume_button.grab_focus()
-
-
-# pause with the ⚙️ button in the UI
-# this signal name is kinda unintuitive but we'll fix that when we add
-# proper names for the nodes in the UI
-func _on_button_2_pressed() -> void:
-	toggle_pause()
+		if get_tree().get_first_node_in_group("title_screen").visible:
+			_on_settings_button_pressed()
 
 
 func _on_resume_button_pressed() -> void:
@@ -148,6 +146,8 @@ func _on_settings_back_button_pressed() -> void:
 	settings_menu.hide()
 	main_pause_menu.show()
 	settings_button.grab_focus()
+	if get_tree().get_first_node_in_group("title_screen").visible:
+		toggle_pause()
 
 
 func _on_input_back_button_pressed() -> void:
