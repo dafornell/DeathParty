@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cqicfnadd1nh4" path="res://Assets/JournalTextures/Diary tab.png" id="9_fq2mh"]
 [ext_resource type="Texture2D" uid="uid://dainc1le7ahoe" path="res://Assets/JournalTextures/TodoTabClosed.png" id="10_hbhch"]
 [ext_resource type="Texture2D" uid="uid://bi4ih11gjungx" path="res://Assets/JournalTextures/DiaryTabClosed.png" id="10_mp1ih"]
-[ext_resource type="Script" uid="uid://bts0ul42uo1me" path="res://Assets/GUIFunctionalityScripts/toggle_inventory_button.gd" id="12_hbhch"]
+[ext_resource type="Script" path="res://Assets/GUIFunctionalityScripts/toggle_inventory_button.gd" id="12_hbhch"]
 [ext_resource type="Texture2D" uid="uid://bc2xbya4n41la" path="res://Assets/JournalTextures/InventoryTab.png" id="13_hbhch"]
 [ext_resource type="PackedScene" uid="uid://bl6eco6i5wbuc" path="res://Assets/models/new_book_animated.tscn" id="14_n4ygd"]
 
@@ -91,7 +91,7 @@ shape = SubResource("BoxShape3D_8foen")
 
 [node name="Sprite3D" type="Sprite3D" parent="ToggleInventoryButton"]
 transform = Transform3D(1, -1.009742e-28, -7.1054274e-15, 1.7648189e-22, 1, 0, 7.1054274e-15, 0, 1, 1.2488972e-06, 0, 14.285715)
-sorting_offset = 1.0
+no_depth_test = true
 texture = ExtResource("13_hbhch")
 
 [node name="new_book_animated" parent="." instance=ExtResource("14_n4ygd")]
