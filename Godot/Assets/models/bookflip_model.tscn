@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ctxn4d5hysbqv"]
+[gd_scene load_steps=18 format=3 uid="uid://ctxn4d5hysbqv"]
 
 [ext_resource type="Script" uid="uid://b7e4s6slidb3u" path="res://Assets/models/bookflip_script.gd" id="2_epq3o"]
 [ext_resource type="PackedScene" uid="uid://jsemqtn1uy4m" path="res://Assets/GUIPrefabs/JournalPrefabs/Pages/FirstPage.tscn" id="3_mp1ih"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cqicfnadd1nh4" path="res://Assets/JournalTextures/Diary tab.png" id="9_fq2mh"]
 [ext_resource type="Texture2D" uid="uid://dainc1le7ahoe" path="res://Assets/JournalTextures/TodoTabClosed.png" id="10_hbhch"]
 [ext_resource type="Texture2D" uid="uid://bi4ih11gjungx" path="res://Assets/JournalTextures/DiaryTabClosed.png" id="10_mp1ih"]
+[ext_resource type="Script" uid="uid://bts0ul42uo1me" path="res://Assets/GUIFunctionalityScripts/toggle_inventory_button.gd" id="12_hbhch"]
 [ext_resource type="Texture2D" uid="uid://bc2xbya4n41la" path="res://Assets/JournalTextures/InventoryTab.png" id="13_hbhch"]
 [ext_resource type="PackedScene" uid="uid://bl6eco6i5wbuc" path="res://Assets/models/new_book_animated.tscn" id="14_n4ygd"]
 
@@ -21,6 +22,9 @@ viewport_path = NodePath("new_book_animated/Armature/Skeleton3D/Page animate L/S
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ieb6y"]
 size = Vector3(1.55786, 0.391174, 1.47409)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8foen"]
+size = Vector3(10, 4, 10)
 
 [node name="bookflip" type="Node3D" node_paths=PackedStringArray("animation_player", "page1", "page2", "page1_subviewport", "page2_subviewport", "tabs_node")]
 transform = Transform3D(-1, -8.74228e-08, -3.82137e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, 0, 0, 0)
@@ -77,8 +81,17 @@ texture_open = ExtResource("9_fq2mh")
 texture_closed = ExtResource("10_mp1ih")
 flip_to_page = 1
 
-[node name="ArrowDown" type="Sprite3D" parent="."]
-transform = Transform3D(0.07, 0, 0, 0, -3.059797e-09, -0.07, 0, 0.07, -3.059797e-09, 1.9895197e-15, 0.33073163, -1.0674355)
+[node name="ToggleInventoryButton" type="Area3D" parent="."]
+transform = Transform3D(0.07, -5.6492223e-24, 8.881784e-16, 8.881784e-16, -3.059797e-09, -0.07, 2.646978e-23, 0.07, -3.059797e-09, -8.7422805e-08, 1.3307316, -1.0674355)
+script = ExtResource("12_hbhch")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ToggleInventoryButton"]
+transform = Transform3D(1, -1.009742e-28, 7.1054274e-15, 0, 1, 0, -7.1054274e-15, 0, 1, 1.248897e-06, 0, 14.285715)
+shape = SubResource("BoxShape3D_8foen")
+
+[node name="Sprite3D" type="Sprite3D" parent="ToggleInventoryButton"]
+transform = Transform3D(1, -1.009742e-28, -7.1054274e-15, 1.7648189e-22, 1, 0, 7.1054274e-15, 0, 1, 1.2488972e-06, 0, 14.285715)
+sorting_offset = 1.0
 texture = ExtResource("13_hbhch")
 
 [node name="new_book_animated" parent="." instance=ExtResource("14_n4ygd")]

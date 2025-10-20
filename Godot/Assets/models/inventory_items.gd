@@ -14,8 +14,10 @@ var item_instances : Array[ObjectViewerInteractable]
 
 var items_showing : bool = false
 
+
 func _init() -> void:
 	SaveSystem.inventory_changed.connect(on_inventory_change)
+
 
 func _ready() -> void:
 	load_items()
@@ -23,6 +25,9 @@ func _ready() -> void:
 	preprocess_slots()
 	if bookflip_instance:
 		main_page = bookflip_instance.page1
+
+	show_items()
+
 
 func preprocess_slots() -> void:
 	slot_map.clear()

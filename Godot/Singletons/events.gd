@@ -12,6 +12,9 @@ signal toggle_quest_marker(npc_name: String, value: bool)
 
 signal title_screen_settings_button_pressed
 
+signal open_inventory
+signal close_inventory
+
 
 func _enter_tree() -> void:
 	toggle_quest_marker.connect(_on_toggle_quest_marker)
