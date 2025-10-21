@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://blkculyy7kbod"]
+[gd_scene load_steps=25 format=3 uid="uid://blkculyy7kbod"]
 
 [ext_resource type="Shader" uid="uid://dy0tt55my5rir" path="res://Assets/GUIPrefabs/DialogueBoxPrefabs/brightness2D.gdshader" id="1_fwn3t"]
 [ext_resource type="Script" uid="uid://b65j1ann1xpvc" path="res://main_dialogue_box.gd" id="1_lu3tv"]
@@ -13,9 +13,11 @@
 [ext_resource type="Script" uid="uid://dmhgvrlcy0bms" path="res://Assets/GUIPrefabs/DialogueBoxPrefabs/hover_button.gd" id="7_5mbos"]
 [ext_resource type="Texture2D" uid="uid://pnx5vmjo2ueo" path="res://Assets/DialogueBoxTextures/choice_right.png" id="7_lu3tv"]
 [ext_resource type="Texture2D" uid="uid://c3f2nu2v4tafu" path="res://Assets/DialogueBoxTextures/choice_down_white.png" id="7_qer6e"]
+[ext_resource type="FontFile" uid="uid://bgjvejt6iyv7l" path="res://Assets/Fonts/Gantari/static/Gantari-ExtraBoldItalic.ttf" id="8_injiu"]
 [ext_resource type="Texture2D" uid="uid://0uec3xndc6vl" path="res://Assets/CharacterAssets/Polaroids/angel_b.png" id="8_joy0p"]
 [ext_resource type="Texture2D" uid="uid://c0b3sxlwrktrr" path="res://Assets/DialogueBoxTextures/choice_left_white.png" id="8_psnsn"]
 [ext_resource type="Texture2D" uid="uid://dfmkp4aw4pbg4" path="res://Assets/DialogueBoxTextures/choice_down.png" id="8_qar2h"]
+[ext_resource type="Script" uid="uid://cycfm1hohk1b4" path="res://Assets/GUIPrefabs/DialogueBoxPrefabs/dialogue_instructions.gd" id="9_qhmwn"]
 [ext_resource type="Texture2D" uid="uid://ciagkcjbti5dm" path="res://Assets/CharacterAssets/olivia/polaroid_olivia.png" id="11_qar2h"]
 [ext_resource type="Texture2D" uid="uid://bbrjl4c3wnrwd" path="res://Assets/DialogueBoxTextures/arrow_down.png" id="15_quspg"]
 [ext_resource type="Script" uid="uid://bon5brl8s558i" path="res://Assets/GUIPrefabs/DialogueBoxPrefabs/arrow_tween.gd" id="17_joy0p"]
@@ -24,6 +26,9 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bgfb2"]
 shader = ExtResource("1_fwn3t")
 shader_parameter/multiplier = 0.5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qhmwn"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="DialogueBox1" type="Control" node_paths=PackedStringArray("protag_talking_setup", "protag_dialogue_backer", "npc_talking_setup", "npc_dialogue_backer", "choices_setup", "choice_left", "choice_right", "choice_up", "choice_down", "choice_info", "protag_text_label", "npc_text_label", "protag_arrow", "npc_arrow", "protag_speaker_image_label", "npc_speaker_image_label", "protag_previous_speaker_image_label", "npc_previous_speaker_image_label")]
 layout_mode = 3
@@ -143,7 +148,25 @@ expand_mode = 1
 stretch_mode = 5
 script = ExtResource("17_joy0p")
 
+[node name="PanelContainer" type="PanelContainer" parent="ProtagonistSpeaking/DialogueBacker"]
+layout_mode = 0
+offset_left = 299.8889
+offset_top = 198.56003
+offset_right = 901.8889
+offset_bottom = 238.56003
+theme_override_styles/panel = SubResource("StyleBoxFlat_qhmwn")
+
+[node name="DialogueInstructions" type="Label" parent="ProtagonistSpeaking/DialogueBacker/PanelContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.78431374, 0.78431374, 0.78431374, 1)
+theme_override_fonts/font = ExtResource("8_injiu")
+theme_override_font_sizes/font_size = 22
+text = "CLICK ANYWHERE OR PRESS ENTER/SPACE TO CONTINUE"
+script = ExtResource("9_qhmwn")
+
 [node name="NPCSpeaking" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
