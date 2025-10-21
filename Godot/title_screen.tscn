@@ -1110,8 +1110,9 @@ Button/styles/hover = SubResource("StyleBoxFlat_jqemp")
 Button/styles/normal = SubResource("StyleBoxFlat_013yr")
 Button/styles/pressed = SubResource("StyleBoxFlat_8vmu4")
 
-[node name="TitleScreen" type="CanvasLayer" groups=["title_screen"]]
+[node name="TitleScreen" type="CanvasLayer" node_paths=PackedStringArray("title_image") groups=["title_screen"]]
 script = ExtResource("1_05l2w")
+title_image = NodePath("FadeThisOut/TitleImage")
 
 [node name="FadeThisOut" type="Control" parent="."]
 layout_mode = 3
@@ -1119,7 +1120,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect" type="TextureRect" parent="FadeThisOut"]
+[node name="TitleImage" type="TextureRect" parent="FadeThisOut"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
