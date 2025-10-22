@@ -1,11 +1,12 @@
 [gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://cexemclelckrl"]
 
-[ext_resource type="Texture2D" uid="uid://bx1uqwiscvuok" path="res://Common/Object Viewer/Display box 1.png" id="1_dq0cs"]
+[ext_resource type="Texture2D" uid="uid://dcud5d3stalvt" path="res://Common/Object Viewer/display box.tres" id="1_dq0cs"]
 
 [resource]
-content_margin_top = 19.0
-content_margin_bottom = 24.0
+content_margin_left = 40.0
+content_margin_right = 40.0
 texture = ExtResource("1_dq0cs")
-texture_margin_left = 100.0
-texture_margin_right = 215.0
-region_rect = Rect2(65, 45.5, 954, 287)
+texture_margin_left = 32.0
+texture_margin_top = 32.0
+texture_margin_right = 32.0
+texture_margin_bottom = 32.0
