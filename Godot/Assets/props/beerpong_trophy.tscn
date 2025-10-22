@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=4 uid="uid://tt4l0v1cauji"]
+[gd_scene load_steps=7 format=4 uid="uid://tt4l0v1cauji"]
 
 [ext_resource type="Texture2D" uid="uid://cxkjhxfr5fd86" path="res://rooms/Kitchen/beerpong trophie_red cup.png" id="1_4jjdp"]
+[ext_resource type="PackedScene" uid="uid://04h45wmndeqi" path="res://rooms/Kitchen/beerpong trophie.glb" id="2_dmt7n"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jjs6u"]
 resource_name = "Material"
@@ -76,5 +77,9 @@ shadow_mesh = SubResource("ArrayMesh_d86tk")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.53403, 0, 0.145766, 0, 0.553566, 0, -0.145766, 0, -0.53403, 0, 0, 0)
+visible = false
 mesh = SubResource("ArrayMesh_sfmx5")
 skeleton = NodePath("")
+
+[node name="beerpong trophie" parent="." instance=ExtResource("2_dmt7n")]
+transform = Transform3D(0.4688792, 0, -0.14920574, 0, 0.4920468, 0, 0.14920574, 0, 0.4688792, 0.001963675, 5.9604645e-08, -0.0040950775)
