@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://yory4i5rrii2"]
+[gd_scene load_steps=12 format=3 uid="uid://yory4i5rrii2"]
 
 [ext_resource type="Script" uid="uid://c5se664fk8jqq" path="res://Common/Object Viewer/object_viewer.gd" id="1_o3r5r"]
 [ext_resource type="Script" uid="uid://tr6w0ikk1pea" path="res://Common/Object Viewer/item_info_gui.gd" id="2_o7dqn"]
 [ext_resource type="Script" uid="uid://b3v8ab5ipsaa" path="res://Common/Object Viewer/journal_item_info.gd" id="4_1fteh"]
 [ext_resource type="FontFile" uid="uid://bbnxos5pn23n1" path="res://Assets/Fonts/Patrick_Hand_SC/PatrickHandSC-Regular.ttf" id="4_km8sy"]
+[ext_resource type="Script" uid="uid://ct744mmnnvcwm" path="res://Common/Object Viewer/richtext_shrink_to_fit.gd" id="5_8yl1a"]
 [ext_resource type="Texture2D" uid="uid://cm2qh7ey3npqp" path="res://Common/Object Viewer/icon_close.png" id="6_1fteh"]
 [ext_resource type="StyleBox" uid="uid://cexemclelckrl" path="res://Common/Object Viewer/display_box_stylebox.tres" id="6_81px2"]
 
@@ -135,7 +136,6 @@ texture_focused = ExtResource("6_1fteh")
 stretch_mode = 0
 
 [node name="DescriptionPanel" type="PanelContainer" parent="ObjectViewer/ItemInfo"]
-custom_minimum_size = Vector2(384, 0)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -150,11 +150,13 @@ theme_override_styles/panel = ExtResource("6_81px2")
 
 [node name="Description" type="RichTextLabel" parent="ObjectViewer/ItemInfo/DescriptionPanel"]
 clip_contents = false
+custom_minimum_size = Vector2(512, 0)
 layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 20
 fit_content = true
 scroll_active = false
+script = ExtResource("5_8yl1a")
 
 [node name="ControlsPanel" type="PanelContainer" parent="ObjectViewer/ItemInfo"]
 layout_mode = 1
