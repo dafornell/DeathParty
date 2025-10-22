@@ -8,6 +8,7 @@ var og_viewport : Viewport
 ##INHERITED
 func on_mouse_up() -> void:
 	if Interact.grabbed_control: return
+	if GuiSystem.inventory_showing: return
 	bookflip_instance.bookflip(flip_backwards)
 
 func enter_hover() -> void:

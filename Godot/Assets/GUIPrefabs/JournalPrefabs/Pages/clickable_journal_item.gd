@@ -18,6 +18,7 @@ func _ready() -> void:
 
 ##INHERITED
 func on_mouse_down() -> void:
+	if GuiSystem.inventory_showing: return
 	GuiSystem.inspect_journal_item(item_resource)
 	if item_resource.talking_object_resource:
 		print("Starting chat with talking object resource")
