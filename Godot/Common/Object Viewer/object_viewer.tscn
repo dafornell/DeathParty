@@ -105,6 +105,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1000, 0)
 [node name="Camera3D" type="Camera3D" parent="ObjectViewer/SubViewportContainer/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -999.885, 2.126)
 
+[node name="FmodListener3D" type="FmodListener3D" parent="ObjectViewer/SubViewportContainer/SubViewport/Camera3D"]
+listener_index = 1
+
 [node name="ItemInfo" type="Control" parent="ObjectViewer" node_paths=PackedStringArray("description_label", "button", "object_viewer")]
 layout_mode = 1
 anchors_preset = 15

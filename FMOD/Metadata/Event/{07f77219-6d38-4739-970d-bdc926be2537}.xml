@@ -5,7 +5,7 @@
 			<value>WalletHover</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{77a4631a-1b2b-43a7-9fea-2ce7587c928c}</destination>
@@ -98,6 +98,7 @@
 			<destination>{2cff45c7-24d1-4c25-b5aa-14e368e1c14b}</destination>
 			<destination>{48873951-39aa-4a35-b8f5-9aa6e8b0520e}</destination>
 			<destination>{acacd9ea-8702-4fc2-a946-b6440163bdfe}</destination>
+			<destination>{3840cc66-57c6-4396-b8e7-213bfb2c92b7}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{64b1b5f1-1f73-4e02-817d-bcc37b5f0cbc}" />
@@ -137,6 +138,7 @@
 			<value>-25</value>
 		</property>
 	</object>
+	<object class="SpatialiserEffect" id="{3840cc66-57c6-4396-b8e7-213bfb2c92b7}" />
 	<object class="SingleSound" id="{aad0a9c5-94e7-46f7-bca9-6e18e7584b33}">
 		<property name="startOffset">
 			<value>25</value>

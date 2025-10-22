@@ -17,5 +17,5 @@ shape = SubResource("BoxShape3D_3b3fx")
 transform = Transform3D(-2.1855695e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855695e-07, 0, -0.29233384, 0)
 
 [node name="HoverSound" parent="." index="2"]
-event_name = "event:/000_SFX/000_Demo_Test/016_SFX_Camera_Rotate"
-event_guid = "{256023bd-c47d-4376-ba19-8f4ebb11c531}"
+event_name = "event:/000_SFX/300_UI/InventoryHover/CameraHover"
+event_guid = "{32161641-3e82-4b76-8622-df5967b976ab}"

@@ -17,5 +17,5 @@ shape = SubResource("BoxShape3D_vqv4l")
 transform = Transform3D(-2.6226832e-09, 0, 0.06, 0, 0.06, 0, -0.06, 0, -2.6226832e-09, 0.07435474, -0.14992861, 0)
 
 [node name="HoverSound" parent="." index="2"]
-event_name = "event:/000_SFX/000_Demo_Test/008_SFX_Scissor_B"
-event_guid = "{cbb75276-196e-45c0-86f7-e974fa5290e2}"
+event_name = "event:/000_SFX/300_UI/InventoryHover/ScissorsHover"
+event_guid = "{0299b98c-d8d7-4492-ad1b-cc2f6c829fa9}"
