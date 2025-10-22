@@ -50,7 +50,7 @@
 [ext_resource type="PackedScene" uid="uid://cno0dyov1i6bm" path="res://Assets/CharacterAssets/witch/witch.tscn" id="48_43qeg"]
 [ext_resource type="PackedScene" uid="uid://b36wsq6enc3vs" path="res://Assets/CharacterAssets/chi_omega_girl/chi_omega_girl.tscn" id="49_mclt6"]
 [ext_resource type="PackedScene" uid="uid://s3crydfiatmy" path="res://Assets/CharacterAssets/cone_ghost/cone_ghost.tscn" id="50_8onu6"]
-[ext_resource type="PackedScene" uid="uid://5ssjaesop020" path="res://Assets/CharacterAssets/free_hug_guy/free_hug_guy.tscn" id="51_r8w57"]
+[ext_resource type="PackedScene" uid="uid://d1lmv76sg8rx0" path="res://Assets/CharacterAssets/free_hug_guy/free_hug_guy.tscn" id="51_r8w57"]
 [ext_resource type="PackedScene" uid="uid://cd3gxo5pookxd" path="res://Assets/CharacterAssets/frat_boys/red_hat_frat_boy/frat_boy_red_hat.tscn" id="53_m2sgf"]
 [ext_resource type="PackedScene" uid="uid://c8dmqdvlt6p8x" path="res://Assets/CharacterAssets/frat_boys/Long_Hair_frat_boy/frat_boy_long_hair.tscn" id="53_xlbq8"]
 [ext_resource type="PackedScene" uid="uid://cnb05rd1rv7e7" path="res://Assets/CharacterAssets/rowan/rowan.tscn" id="55_m2sgf"]
@@ -1704,7 +1704,7 @@ transform = Transform3D(-0.806433, 0, 0.738287, 0, 1.09334, 0, -0.738287, 0, -0.
 transform = Transform3D(-0.729844, 0, -0.814082, 0, 1.09334, 0, 0.814082, 0, -0.729844, -9.97765, 0.91741, 1.37453)
 
 [node name="beerpong trophie" parent="Props" instance=ExtResource("45_uchlo")]
-transform = Transform3D(0.478052, 0, -0.0822989, 0, 0.485084, 0, 0.0822989, 0, 0.478052, 1.38772, 1.37775, -2.43062)
+transform = Transform3D(0.24423808, 0, -0.042046733, 0, 0.24783075, 0, 0.042046733, 0, 0.24423808, 1.3877201, 1.37775, -2.43062)
 
 [node name="FoldingChairs" parent="Props" instance=ExtResource("46_nv441")]
 transform = Transform3D(1.09334, 0, 0, 0, 1.09334, 0, 0, 0, 1.09334, -10.0882, 0.12444, 2.58955)
@@ -1835,6 +1835,9 @@ bones/60/rotation = Quaternion(-0.15468735, 0.020322911, 0.9843699, 0.0817)
 bones/61/rotation = Quaternion(-0.057516214, 0.064853944, -0.09450227, 0.99174356)
 bones/62/rotation = Quaternion(0.16761899, 0.32359996, -0.022933848, 0.93094635)
 bones/63/rotation = Quaternion(0.40471852, 0.17244118, -0.054202452, 0.8963979)
+
+[node name="BoneAttachment3D" parent="NPCs/free hug3/CharacterBody3D/free hug/Skeleton3D" index="4"]
+transform = Transform3D(0.43274796, -0.4124633, -0.80162543, 0.7308042, 0.6811657, 0.044032976, 0.5278778, -0.6048862, 0.59620273, 25.669638, 4.2641296, -121.14254)
 
 [node name="AnimationPlayer" parent="NPCs/free hug3/CharacterBody3D" index="2"]
 autoplay = "crazyy"
