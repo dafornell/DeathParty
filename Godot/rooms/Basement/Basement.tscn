@@ -2403,6 +2403,13 @@ autoplay = "push up"
 [node name="Shy Girl" parent="NPCs" instance=ExtResource("77_kk7s6")]
 transform = Transform3D(-0.9463339, 0, 0.32319075, 0, 1, 0, -0.32319075, 0, -0.9463339, 7.369347, 0.0910255, -2.8395653)
 
+[node name="Music" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/900_MX/Basement Music"
+event_guid = "{8e975a78-1a06-4211-9c7a-f0eb8fc9ce74}"
+autoplay = true
+volume = 0.5
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2999997, 0, 2.3000002)
+
 [editable path="SceneLoaders/SceneLoader_Entrance"]
 [editable path="SceneLoaders/SceneLoader_Entrance/InteractionDetector"]
 [editable path="SceneLoaders/SceneLoader_Storageroom"]
