@@ -45,9 +45,11 @@ InkParser="*res://Singletons/InkInterpreter/ink_parser.gd"
 InteractablePriority="*res://Singletons/Interactable/interactable_priority.gd"
 MenuFocusGrabber="*res://Singletons/menu_focus_grabber.gd"
 DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
+Events="*res://Singletons/events.gd"
 
 [debug]
 
+gdscript/warnings/unused_signal=0
 gdscript/warnings/untyped_declaration=1
 gdscript/warnings/unsafe_property_access=1
 gdscript/warnings/unsafe_method_access=1
@@ -80,7 +82,7 @@ export/convert_text_resources_to_binary=false
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg", "res://addons/fmod/plugin.cfg", "res://addons/polygon_counter/plugin.cfg")
+enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg", "res://addons/polygon_counter/plugin.cfg")
 
 [global_group]
 

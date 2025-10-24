@@ -11,20 +11,28 @@ const TWEEN_TIME : float = .5
 
 @export var bookflip : BookFlip
 @export var static_page : MeshInstance3D
-var arrow_down : Sprite3D
+var toggle_inventory_button : Area3D
+
+
+func _enter_tree() -> void:
+	Events.open_inventory.connect(show_inventory)
+	Events.close_inventory.connect(hide_inventory)
+
 
 func _ready() -> void:
 	if bookflip:
-		arrow_down = bookflip.get_node("ArrowDown")
+		toggle_inventory_button = bookflip.get_node("ToggleInventoryButton")
 	normal_pos = position
 	up_pos = normal_pos - transform.basis.z.normalized()*.65
 	og_scale = scale
 	Interact.main_page_static = static_page
 
+
 func reset_properties() -> void:
 	print("Position before: ", position)
 	position = Vector3.ZERO
 	scale = og_scale
+
 
 func show_inventory() -> void:
 	var tween : Tween = get_tree().create_tween()
@@ -33,7 +41,8 @@ func show_inventory() -> void:
 	tween.tween_property(self, "scale", og_scale*.65, TWEEN_TIME)
 	tween.tween_property(self, "position", up_pos, TWEEN_TIME)
 	show_inventory_sound.play()
-	arrow_down.visible = false
+	toggle_inventory_button.rotation_degrees.z = 180
+	GuiSystem.inventory_showing = true
 
 
 func hide_inventory() -> void:
@@ -44,7 +53,8 @@ func hide_inventory() -> void:
 	tween.tween_property(self, "scale", og_scale, TWEEN_TIME)
 	tween.tween_property(self, "position", normal_pos, TWEEN_TIME)
 	hide_inventory_sound.play()
-	arrow_down.visible = true
+	toggle_inventory_button.rotation_degrees.z = 0
+	GuiSystem.inventory_showing = false
 
 
 func _on_music_timer_timeout() -> void:

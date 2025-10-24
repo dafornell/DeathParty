@@ -6,8 +6,9 @@ class_name ObjectViewer extends Control
 @export var parent : CanvasLayer
 
 ## the minimum zoom scale level. The lower this is, the more you can zoom out
-@export var min_zoom : float = 2
+@export var min_zoom : float = 0.5
 ## the maximum zoom scale level. The higher this is, the more you can zoom in
+@export var default_zoom : float = 1
 @export var max_zoom : float = 5
 
 @export var test_path : String
@@ -66,6 +67,7 @@ func set_item_properties(scene : Node3D) -> Node3D:
 	visible = true
 	Interact.set_active_subviewport(sub_viewport)
 	remove_current_item()
+	close_item_info()
 	
 	model_holder.add_child(scene)
 
@@ -147,6 +149,9 @@ func view_item_info(item_resource : InventoryItemResource) -> void:
 	item_info.set_text(item_resource.description)
 	exit_button_parent.visible = false
 	item_info.visible = true
+
+func reset_zoom() -> void:
+	zoom_absolute(default_zoom)
 
 func view_journal_item_info(journal_item_resource : JournalItemResource) -> void:
 	journal_item_info.set_info(journal_item_resource)

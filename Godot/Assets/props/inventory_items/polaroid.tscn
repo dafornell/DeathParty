@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=6 format=3 uid="uid://ttvfclf4kv24"]
 
-[ext_resource type="Texture2D" path="res://Assets/PNGAssets/temp_polaroid_frame.png" id="1_ilutt"]
-[ext_resource type="Script" path="res://cube_001.gd" id="2_f3eg1"]
+[ext_resource type="Texture2D" uid="uid://bs6savww45o3" path="res://Assets/PNGAssets/temp_polaroid_frame.png" id="1_ilutt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fyhay"]
 transparency = 1
@@ -46,4 +45,3 @@ material_override = SubResource("StandardMaterial3D_fyhay")
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_tlph8")
 skeleton = NodePath("")
-script = ExtResource("2_f3eg1")

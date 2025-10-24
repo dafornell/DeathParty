@@ -24,12 +24,18 @@ var interaction_detector: InteractionDetector
 				if body == Globals.player:
 					on_in_range(true)
 
+## If not null, this item will despawn whenever the player has this item
+@export var inventory_item: InventoryItemResource
+
 var popup: Node3D
 var surface_material: StandardMaterial3D = null
 
 
 func _ready() -> void:
-	#print("New interctable")
+	if inventory_item:
+		_despawn_if_has_item()
+		SaveSystem.inventory_changed.connect(_on_inventory_changed)
+
 	interaction_detector = get_node_or_null("InteractionDetector")
 	if interaction_detector == null:
 		interaction_detector = interaction_detector_file.instantiate()
@@ -43,10 +49,10 @@ func _ready() -> void:
 			add_child(interaction_detector)
 	interaction_detector.player_interacted.connect(on_interact)
 	interaction_detector.player_in_range.connect(on_in_range)
-	
-	#Get the popup that will be used:
+
+	# Get the popup that will be used:
 	popup = get_node_or_null("Popup")
-	
+
 	#print("Loading ", name, ": ", primary_mesh, " ", use_first_mesh)
 	if primary_mesh:
 		create_outline()
@@ -94,7 +100,35 @@ func on_interact() -> void:
 	if talking_object_resource:
 		talking_object_resource.start_chat()
 
+	# rotate player model towards interactable (commented out for now because
+	# it rotates towards NPCs when we 'interact' with them even if they don't
+	# actually have chats which looks weird)
+	#var player_model: Node3D = Globals.player.get_node_or_null("PlayerModel")
+#
+	#if player_model != null:
+		#player_model.look_at(global_position, Vector3.UP, true)
+		#player_model.rotation = Vector3(0, player_model.rotation.y, 0)
+
 
 func on_in_range(in_range: bool) -> void:
 	if !enabled: return
 	toggle_popup(in_range)
+
+
+func _on_inventory_changed(_addremove : String, item : InventoryItemResource) -> void:
+	if !inventory_item: return
+	if item.name != inventory_item.name: return
+	_despawn_if_has_item(item)
+
+
+func _despawn_if_has_item(item : InventoryItemResource = null) -> bool:
+	if item == null:
+		if inventory_item == null: return false
+		item = SaveSystem.item_exists(inventory_item.name)
+	# NOTE: if we add any items the player can have multiple of, i think we'll
+	#		have to rework this, but its good for now :D
+	#				- jack
+	if item and item.amount_owned > 0:
+		queue_free()
+		return true
+	return false

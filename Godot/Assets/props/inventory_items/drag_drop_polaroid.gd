@@ -8,18 +8,12 @@ var bookflip_instance : BookFlip
 @onready var og_position : Vector3 = position
 var mesh : MeshInstance3D
 
-var item_resource : InventoryItemResource
-
 var og_scale : Vector3
-
-func _init(_item_resource : InventoryItemResource) -> void:
-	super()
-	item_resource = _item_resource
-	og_scale = Vector3.ONE*item_resource.inventory_scale
-	scale = og_scale
 
 func _ready() -> void:
 	super()
+	og_scale = Vector3.ONE*item_resource.inventory_scale
+	scale = og_scale
 	tree = get_tree()
 	mesh = Utils.find_first_child_of_class(self, MeshInstance3D)
 	

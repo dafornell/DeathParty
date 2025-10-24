@@ -1,0 +1,94 @@
+[gd_scene load_steps=10 format=4 uid="uid://dwq0ko1wuhejx"]
+
+[ext_resource type="PackedScene" uid="uid://psh336exq4ts" path="res://Assets/props/inventory_items/inventory_item_base.tscn" id="1_pq887"]
+[ext_resource type="Shader" uid="uid://ddcx35eckfbrh" path="res://Assets/Shaders/brightness_shader.gdshader" id="2_0n6hh"]
+[ext_resource type="Texture2D" uid="uid://brf5v15vqd7ws" path="res://Assets/models/polaroid_nora_polaroid_nora.png" id="4_mwnlc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6ruhv"]
+resource_local_to_scene = true
+size = Vector3(0.22949219, 0.26000977, 0.2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r46al"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_0n6hh")
+shader_parameter/ignore_lighting = true
+shader_parameter/brightness = 0.6
+shader_parameter/contrast = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4nbyk"]
+resource_name = "Material"
+cull_mode = 2
+albedo_color = Color(0.9063318, 0.9063318, 0.9063318, 1)
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_me1jn"]
+resource_name = "Material.001"
+cull_mode = 2
+albedo_texture = ExtResource("4_mwnlc")
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_f7bh5"]
+_surfaces = [{
+"aabb": AABB(-1.8253527, -0.061954256, -1.0985656, 3.6507053, 0.12390851, 2.1971312),
+"format": 34896613377,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAwAEAAEABQAAAAIABQACAAYABwADAAAABwAAAAUAAwAHAAQABwAFAAYABwAGAAQA"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("//8AAP//AAAAAP////8AAP///////wAAAAAAAP//AAAAAP//AAAAAP//AAAAAAAA/////wAAAAAAAAAAAAAAAA==")
+}, {
+"aabb": AABB(-1.8253527, 0.061954256, -1.0985656, 3.6507053, 1e-05, 2.1971312),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("//8AAAAAAAAAAAAA//8AAAAAAAAAAAAA//8AAP//AAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ekjg2"]
+resource_name = "polaroid_nora_Cube"
+_surfaces = [{
+"aabb": AABB(-1.8253527, -0.061954256, -1.0985656, 3.6507053, 0.12390851, 2.1971312),
+"attribute_data": PackedByteArray("/1//P/+fAAD/n/8//18AAP9f////n/+//5////9f/7//H/9//1//P/9f/3//H/8//1//f/+f/z//n/9//1//P/9f/7//n/9//5//v/9f/38="),
+"format": 34896613399,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEA"),
+"material": SubResource("StandardMaterial3D_4nbyk"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 20,
+"vertex_data": PackedByteArray("//8AAP///78AAP//////v/////////+/AAAAAP///78AAAAA//9U1QAA//8AAFTVAAD/////VNUAAAAAAABU1QAAAAAAAP+///8AAP///7///wAAAAD/vwAAAAD///+///8AAAAAVNX///////9U1f////8AAFTV//8AAP//VNUAAAAAAAD///////8AAP//AAD//wAA/////wAAAAD///////////////////////9U1VTVVNVU1VTVVNVU1VTVAAD/fwAA/38AAP9/AAD/f6oqqiqqKqoqqiqqKqoqqir/v/+//7//v/+//7//v/+/")
+}, {
+"aabb": AABB(-1.8253527, 0.061954256, -1.0985656, 3.6507053, 1e-05, 2.1971312),
+"attribute_data": PackedByteArray("/////35/9n7///Z+fn/+/w=="),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"material": SubResource("StandardMaterial3D_me1jn"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(2.0014958, 2.000499, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("//8AAAAAVNUAAAAA//9U1QAAAAAAAFTV//8AAP//VNVU1aoqVNWqKlTVqipU1aoq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_f7bh5")
+
+[node name="InventoryItemBase" instance=ExtResource("1_pq887")]
+
+[node name="CollisionShape3D" parent="." index="0"]
+shape = SubResource("BoxShape3D_6ruhv")
+
+[node name="Polaroid" type="MeshInstance3D" parent="MeshContainer" index="0"]
+transform = Transform3D(6.563284e-16, -2.4041265e-09, 0.055, -0.055, 4.1523847e-09, 8.378349e-16, -4.1523847e-09, -0.055, -2.4041265e-09, 0, 0, 0)
+material_overlay = SubResource("ShaderMaterial_r46al")
+mesh = SubResource("ArrayMesh_ekjg2")
+skeleton = NodePath("")

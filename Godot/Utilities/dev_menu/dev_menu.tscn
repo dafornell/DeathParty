@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cmink41yr1q8i"]
+[gd_scene load_steps=5 format=3 uid="uid://cmink41yr1q8i"]
 
 [ext_resource type="Script" uid="uid://cyq4ufcsp62p7" path="res://Utilities/dev_menu/dev_menu.gd" id="1_wbp6d"]
+[ext_resource type="Script" uid="uid://dehiqcd3jycjf" path="res://Utilities/dev_menu/dev_menu_list_inventory_items.gd" id="2_c1403"]
+[ext_resource type="Script" uid="uid://cuemtfmr7vkbb" path="res://Utilities/dev_menu/dev_menu_give_item.gd" id="3_3xkyt"]
+[ext_resource type="Script" uid="uid://cxm6k3yxmhmid" path="res://Utilities/dev_menu/dev_menu_give_all_inventory_items.gd" id="4_3xkyt"]
 
 [node name="DevMenu" type="CanvasLayer"]
 layer = 99
@@ -51,6 +54,53 @@ layout_mode = 2
 focus_mode = 0
 text = "skip party room music to next track"
 
+[node name="FoldableContainer" type="FoldableContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+folded = true
+title = "Inventory utils"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/FoldableContainer"]
+visible = false
+layout_mode = 2
+
+[node name="ListInventoryItems" type="Button" parent="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer"]
+layout_mode = 2
+text = "List inventory items"
+script = ExtResource("2_c1403")
+
+[node name="GiveItemContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer" node_paths=PackedStringArray("line_edit", "status_text")]
+layout_mode = 2
+script = ExtResource("3_3xkyt")
+line_edit = NodePath("VBoxContainer/GiveItemLineEdit")
+status_text = NodePath("GiveItemStatusText")
+
+[node name="VBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer/GiveItemContainer"]
+layout_mode = 2
+
+[node name="GiveItemLineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer/GiveItemContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Item name"
+keep_editing_on_text_submit = true
+
+[node name="GiveItem" type="Button" parent="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer/GiveItemContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Give"
+
+[node name="GiveItemStatusText" type="Label" parent="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer/GiveItemContainer"]
+visible = false
+layout_mode = 2
+
+[node name="GiveAllInventoryItemsButton" type="Button" parent="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer"]
+layout_mode = 2
+text = "Give all inventory items"
+script = ExtResource("4_3xkyt")
+
+[node name="GiveAllInventoryItemsWithUniqueModels" type="Button" parent="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer"]
+layout_mode = 2
+text = "Give all inventory items with unique models"
+
 [node name="TeleportLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "teleport to a room:"
@@ -64,3 +114,7 @@ columns = 3
 [connection signal="toggled" from="MarginContainer/VBoxContainer/PlayerSpeedButton" to="." method="_on_player_speed_button_toggled"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/SlowMotionButton" to="." method="_on_slow_motion_button_toggled"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/SkipMusicButton" to="." method="_on_skip_music_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer/ListInventoryItems" to="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer/ListInventoryItems" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer/GiveItemContainer/VBoxContainer/GiveItem" to="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer/GiveItemContainer" method="_on_give_item_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer/GiveAllInventoryItemsButton" to="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer/GiveAllInventoryItemsButton" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer/GiveAllInventoryItemsWithUniqueModels" to="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer/GiveAllInventoryItemsButton" method="give_all_inventory_items_with_unique_models"]

@@ -1,8 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://b1kmtpl7lkqjd"]
+[gd_scene load_steps=4 format=3 uid="uid://hcaf5hlfklbu"]
 
+[ext_resource type="PackedScene" uid="uid://psh336exq4ts" path="res://Assets/props/inventory_items/inventory_item_base.tscn" id="1_m108d"]
 [ext_resource type="PackedScene" uid="uid://bh12eagb0x4sn" path="res://rooms/Storage Room/Daisy Paint Brush1.glb" id="1_y4t2s"]
 
-[node name="Daisy Paint Brush1" instance=ExtResource("1_y4t2s")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_a0rlp"]
+resource_local_to_scene = true
+size = Vector3(0.7792969, 1.8054092, 0.657)
 
-[node name="DaisyPaintbrush" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0.002506435, 0)
+[node name="InventoryItemBase" instance=ExtResource("1_m108d")]
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0087890625, 0.04871139, -0.001)
+shape = SubResource("BoxShape3D_a0rlp")
+
+[node name="Daisy Paint Brush1" parent="MeshContainer" index="0" instance=ExtResource("1_y4t2s")]
+transform = Transform3D(2.415, 0, 0, 0, 2.415, 0, 0, 0, 2.415, 0, -0.7782227, 0)

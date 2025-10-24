@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://l0ljp7dxs4g4"]
+
+[ext_resource type="Script" uid="uid://c06ooui3lojb6" path="res://Assets/props/inventory_items/click_to_inspect.gd" id="1_dj3x0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qh38h"]
+resource_local_to_scene = true
+size = Vector3(0.22949219, 0.26000977, 0.2)
+
+[node name="InventoryItemBase" type="Area3D" node_paths=PackedStringArray("mesh_root")]
+script = ExtResource("1_dj3x0")
+mesh_root = NodePath("MeshContainer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_qh38h")
+
+[node name="MeshContainer" type="Node3D" parent="."]
+
+[node name="HoverSound" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/000_SFX/300_UI/FocusChange"
+event_guid = "{eb371b83-cd23-4eb7-ad77-336db695af66}"
+volume = 0.5
+unique_name_in_owner = true

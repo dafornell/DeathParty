@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://ku64ba50p1s3"]
+
+[ext_resource type="PackedScene" uid="uid://psh336exq4ts" path="res://Assets/props/inventory_items/inventory_item_base.tscn" id="1_8sv2b"]
+[ext_resource type="PackedScene" uid="uid://c0yymefyfdnd6" path="res://rooms/Storage Room/Josef Scale.glb" id="1_svd8f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_58203"]
+resource_local_to_scene = true
+size = Vector3(1.1239738, 0.583992, 0.2)
+
+[node name="InventoryItemBase" instance=ExtResource("1_8sv2b")]
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0, 0, 0, 1, 0.047437176, -0.052823976, 0)
+shape = SubResource("BoxShape3D_58203")
+
+[node name="Josef Scale" parent="MeshContainer" index="0" instance=ExtResource("1_svd8f")]
+transform = Transform3D(3.22, 7.677079e-07, -3.3557575e-14, 1.3637231e-21, -1.4075067e-07, -3.22, -7.677079e-07, 3.22, -1.4075067e-07, 0.22386527, -0.24679619, 0)

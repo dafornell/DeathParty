@@ -1,7 +1,11 @@
-[gd_scene load_steps=13 format=4 uid="uid://4au417aywrdh"]
+[gd_scene load_steps=15 format=4 uid="uid://4au417aywrdh"]
 
+[ext_resource type="Script" uid="uid://bh5bh38a45mj" path="res://Utilities/title_screen.gd" id="1_05l2w"]
 [ext_resource type="Texture2D" uid="uid://b5evdr7vcsetd" path="res://Assets/PNGAssets/titlescreen.png" id="1_v6p8y"]
 [ext_resource type="Theme" uid="uid://dy4pwf3gcuc6g" path="res://Assets/themes/title_screen_button.tres" id="2_ak2if"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ak2if"]
+bg_color = Color(0.8627451, 0.9019608, 0.5882353, 0.49019608)
 
 [sub_resource type="Image" id="Image_v6p8y"]
 data = {
@@ -1106,7 +1110,9 @@ Button/styles/hover = SubResource("StyleBoxFlat_jqemp")
 Button/styles/normal = SubResource("StyleBoxFlat_013yr")
 Button/styles/pressed = SubResource("StyleBoxFlat_8vmu4")
 
-[node name="TitleScreen" type="CanvasLayer" groups=["title_screen"]]
+[node name="TitleScreen" type="CanvasLayer" node_paths=PackedStringArray("title_image") groups=["title_screen"]]
+script = ExtResource("1_05l2w")
+title_image = NodePath("FadeThisOut/TitleImage")
 
 [node name="FadeThisOut" type="Control" parent="."]
 layout_mode = 3
@@ -1114,7 +1120,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect" type="TextureRect" parent="FadeThisOut"]
+[node name="TitleImage" type="TextureRect" parent="FadeThisOut"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1139,6 +1145,17 @@ rotation = 0.0959931
 focus_mode = 0
 theme = ExtResource("2_ak2if")
 
+[node name="SettingsButton" type="Button" parent="FadeThisOut"]
+layout_mode = 0
+offset_left = 462.99997
+offset_top = 415.99994
+offset_right = 615.3399
+offset_bottom = 453.9853
+rotation = -0.09370451
+focus_mode = 0
+theme = ExtResource("2_ak2if")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ak2if")
+
 [node name="QuitButton" type="Button" parent="FadeThisOut"]
 layout_mode = 0
 offset_left = 654.0
@@ -1148,3 +1165,7 @@ offset_bottom = 484.0
 rotation = 0.0636526
 focus_mode = 0
 theme = SubResource("Theme_ak2if")
+
+[connection signal="pressed" from="FadeThisOut/StartGameButton" to="." method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="FadeThisOut/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="FadeThisOut/QuitButton" to="." method="_on_quit_button_pressed"]

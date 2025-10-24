@@ -1,7 +1,7 @@
 class_name NPC extends Interactable
 
 var outline: Node3D
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var animation_player: AnimationPlayer = get_node_or_null("AnimationPlayer")
 
 @export var character_resource: CharacterResource
 @export var dialogue_box: DialogueBoxResource = preload("res://Assets/Resources/DialogueBoxResources/main_dialogue_box_properties.tres")
@@ -23,6 +23,7 @@ func on_unread(_unread: bool) -> void:
 	#$SpeechBubble.visible = true
 	pass
 
+
 ##INHERITED
 func on_in_range(in_range: bool) -> void:
 	##only show the outline if NPC has something to say
@@ -33,10 +34,14 @@ func on_in_range(in_range: bool) -> void:
 	if show_outline:
 		super(in_range)
 
+
 func on_interact() -> void:
 	super()
 	if character_resource:
 		character_resource.start_chat()
-		
+
+	Events.toggle_quest_marker.emit(name, false)
+
+
 func play_animation(anim_name: String) -> void:
 	animation_player.play(anim_name)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://beuct1pjdlayy"]
+[gd_scene load_steps=32 format=3 uid="uid://beuct1pjdlayy"]
 
 [ext_resource type="PackedScene" uid="uid://b8kaqd0dtqsp1" path="res://Entities/player.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://yory4i5rrii2" path="res://Common/Object Viewer/object_viewer.tscn" id="2_a6jrf"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bqae87n6emy8q" path="res://rooms/Hourhand hallway/Hourhand hallway.tscn" id="27_xuqvo"]
 [ext_resource type="PackedScene" uid="uid://bpjb4k8tcm014" path="res://rooms/control room/Controlroom.tscn" id="28_kq58d"]
 [ext_resource type="Script" uid="uid://kp3w3bjsanur" path="res://cell_visualizer.gd" id="28_qsp4k"]
+[ext_resource type="Script" uid="uid://bn6ojm4yr3e6v" path="res://audio/party_room_music.gd" id="28_seu75"]
 [ext_resource type="PackedScene" uid="uid://c7033b4susyvc" path="res://rooms/Storage Room/Storageroom.tscn" id="28_xuqvo"]
 [ext_resource type="PackedScene" uid="uid://ch4fuk8qiva6x" path="res://rooms/Ghost hallway/Ghost hallway.tscn" id="29_qsp4k"]
 [ext_resource type="PackedScene" uid="uid://b8jbowdnorp1f" path="res://Utilities/pause_menu/pause_menu.tscn" id="37_h8e4i"]
@@ -44,9 +45,9 @@ json_file2 = SubResource("Resource_a6jrf")
 
 [node name="DevMenu" parent="." node_paths=PackedStringArray("player", "party_room_music") instance=ExtResource("4_h8e4i")]
 visible = false
+teleport_button_scene = ExtResource("5_xuqvo")
 player = NodePath("../Player")
 party_room_music = NodePath("../PartyRoomMusic")
-teleport_button_scene = ExtResource("5_xuqvo")
 
 [node name="ObjectViewerCanvasLayer" parent="." instance=ExtResource("2_a6jrf")]
 visible = false
@@ -115,6 +116,65 @@ script = ExtResource("3_cyx1q")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.786, 0.0322108, 25.2049)
 floor_constant_speed = true
 
+[node name="Skeleton3D" parent="Player/PlayerModel/Final Olivia/model Olivia" index="0"]
+bones/0/position = Vector3(-0.50785, 0.262886, -93.4062)
+bones/0/rotation = Quaternion(-0.727592, -0.0411315, 0.0326936, 0.683995)
+bones/1/rotation = Quaternion(-0.0574603, -0.00538765, 0.0148317, 0.998223)
+bones/2/rotation = Quaternion(-0.00399468, -0.0102276, 0.0173651, 0.999789)
+bones/3/rotation = Quaternion(-0.00390009, -0.0099399, 0.0175437, 0.999789)
+bones/4/rotation = Quaternion(0.0705828, 0.00687288, -0.0166833, 0.997343)
+bones/5/rotation = Quaternion(0.107114, 0.00539987, -0.0488156, 0.993033)
+bones/7/rotation = Quaternion(-0.546606, -0.417896, 0.630279, -0.35963)
+bones/8/rotation = Quaternion(0.317049, 0.0983751, -0.0320206, 0.94275)
+bones/9/rotation = Quaternion(0.0311013, -0.0724689, 0.205284, 0.97552)
+bones/10/rotation = Quaternion(0.0542808, 0.0438365, -0.119827, 0.99034)
+bones/23/rotation = Quaternion(0.112066, -0.00449523, 0.0324376, 0.993161)
+bones/24/rotation = Quaternion(0.267844, 6.74696e-05, -0.0471714, 0.962307)
+bones/25/rotation = Quaternion(0.20062, -1.20978e-05, -0.0345765, 0.979059)
+bones/27/rotation = Quaternion(0.118137, -0.0178508, 0.00825517, 0.992803)
+bones/28/rotation = Quaternion(0.168795, 0.00580405, 0.00232419, 0.985631)
+bones/29/rotation = Quaternion(0.352865, 0.000239371, -0.0710912, 0.932969)
+bones/31/rotation = Quaternion(0.579876, -0.395738, 0.606947, 0.372492)
+bones/32/rotation = Quaternion(0.263099, -0.0925047, 0.0425805, 0.959379)
+bones/33/rotation = Quaternion(0.0223603, 0.0538463, -0.151363, 0.986757)
+bones/34/rotation = Quaternion(0.0292257, 0.0371083, 0.0903154, 0.994792)
+bones/35/rotation = Quaternion(0.168521, -0.0565034, -0.167528, 0.969713)
+bones/36/rotation = Quaternion(-0.0838449, -0.102758, 0.136341, 0.981744)
+bones/37/rotation = Quaternion(-0.0474208, 0.0489868, 0.0572198, 0.996031)
+bones/39/rotation = Quaternion(0.0697909, -0.00383727, -0.040612, 0.996727)
+bones/40/rotation = Quaternion(0.108332, 1.93545e-05, 0.0200246, 0.993913)
+bones/41/rotation = Quaternion(0.0919812, -8.2466e-05, 0.0166961, 0.995621)
+bones/43/rotation = Quaternion(0.0852496, -1.11205e-05, -0.035453, 0.995729)
+bones/44/rotation = Quaternion(0.200159, 3.87842e-05, 0.0322028, 0.979234)
+bones/45/rotation = Quaternion(-0.0792775, 2.28393e-05, -0.0122595, 0.996777)
+bones/47/rotation = Quaternion(0.0902529, 0.00520651, -0.0350707, 0.995288)
+bones/48/rotation = Quaternion(0.20116, -1.09659e-05, 0.0339415, 0.97897)
+bones/49/rotation = Quaternion(-0.0337383, -4.52025e-05, -0.00580067, 0.999414)
+bones/51/rotation = Quaternion(0.0656494, 0.0116557, -0.04066, 0.996946)
+bones/52/rotation = Quaternion(0.199595, 8.61171e-06, 0.0345372, 0.97927)
+bones/53/rotation = Quaternion(-0.0671357, -2.57548e-05, -0.0114595, 0.997678)
+bones/55/rotation = Quaternion(0.130068, 0.116569, 0.98239, -0.0663653)
+bones/56/rotation = Quaternion(-0.154999, 0.0190586, 0.046839, 0.98662)
+bones/57/rotation = Quaternion(0.411622, -0.0887178, 0.00606212, 0.907006)
+bones/60/rotation = Quaternion(-0.0969215, 0.00933604, 0.994986, -0.0228311)
+bones/61/rotation = Quaternion(-0.207993, 0.0461008, -0.0223816, 0.976787)
+bones/62/rotation = Quaternion(0.561523, 0.0687355, -0.0722182, 0.821433)
+bones/63/rotation = Quaternion(0.34214, 0.110528, -0.0396021, 0.932285)
+
+[node name="FootstepSounds" parent="Player/PlayerModel" index="1"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+
+[node name="RowanFollower" parent="Player" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.786, -3.96779, 25.2049)
+
 [node name="MainCamera" parent="." node_paths=PackedStringArray("main_camera", "player") instance=ExtResource("3_dg77c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.8502, 1.51749, 24.6872)
 fov = 30.0
@@ -122,6 +182,16 @@ main_camera = NodePath(".")
 player = NodePath("../Player")
 
 [node name="FmodListener3D" type="FmodListener3D" parent="MainCamera"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+script = null
 
 [node name="Entrance" parent="." groups=["loadable_scene"] instance=ExtResource("42_0n3wm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.512, 0, 0)
@@ -137,7 +207,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.423, 4.7584, -20.5061)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.668, 2.34912, -17.0223)
 
 [node name="Basement" parent="." groups=["loadable_scene"] instance=ExtResource("38_b1qrp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6294625, -3.2843897, 7.7436066)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.62946, -3.28439, 7.74361)
 
 [node name="Bedroom" parent="." instance=ExtResource("39_h8e4i")]
 transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, -39.796, 0.0111146, 22.715)
@@ -161,11 +231,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.56845, 1.95251, -18.0343)
 transform = Transform3D(-0.00119735, 0, 1.4, 0, 1.4, 0, -1.4, 0, -0.00119735, 10.2549, 0, 15.4498)
 
 [node name="PartyRoomMusic" type="FmodEventEmitter3D" parent="."]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 event_name = "event:/900_MX/Party Room music"
 event_guid = "{757f62e0-b188-491e-9503-6ad99b13690a}"
 autoplay = true
 volume = 0.65
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.4073, 2.53713, -21.0312)
+script = ExtResource("28_seu75")
 
 [node name="CellVisualizer" type="CanvasLayer" parent="."]
 script = ExtResource("28_qsp4k")
@@ -363,3 +443,5 @@ grow_vertical = 2
 
 [editable path="ObjectViewerCanvasLayer"]
 [editable path="Polaroid"]
+[editable path="Player"]
+[editable path="Player/PlayerModel/Final Olivia"]

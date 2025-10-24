@@ -9,7 +9,7 @@ class_name FootstepSounds extends FmodEventEmitter3D
 
 @onready var ray_cast: RayCast3D = %RayCast3D
 
-var previous_position: Vector3 = global_position
+@onready var previous_position: Vector3 = global_position
 var speed: Vector3
 
 

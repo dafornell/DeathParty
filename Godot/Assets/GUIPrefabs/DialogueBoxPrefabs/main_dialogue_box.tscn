@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://blkculyy7kbod"]
+[gd_scene load_steps=22 format=3 uid="uid://blkculyy7kbod"]
 
 [ext_resource type="Shader" uid="uid://dy0tt55my5rir" path="res://Assets/GUIPrefabs/DialogueBoxPrefabs/brightness2D.gdshader" id="1_fwn3t"]
 [ext_resource type="Script" uid="uid://b65j1ann1xpvc" path="res://main_dialogue_box.gd" id="1_lu3tv"]
 [ext_resource type="Texture2D" uid="uid://6ickl66e4n42" path="res://Assets/DialogueBoxTextures/chatbox.png" id="1_u7ytc"]
 [ext_resource type="Texture2D" uid="uid://dq8hpw5fmia6o" path="res://Assets/DialogueBoxTextures/Base.png" id="4_tv62r"]
 [ext_resource type="Texture2D" uid="uid://cfhckeemfd2w1" path="res://Assets/DialogueBoxTextures/oliviapol_transparent 1.png" id="4_u1ixr"]
+[ext_resource type="Script" uid="uid://c0kdfpivfvof3" path="res://Assets/GUIPrefabs/DialogueBoxPrefabs/main_dialogue_scroll_container.gd" id="5_2nrlq"]
 [ext_resource type="Texture2D" uid="uid://dohqgq4ibo3wp" path="res://Assets/DialogueBoxTextures/choice_up.png" id="5_ced3p"]
 [ext_resource type="Texture2D" uid="uid://canhx0n45arq5" path="res://Assets/DialogueBoxTextures/choice_right_white.png" id="5_wtndk"]
 [ext_resource type="Texture2D" uid="uid://mmkmim58t0r8" path="res://Assets/DialogueBoxTextures/choice_left.png" id="6_462jj"]
@@ -111,12 +112,18 @@ grow_horizontal = 2
 grow_vertical = 2
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
+script = ExtResource("5_2nrlq")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ProtagonistSpeaking/DialogueBacker/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
 theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
 bbcode_enabled = true
 fit_content = true
 scroll_active = false
@@ -198,12 +205,18 @@ grow_horizontal = 2
 grow_vertical = 2
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
+script = ExtResource("5_2nrlq")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="NPCSpeaking/DialogueBacker/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
 theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/bold_italics_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+theme_override_font_sizes/mono_font_size = 20
 bbcode_enabled = true
 fit_content = true
 scroll_active = false

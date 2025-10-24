@@ -37,7 +37,8 @@ func set_up_camera():
 	print("Setting up camera again: ", player, "  ", player.is_inside_tree())
 	camera_location_node = player.get_node("PlayerCameraLocation")
 	default_player_camera_location_node = camera_location_node
-	camera_location = camera_location_node.global_position
+	if camera_location_node.is_inside_tree():
+		camera_location = camera_location_node.global_position
 	main_camera.make_current()
 	
 	GlobalCameraScript.move_camera_smooth.connect(_move_camera_smooth)

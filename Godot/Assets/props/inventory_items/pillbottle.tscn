@@ -1,17 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://dga2tnvugyda7"]
+[gd_scene load_steps=4 format=3 uid="uid://dga2tnvugyda7"]
 
+[ext_resource type="PackedScene" uid="uid://psh336exq4ts" path="res://Assets/props/inventory_items/inventory_item_base.tscn" id="1_e8v8x"]
 [ext_resource type="PackedScene" uid="uid://6fyb1kpv2sae" path="res://Assets/models/pillbottle.glb" id="1_eppo6"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eppo6"]
-transparency = 1
-depth_draw_mode = 1
+[sub_resource type="BoxShape3D" id="BoxShape3D_b5wlm"]
+resource_local_to_scene = true
+size = Vector3(0.22949219, 0.26000977, 0.2)
 
-[node name="pillbottle" instance=ExtResource("1_eppo6")]
-transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0, 0, 0)
+[node name="InventoryItemBase" instance=ExtResource("1_e8v8x")]
 
-[node name="Cube" parent="." index="0"]
-transform = Transform3D(0.15, 0, 0, 0, -6.55671e-09, 0.15, 0, -0.15, -6.55671e-09, 0, 0, 0)
+[node name="CollisionShape3D" parent="." index="0"]
+shape = SubResource("BoxShape3D_b5wlm")
 
-[node name="Cylinder" parent="." index="1"]
-transform = Transform3D(0.15, 0, 0, 0, -6.55671e-09, 0.15, 0, -0.15, -6.55671e-09, 0, 0, 0)
-surface_material_override/0 = SubResource("StandardMaterial3D_eppo6")
+[node name="pillbottle" parent="MeshContainer" index="0" instance=ExtResource("1_eppo6")]
+transform = Transform3D(0.06, 0, 0, 0, 0.06, 0, 0, 0, 0.06, 0, -0.033651963, 0)

@@ -1,6 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://8x3tcu4xsvvn"]
+[gd_scene load_steps=4 format=3 uid="uid://l7ghxl1sga8j"]
 
-[ext_resource type="PackedScene" uid="uid://dsti2l63426xr" path="res://rooms/Storage Room/glove.glb" id="1_qdy33"]
+[ext_resource type="PackedScene" uid="uid://psh336exq4ts" path="res://Assets/props/inventory_items/inventory_item_base.tscn" id="1_qdy33"]
+[ext_resource type="PackedScene" uid="uid://dsti2l63426xr" path="res://rooms/Storage Room/glove.glb" id="2_jga8a"]
 
-[node name="glove" instance=ExtResource("1_qdy33")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+[sub_resource type="BoxShape3D" id="BoxShape3D_jga8a"]
+resource_local_to_scene = true
+size = Vector3(0.93847656, 1.3374023, 0.2)
+
+[node name="InventoryItemBase" instance=ExtResource("1_qdy33")]
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1162262, 0.08072281, 0)
+shape = SubResource("BoxShape3D_jga8a")
+
+[node name="glove" parent="MeshContainer" index="0" instance=ExtResource("2_jga8a")]
+transform = Transform3D(3.385, 0, 0, 0, -1.4796305e-07, -3.385, 0, 3.385, -1.4796305e-07, 0, -0.16249353, 0)
