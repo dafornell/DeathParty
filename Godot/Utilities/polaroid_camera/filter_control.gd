@@ -18,16 +18,8 @@ extends Node2D
 
 var lens_color=""
 
-#filter wheel stays in place with the camera 
-#is breaking the filter change, when you comment this out it works 
-#func _physics_process(delta):
-	#position = ViewFinder.position 
-
-#left and right buttons not in use right now buy may change later in game.
-#function for when the player turns the filter wheel left 
+#reassign filter image
 func filter_image(filter_image:String, color:String):
-	if color=="N":
-		N = load(filter_image)
 	if color=="R":
 		R = load(filter_image)
 	if color=="G":
@@ -98,15 +90,8 @@ func lens_change(lens_color: String):
 		lens.visible=true
 		lens.texture=ImageTexture.create_from_image(green_filter)
 		filter_letter.texture=ImageTexture.create_from_image(G)
-		
 
-#area 2d of the filter base, not in use 
-#func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-		#if event is InputEventMouseButton:
-			#print('clicked!')
-
-#turns wheel when clicked 
-
+#function for turning 
 func _on_filter_base_button_pressed() -> void:
 	filter_base_button.disabled=true
 	print ("button clicked")

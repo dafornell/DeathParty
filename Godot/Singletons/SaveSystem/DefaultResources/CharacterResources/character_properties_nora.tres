@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dka00jbmkrihq" path="res://Assets/CharacterAssets/nora/nora_circle.png" id="2_cbegv"]
 [ext_resource type="Texture2D" uid="uid://gxeghch3pqsi" path="res://Assets/CharacterAssets/Polaroids/nora_b.png" id="2_cdqmh"]
 [ext_resource type="Script" uid="uid://cmr58186dx31r" path="res://Singletons/SaveSystem/ResourceScripts/character_properties_script.gd" id="2_to8io"]
-[ext_resource type="Script" uid="uid://d1yny6oqf2gvp" path="res://Singletons/SaveSystem/ResourceScripts/json_array.gd" id="4_pxfea"]
+[ext_resource type="Script" path="res://Singletons/SaveSystem/ResourceScripts/json_array.gd" id="4_pxfea"]
 [ext_resource type="JSON" path="res://Assets/InkFiles/OliviaNoraSamPartyRoomDancerPartner.ink.json" id="5_dpa4y"]
 
 [sub_resource type="Resource" id="Resource_dpa4y"]

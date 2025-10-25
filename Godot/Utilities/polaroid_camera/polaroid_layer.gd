@@ -6,6 +6,7 @@ class_name PolaroidLayer extends CanvasLayer
 # variable hold the image that the camera is looking at  
 @export var Picture: TextureRect
 @export var shoot:Button
+@export var filter_control: Node2D
 # takes in picture count 
 var count =0
 
@@ -45,11 +46,14 @@ func _physics_process(delta) -> void:
 			Picture.position.y = -(Picture.size.y*Picture.scale.y-get_viewport().size.y)
 
 #this function need to be called first to set the picture being taken 
-func start(picture: String,filter: String,filter_picture:String):
+func start(picture: String, filter: String,filter_picture: String):
 	#var image = Image.load_from_file(picture)
+#	default picture 
 	$body/MainImage.texture=load(picture)
 	Picture=$body/MainImage
 #	calls function that takes in the filtered image and the associated filter color
+	if filter!="null":
+		filter_control.filter_image(filter,filter_picture);
 	$body/MainImage.visible=true
 	self.visible=true
 	

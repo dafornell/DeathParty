@@ -2378,12 +2378,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_o7qs3")
 
-[node name="Bedroom" type="Area3D" node_paths=PackedStringArray("play_button", "quit_button", "fade_title", "title_screen", "closet", "room_area", "path_follow_node") groups=["loadable_scene"]]
+[node name="Bedroom" type="Area3D" node_paths=PackedStringArray("title_screen", "closet", "room_area", "path_follow_node") groups=["loadable_scene"]]
 collision_mask = 2
 script = ExtResource("1_lxtj2")
-play_button = NodePath("TitleScreen/FadeThisOut/StartGameButton")
-quit_button = NodePath("TitleScreen/FadeThisOut/QuitButton")
-fade_title = NodePath("TitleScreen/FadeThisOut/TextureRect")
 title_screen = NodePath("TitleScreen")
 closet = NodePath("Closet")
 room_area = NodePath("RoomArea")
@@ -2478,6 +2475,9 @@ target_scene = 9
 play_door_sound = true
 use_first_mesh = true
 enabled = false
+
+[node name="DoorSound" parent="SceneLoader_Exterior" index="0"]
+event_name = ""
 
 [node name="Popup" parent="SceneLoader_Exterior" index="1"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 1.5, 1.75, 0)
@@ -3212,7 +3212,6 @@ transform = Transform3D(0.565345, 0.845524, -0.227634, 0.139033, 0.180841, 1.017
 autoplay = "IDLE"
 
 [node name="Music" type="FmodEventEmitter3D" parent="."]
-event_name = "event:/900_MX/Olivia room music"
 event_guid = "{ae9cb825-c6ee-408e-a544-82929c10a82d}"
 autoplay = true
 volume = 0.5

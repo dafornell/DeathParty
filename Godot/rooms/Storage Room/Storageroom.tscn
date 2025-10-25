@@ -1932,7 +1932,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_hjnug")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_do7od"]
-size = Vector3(4.045, 3.837, 3.755)
+size = Vector3(3.105, 4.027, 5.695)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_puac4"]
 resource_name = "Material.008"
@@ -2808,7 +2808,7 @@ local_spawn_point = 1
 door_sound_type = 1
 
 [node name="DoorSound" parent="SceneLoader_Basement" index="0"]
-event_name = ""
+event_guid = "{00000000-0000-0000-0000-000000000000}"
 
 [node name="Popup" parent="SceneLoader_Basement" index="1"]
 transform = Transform3D(-6.55671e-09, 0, -0.15, 0, 0.15, 0, 0.15, 0, -6.55671e-09, 0, 1.75, -1.25)
@@ -3496,8 +3496,21 @@ script = ExtResource("28_xroff")
 take = NodePath("Popup")
 metadata/_custom_type_script = "uid://bea7y4hurcesx"
 
+[node name="InteractionDetector" type="Area3D" parent="wine barrels" node_paths=PackedStringArray("collision_shape")]
+transform = Transform3D(1.0000002, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, 0, 0, 0)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("31_kc1yc")
+collision_shape = NodePath("CollisionShape3D")
+metadata/_custom_type_script = "uid://dc0eglbdf0sq7"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wine barrels/InteractionDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33463228, 0.9833588, 0)
+shape = SubResource("BoxShape3D_do7od")
+debug_color = Color(0.99300927, 0.45221817, 0.7367748, 0.41960785)
+
 [node name="Popup" parent="wine barrels" instance=ExtResource("29_kc1yc")]
-transform = Transform3D(0.3255665, -0.00021812768, 0.7410976, -0.7410973, 3.249901e-08, 0.32556653, 8.776151e-05, 0.80945635, 0.0001996938, 0.3469596, 1.4628822, -0.6796209)
+transform = Transform3D(0.3255665, -0.00021812768, 0.7410976, -0.7410973, 3.2499013e-08, 0.32556653, 8.776151e-05, 0.80945635, 0.0001996938, 0.923, 0.049999952, 1.6520002)
 
 [node name="Background" parent="wine barrels/Popup" index="0"]
 transform = Transform3D(1, -7.275958e-12, -3.0549074e-09, 0, 0.99999994, 2.910383e-11, -3.0549039e-09, 0, 1, -0.15788627, 0, 0.06935996)
@@ -3512,51 +3525,6 @@ font_size = 190
 transform = Transform3D(1, -7.275958e-12, -3.606828e-07, -1.0186341e-10, 0.99999905, -2.3283064e-10, -6.265958e-08, 1.4551915e-10, 0.99999917, -0.102368355, -5.1617622e-05, 0.254049)
 text = "photo"
 font_size = 65
-
-[node name="Popup2" parent="wine barrels" instance=ExtResource("29_kc1yc")]
-transform = Transform3D(0.32556662, -0.00021812774, 0.7410978, -0.74109745, 3.249902e-08, 0.32556665, 8.776153e-05, 0.8094566, 0.00019969382, 0.012327433, 2.4462414, -0.67962104)
-
-[node name="Background" parent="wine barrels/Popup2" index="0"]
-transform = Transform3D(1, -7.275958e-12, -3.0549074e-09, 0, 0.99999994, 2.910383e-11, -3.0549039e-09, 0, 1, -0.15788627, 0, 0.06935996)
-texture = ExtResource("30_vjwut")
-
-[node name="NameLabel" parent="wine barrels/Popup2" index="1"]
-transform = Transform3D(1, -7.275958e-12, -1.5206652e-07, -4.3655746e-11, 0.9999996, -1.1641532e-10, -6.2659566e-08, 8.731149e-11, 0.9999996, -0.20424831, -2.193451e-05, 0.17846876)
-text = "take"
-font_size = 190
-
-[node name="TakeLabel" parent="wine barrels/Popup2" index="2"]
-transform = Transform3D(1, -7.275958e-12, -3.606828e-07, -1.0186341e-10, 0.99999905, -2.3283064e-10, -6.265958e-08, 1.4551915e-10, 0.99999917, -0.102368355, -5.1617622e-05, 0.254049)
-text = "photo"
-font_size = 65
-
-[node name="Popup3" parent="wine barrels" instance=ExtResource("29_kc1yc")]
-transform = Transform3D(0.3255665, -0.00021812768, 0.7410976, -0.7410973, 3.249901e-08, 0.32556653, 8.776151e-05, 0.80945635, 0.0001996938, 0.3469596, 1.4628822, -0.6796209)
-
-[node name="Background" parent="wine barrels/Popup3" index="0"]
-transform = Transform3D(1, -7.275958e-12, -3.0549074e-09, 0, 0.99999994, 2.910383e-11, -3.0549039e-09, 0, 1, -0.15788627, 0, 0.06935996)
-texture = ExtResource("30_vjwut")
-
-[node name="NameLabel" parent="wine barrels/Popup3" index="1"]
-transform = Transform3D(1, -7.275958e-12, -1.5206652e-07, -4.3655746e-11, 0.9999996, -1.1641532e-10, -6.2659566e-08, 8.731149e-11, 0.9999996, -0.20424831, -2.193451e-05, 0.17846876)
-text = "take"
-font_size = 190
-
-[node name="TakeLabel" parent="wine barrels/Popup3" index="2"]
-transform = Transform3D(1, -7.275958e-12, -3.606828e-07, -1.0186341e-10, 0.99999905, -2.3283064e-10, -6.265958e-08, 1.4551915e-10, 0.99999917, -0.102368355, -5.1617622e-05, 0.254049)
-text = "photo"
-font_size = 65
-
-[node name="InteractionDetector" type="Area3D" parent="wine barrels" node_paths=PackedStringArray("collision_shape")]
-transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0)
-script = ExtResource("31_kc1yc")
-collision_shape = NodePath("CollisionShape3D")
-metadata/_custom_type_script = "uid://dc0eglbdf0sq7"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="wine barrels/InteractionDetector"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33463228, 0.9833588, 0)
-shape = SubResource("BoxShape3D_do7od")
-debug_color = Color(0.99300927, 0.45221817, 0.7367748, 0.41960785)
 
 [node name="Circle_001" type="MeshInstance3D" parent="wine barrels"]
 transform = Transform3D(0.924905, -0.000619684, 2.10539, -2.10539, 1.69425e-08, 0.924905, 0.000249255, 2.29959, 0.000567345, -1.29942, 0.00170678, -0.679941)
@@ -3876,11 +3844,12 @@ transform = Transform3D(0.311296, 0, 0.34852, 0, 0.467302, 0, -0.34852, 0, 0.311
 transform = Transform3D(0.599649, -0.365484, -0.897297, 0.26079, 1.07719, -0.264477, 0.933118, -0.0661845, 0.650546, -3.60937, -0.105501, 3.40987)
 
 [node name="SceneLoader_Hourhand hallway" parent="." instance=ExtResource("2_llsdw")]
+process_mode = 4
 transform = Transform3D(1.13943, 0, 0, 0, 1.13943, 0, 0, 0, 1.13943, 0.974497, -1.74971, 1.00802)
 target_scene = 11
 
 [node name="DoorSound" parent="SceneLoader_Hourhand hallway" index="0"]
-event_name = ""
+event_guid = "{00000000-0000-0000-0000-000000000000}"
 
 [node name="Popup" parent="SceneLoader_Hourhand hallway" index="1"]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 1.75, 0)
@@ -3905,8 +3874,6 @@ transform = Transform3D(0.930178, 0.240213, -0.191199, -0.138683, 0.872984, 0.42
 [editable path="SceneLoader_Basement"]
 [editable path="SceneLoader_Basement/InteractionDetector"]
 [editable path="wine barrels/Popup"]
-[editable path="wine barrels/Popup2"]
-[editable path="wine barrels/Popup3"]
 [editable path="hang lights"]
 [editable path="crates with drapes over"]
 [editable path="box suitcase"]

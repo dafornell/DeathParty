@@ -5,14 +5,14 @@
 [ext_resource type="Texture2D" uid="uid://c7sn438n6fn2n" path="res://Assets/PNGAssets/green_lens.png" id="4_a6jrl"]
 [ext_resource type="Script" uid="uid://bd5wy6rj1xank" path="res://Utilities/polaroid_camera/filter_control.gd" id="5_omcg7"]
 [ext_resource type="Shader" uid="uid://dflfu0c1r3cql" path="res://Utilities/pause_menu/background_blur.gdshader" id="5_ph0pu"]
-[ext_resource type="Shader" uid="uid://cx7fj2cmeblbc" path="res://Utilities/polaroid_camera/polaroid_layer_unblur.gdshader" id="6_7wtwj"]
+[ext_resource type="Shader" path="res://Utilities/polaroid_camera/polaroid_layer_unblur.gdshader" id="6_7wtwj"]
 [ext_resource type="Texture2D" uid="uid://cy5s70jehrwrr" path="res://Assets/PNGAssets/viewfinder.png" id="6_8fs6k"]
-[ext_resource type="Shader" uid="uid://ccc6w6g5spnr7" path="res://Utilities/polaroid_camera/polaroid_layer.gdshader" id="7_42nwo"]
+[ext_resource type="Shader" path="res://Utilities/polaroid_camera/polaroid_layer.gdshader" id="7_42nwo"]
 [ext_resource type="Texture2D" uid="uid://bv6px42lbjq5f" path="res://Assets/PNGAssets/temp_rotate_arrow.png" id="11_42nwo"]
 [ext_resource type="Texture2D" uid="uid://djidfl63ug16b" path="res://Assets/PNGAssets/inner_ring.png" id="12_7wtwj"]
 [ext_resource type="Texture2D" uid="uid://cdvberuogb0k" path="res://Assets/PNGAssets/base_final.png" id="13_qpijf"]
-[ext_resource type="Script" uid="uid://j5cloyk2jf2d" path="res://Utilities/polaroid_camera/take_photo_sound.gd" id="14_8fs6k"]
-[ext_resource type="Script" uid="uid://d78muptymdnk" path="res://Utilities/polaroid_camera/open_camera_sound.gd" id="14_ngt84"]
+[ext_resource type="Script" path="res://Utilities/polaroid_camera/take_photo_sound.gd" id="14_8fs6k"]
+[ext_resource type="Script" path="res://Utilities/polaroid_camera/open_camera_sound.gd" id="14_ngt84"]
 [ext_resource type="Texture2D" uid="uid://8cmqnmgxkmiu" path="res://Assets/PNGAssets/filter_color_dots.png" id="14_pxotk"]
 [ext_resource type="Texture2D" uid="uid://bvyh22qg3pxas" path="res://Assets/PNGAssets/N.png" id="15_7wtwj"]
 [ext_resource type="Script" uid="uid://qfuy0m0xcjwf" path="res://Utilities/polaroid_camera/picturetake.gd" id="15_ph0pu"]
@@ -30,27 +30,27 @@ shader = ExtResource("5_ph0pu")
 shader_parameter/strength = 5.0
 shader_parameter/mix_percentage = 0.3
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4q0hv"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_42nwo"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ph0pu"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7wtwj"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qpijf"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pxotk"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bid8k"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_47y0a"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q4hu4"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tiy8x"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gnj1l"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tiy8x"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q4hu4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_47y0a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bid8k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pxotk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qpijf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7wtwj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ph0pu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_42nwo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4q0hv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4q0hv"]
 radius = 24.6864
@@ -70,34 +70,35 @@ radius = 30.4386
 [sub_resource type="CircleShape2D" id="CircleShape2D_omcg7"]
 radius = 17.0294
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lj084"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8fs6k"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ngt84"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hx8qq"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8vn1g"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c4tks"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_or4cw"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_40lq2"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_idotc"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g2aog"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8ifkd"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g2aog"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_idotc"]
 
-[node name="PolaroidCamera" type="CanvasLayer" node_paths=PackedStringArray("viewfinder_camera", "Picture", "shoot")]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_40lq2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_or4cw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c4tks"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8vn1g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hx8qq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ngt84"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8fs6k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lj084"]
+
+[node name="PolaroidCamera" type="CanvasLayer" node_paths=PackedStringArray("viewfinder_camera", "Picture", "shoot", "filter_control")]
 follow_viewport_enabled = true
 script = ExtResource("1_42nwo")
 viewfinder_camera = NodePath("Camera2D")
 Picture = NodePath("body/MainImage")
 shoot = NodePath("body/ViewFinder/filter_control/shoot")
+filter_control = NodePath("body/ViewFinder/filter_control")
 
 [node name="body" type="Node2D" parent="."]
 
@@ -204,17 +205,17 @@ offset_left = 942.0
 offset_top = 99.0
 offset_right = 1188.0
 offset_bottom = 334.0
-theme_override_styles/focus = SubResource("StyleBoxEmpty_4q0hv")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_42nwo")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_ph0pu")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_7wtwj")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_qpijf")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_pxotk")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_bid8k")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_47y0a")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_q4hu4")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_gnj1l")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_tiy8x")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_gnj1l")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_q4hu4")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_47y0a")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_bid8k")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_pxotk")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_qpijf")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_7wtwj")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ph0pu")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_42nwo")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4q0hv")
 button_mask = 7
 
 [node name="Area2D" type="Area2D" parent="body/ViewFinder/filter_control/filter_base"]
@@ -326,17 +327,17 @@ offset_right = 1277.0
 offset_bottom = 854.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/focus = SubResource("StyleBoxEmpty_lj084")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_8fs6k")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_ngt84")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_hx8qq")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_8vn1g")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_c4tks")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_or4cw")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_40lq2")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_idotc")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_8ifkd")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_g2aog")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_8ifkd")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_idotc")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_40lq2")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_or4cw")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_c4tks")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_8vn1g")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_hx8qq")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ngt84")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_8fs6k")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lj084")
 script = ExtResource("15_ph0pu")
 
 [node name="flash" type="ColorRect" parent="body/ViewFinder/filter_control/shoot"]
@@ -364,31 +365,15 @@ drag_right_margin = 0.0
 drag_bottom_margin = 0.0
 
 [node name="OpenCameraSound" type="FmodEventEmitter2D" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = true
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
 event_guid = "{f66a3a62-ff08-40ec-a9e5-79369f12d281}"
 attached = false
+unique_name_in_owner = true
 script = ExtResource("14_ngt84")
 
 [node name="TakePhotoSound" type="FmodEventEmitter2D" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = true
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
 event_guid = "{b2a0008b-bd4c-4686-aeac-002d88b62243}"
 attached = false
+unique_name_in_owner = true
 script = ExtResource("14_8fs6k")
 
 [connection signal="visibility_changed" from="." to="OpenCameraSound" method="_on_polaroid_camera_visibility_changed"]
