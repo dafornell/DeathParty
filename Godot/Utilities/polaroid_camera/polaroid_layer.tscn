@@ -122,6 +122,7 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="FilteredImage" type="TextureRect" parent="body"]
+visible = false
 material = SubResource("CanvasItemMaterial_4q0hv")
 offset_left = -449.0
 offset_top = -261.0
