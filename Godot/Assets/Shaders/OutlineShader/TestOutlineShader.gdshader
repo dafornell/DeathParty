@@ -3,6 +3,7 @@ render_mode cull_front, unshaded;
 
 uniform vec4 outline_color : source_color;
 uniform float thickness = 1.0;
+uniform float depth_offset = 0.01;
 uniform float alpha : hint_range(0.0, 1.0, 0.01) = 1.0;
 
 void vertex() {
@@ -12,7 +13,7 @@ void vertex() {
 	vec2 offset = normalize(clip_normal.xy) / VIEWPORT_SIZE * clip_position.w * thickness * 2.0;
 
 	clip_position.xy += offset;
-	clip_position.z -= 0.01;
+	clip_position.z -= depth_offset;
 
 	POSITION = clip_position;
 }
