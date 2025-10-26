@@ -59,7 +59,7 @@
 			<value>-40</value>
 		</property>
 		<property name="ratio">
-			<value>8</value>
+			<value>2</value>
 		</property>
 		<property name="attackTime">
 			<value>25</value>
