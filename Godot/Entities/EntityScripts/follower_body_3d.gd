@@ -78,7 +78,7 @@ func animate_npc(delta: float) -> void:
 	model.look_at(movement_point.min(Vector3(INF, player_position.y, INF)), Vector3.UP, true)
 	model.rotation = Vector3(0, model.rotation.y, 0)
 	
-	if npc_to_player.angle_to(npc_to_movement_direction) < PI/2:
+	if npc_to_player.angle_to(npc_to_movement_direction) <5*PI/8:
 		# Moves forward
 		if is_sprinting:
 			change_blend_position(delta, 0, 1)
