@@ -1,7 +1,6 @@
 [gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://dcud5d3stalvt"]
 
-[ext_resource type="Texture2D" uid="uid://bx1uqwiscvuok" path="res://Common/Object Viewer/Display box 1.png" id="1_jvy18"]
+[ext_resource type="Texture2D" uid="uid://glbeu2igtpm1" path="res://Common/Object Viewer/display-box-resized.png" id="1_jvy18"]
 
 [resource]
 atlas = ExtResource("1_jvy18")
-region = Rect2(68, 44.5, 951, 285)

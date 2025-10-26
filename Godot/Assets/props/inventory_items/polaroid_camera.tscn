@@ -1,8 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://bnppp76cl5kso"]
+[gd_scene load_steps=4 format=3 uid="uid://bnppp76cl5kso"]
 
+[ext_resource type="PackedScene" uid="uid://l0ljp7dxs4g4" path="res://Assets/props/inventory_items/inventory_item_base.tscn" id="1_3b3fx"]
 [ext_resource type="PackedScene" uid="uid://damm3py04oa6j" path="res://rooms/bedroom/Polaroid Camera.glb" id="1_vndkk"]
 
-[node name="Polaroid Camera" instance=ExtResource("1_vndkk")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_3b3fx"]
+resource_local_to_scene = true
+size = Vector3(0.89746094, 1.0722656, 0.2)
 
-[node name="Camera_001" parent="." index="0"]
-transform = Transform3D(-4.371139e-08, -1, 0, 0, 0, -1, 1, -4.371139e-08, 0, 0.04945977, 0.06914745, 0.017081382)
+[node name="InventoryItemBase" instance=ExtResource("1_3b3fx")]
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0030700676, 0.025726318, 0)
+shape = SubResource("BoxShape3D_3b3fx")
+
+[node name="Polaroid Camera" parent="MeshContainer" index="0" instance=ExtResource("1_vndkk")]
+transform = Transform3D(-2.1855695e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855695e-07, 0, -0.29233384, 0)
+
+[node name="HoverSound" parent="." index="2"]
+event_name = "event:/000_SFX/000_Demo_Test/016_SFX_Camera_Rotate"
+event_guid = "{256023bd-c47d-4376-ba19-8f4ebb11c531}"

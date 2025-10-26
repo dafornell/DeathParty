@@ -1,23 +1,25 @@
 class_name ObjectViewerRotatable extends ObjectViewerInteractable
 
+@export var mesh_root: Node3D
+
 var dragging : bool = false
 
-# rotate to face the camera
-const START_OFFSET := deg_to_rad(15)
-const START_ROTATION = Vector3(deg_to_rad(90) - START_OFFSET, deg_to_rad(180) + START_OFFSET, 0)
-
+const ROTATE_SENSITIVITY := 0.005
 
 func _ready() -> void:
-	print("Object viewer rotatatble")
-	rotation = START_ROTATION
 	Interact.mouse_position_changed.connect(on_mouse_pos_changed)
 
+func add_item_to_viewer(item: Node3D) -> void:
+	print(item.rotation)
+	var orig_rotation := item.rotation
+	mesh_root.add_child(item)
+	item.rotation = orig_rotation
 
 func on_mouse_pos_changed(delta : Vector2) -> void:
 	if !dragging:
 		return
-	rotate_x(delta.y * 0.005)
-	rotate_y(delta.x * 0.005)
+	mesh_root.rotate_x(delta.y * ROTATE_SENSITIVITY)
+	mesh_root.rotate_y(delta.x * ROTATE_SENSITIVITY)
 
 
 ##INHERITED

@@ -16,6 +16,7 @@ func _ready() -> void:
 	sprite3d.texture = texture_closed
 	
 func on_tab_pressed() -> void:
+	if GuiSystem.inventory_showing: return
 	if disabled: return
 	print(self, " Pressed!")
 	tab_pressed.emit()

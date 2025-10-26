@@ -4,6 +4,13 @@ uniform bool ignore_lighting = true;
 uniform sampler2D albedo_texture : source_color;
 uniform float brightness : hint_range(0.0, 2.0, 0.05) = .6;
 uniform float contrast : hint_range(0.0, 2.0, 0.05) = 1.0;
+uniform float depth_adjust = 0.0;
+
+void vertex() {
+	VERTEX = (MODELVIEW_MATRIX * vec4(VERTEX, 1.0)).xyz;
+	POSITION = PROJECTION_MATRIX * vec4(VERTEX, 1.0);
+	POSITION.z = clamp(POSITION.z + depth_adjust, 0, 1);
+}
 
 void fragment() {
 	// Called for every pixel the material is visible on.

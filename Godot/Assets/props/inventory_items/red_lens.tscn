@@ -1,7 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://cnoh3r2mpqo7e"]
+[gd_scene load_steps=4 format=3 uid="uid://cnoh3r2mpqo7e"]
 
+[ext_resource type="PackedScene" uid="uid://l0ljp7dxs4g4" path="res://Assets/props/inventory_items/inventory_item_base.tscn" id="1_150nt"]
 [ext_resource type="PackedScene" uid="uid://ivhm83ye0i61" path="res://rooms/Storage Room/Red Lense.glb" id="1_uxap7"]
 
-[node name="RedLens" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_h777x"]
+resource_local_to_scene = true
+size = Vector3(0.37304688, 0.34179688, 0.2)
 
-[node name="Red Lense" parent="." instance=ExtResource("1_uxap7")]
+[node name="InventoryItemBase" instance=ExtResource("1_150nt")]
+
+[node name="CollisionShape3D" parent="." index="0"]
+shape = SubResource("BoxShape3D_h777x")
+
+[node name="Red Lense" parent="MeshContainer" index="0" instance=ExtResource("1_uxap7")]
+transform = Transform3D(2.95, 0, 0, 0, 2.95, 0, 0, 0, 2.95, 0, 0, 0)
+
+[node name="HoverSound" parent="." index="2"]
+event_name = "event:/000_SFX/300_UI/InventoryHover/LensHover"
+event_guid = "{ff4412c2-942f-408c-8596-ba93a1472af6}"

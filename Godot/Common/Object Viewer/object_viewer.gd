@@ -6,8 +6,9 @@ class_name ObjectViewer extends Control
 @export var parent : CanvasLayer
 
 ## the minimum zoom scale level. The lower this is, the more you can zoom out
-@export var min_zoom : float = 2
+@export var min_zoom : float = 0.5
 ## the maximum zoom scale level. The higher this is, the more you can zoom in
+@export var default_zoom : float = 1
 @export var max_zoom : float = 5
 
 @export var test_path : String
@@ -121,7 +122,7 @@ func zoom_absolute(factor : float) -> void:
 
 #Scroll in and out of item
 func _input(event : InputEvent) -> void:
-	if active_item == null: return
+	if active_item == null or active_item.name == "BookflipBody": return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed and Interact.grabbed_scroll_container == null:
 			zoom(1.15)
@@ -148,6 +149,9 @@ func view_item_info(item_resource : InventoryItemResource) -> void:
 	item_info.set_text(item_resource.description)
 	exit_button_parent.visible = false
 	item_info.visible = true
+
+func reset_zoom() -> void:
+	zoom_absolute(default_zoom)
 
 func view_journal_item_info(journal_item_resource : JournalItemResource) -> void:
 	journal_item_info.set_info(journal_item_resource)

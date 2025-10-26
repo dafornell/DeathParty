@@ -4193,7 +4193,7 @@ transform = Transform3D(-1.38868, 0, 2.65924, 0, 2.765, 0, -2.65924, 0, -1.38868
 transform = Transform3D(3.81396, 0, 4.63181, 0, 5.685, 0, -4.63181, 0, 3.81396, -6.88108, -0.203864, -14.5672)
 
 [node name="JackOLanternSquashed2" parent="Props/Pumpkins" instance=ExtResource("31_uqhvr")]
-transform = Transform3D(3.53553, 0, 1.87085, 0, 2.408, 0, -1.87085, 0, 3.53553, -17.1259, -0.307085, -13.1528)
+transform = Transform3D(2.6166668, 0, 1.2541366, 0, 2.4079986, 0, -1.3846271, 0, 2.3700666, -17.1259, -0.35221672, -13.1528)
 
 [node name="JackOLanternTall2" parent="Props/Pumpkins" instance=ExtResource("32_3ege1")]
 transform = Transform3D(1.7970704, 0, 2.4021904, 0, 1.8949995, 0, -2.4021904, 0, 1.7970704, 18.854198, -0.13219833, -15.087098)

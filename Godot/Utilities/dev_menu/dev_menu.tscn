@@ -97,6 +97,10 @@ layout_mode = 2
 text = "Give all inventory items"
 script = ExtResource("4_3xkyt")
 
+[node name="GiveAllInventoryItemsWithUniqueModels" type="Button" parent="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer"]
+layout_mode = 2
+text = "Give all inventory items with unique models"
+
 [node name="TeleportLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "teleport to a room:"
@@ -113,3 +117,4 @@ columns = 3
 [connection signal="pressed" from="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer/ListInventoryItems" to="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer/ListInventoryItems" method="_on_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer/GiveItemContainer/VBoxContainer/GiveItem" to="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer/GiveItemContainer" method="_on_give_item_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer/GiveAllInventoryItemsButton" to="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer/GiveAllInventoryItemsButton" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer/GiveAllInventoryItemsWithUniqueModels" to="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer/GiveAllInventoryItemsButton" method="give_all_inventory_items_with_unique_models"]

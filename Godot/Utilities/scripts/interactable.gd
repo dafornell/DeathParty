@@ -100,6 +100,15 @@ func on_interact() -> void:
 	if talking_object_resource:
 		talking_object_resource.start_chat()
 
+	# rotate player model towards interactable (commented out for now because
+	# it rotates towards NPCs when we 'interact' with them even if they don't
+	# actually have chats which looks weird)
+	#var player_model: Node3D = Globals.player.get_node_or_null("PlayerModel")
+#
+	#if player_model != null:
+		#player_model.look_at(global_position, Vector3.UP, true)
+		#player_model.rotation = Vector3(0, player_model.rotation.y, 0)
+
 
 func on_in_range(in_range: bool) -> void:
 	if !enabled: return

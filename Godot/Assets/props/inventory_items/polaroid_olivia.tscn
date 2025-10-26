@@ -1,18 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://djpq5iuhqvbkh"]
+[gd_scene load_steps=6 format=3 uid="uid://djpq5iuhqvbkh"]
 
-[ext_resource type="PackedScene" uid="uid://b5u7xjt1nx7xs" path="res://Assets/models/polaroid_olivia.glb" id="1_4bnmy"]
-[ext_resource type="Texture2D" uid="uid://ciagkcjbti5dm" path="res://Assets/CharacterAssets/olivia/polaroid_olivia.png" id="2_8k3vp"]
-[ext_resource type="Shader" uid="uid://ddcx35eckfbrh" path="res://Assets/Shaders/brightness_shader.gdshader" id="2_glhsu"]
+[ext_resource type="PackedScene" uid="uid://dwq0ko1wuhejx" path="res://Assets/props/inventory_items/polaroid_inventory_item_base.tscn" id="1_glhsu"]
+[ext_resource type="Shader" uid="uid://ddcx35eckfbrh" path="res://Assets/Shaders/brightness_shader.gdshader" id="2_ch4pe"]
+[ext_resource type="Texture2D" uid="uid://bfs08836pfnw2" path="res://Assets/models/polaroid_olivia_polaroid_olivia.png" id="3_0gub1"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ch4pe"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_op5tx"]
+resource_local_to_scene = true
+size = Vector3(0.22949219, 0.26000977, 0.2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_prltc"]
+resource_local_to_scene = true
 render_priority = 0
-shader = ExtResource("2_glhsu")
-shader_parameter/albedo_texture = ExtResource("2_8k3vp")
-shader_parameter/multiplier = 0.8
+shader = ExtResource("2_ch4pe")
+shader_parameter/ignore_lighting = true
+shader_parameter/albedo_texture = ExtResource("3_0gub1")
+shader_parameter/brightness = 0.6
+shader_parameter/contrast = 1.0
 
-[node name="polaroid_olivia" instance=ExtResource("1_4bnmy")]
-transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0, 0, 0)
+[node name="InventoryItemBase" instance=ExtResource("1_glhsu")]
 
-[node name="Cube" parent="." index="0"]
-transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 0, 0, 0)
-material_overlay = SubResource("ShaderMaterial_ch4pe")
+[node name="CollisionShape3D" parent="." index="0"]
+shape = SubResource("BoxShape3D_op5tx")
+
+[node name="Polaroid" parent="MeshContainer" index="0"]
+material_overlay = SubResource("ShaderMaterial_prltc")

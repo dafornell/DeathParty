@@ -68,7 +68,7 @@
 [ext_resource type="Texture2D" uid="uid://ccuxjk7edg5dg" path="res://Assets/pop_ups/EnterArrowDown.png" id="65_g0t3m"]
 [ext_resource type="PackedScene" uid="uid://xef5l0oe30i" path="res://rooms/Storage Room/glove.tscn" id="66_ileeo"]
 [ext_resource type="PackedScene" uid="uid://dtj8lypd7bt52" path="res://rooms/Storage Room/josef_scale.tscn" id="67_myxfd"]
-[ext_resource type="PackedScene" path="res://rooms/Storage Room/red_lense.tscn" id="68_5kkw3"]
+[ext_resource type="PackedScene" uid="uid://dw0gskxal7f66" path="res://rooms/Storage Room/red_lense.tscn" id="68_5kkw3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_od2cs"]
 size = Vector3(19.865, 6, 11.194)
@@ -3796,7 +3796,7 @@ volume = 2.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.41829, 2.27886)
 
 [node name="beerpong trophie" parent="." instance=ExtResource("61_ntvq4")]
-transform = Transform3D(0.311296, 0, 0.34852, 0, 0.467302, 0, -0.34852, 0, 0.311296, -4.11684, 1.03161, 3.12317)
+transform = Transform3D(0.15482537, 0.027057577, 0.17202881, 0.005450524, 0.22932135, -0.04097432, -0.17405841, 0.03124882, 0.15173696, -4.11684, 1.0302794, 3.12317)
 
 [node name="brush2" parent="." instance=ExtResource("63_81kv4")]
 transform = Transform3D(0.599649, -0.365484, -0.897297, 0.26079, 1.07719, -0.264477, 0.933118, -0.0661845, 0.650546, -3.60937, -0.105501, 3.40987)

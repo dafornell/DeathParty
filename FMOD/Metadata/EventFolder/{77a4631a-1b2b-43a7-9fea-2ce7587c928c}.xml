@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="EventFolder" id="{77a4631a-1b2b-43a7-9fea-2ce7587c928c}">
+		<property name="name">
+			<value>InventoryHover</value>
+		</property>
+		<relationship name="folder">
+			<destination>{0d3dbeb1-ee4a-4755-ad01-7cf4fc48cc99}</destination>
+		</relationship>
+	</object>
+</objects>
