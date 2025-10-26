@@ -1347,6 +1347,11 @@ shape = SubResource("BoxShape3D_xu4va")
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_kk7s6")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.118907586, 0, 0.8618113)
+radius = 1.0
+use_3d_avoidance = true
+
 [node name="RowanSpawn" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9783883, 2.5562963, -4.0450144)
 script = ExtResource("2_jle5p")
