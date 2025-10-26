@@ -2662,7 +2662,7 @@ transform = Transform3D(-0.9194788, 0, -0.3931397, 0, 1, 0, 0.3931397, 0, -0.919
 event_name = "event:/000_SFX/100_Environment/Crowd"
 event_guid = "{9e4d86e6-afa7-406e-ba12-08656547d254}"
 autoplay = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00303666, 1, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9999986, 1, 0.001515777)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

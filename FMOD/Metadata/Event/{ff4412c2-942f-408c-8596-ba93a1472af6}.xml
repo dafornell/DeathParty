@@ -56,7 +56,7 @@
 			<destination>{74dd0752-129c-4d27-8513-4c650ce2a7a6}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{9fab94d1-6375-44dd-8a07-10800f698760}</destination>
+			<destination>{5d874d78-92ed-472a-896e-801bd647b3ce}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{8785300a-6c17-4ec2-8329-2ee42583d64b}" />
@@ -103,7 +103,6 @@
 	<object class="MixerBusPanner" id="{932155f5-96ee-4a13-96e2-14c0e9382042}" />
 	<object class="MultiSound" id="{c76957eb-4053-40fd-88cb-645bbc795e3b}">
 		<relationship name="sounds">
-			<destination>{f4344525-0896-41ed-85ef-29304df45d76}</destination>
 			<destination>{25bc6c08-95c7-45c9-b506-05878c038f15}</destination>
 		</relationship>
 	</object>
@@ -128,12 +127,10 @@
 			<value>10</value>
 		</property>
 	</object>
-	<object class="SingleSound" id="{f4344525-0896-41ed-85ef-29304df45d76}">
-		<relationship name="audioFile">
-			<destination>{a4d598e8-9a2e-4107-a05b-9b7c51051c27}</destination>
-		</relationship>
-	</object>
 	<object class="SingleSound" id="{25bc6c08-95c7-45c9-b506-05878c038f15}">
+		<property name="startOffset">
+			<value>18</value>
+		</property>
 		<relationship name="audioFile">
 			<destination>{73c41b4e-5bb1-4ec6-b938-1e49183a0046}</destination>
 		</relationship>

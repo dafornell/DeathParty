@@ -53,7 +53,7 @@
 			<destination>{6571ce19-2d18-40e4-ab45-e536b9bb398a}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{9fab94d1-6375-44dd-8a07-10800f698760}</destination>
+			<destination>{1d770ade-e386-4385-ae55-8c4d3523606f}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{e3f6490d-35e2-4f75-9d47-d8d4cd633ca5}" />
@@ -102,8 +102,11 @@
 	<object class="MixerBusFader" id="{6244fff7-e173-47c4-83eb-13b083b6f932}" />
 	<object class="MixerBusFader" id="{65cbcdcf-8e35-4bec-8477-dcb25ef91ad1}" />
 	<object class="SpatialiserEffect" id="{e205a825-d7c4-4bd3-9ab6-b3eb1df15a6e}">
+		<property name="extentMode">
+			<value>1</value>
+		</property>
 		<property name="soundSize">
-			<value>10</value>
+			<value>15</value>
 		</property>
 	</object>
 	<object class="ThreeEQEffect" id="{030d8ae6-4a78-4520-b57f-f46f256e9690}">
