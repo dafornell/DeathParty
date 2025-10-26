@@ -1,61 +1,68 @@
-class_name PolaroidLayer extends CanvasLayer
+class_name PolaroidLayer extends Node2D
 
 
 @export var viewfinder_camera: Camera2D
 
 # variable hold the image that the camera is looking at  
 @export var Picture: TextureRect
+@export var FilteredPicture: TextureRect
 @export var shoot:Button
 @export var filter_control: Node2D
 # takes in picture count 
 var count =0
-
+var color=""
+var picture=""
+var filter_image=""
 func _ready() -> void:
 	Globals.polaroid_camera_ui = self
 
 # function for movement of camera
 func _physics_process(delta) -> void:
 	# picture movement corresponds with player input	
-	#if (Picture!=""):	
-		# counts the first E when opening the picture taking scene, so have to
-		# shoot on the second picture take input	
-		if self.visible and Input.is_action_just_pressed("take_picture"):
-			count+=1
-			if count ==2:
-				shoot.pressed.emit()
-		if Input.is_action_pressed("move_right"):
-			Picture.position.x -= 3
-		if Input.is_action_pressed("move_left"):
-			Picture.position.x += 3
-		if Input.is_action_pressed("move_down"):
-			Picture.position.y -= 3
-		if Input.is_action_pressed("move_up"):
-			Picture.position.y += 3
+	
+	# counts the first E when opening the picture taking scene, so have to
+	# shoot on the second picture take input	
+	if self.visible and Input.is_action_just_pressed("take_picture"):
+		count+=1
+		if count ==2:
+			shoot.pressed.emit()
+	if Input.is_action_pressed("move_right"):
+		Picture.position.x -= 3
+	if Input.is_action_pressed("move_left"):
+		Picture.position.x += 3
+	if Input.is_action_pressed("move_down"):
+		Picture.position.y -= 3
+	if Input.is_action_pressed("move_up"):
+		Picture.position.y += 3
 
-	# keeps image within the bounds 
-		if Picture.position.x > 0:
-			Picture.position.x =0
+# keeps image within the bounds 
+	if Picture.position.x > 0:
+		Picture.position.x =0
 
-		if Picture.position.x < -(Picture.size.x*Picture.scale.x-get_viewport().size.x):
-			Picture.position.x = -(Picture.size.x*Picture.scale.x-get_viewport().size.x)
+	if Picture.position.x < -(Picture.size.x*Picture.scale.x-get_viewport().size.x):
+		Picture.position.x = -(Picture.size.x*Picture.scale.x-get_viewport().size.x)
 
-		if Picture.position.y > 0:
-			Picture.position.y = 0
+	if Picture.position.y > 0:
+		Picture.position.y = 0
 
-		if Picture.position.y < -(Picture.size.y*Picture.scale.y-get_viewport().size.y):
-			Picture.position.y = -(Picture.size.y*Picture.scale.y-get_viewport().size.y)
+	if Picture.position.y < -(Picture.size.y*Picture.scale.y-get_viewport().size.y):
+		Picture.position.y = -(Picture.size.y*Picture.scale.y-get_viewport().size.y)
+		
+	FilteredPicture.position = Picture.position
 
 #this function need to be called first to set the picture being taken 
-func start(picture: String, filter: String,filter_picture: String):
+func start(picture: String, filter_color: String,filter_picture: String):
 	#var image = Image.load_from_file(picture)
 #	default picture 
-	$body/MainImage.texture=load(picture)
-	Picture=$body/MainImage
+	Picture.texture=load(picture)
 #	calls function that takes in the filtered image and the associated filter color
-	if filter!="null":
-		filter_control.filter_image(filter,filter_picture);
-	$body/MainImage.visible=true
-	self.visible=true
+	if filter_color!="null":
+		FilteredPicture.texture=load(filter_picture)
+		filter_control.filter_image(filter_color)
+	#if color!="null":
+		#filter_control.filter_image(color,filter_picture);
+	#$body/MainImage.visible=true
+	#self.visible=true
 	
 #ignore this function. Was used previously to open the picture taking scene
 func _on_question_mark_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:

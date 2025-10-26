@@ -15,7 +15,7 @@ func on_interact() -> void:
 	if !enabled: return
 	super()
 	
-	Globals.polaroid_camera_ui.start("res://Assets/PNGAssets/placeholder_image.png","null","null")
+	Globals.polaroid_camera_ui.start("res://Assets/PNGAssets/corkbaord.png","null","null")
 	Globals.polaroid_camera_ui.visible = true
 	# TODO: create a global in_polaroid_camera variable, maybe with a setter
 	#		function to handle enabling/disabling movement while player is

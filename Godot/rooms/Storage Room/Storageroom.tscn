@@ -3844,7 +3844,6 @@ transform = Transform3D(0.311296, 0, 0.34852, 0, 0.467302, 0, -0.34852, 0, 0.311
 transform = Transform3D(0.599649, -0.365484, -0.897297, 0.26079, 1.07719, -0.264477, 0.933118, -0.0661845, 0.650546, -3.60937, -0.105501, 3.40987)
 
 [node name="SceneLoader_Hourhand hallway" parent="." instance=ExtResource("2_llsdw")]
-process_mode = 4
 transform = Transform3D(1.13943, 0, 0, 0, 1.13943, 0, 0, 0, 1.13943, 0.974497, -1.74971, 1.00802)
 target_scene = 11
 
@@ -3870,6 +3869,9 @@ transform = Transform3D(0.7346666, 0.4459977, -0.74809825, -0.31249833, 1.048516
 
 [node name="Daisy Paint Brush1" parent="." instance=ExtResource("62_xs4sd")]
 transform = Transform3D(0.930178, 0.240213, -0.191199, -0.138683, 0.872984, 0.422088, 0.27391, -0.373749, 0.863004, 5.79299, -1.27139, 0.764982)
+
+[connection signal="body_entered" from="wine barrels/InteractionDetector" to="wine barrels/InteractionDetector" method="_on_body_entered"]
+[connection signal="body_exited" from="wine barrels/InteractionDetector" to="wine barrels/InteractionDetector" method="_on_body_exited"]
 
 [editable path="SceneLoader_Basement"]
 [editable path="SceneLoader_Basement/InteractionDetector"]

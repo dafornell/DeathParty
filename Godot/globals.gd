@@ -50,6 +50,6 @@ enum SPAWN_OPTIONS {
 
 var player: Player
 
-var polaroid_camera_ui: CanvasLayer
+var polaroid_camera_ui: PolaroidLayer
 
 var jog_controls_popup_shown := false

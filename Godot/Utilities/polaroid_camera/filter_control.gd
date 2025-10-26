@@ -6,6 +6,7 @@ extends Node2D
 @export var lens: TextureRect
 @export var ViewFinder: TextureRect
 @export var filter_letter: TextureRect 
+@export var f_image:TextureRect
 
 @onready var blue_filter: Image = Image.load_from_file("res://Assets/PNGAssets/blue_lens.png")
 @onready var red_filter: Image = Image.load_from_file("res://Assets/PNGAssets/red_lens.png")
@@ -17,15 +18,15 @@ extends Node2D
 @onready var B: Image = Image.load_from_file("res://Assets/PNGAssets/B.png")
 
 var lens_color=""
-
+var correct_color=""
 #reassign filter image
-func filter_image(filter_image:String, color:String):
+func filter_image(color:String):
 	if color=="R":
-		R = load(filter_image)
+		correct_color="red"
 	if color=="G":
-		G = load(filter_image)	
+		correct_color="green"
 	if color=="B":
-		B = load(filter_image)
+		correct_color="blue"
 	
 	
 func _on_left_button_pressed() -> void:
@@ -61,14 +62,26 @@ func _on_selector_area_shape_entered(area_rid: RID, area: Area2D, area_shape_ind
 		lens_color="white"
 		lens_change(lens_color)
 	if area.name=="blue":
-		lens_color="blue"
-		lens_change(lens_color)
+		if correct_color==area.name:
+			f_image.visible=true
+		else:
+			f_image.visible=false
+			lens_color="blue"
+			lens_change(lens_color)
 	if area.name=="red":
-		lens_color="red"
-		lens_change(lens_color)
+		if correct_color==area.name:
+			f_image.visible=true
+		else:
+			f_image.visible=false
+			lens_color="red"
+			lens_change(lens_color)
 	if area.name=="green":
-		lens_color="green"
-		lens_change(lens_color)
+		if correct_color==area.name:
+			f_image.visible=true
+		else:
+			f_image.visible=false
+			lens_color="green"
+			lens_change(lens_color)
 
 #function for displaying the filter color 
 func lens_change(lens_color: String):
@@ -80,7 +93,6 @@ func lens_change(lens_color: String):
 		lens.visible=true
 		lens.texture=ImageTexture.create_from_image(blue_filter)
 		filter_letter.texture=ImageTexture.create_from_image(B)
-		
 	if lens_color=="red":
 		lens.visible=true
 		lens.texture=ImageTexture.create_from_image(red_filter)

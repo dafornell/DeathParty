@@ -2,7 +2,7 @@ extends FmodEventEmitter2D
 
 
 func _on_polaroid_camera_visibility_changed() -> void:
-	var camera_ui: CanvasLayer = Globals.polaroid_camera_ui
+	var camera_ui: PolaroidLayer = Globals.polaroid_camera_ui
 
 	# i think there's something else that gets called while loading the game
 	# which hides this canvas layer we're referencing, and if this function

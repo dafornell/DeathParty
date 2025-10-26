@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://d0sd1bp5esd04"]
+[gd_scene load_steps=51 format=3 uid="uid://d0sd1bp5esd04"]
 
 [ext_resource type="Script" uid="uid://bjhwro6hrfg4p" path="res://Utilities/polaroid_camera/polaroid_layer.gd" id="1_42nwo"]
 [ext_resource type="Texture2D" uid="uid://g8gi1go6brft" path="res://Assets/PNGAssets/viewfinder_final.png" id="3_42nwo"]
@@ -7,15 +7,25 @@
 [ext_resource type="Shader" uid="uid://dflfu0c1r3cql" path="res://Utilities/pause_menu/background_blur.gdshader" id="5_ph0pu"]
 [ext_resource type="Shader" path="res://Utilities/polaroid_camera/polaroid_layer_unblur.gdshader" id="6_7wtwj"]
 [ext_resource type="Texture2D" uid="uid://cy5s70jehrwrr" path="res://Assets/PNGAssets/viewfinder.png" id="6_8fs6k"]
-[ext_resource type="Shader" path="res://Utilities/polaroid_camera/polaroid_layer.gdshader" id="7_42nwo"]
+[ext_resource type="Shader" uid="uid://ccc6w6g5spnr7" path="res://Utilities/polaroid_camera/polaroid_layer.gdshader" id="7_42nwo"]
 [ext_resource type="Texture2D" uid="uid://bv6px42lbjq5f" path="res://Assets/PNGAssets/temp_rotate_arrow.png" id="11_42nwo"]
 [ext_resource type="Texture2D" uid="uid://djidfl63ug16b" path="res://Assets/PNGAssets/inner_ring.png" id="12_7wtwj"]
 [ext_resource type="Texture2D" uid="uid://cdvberuogb0k" path="res://Assets/PNGAssets/base_final.png" id="13_qpijf"]
 [ext_resource type="Script" path="res://Utilities/polaroid_camera/take_photo_sound.gd" id="14_8fs6k"]
-[ext_resource type="Script" path="res://Utilities/polaroid_camera/open_camera_sound.gd" id="14_ngt84"]
+[ext_resource type="Script" uid="uid://d78muptymdnk" path="res://Utilities/polaroid_camera/open_camera_sound.gd" id="14_ngt84"]
 [ext_resource type="Texture2D" uid="uid://8cmqnmgxkmiu" path="res://Assets/PNGAssets/filter_color_dots.png" id="14_pxotk"]
 [ext_resource type="Texture2D" uid="uid://bvyh22qg3pxas" path="res://Assets/PNGAssets/N.png" id="15_7wtwj"]
 [ext_resource type="Script" uid="uid://qfuy0m0xcjwf" path="res://Utilities/polaroid_camera/picturetake.gd" id="15_ph0pu"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4q0hv"]
+light_mode = 2
+
+[sub_resource type="Gradient" id="Gradient_42nwo"]
+offsets = PackedFloat32Array(0, 0.041884817, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.95811516, 0.95811516, 0.95811516, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ph0pu"]
+gradient = SubResource("Gradient_42nwo")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_42nwo"]
 shader = ExtResource("7_42nwo")
@@ -92,11 +102,11 @@ radius = 17.0294
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lj084"]
 
-[node name="PolaroidCamera" type="CanvasLayer" node_paths=PackedStringArray("viewfinder_camera", "Picture", "shoot", "filter_control")]
-follow_viewport_enabled = true
+[node name="PolaroidCamera" type="Node2D" node_paths=PackedStringArray("viewfinder_camera", "Picture", "FilteredPicture", "shoot", "filter_control")]
 script = ExtResource("1_42nwo")
 viewfinder_camera = NodePath("Camera2D")
 Picture = NodePath("body/MainImage")
+FilteredPicture = NodePath("body/FilteredImage")
 shoot = NodePath("body/ViewFinder/filter_control/shoot")
 filter_control = NodePath("body/ViewFinder/filter_control")
 
@@ -109,6 +119,17 @@ offset_right = 1039.0
 offset_bottom = 562.0
 scale = Vector2(1.43, 1.43)
 expand_mode = 1
+stretch_mode = 4
+
+[node name="FilteredImage" type="TextureRect" parent="body"]
+material = SubResource("CanvasItemMaterial_4q0hv")
+offset_left = -449.0
+offset_top = -261.0
+offset_right = 1039.0
+offset_bottom = 562.0
+scale = Vector2(1.43, 1.43)
+expand_mode = 1
+stretch_mode = 4
 
 [node name="ViewFinder" type="TextureRect" parent="body"]
 unique_name_in_owner = true
@@ -120,6 +141,12 @@ offset_bottom = 3963.0
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("3_42nwo")
 expand_mode = 1
+
+[node name="PointLight2D" type="PointLight2D" parent="body/ViewFinder"]
+position = Vector2(1715.7498, 2030.75)
+scale = Vector2(37.007805, 35.914066)
+energy = 0.0
+texture = SubResource("GradientTexture2D_ph0pu")
 
 [node name="blur_new" type="ColorRect" parent="body/ViewFinder"]
 show_behind_parent = true
@@ -170,7 +197,7 @@ offset_bottom = 3045.0
 texture = ExtResource("4_a6jrl")
 expand_mode = 1
 
-[node name="filter_control" type="Node2D" parent="body/ViewFinder" node_paths=PackedStringArray("left_button", "right_button", "filter_base_button", "lens", "ViewFinder", "filter_letter")]
+[node name="filter_control" type="Node2D" parent="body/ViewFinder" node_paths=PackedStringArray("left_button", "right_button", "filter_base_button", "lens", "ViewFinder", "filter_letter", "f_image")]
 position = Vector2(-1345, -335)
 scale = Vector2(5, 5)
 script = ExtResource("5_omcg7")
@@ -180,6 +207,7 @@ filter_base_button = NodePath("filter_base/filter_base_button")
 lens = NodePath("../filter")
 ViewFinder = NodePath("..")
 filter_letter = NodePath("filter_letter")
+f_image = NodePath("../../FilteredImage")
 
 [node name="inner_ring" type="TextureRect" parent="body/ViewFinder/filter_control"]
 custom_minimum_size = Vector2(0, 100)
