@@ -1,14 +1,14 @@
-[gd_scene load_steps=8 format=4 uid="uid://dasq5wgeyo38c"]
+[gd_scene load_steps=8 format=4 uid="uid://bojofkq618th2"]
 
-[ext_resource type="Script" uid="uid://bea7y4hurcesx" path="res://Utilities/scripts/interactable.gd" id="1_rs3ue"]
-[ext_resource type="Resource" uid="uid://bisc78i8lblcq" path="res://Singletons/SaveSystem/DefaultResources/InventoryItemResources/polaroid_camera_properties.tres" id="2_rs3ue"]
-[ext_resource type="PackedScene" uid="uid://cqxjk5afxrhem" path="res://Common/Popup UI/object_interact_popup.tscn" id="3_hq3ii"]
-[ext_resource type="Texture2D" uid="uid://bi24mixil7fmt" path="res://rooms/bedroom/Polaroid Camera_Olivia 3D Camera Texture.png" id="3_rs3ue"]
+[ext_resource type="PackedScene" uid="uid://xnoqwahijjsw" path="res://Entities/Interactable/base_prop.tscn" id="1_gujuq"]
+[ext_resource type="Resource" uid="uid://bijwy7mhohjk3" path="res://Singletons/SaveSystem/DefaultResources/TalkingObjectResources/camera_properties.tres" id="2_lteys"]
+[ext_resource type="Texture2D" uid="uid://bi24mixil7fmt" path="res://rooms/bedroom/Polaroid Camera_Olivia 3D Camera Texture.png" id="3_mcwxd"]
+[ext_resource type="Resource" uid="uid://bisc78i8lblcq" path="res://Singletons/SaveSystem/DefaultResources/InventoryItemResources/polaroid_camera_properties.tres" id="3_t38t6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a1l8r"]
 resource_name = "Material.003"
 cull_mode = 2
-albedo_texture = ExtResource("3_rs3ue")
+albedo_texture = ExtResource("3_mcwxd")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_hvrrh"]
 _surfaces = [{
@@ -25,7 +25,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_by7hd"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_t38t6"]
 resource_name = "Polaroid Camera_Mesh_013"
 _surfaces = [{
 "aabb": AABB(-0.0886685, -0.027097, -0.0884513, 0.147896, 0.159572, 0.178109),
@@ -44,14 +44,15 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_hvrrh")
 
-[node name="PolaroidCamera" type="Node3D"]
-script = ExtResource("1_rs3ue")
-inventory_item = ExtResource("2_rs3ue")
+[node name="PolaroidCameraProp" instance=ExtResource("1_gujuq")]
+talking_object_resource = ExtResource("2_lteys")
+inventory_item = ExtResource("3_t38t6")
 
-[node name="Camera_001" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0.0195703, 0.0691475, -0.0504884)
-mesh = SubResource("ArrayMesh_by7hd")
+[node name="Popup" parent="." index="0"]
+prop_name = "Polaroid camera"
+action = "Take"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0.01957035, 0.0691475, -0.0504884)
+mesh = SubResource("ArrayMesh_t38t6")
 skeleton = NodePath("")
-
-[node name="Popup" parent="." instance=ExtResource("3_hq3ii")]
-transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -0.0296841, 0.332062, -0.767863)
