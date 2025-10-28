@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bea7y4hurcesx" path="res://Utilities/scripts/interactable.gd" id="1_v7wku"]
 [ext_resource type="PackedScene" uid="uid://cqxjk5afxrhem" path="res://Common/Popup UI/object_interact_popup.tscn" id="2_d51x2"]
 
-[node name="Interactable" type="Node3D"]
+[node name="Prop" type="Node3D"]
 script = ExtResource("1_v7wku")
 metadata/_custom_type_script = "uid://bea7y4hurcesx"
 
