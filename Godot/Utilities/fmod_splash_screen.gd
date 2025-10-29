@@ -5,9 +5,7 @@ extends CanvasLayer
 
 
 func _enter_tree() -> void:
-	if not OS.has_feature("editor"):
-		show()
-	else:
+	if OS.has_feature("editor"):
 		queue_free()
 
 
