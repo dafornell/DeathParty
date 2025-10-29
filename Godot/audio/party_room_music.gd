@@ -9,6 +9,8 @@ func _on_stopped() -> void:
 
 
 func _on_start_failed() -> void:
-	print("failed to start party room music")
-	print("trying to play again . . .")
+	# NOTE: i put a breakpoint here and it didnt get reached when the music
+	# 		failed to loop so it seems like play() isnt getting called at all
+	#		when the player is too far away from the emitter
+	push_error("failed to start party room music")
 	play()
