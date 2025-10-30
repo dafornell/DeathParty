@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpko77hndss54"]
+
+[ext_resource type="StyleBox" uid="uid://bdtnhbcvch43d" path="res://phone_notification_badge_stylebox.tres" id="1_1i6su"]
+[ext_resource type="Script" uid="uid://d4drximo3bi5n" path="res://phone_notification_badge.gd" id="2_3ylg3"]
+
+[node name="PhoneNotificationBadge" type="Panel" node_paths=PackedStringArray("modulate_root")]
+theme_override_styles/panel = ExtResource("1_1i6su")
+script = ExtResource("2_3ylg3")
+modulate_root = NodePath(".")
