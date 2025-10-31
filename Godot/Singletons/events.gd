@@ -27,6 +27,24 @@ signal close_inventory
 
 signal new_phone_message(chat_resource: ChatResource)
 
+signal intro_finished
+signal interactables_enabled
+
+signal phone_opened
+signal phone_closed
+signal contact_pressed
+
+signal journal_opened
+signal journal_closed
+
+signal interaction_area_entered(interactable: Interactable)
+signal interaction_area_exited(interactable: Interactable)
+signal interacted(interactable: Interactable)
+
+signal collected_polaroid
+# emitted by dialogue OliviaDormCamera.ink.json
+signal ready_to_take_photo_of_corkboard
+
 func _enter_tree() -> void:
 	toggle_quest_marker.connect(_on_toggle_quest_marker)
 

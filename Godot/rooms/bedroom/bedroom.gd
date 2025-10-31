@@ -7,9 +7,6 @@ extends Room3D
 @onready var music: FmodEventEmitter3D = %Music
 @onready var look_straight: Vector3 = Vector3(path_follow_node.global_position.x, path_follow_node.global_position.y, -basis.z.z)
 
-signal intro_finished
-
-
 func _enter_tree() -> void:
 	Events.title_screen_start_game_button_pressed.connect(_on_play)
 
@@ -60,4 +57,4 @@ func _on_play() -> void:
 	bind_camera_y(null, 1.2, 1.35)
 
 	GlobalCameraScript.camera_on_player.emit(true)
-	intro_finished.emit()
+	Events.intro_finished.emit()

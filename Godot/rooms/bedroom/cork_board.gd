@@ -3,6 +3,9 @@ extends Interactable
 @export var take: Node3D
 @export var title: CanvasLayer
 
+func _ready() -> void:
+	super()
+	Events.collected_polaroid.connect(_on_collected_polaroid)
 
 func on_interact() -> void:
 	# NOTE: this kind of confused me because i couldn't get this interactable
@@ -22,10 +25,8 @@ func on_interact() -> void:
 	if Globals.polaroid_camera_ui.visible == true:
 		Globals.player.movement_disabled = true
 	print("camera scene should be on")
+	enabled = false
 
 
-func _on_tutorial_ui_toggle_corkboard_interactable(value: bool) -> void:
-	if value == true:
-		enabled = true
-	else:
-		enabled = false
+func _on_collected_polaroid() -> void:
+	enabled = true

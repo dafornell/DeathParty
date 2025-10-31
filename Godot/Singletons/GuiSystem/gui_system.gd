@@ -109,6 +109,8 @@ func show_journal(inventory_open: bool = false) -> void:
 	object_viewer.visible = true
 	in_gui = true
 	in_journal = true
+
+	Events.journal_opened.emit()
 	
 func hide_journal(keep_restrictions : bool = false) -> void:
 	if not in_journal: return
@@ -125,6 +127,7 @@ func hide_journal(keep_restrictions : bool = false) -> void:
 	in_journal = false
 	
 	guis_closed.emit()
+	Events.journal_closed.emit()
 
 func journal_flip_to_page(page_number : int) -> void:
 	if !in_journal: return
@@ -135,6 +138,7 @@ func inspect_journal_item(journal_item_rsc : JournalItemResource) -> void:
 	object_viewer.view_journal_item_info(journal_item_rsc)
 
 func show_phone(contact_resource: ChatResource = null) -> void:
+	Events.phone_opened.emit()
 	if contact_resource != null or hid_phone_mid_convo:
 		#DialogueSystem.text_message_box.on_back_pressed()
 		if contact_resource:
@@ -147,6 +151,7 @@ func show_phone(contact_resource: ChatResource = null) -> void:
 	show_gui("Phone")
 	
 func hide_phone() -> void:
+	Events.phone_closed.emit()
 	if DialogueSystem.are_choices: return
 	#DialogueSystem.pause_text_convo(true)
 	DialogueSystem.text_message_box.on_back_pressed()

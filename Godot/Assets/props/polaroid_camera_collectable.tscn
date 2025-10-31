@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=4 uid="uid://dasq5wgeyo38c"]
 
-[ext_resource type="Script" uid="uid://bea7y4hurcesx" path="res://Utilities/scripts/interactable.gd" id="1_rs3ue"]
+[ext_resource type="Script" uid="uid://cg0f47o0e07h0" path="res://Assets/props/polaroid_interactable.gd" id="1_rs3ue"]
 [ext_resource type="Resource" uid="uid://bisc78i8lblcq" path="res://Singletons/SaveSystem/DefaultResources/InventoryItemResources/polaroid_camera_properties.tres" id="2_rs3ue"]
 [ext_resource type="PackedScene" uid="uid://cqxjk5afxrhem" path="res://Common/Popup UI/object_interact_popup.tscn" id="3_hq3ii"]
 [ext_resource type="Texture2D" uid="uid://bi24mixil7fmt" path="res://rooms/bedroom/Polaroid Camera_Olivia 3D Camera Texture.png" id="3_rs3ue"]

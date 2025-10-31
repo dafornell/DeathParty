@@ -106,6 +106,8 @@ func on_contact_press(contact: ChatResource) -> void:
 	setup_dms(contact)
 	tween_forward()
 	contact_pressed = false
+	
+	Events.contact_pressed.emit()
 
 func setup_dms(contact: ChatResource) -> void:
 	set_participants(contact)

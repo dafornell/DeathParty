@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://ces2kuj1gqfpy"]
+
+[ext_resource type="StyleBox" uid="uid://y5gl84pfh3gf" path="res://Utilities/tutorial/input_indicator_stylebox.tres" id="1_m0y0r"]
+[ext_resource type="Script" uid="uid://c0ulrkjjchksc" path="res://Utilities/tutorial/input_indicator.gd" id="2_nsxlp"]
+[ext_resource type="StyleBox" uid="uid://dvrcugg5wp6uc" path="res://Utilities/tutorial/input_indicator_text.tres" id="3_nsxlp"]
+[ext_resource type="Resource" uid="uid://bsd3a5flj2a4d" path="res://Utilities/tutorial/input_icon_map.tres" id="3_tknew"]
+[ext_resource type="LabelSettings" uid="uid://dcsc602vf2vvk" path="res://Utilities/tutorial/input_indicator_key_label_settings.tres" id="4_wiseq"]
+[ext_resource type="LabelSettings" uid="uid://dnyu206aslan5" path="res://Utilities/tutorial/input_indicator_description_label_settings.tres" id="5_uywvt"]
+
+[node name="InputIndicator" type="PanelContainer" node_paths=PackedStringArray("key_texture_rect_container", "key_texture_rect", "key_label_container", "key_label", "description_label")]
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_m0y0r")
+script = ExtResource("2_nsxlp")
+icon_map = ExtResource("3_tknew")
+key_texture_rect_container = NodePath("HBoxContainer/IconTextureRect")
+key_texture_rect = NodePath("HBoxContainer/IconTextureRect")
+key_label_container = NodePath("HBoxContainer/KeyPanel")
+key_label = NodePath("HBoxContainer/KeyPanel/KeyLabel")
+description_label = NodePath("HBoxContainer/DescriptionLabel")
+description_text = "open journal"
+action_name = &"ui_accept"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="IconTextureRect" type="TextureRect" parent="HBoxContainer"]
+visible = false
+modulate = Color(0.84313726, 0.7882353, 0.72156864, 1)
+layout_mode = 2
+expand_mode = 3
+
+[node name="KeyPanel" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_nsxlp")
+
+[node name="KeyLabel" type="Label" parent="HBoxContainer/KeyPanel"]
+layout_mode = 2
+text = "Enter"
+label_settings = ExtResource("4_wiseq")
+
+[node name="DescriptionLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "open journal"
+label_settings = ExtResource("5_uywvt")
+uppercase = true
