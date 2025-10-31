@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://db2he2dcccelj" path="res://Utilities/tutorial/tutorial_ui.gd" id="1_lunjo"]
 [ext_resource type="PackedScene" uid="uid://ces2kuj1gqfpy" path="res://Utilities/tutorial/input_indicator.tscn" id="2_qst4g"]
-[ext_resource type="Script" uid="uid://ca0lkukmote6e" path="res://Utilities/tutorial/tutorial_highlight.gd" id="3_4rubk"]
+[ext_resource type="Script" path="res://Utilities/tutorial/tutorial_highlight.gd" id="3_4rubk"]
 [ext_resource type="Script" uid="uid://c5ecb5fq2bn51" path="res://Utilities/tutorial/states/tutorial_state_intro.gd" id="3_bf8v6"]
 [ext_resource type="Texture2D" uid="uid://bhswcwjpttu2s" path="res://Utilities/tutorial/inventory_highlight.png" id="3_pck5f"]
 [ext_resource type="Script" uid="uid://dem1mxmxwres" path="res://Utilities/tutorial/states/tutorial_state_walk.gd" id="4_ked10"]
@@ -42,13 +42,14 @@ mouse_filter = 2
 description_text = "press to walk"
 display_type = 1
 composite_action_names = Array[StringName]([&"move_up", &"move_left", &"move_down", &"move_right"])
-composite_action_delimiter = ""
+composite_action_names = Array[StringName]([&"move_up", &"move_left", &"move_down", &"move_right"])
 
 [node name="UnlockPhoneInputIndicator" parent="InputIndicatorRoot" instance=ExtResource("2_qst4g")]
 visible = false
 layout_mode = 2
 mouse_filter = 2
 description_text = "press to unlock phone"
+action_name = &"toggle_phone"
 action_name = &"toggle_phone"
 
 [node name="UsePhoneIndicator" parent="InputIndicatorRoot" instance=ExtResource("2_qst4g")]
@@ -64,6 +65,7 @@ layout_mode = 2
 mouse_filter = 2
 description_text = "press again to close phone"
 action_name = &"toggle_phone"
+action_name = &"toggle_phone"
 
 [node name="OpenJournalIndicator" parent="InputIndicatorRoot" instance=ExtResource("2_qst4g")]
 visible = false
@@ -71,12 +73,14 @@ layout_mode = 2
 mouse_filter = 2
 description_text = "press to access journal"
 action_name = &"toggle_journal"
+action_name = &"toggle_journal"
 
 [node name="CloseJournalIndicator" parent="InputIndicatorRoot" instance=ExtResource("2_qst4g")]
 visible = false
 layout_mode = 2
 mouse_filter = 2
 description_text = "press again to close journal"
+action_name = &"toggle_journal"
 action_name = &"toggle_journal"
 
 [node name="OpenInventoryIndicator" parent="InputIndicatorRoot" instance=ExtResource("2_qst4g")]
@@ -86,6 +90,7 @@ mouse_filter = 2
 description_text = "click to open inventory"
 display_type = 2
 key_string = "Left Mouse Button"
+key_string = "Left Mouse Button"
 
 [node name="CloseInventoryIndicator" parent="InputIndicatorRoot" instance=ExtResource("2_qst4g")]
 visible = false
@@ -93,6 +98,7 @@ layout_mode = 2
 mouse_filter = 2
 description_text = "click again to close inventory"
 display_type = 2
+key_string = "Left Mouse Button"
 key_string = "Left Mouse Button"
 
 [node name="FindCameraIndicator" parent="InputIndicatorRoot" instance=ExtResource("2_qst4g")]
@@ -108,12 +114,14 @@ layout_mode = 2
 mouse_filter = 2
 description_text = "pick up camera"
 action_name = &"interact"
+action_name = &"interact"
 
 [node name="TakePhotoIndicator" parent="InputIndicatorRoot" instance=ExtResource("2_qst4g")]
 visible = false
 layout_mode = 2
 mouse_filter = 2
 description_text = "take photo of corkboard"
+action_name = &"interact"
 action_name = &"interact"
 
 [node name="Highlight" type="Control" parent="."]

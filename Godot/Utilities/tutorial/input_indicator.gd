@@ -13,6 +13,19 @@ class_name InputIndicator extends Control
 @export var description_label: Label
 
 @export_group("Display")
+
+## If enabled, calls InputMap.load_from_project_settings() in the editor
+## to allow showing what keys exist (for editing action/composite action names)
+## and for getting the keybinds for the action for preview in the editor.
+## However, because of a Godot bug, this also clears Editor keybinds, making
+## navigating 3D scenes impossible without restarting the editor.
+@export var dangerous_preview_key_in_editor: bool = false:
+	set(v):
+		if dangerous_preview_key_in_editor == v: return
+		dangerous_preview_key_in_editor = v
+		notify_property_list_changed()
+		_update_key_icon()
+
 @export var description_text: String:
 	set(v):
 		description_text = v
@@ -33,23 +46,23 @@ enum DisplayType {
 		notify_property_list_changed()
 		_update_key_icon()
 
-var action_name: StringName:
+@export_storage var action_name: StringName:
 	set(v):
 		if action_name == v: return
 		action_name = v
 		_update_key_icon()
 
-var composite_action_names: Array[StringName] = []:
+@export_storage var composite_action_names: Array[StringName] = []:
 	set(v):
 		composite_action_names = v
 		_update_key_icon()
 	
-var composite_action_delimiter: String = "":
+@export_storage var composite_action_delimiter: String = "":
 	set(v):
 		composite_action_delimiter = v
 		_update_key_icon()
 
-var key_string: String = "":
+@export_storage var key_string: String = "":
 	set(v):
 		key_string = v
 		_update_key_icon()
@@ -64,32 +77,42 @@ func _ready() -> void:
 
 func _get_property_list() -> Array[Dictionary]:
 	var actions: Array[String] = []
+	var hint_string: String
 	# Load actions from project settings (if not already loaded)
-	InputMap.load_from_project_settings() 
-	for action in InputMap.get_actions():
-		actions.append(str(action)) # Convert StringName to String for hint_string
+	if Engine.is_editor_hint() and dangerous_preview_key_in_editor:
+		InputMap.load_from_project_settings()
+		for action in InputMap.get_actions():
+			actions.append(str(action)) # Convert StringName to String for hint_string
 
-	var hint_string: String = ",".join(actions)
+		hint_string = ",".join(actions)
 
 	var properties: Array[Dictionary] = []
 	if display_type == DisplayType.ACTION:
-		properties.append({
+		var action_property := {
 			"name": "action_name",
 			"type": TYPE_STRING_NAME,
-			"hint": PROPERTY_HINT_ENUM,
-			"hint_string": hint_string
-		})
+		}
+		if hint_string != "":
+			action_property["hint"] = PROPERTY_HINT_ENUM
+			action_property["hint_string"] = hint_string
+		properties.append(action_property)
 	elif display_type == DisplayType.COMPOSITE_ACTION:
-		properties.append({
+		var action_property := {
 			"name": "composite_action_names",
 			"type": TYPE_ARRAY,
 			"hint": PROPERTY_HINT_TYPE_STRING,
-			"hint_string": "%d/%d:%s" % [
+		}
+		if hint_string != "":
+			action_property["hint_string"] = "%d/%d:%s" % [
 				TYPE_STRING_NAME,
 				PROPERTY_HINT_ENUM,
-				",".join(actions)
+				hint_string
 			]
-		})
+		else:
+			action_property["hint_string"] = "%d:" % [
+				TYPE_STRING_NAME,
+			]
+		properties.append(action_property)
 		properties.append({
 			"name": "composite_action_delimiter",
 			"type": TYPE_STRING,
@@ -136,12 +159,20 @@ func _update_key_icon() -> void:
 	# this is a problem, so just don't do anything and wait for _ready to
 	# call _update_key_icon
 	if !is_node_ready(): return
+
 	if display_type == DisplayType.NOTHING:
 		key_texture_rect.texture = null
 		key_texture_rect_container.visible = false
 		key_label.text = ""
 		key_label_container.visible = false
 		return
+
+	# All the code below relies on InputMap, so don't run it
+	# if we don't want to update in the editor
+	if Engine.is_editor_hint():
+		if not dangerous_preview_key_in_editor:
+			return
+		InputMap.load_from_project_settings()
 	
 	var display_string: String
 	if display_type == DisplayType.STRING:
