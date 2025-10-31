@@ -165,6 +165,7 @@ func scene_loader_teleport(scene_enum : Globals.SCENES, new_position : TeleportP
 		scene.ready.connect(func() -> void:
 			print("Teleporting player to ", Globals.get_scene_name(scene_enum))
 			player.global_position = new_position.teleport_pos
+			player.spawn_position = player.global_position
 			GlobalCameraScript.move_camera_jump.emit()
 			
 			offload_old_scenes()
