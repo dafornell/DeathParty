@@ -1,6 +1,7 @@
 extends TutorialState
 
 @export var highlight: TutorialHighlight
+@export var highlight_size_mult: float = 1
 @export var open_journal_state: TutorialState
 
 func enter_state() -> void:
@@ -9,6 +10,7 @@ func enter_state() -> void:
 	Events.journal_closed.connect(_on_journal_closed)
 	var toggle_inventory_button := GuiSystem.journal_instance.toggle_inventory_button
 	highlight.target_node_3d = toggle_inventory_button
+	highlight.set_size_mult_instant(highlight_size_mult)
 
 func exit_state() -> void:
 	Events.open_inventory.disconnect(transition)
