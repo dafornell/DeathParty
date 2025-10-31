@@ -139,6 +139,7 @@ func on_back_pressed() -> void:
 	#if !DialogueSystem.are_choices: #only allows you to leave if you aren't at a choice point
 	tween_backward()
 	pause_conversation()
+	Events.message_app_back_pressed.emit()
 
 ## INHERITED
 var last_speaker: String = ""

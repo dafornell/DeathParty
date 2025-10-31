@@ -1,15 +1,16 @@
-[gd_scene load_steps=20 format=3 uid="uid://ctn3kb2kouu4x"]
+[gd_scene load_steps=21 format=3 uid="uid://ctn3kb2kouu4x"]
 
 [ext_resource type="Script" uid="uid://db2he2dcccelj" path="res://Utilities/tutorial/tutorial_ui.gd" id="1_lunjo"]
 [ext_resource type="PackedScene" uid="uid://ces2kuj1gqfpy" path="res://Utilities/tutorial/input_indicator.tscn" id="2_qst4g"]
 [ext_resource type="PackedScene" uid="uid://cg2pbsmfxnmmf" path="res://Utilities/tutorial/tutorial_highlight.tscn" id="3_1j2lf"]
 [ext_resource type="Script" uid="uid://c5ecb5fq2bn51" path="res://Utilities/tutorial/states/tutorial_state_intro.gd" id="3_bf8v6"]
 [ext_resource type="Script" uid="uid://dem1mxmxwres" path="res://Utilities/tutorial/states/tutorial_state_walk.gd" id="4_ked10"]
-[ext_resource type="Script" uid="uid://doefgjuxprm3w" path="res://Utilities/tutorial/states/tutorial_state_unlock_phone.gd" id="5_3xnq3"]
-[ext_resource type="Script" uid="uid://ckxrj4tcy13jq" path="res://Utilities/tutorial/states/tutorial_state_use_phone.gd" id="6_kvxjh"]
+[ext_resource type="Script" uid="uid://doefgjuxprm3w" path="res://Utilities/tutorial/states/tutorial_state_open_phone.gd" id="5_3xnq3"]
+[ext_resource type="Script" uid="uid://ckxrj4tcy13jq" path="res://Utilities/tutorial/states/tutorial_state_open_message.gd" id="6_kvxjh"]
 [ext_resource type="JSON" path="res://Assets/InkExamples/RowanDormInvite.json" id="7_e27ia"]
 [ext_resource type="Script" uid="uid://quh4vq3y8a21" path="res://Utilities/tutorial/states/tutorial_state_open_journal.gd" id="7_qia2k"]
 [ext_resource type="Script" uid="uid://e5dxtx8btbel" path="res://Utilities/tutorial/states/tutorial_state_close_phone.gd" id="8_lj0v4"]
+[ext_resource type="Script" uid="uid://cm4tcci0ap62b" path="res://Utilities/tutorial/states/tutorial_state_read_conversation.gd" id="9_titvu"]
 [ext_resource type="Script" uid="uid://dtqdnggnfcdec" path="res://Utilities/tutorial/states/tutorial_state_open_inventory.gd" id="10_0qs8v"]
 [ext_resource type="Script" uid="uid://ce1m0nov1uwsi" path="res://Utilities/tutorial/states/tutorial_state_close_inventory.gd" id="13_78sqp"]
 [ext_resource type="Script" uid="uid://b1vc20edvw7nx" path="res://Utilities/tutorial/states/tutorial_state_close_journal.gd" id="14_1j2lf"]
@@ -43,7 +44,7 @@ display_type = 1
 composite_action_names = Array[StringName]([&"move_up", &"move_left", &"move_down", &"move_right"])
 composite_action_names = Array[StringName]([&"move_up", &"move_left", &"move_down", &"move_right"])
 
-[node name="UnlockPhoneInputIndicator" parent="InputIndicatorRoot" instance=ExtResource("2_qst4g")]
+[node name="OpenPhoneInputIndicator" parent="InputIndicatorRoot" instance=ExtResource("2_qst4g")]
 visible = false
 layout_mode = 2
 mouse_filter = 2
@@ -51,7 +52,7 @@ description_text = "press to unlock phone"
 action_name = &"toggle_phone"
 action_name = &"toggle_phone"
 
-[node name="UsePhoneIndicator" parent="InputIndicatorRoot" instance=ExtResource("2_qst4g")]
+[node name="OpenMessageIndicator" parent="InputIndicatorRoot" instance=ExtResource("2_qst4g")]
 visible = false
 layout_mode = 2
 mouse_filter = 2
@@ -124,10 +125,7 @@ action_name = &"interact"
 action_name = &"interact"
 
 [node name="Highlight" parent="." instance=ExtResource("3_1j2lf")]
-default_size_mult = null
 target_node_offset_worldspace = Vector3(0, 0.02, 0)
-target_node_offset_uv = null
-target_node_offset_screenspace = null
 
 [node name="States" type="Node" parent="."]
 
@@ -138,18 +136,24 @@ next_state = NodePath("../StateWalk")
 [node name="StateWalk" type="Node" parent="States" node_paths=PackedStringArray("ui_root", "next_state")]
 script = ExtResource("4_ked10")
 ui_root = NodePath("../../InputIndicatorRoot/MoveInputIndicator")
-next_state = NodePath("../StateUnlockPhone")
+next_state = NodePath("../StateOpenPhone")
 
-[node name="StateUnlockPhone" type="Node" parent="States" node_paths=PackedStringArray("ui_root", "next_state")]
+[node name="StateOpenPhone" type="Node" parent="States" node_paths=PackedStringArray("ui_root", "next_state")]
 script = ExtResource("5_3xnq3")
 rowan_invite_dialogue = ExtResource("7_e27ia")
-ui_root = NodePath("../../InputIndicatorRoot/UnlockPhoneInputIndicator")
-next_state = NodePath("../StateUsePhone")
+ui_root = NodePath("../../InputIndicatorRoot/OpenPhoneInputIndicator")
+next_state = NodePath("../StateOpenMessage")
 
-[node name="StateUsePhone" type="Node" parent="States" node_paths=PackedStringArray("open_phone_state", "ui_root", "next_state")]
+[node name="StateOpenMessage" type="Node" parent="States" node_paths=PackedStringArray("open_phone_state", "ui_root", "next_state")]
 script = ExtResource("6_kvxjh")
-open_phone_state = NodePath("../StateUnlockPhone")
-ui_root = NodePath("../../InputIndicatorRoot/UsePhoneIndicator")
+open_phone_state = NodePath("../StateOpenPhone")
+ui_root = NodePath("../../InputIndicatorRoot/OpenMessageIndicator")
+next_state = NodePath("../StateReadConversation")
+
+[node name="StateReadConversation" type="Node" parent="States" node_paths=PackedStringArray("open_phone_state", "open_message_state", "next_state")]
+script = ExtResource("9_titvu")
+open_phone_state = NodePath("../StateOpenPhone")
+open_message_state = NodePath("../StateOpenMessage")
 next_state = NodePath("../StateClosePhone")
 
 [node name="StateClosePhone" type="Node" parent="States" node_paths=PackedStringArray("ui_root", "next_state")]

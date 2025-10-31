@@ -28,11 +28,13 @@ signal close_inventory
 signal new_phone_message(chat_resource: ChatResource)
 
 signal intro_finished
+signal party_invite_accepted
 signal interactables_enabled
 
 signal phone_opened
 signal phone_closed
 signal contact_pressed
+signal message_app_back_pressed
 
 signal journal_opened
 signal journal_closed
