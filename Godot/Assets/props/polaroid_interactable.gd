@@ -14,4 +14,5 @@ func _on_interactables_enabled() -> void:
 
 func on_interact() -> void:
 	super()
+	if not enabled: return;
 	Events.collected_polaroid.emit()
