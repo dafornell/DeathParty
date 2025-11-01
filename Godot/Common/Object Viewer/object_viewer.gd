@@ -23,8 +23,7 @@ var pressed : bool = false
 @onready var blur : Panel = $Blur
 @onready var custom_background_container : Control = $CustomBackground
 @onready var item_info : ItemInfoContainer = $ItemInfo
-@onready var exit_button_parent : Control = $ObjectViewerExit
-@onready var exit_button : Button = $ObjectViewerExit/Button
+@export var exit_button : BaseButton
 
 @onready var journal_item_info : JournalItemInfo = $JournalItemInfo
 
@@ -98,7 +97,7 @@ func close_item_info() -> void:
 	GuiSystem.inspecting_journal_item = false
 	item_info.visible = false
 	journal_item_info.visible = false
-	exit_button_parent.visible = true
+	exit_button.visible = true
 
 #TODO
 #At origin, the object interferes with the world map. Need to move it away from the world map so that it's visible properly.
@@ -108,10 +107,10 @@ func _ready() -> void:
 	#camera_3d.transform.origin.y = camera_3d.transform.origin.y + hide_offset
 	#camera_3d.transform.origin.z = camera_3d.transform.origin.z + hide_offset
 	close_item_info()
-	exit_button.pressed.connect(func():
+	exit_button.pressed.connect(func() -> void:
 		GuiSystem.hide_journal()
 		remove_current_item()
-		)
+	)
 
 func zoom(factor : float) -> void:
 	zoom_absolute(active_item.scale.x * factor)
@@ -147,7 +146,7 @@ func set_background(scene : PackedScene = null) -> void:
 		
 func view_item_info(item_resource : InventoryItemResource) -> void:
 	item_info.set_text(item_resource.description)
-	exit_button_parent.visible = false
+	exit_button.visible = false
 	item_info.visible = true
 
 func reset_zoom() -> void:
@@ -155,5 +154,5 @@ func reset_zoom() -> void:
 
 func view_journal_item_info(journal_item_resource : JournalItemResource) -> void:
 	journal_item_info.set_info(journal_item_resource)
-	exit_button_parent.visible = false
+	exit_button.visible = false
 	journal_item_info.visible = true
