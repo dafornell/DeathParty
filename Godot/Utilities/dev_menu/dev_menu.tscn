@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmink41yr1q8i"]
+[gd_scene load_steps=6 format=3 uid="uid://cmink41yr1q8i"]
 
 [ext_resource type="Script" uid="uid://cyq4ufcsp62p7" path="res://Utilities/dev_menu/dev_menu.gd" id="1_wbp6d"]
+[ext_resource type="Script" uid="uid://ced0i6abh24hp" path="res://Utilities/dev_menu/dev_menu_skip_tutorial.gd" id="2_1dsnd"]
 [ext_resource type="Script" uid="uid://dehiqcd3jycjf" path="res://Utilities/dev_menu/dev_menu_list_inventory_items.gd" id="2_c1403"]
 [ext_resource type="Script" uid="uid://cuemtfmr7vkbb" path="res://Utilities/dev_menu/dev_menu_give_item.gd" id="3_3xkyt"]
 [ext_resource type="Script" uid="uid://cxm6k3yxmhmid" path="res://Utilities/dev_menu/dev_menu_give_all_inventory_items.gd" id="4_3xkyt"]
@@ -53,6 +54,12 @@ text = "slow motion"
 layout_mode = 2
 focus_mode = 0
 text = "skip party room music to next track"
+
+[node name="Skip tutorial" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "skip tutorial"
+script = ExtResource("2_1dsnd")
 
 [node name="FoldableContainer" type="FoldableContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -114,6 +121,7 @@ columns = 3
 [connection signal="toggled" from="MarginContainer/VBoxContainer/PlayerSpeedButton" to="." method="_on_player_speed_button_toggled"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/SlowMotionButton" to="." method="_on_slow_motion_button_toggled"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/SkipMusicButton" to="." method="_on_skip_music_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Skip tutorial" to="." method="_on_skip_music_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer/ListInventoryItems" to="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer/ListInventoryItems" method="_on_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer/GiveItemContainer/VBoxContainer/GiveItem" to="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer/GiveItemContainer" method="_on_give_item_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer/GiveAllInventoryItemsButton" to="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer/GiveAllInventoryItemsButton" method="_on_pressed"]

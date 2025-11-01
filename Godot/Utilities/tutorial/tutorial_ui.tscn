@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ctn3kb2kouu4x"]
+[gd_scene load_steps=22 format=3 uid="uid://ctn3kb2kouu4x"]
 
 [ext_resource type="Script" uid="uid://db2he2dcccelj" path="res://Utilities/tutorial/tutorial_ui.gd" id="1_lunjo"]
 [ext_resource type="PackedScene" uid="uid://ces2kuj1gqfpy" path="res://Utilities/tutorial/input_indicator.tscn" id="2_qst4g"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://c81566abqrcaq" path="res://Utilities/tutorial/states/tutorial_state_take_picture.gd" id="17_gncr5"]
 [ext_resource type="Script" uid="uid://cvvjj4xxgcyj3" path="res://Utilities/tutorial/states/tutorial_state_finished.gd" id="18_rwpr8"]
 [ext_resource type="Script" uid="uid://bcobi35diupdk" path="res://Utilities/tutorial/states/tutorial_state_inspect_camera.gd" id="18_titvu"]
+[ext_resource type="Script" uid="uid://bph7iqrye0rvd" path="res://Utilities/tutorial/tutorial_skipper.gd" id="21_yx8nf"]
 
 [node name="TutorialUI" type="CanvasLayer" node_paths=PackedStringArray("start_state")]
 layer = 10
@@ -212,3 +213,9 @@ next_state = NodePath("../StateFinished")
 script = ExtResource("18_rwpr8")
 tutorial_ui = NodePath("../..")
 ui_root = NodePath("../../InputIndicatorRoot/TakePhotoIndicator")
+
+[node name="TutorialSkipper" type="Node" parent="." node_paths=PackedStringArray("tutorial_ui")]
+script = ExtResource("21_yx8nf")
+tutorial_ui = NodePath("..")
+rowan_invite_dialogue = ExtResource("7_e27ia")
+polaroid_inventory_item = ExtResource("15_gncr5")

@@ -47,6 +47,8 @@ signal collected_polaroid
 # emitted by dialogue OliviaDormCamera.ink.json
 signal ready_to_take_photo_of_corkboard
 
+signal tutorial_skipped
+
 func _enter_tree() -> void:
 	toggle_quest_marker.connect(_on_toggle_quest_marker)
 
