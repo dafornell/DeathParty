@@ -178,7 +178,12 @@ func add_line(line: InkLineInfo, skip_delay : bool = false) -> void:
 		first_message = false
 	else:
 		delayed_lines.push_back(line)
-		await get_tree().create_timer(delay_time).timeout
+		# note: still needs to wait a frame for 
+		# resizing stuff
+		if Globals.skip_chat_delays:
+			await get_tree().process_frame
+		else:
+			await get_tree().create_timer(delay_time).timeout
 		var newline : InkLineInfo = delayed_lines.pop_back()
 		if newline == null or line != newline:
 			#a different conversation has started
