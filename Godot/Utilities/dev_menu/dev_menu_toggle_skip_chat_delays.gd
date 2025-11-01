@@ -1,18 +1,8 @@
-extends Button
-
-var init_text: String
+extends CheckButton
 
 func _ready() -> void:
-	init_text = text
+	Globals.skip_chat_delays = button_pressed
 	pressed.connect(_on_pressed)
-	_update_text()
 	
 func _on_pressed() -> void:
-	Globals.skip_chat_delays = not Globals.skip_chat_delays
-	_update_text()
-
-func _update_text() -> void:
-	text = "%s (current: %s)" % [
-		init_text,
-		str(Globals.skip_chat_delays)
-	]
+	Globals.skip_chat_delays = button_pressed

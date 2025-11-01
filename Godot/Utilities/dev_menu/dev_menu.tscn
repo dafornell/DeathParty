@@ -62,10 +62,9 @@ focus_mode = 0
 text = "skip tutorial"
 script = ExtResource("2_1dsnd")
 
-[node name="Toggle skip chat delays" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Toggle Skip Chat Delays" type="CheckButton" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-focus_mode = 0
-text = "toggle skip chat delays"
+text = "skip chat delays"
 script = ExtResource("3_hvnh0")
 
 [node name="FoldableContainer" type="FoldableContainer" parent="MarginContainer/VBoxContainer"]
