@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="InputIconMap" load_steps=3 format=3 uid="uid://bsd3a5flj2a4d"]
 
 [ext_resource type="Texture2D" uid="uid://lt6wdi7ef60o" path="res://Utilities/tutorial/mouse_cursor.png" id="1_2xfve"]
-[ext_resource type="Script" uid="uid://4ai6hpwtu11f" path="res://Utilities/tutorial/input_icon_map.gd" id="1_rb7ek"]
+[ext_resource type="Script" path="res://Utilities/tutorial/input_icon_map.gd" id="1_rb7ek"]
 
 [resource]
 script = ExtResource("1_rb7ek")
