@@ -99,6 +99,7 @@ func toggle_popup(on: bool) -> void:
 func on_interact() -> void:
 	if !enabled :return
 	toggle_popup(false)
+	Events.interacted.emit(self)
 	if talking_object_resource:
 		talking_object_resource.start_chat()
 
@@ -115,6 +116,10 @@ func on_interact() -> void:
 func on_in_range(in_range: bool) -> void:
 	if !enabled: return
 	toggle_popup(in_range)
+	if in_range:
+		Events.interaction_area_entered.emit(self)
+	else:
+		Events.interaction_area_exited.emit(self)
 
 
 func _on_inventory_changed(_addremove : String, item : InventoryItemResource) -> void:

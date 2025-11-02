@@ -1,68 +1,221 @@
-[gd_scene load_steps=2 format=3 uid="uid://ctn3kb2kouu4x"]
+[gd_scene load_steps=22 format=3 uid="uid://ctn3kb2kouu4x"]
 
 [ext_resource type="Script" uid="uid://db2he2dcccelj" path="res://Utilities/tutorial/tutorial_ui.gd" id="1_lunjo"]
+[ext_resource type="PackedScene" uid="uid://ces2kuj1gqfpy" path="res://Utilities/tutorial/input_indicator.tscn" id="2_qst4g"]
+[ext_resource type="PackedScene" uid="uid://cg2pbsmfxnmmf" path="res://Utilities/tutorial/tutorial_highlight.tscn" id="3_1j2lf"]
+[ext_resource type="Script" uid="uid://c5ecb5fq2bn51" path="res://Utilities/tutorial/states/tutorial_state_intro.gd" id="3_bf8v6"]
+[ext_resource type="Script" uid="uid://dem1mxmxwres" path="res://Utilities/tutorial/states/tutorial_state_walk.gd" id="4_ked10"]
+[ext_resource type="Script" uid="uid://doefgjuxprm3w" path="res://Utilities/tutorial/states/tutorial_state_open_phone.gd" id="5_3xnq3"]
+[ext_resource type="Script" uid="uid://ckxrj4tcy13jq" path="res://Utilities/tutorial/states/tutorial_state_open_message.gd" id="6_kvxjh"]
+[ext_resource type="JSON" path="res://Assets/InkExamples/RowanDormInvite.json" id="7_e27ia"]
+[ext_resource type="Script" uid="uid://quh4vq3y8a21" path="res://Utilities/tutorial/states/tutorial_state_open_journal.gd" id="7_qia2k"]
+[ext_resource type="Script" uid="uid://e5dxtx8btbel" path="res://Utilities/tutorial/states/tutorial_state_close_phone.gd" id="8_lj0v4"]
+[ext_resource type="Script" uid="uid://cm4tcci0ap62b" path="res://Utilities/tutorial/states/tutorial_state_read_conversation.gd" id="9_titvu"]
+[ext_resource type="Script" uid="uid://dtqdnggnfcdec" path="res://Utilities/tutorial/states/tutorial_state_open_inventory.gd" id="10_0qs8v"]
+[ext_resource type="Script" uid="uid://ce1m0nov1uwsi" path="res://Utilities/tutorial/states/tutorial_state_close_inventory.gd" id="13_78sqp"]
+[ext_resource type="Script" uid="uid://b1vc20edvw7nx" path="res://Utilities/tutorial/states/tutorial_state_close_journal.gd" id="14_1j2lf"]
+[ext_resource type="Script" uid="uid://ckeehr3uk2gql" path="res://Utilities/tutorial/states/tutorial_state_find_camera.gd" id="14_qthdq"]
+[ext_resource type="Script" uid="uid://cbvcjryo8yf1r" path="res://Utilities/tutorial/states/tutorial_state_get_camera.gd" id="15_3td0b"]
+[ext_resource type="Resource" uid="uid://bisc78i8lblcq" path="res://Singletons/SaveSystem/DefaultResources/InventoryItemResources/polaroid_camera_properties.tres" id="15_gncr5"]
+[ext_resource type="Script" uid="uid://c81566abqrcaq" path="res://Utilities/tutorial/states/tutorial_state_take_picture.gd" id="17_gncr5"]
+[ext_resource type="Script" uid="uid://cvvjj4xxgcyj3" path="res://Utilities/tutorial/states/tutorial_state_finished.gd" id="18_rwpr8"]
+[ext_resource type="Script" uid="uid://bcobi35diupdk" path="res://Utilities/tutorial/states/tutorial_state_inspect_camera.gd" id="18_titvu"]
+[ext_resource type="Script" uid="uid://bph7iqrye0rvd" path="res://Utilities/tutorial/tutorial_skipper.gd" id="21_yx8nf"]
 
-[node name="TutorialUI" type="CanvasLayer"]
+[node name="TutorialUI" type="CanvasLayer" node_paths=PackedStringArray("start_state")]
+layer = 10
 script = ExtResource("1_lunjo")
+start_state = NodePath("States/StateIntro")
 
-[node name="MoveControlsPopup" type="PanelContainer" parent="."]
-unique_name_in_owner = true
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -72.5
-offset_top = -160.0
-offset_right = 72.5
-offset_bottom = -120.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="UseWASDToMoveLabel" type="Label" parent="MoveControlsPopup"]
-layout_mode = 2
-text = "Use WASD to move"
-
-[node name="WalkCompleteTimer" type="Timer" parent="."]
-unique_name_in_owner = true
-wait_time = 3.0
-one_shot = true
-
-[node name="PhoneControlsPopup" type="PanelContainer" parent="."]
-unique_name_in_owner = true
-visible = false
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
+[node name="InputIndicatorRoot" type="CenterContainer" parent="."]
+z_index = 10
+anchors_preset = -1
+anchor_top = 0.66
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -332.0
-offset_top = -110.0
-offset_right = -104.0
-offset_bottom = -70.0
-grow_horizontal = 0
+anchor_bottom = 0.66
 grow_vertical = 2
-size_flags_horizontal = 8
+mouse_filter = 2
 
-[node name="PressQToUnlockPhoneLabel" type="Label" parent="PhoneControlsPopup"]
-layout_mode = 2
-text = "Press Q to unlock/lock your phone"
-
-[node name="JournalControlsPopup" type="PanelContainer" parent="."]
-unique_name_in_owner = true
+[node name="MoveInputIndicator" parent="InputIndicatorRoot" instance=ExtResource("2_qst4g")]
 visible = false
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 100.0
-offset_top = -160.0
-offset_right = 339.0
-offset_bottom = -120.0
-grow_vertical = 2
-
-[node name="PressTabToOpenJournalLabel" type="Label" parent="JournalControlsPopup"]
 layout_mode = 2
-text = "Press TAB to open/close your journal"
+mouse_filter = 2
+description_text = "press to walk"
+display_type = 1
+composite_action_names = Array[StringName]([&"move_up", &"move_left", &"move_down", &"move_right"])
+composite_action_names = Array[StringName]([&"move_up", &"move_left", &"move_down", &"move_right"])
 
-[connection signal="timeout" from="WalkCompleteTimer" to="." method="_on_walk_complete_timer_timeout"]
+[node name="OpenPhoneInputIndicator" parent="InputIndicatorRoot" instance=ExtResource("2_qst4g")]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+description_text = "press to unlock phone"
+action_name = &"toggle_phone"
+action_name = &"toggle_phone"
+
+[node name="OpenMessageIndicator" parent="InputIndicatorRoot" instance=ExtResource("2_qst4g")]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+description_text = "open message"
+display_type = 3
+
+[node name="ClosePhoneInputIndicator" parent="InputIndicatorRoot" instance=ExtResource("2_qst4g")]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+description_text = "press again to close phone"
+action_name = &"toggle_phone"
+action_name = &"toggle_phone"
+
+[node name="OpenJournalIndicator" parent="InputIndicatorRoot" instance=ExtResource("2_qst4g")]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+description_text = "press to access journal"
+action_name = &"toggle_journal"
+action_name = &"toggle_journal"
+
+[node name="CloseJournalIndicator" parent="InputIndicatorRoot" instance=ExtResource("2_qst4g")]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+description_text = "press again to close journal"
+action_name = &"toggle_journal"
+action_name = &"toggle_journal"
+
+[node name="OpenInventoryIndicator" parent="InputIndicatorRoot" instance=ExtResource("2_qst4g")]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+description_text = "click to open inventory"
+display_type = 2
+key_string = "Left Mouse Button"
+key_string = "Left Mouse Button"
+
+[node name="CloseInventoryIndicator" parent="InputIndicatorRoot" instance=ExtResource("2_qst4g")]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+description_text = "click again to close inventory"
+display_type = 2
+key_string = "Left Mouse Button"
+key_string = "Left Mouse Button"
+
+[node name="FindCameraIndicator" parent="InputIndicatorRoot" instance=ExtResource("2_qst4g")]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+description_text = "find camera"
+display_type = 3
+
+[node name="PickUpCameraIndicator" parent="InputIndicatorRoot" instance=ExtResource("2_qst4g")]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+description_text = "pick up camera"
+action_name = &"interact"
+action_name = &"interact"
+
+[node name="TakePhotoIndicator" parent="InputIndicatorRoot" instance=ExtResource("2_qst4g")]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+description_text = "take photo of corkboard"
+action_name = &"interact"
+action_name = &"interact"
+
+[node name="Highlight" parent="." instance=ExtResource("3_1j2lf")]
+target_node_offset_worldspace = Vector3(0, 0.02, 0)
+
+[node name="States" type="Node" parent="."]
+
+[node name="StateIntro" type="Node" parent="States" node_paths=PackedStringArray("next_state")]
+script = ExtResource("3_bf8v6")
+next_state = NodePath("../StateWalk")
+
+[node name="StateWalk" type="Node" parent="States" node_paths=PackedStringArray("ui_root", "next_state")]
+script = ExtResource("4_ked10")
+ui_root = NodePath("../../InputIndicatorRoot/MoveInputIndicator")
+next_state = NodePath("../StateOpenPhone")
+
+[node name="StateOpenPhone" type="Node" parent="States" node_paths=PackedStringArray("ui_root", "next_state")]
+script = ExtResource("5_3xnq3")
+rowan_invite_dialogue = ExtResource("7_e27ia")
+ui_root = NodePath("../../InputIndicatorRoot/OpenPhoneInputIndicator")
+next_state = NodePath("../StateOpenMessage")
+
+[node name="StateOpenMessage" type="Node" parent="States" node_paths=PackedStringArray("open_phone_state", "ui_root", "next_state")]
+script = ExtResource("6_kvxjh")
+open_phone_state = NodePath("../StateOpenPhone")
+ui_root = NodePath("../../InputIndicatorRoot/OpenMessageIndicator")
+next_state = NodePath("../StateReadConversation")
+
+[node name="StateReadConversation" type="Node" parent="States" node_paths=PackedStringArray("open_phone_state", "open_message_state", "next_state")]
+script = ExtResource("9_titvu")
+open_phone_state = NodePath("../StateOpenPhone")
+open_message_state = NodePath("../StateOpenMessage")
+next_state = NodePath("../StateClosePhone")
+
+[node name="StateClosePhone" type="Node" parent="States" node_paths=PackedStringArray("ui_root", "next_state")]
+script = ExtResource("8_lj0v4")
+ui_root = NodePath("../../InputIndicatorRoot/ClosePhoneInputIndicator")
+next_state = NodePath("../StateOpenJournal")
+
+[node name="StateOpenJournal" type="Node" parent="States" node_paths=PackedStringArray("ui_root", "next_state")]
+script = ExtResource("7_qia2k")
+ui_root = NodePath("../../InputIndicatorRoot/OpenJournalIndicator")
+next_state = NodePath("../StateOpenInventory")
+
+[node name="StateOpenInventory" type="Node" parent="States" node_paths=PackedStringArray("highlight", "open_journal_state", "ui_root", "next_state")]
+script = ExtResource("10_0qs8v")
+highlight = NodePath("../../Highlight")
+open_journal_state = NodePath("../StateOpenJournal")
+ui_root = NodePath("../../InputIndicatorRoot/OpenInventoryIndicator")
+next_state = NodePath("../StateCloseInventory")
+
+[node name="StateCloseInventory" type="Node" parent="States" node_paths=PackedStringArray("highlight", "open_journal_state", "ui_root", "next_state")]
+script = ExtResource("13_78sqp")
+highlight = NodePath("../../Highlight")
+highlight_size_mult = 0.5
+open_journal_state = NodePath("../StateOpenJournal")
+ui_root = NodePath("../../InputIndicatorRoot/CloseInventoryIndicator")
+next_state = NodePath("../StateCloseJournal")
+
+[node name="StateCloseJournal" type="Node" parent="States" node_paths=PackedStringArray("ui_root", "next_state")]
+script = ExtResource("14_1j2lf")
+ui_root = NodePath("../../InputIndicatorRoot/CloseJournalIndicator")
+next_state = NodePath("../StateFindCamera")
+
+[node name="StateFindCamera" type="Node" parent="States" node_paths=PackedStringArray("ui_root", "next_state")]
+script = ExtResource("14_qthdq")
+camera_item = ExtResource("15_gncr5")
+ui_root = NodePath("../../InputIndicatorRoot/FindCameraIndicator")
+next_state = NodePath("../StateGetCamera")
+
+[node name="StateGetCamera" type="Node" parent="States" node_paths=PackedStringArray("find_camera_state", "ui_root", "next_state")]
+script = ExtResource("15_3td0b")
+find_camera_state = NodePath("../StateFindCamera")
+camera_resource = ExtResource("15_gncr5")
+ui_root = NodePath("../../InputIndicatorRoot/PickUpCameraIndicator")
+next_state = NodePath("../StateInspectCamera")
+
+[node name="StateInspectCamera" type="Node" parent="States" node_paths=PackedStringArray("next_state")]
+script = ExtResource("18_titvu")
+next_state = NodePath("../StateTakePicture")
+
+[node name="StateTakePicture" type="Node" parent="States" node_paths=PackedStringArray("ui_root", "next_state")]
+script = ExtResource("17_gncr5")
+ui_root = NodePath("../../InputIndicatorRoot/TakePhotoIndicator")
+next_state = NodePath("../StateFinished")
+
+[node name="StateFinished" type="Node" parent="States" node_paths=PackedStringArray("tutorial_ui", "ui_root")]
+script = ExtResource("18_rwpr8")
+tutorial_ui = NodePath("../..")
+ui_root = NodePath("../../InputIndicatorRoot/TakePhotoIndicator")
+
+[node name="TutorialSkipper" type="Node" parent="." node_paths=PackedStringArray("tutorial_ui")]
+script = ExtResource("21_yx8nf")
+tutorial_ui = NodePath("..")
+rowan_invite_dialogue = ExtResource("7_e27ia")
+polaroid_inventory_item = ExtResource("15_gncr5")

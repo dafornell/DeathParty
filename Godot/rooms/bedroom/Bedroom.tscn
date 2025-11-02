@@ -1,4 +1,4 @@
-[gd_scene load_steps=277 format=4 uid="uid://c44l5t4o5i1qg"]
+[gd_scene load_steps=274 format=4 uid="uid://c44l5t4o5i1qg"]
 
 [ext_resource type="Texture2D" uid="uid://di3fxmhwsgn4v" path="res://rooms/bedroom/Bedroom_IMG_4162.png" id="1_aasoq"]
 [ext_resource type="Script" uid="uid://bh46on0pmp3la" path="res://rooms/bedroom/bedroom.gd" id="1_lxtj2"]
@@ -11,13 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://8npa6vrpy0jb" path="res://rooms/bedroom/punk posters.glb" id="3_w0jyq"]
 [ext_resource type="Texture2D" uid="uid://b8uue8x55guj4" path="res://rooms/bedroom/polaroids and poster_love birds.png" id="4_fa1og"]
 [ext_resource type="Texture2D" uid="uid://d0vlsucaate3q" path="res://rooms/bedroom/punk posters_singer poster.png" id="4_tluma"]
-[ext_resource type="JSON" path="res://Assets/InkExamples/RowanDormInvite.json" id="4_vr1g1"]
 [ext_resource type="Texture2D" uid="uid://dcblfnhmnjp1h" path="res://rooms/bedroom/polaroids and poster_Sam tatt.png" id="5_dyybh"]
 [ext_resource type="PackedScene" uid="uid://dijllg5x7mlpw" path="res://rooms/bedroom/bed.glb" id="5_rbtdn"]
-[ext_resource type="JSON" path="res://Assets/InkFiles/OliviaDormClosePhone.json" id="5_shd6j"]
 [ext_resource type="Texture2D" uid="uid://fuhn5pxlrdsu" path="res://rooms/bedroom/polaroids and poster_Rush over.png" id="6_0t478"]
 [ext_resource type="PackedScene" uid="uid://bbyg62wymptn6" path="res://Singletons/ContentLoader/scene_loader.tscn" id="6_x8yhf"]
-[ext_resource type="JSON" path="res://Assets/InkFiles/OliviaDormJournal.ink.json" id="6_yxfps"]
 [ext_resource type="PackedScene" uid="uid://b8ucr48tcuk2p" path="res://rooms/bedroom/dorm desk.glb" id="7_7a5mm"]
 [ext_resource type="Texture2D" uid="uid://dke1flebhebj4" path="res://rooms/bedroom/polaroids and poster_study date wiht nora.png" id="7_84fnt"]
 [ext_resource type="PackedScene" uid="uid://dpc3qxhnh5xme" path="res://Assets/environment/bedroom_door.tscn" id="7_vr1g1"]
@@ -1088,7 +1085,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_4g2yi")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wkd24"]
-size = Vector3(2, 2, 2)
+size = Vector3(2.1688232, 2, 1.7305908)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7orw5"]
 resource_name = "Material.009"
@@ -2378,12 +2375,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_o7qs3")
 
-[node name="Bedroom" type="Area3D" node_paths=PackedStringArray("play_button", "quit_button", "fade_title", "title_screen", "closet", "room_area", "path_follow_node") groups=["loadable_scene"]]
+[node name="Bedroom" type="Area3D" node_paths=PackedStringArray("title_screen", "closet", "room_area", "path_follow_node") groups=["loadable_scene"]]
 collision_mask = 2
 script = ExtResource("1_lxtj2")
-play_button = NodePath("TitleScreen/FadeThisOut/StartGameButton")
-quit_button = NodePath("TitleScreen/FadeThisOut/QuitButton")
-fade_title = NodePath("TitleScreen/FadeThisOut/TextureRect")
 title_screen = NodePath("TitleScreen")
 closet = NodePath("Closet")
 room_area = NodePath("RoomArea")
@@ -2391,14 +2385,8 @@ path_follow_node = NodePath("IntroCameraPath/PathFollow3D")
 
 [node name="TitleScreen" parent="." instance=ExtResource("2_0t478")]
 
-[node name="TutorialUI" parent="." node_paths=PackedStringArray("exterior_scene_loader", "polaroid_camera", "corkboard_popup", "corkboard") instance=ExtResource("3_84fnt")]
-rowan_invite_dialogue = ExtResource("4_vr1g1")
-on_phone_close_dialogue = ExtResource("5_shd6j")
-on_journal_dialogue = ExtResource("6_yxfps")
+[node name="TutorialUI" parent="." node_paths=PackedStringArray("exterior_scene_loader") instance=ExtResource("3_84fnt")]
 exterior_scene_loader = NodePath("../SceneLoader_Exterior")
-polaroid_camera = NodePath("../PolaroidCamera")
-corkboard_popup = NodePath("../CorkBoard/Popup")
-corkboard = NodePath("../CorkBoard")
 
 [node name="IntroCameraPath" type="Path3D" parent="."]
 curve = SubResource("Curve3D_tluma")
@@ -2876,7 +2864,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.43036, 0, 0)
 collision_shape = NodePath("CollisionShape3D2")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="CorkBoard/InteractionDetector"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.43, -0.23500001, 1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.34558836, -0.23500001, 1.3652954)
 shape = SubResource("BoxShape3D_wkd24")
 debug_color = Color(0, 1, 0.0333333, 1)
 
@@ -3246,8 +3234,6 @@ transform = Transform3D(0.889039, 0, 0, 0, 0.889039, 0, 0, 0, 0.889039, -0.86629
 visible = false
 
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
-[connection signal="intro_finished" from="." to="TutorialUI" method="_on_bedroom_intro_finished"]
-[connection signal="toggle_corkboard_interactable" from="TutorialUI" to="CorkBoard" method="_on_tutorial_ui_toggle_corkboard_interactable"]
 
 [editable path="SceneLoader_Exterior"]
 [editable path="SceneLoader_Exterior/InteractionDetector"]

@@ -29,10 +29,10 @@ func _on_body_exited(body : Node3D) -> void:
 		pass
 		
 #Enables the Detector
-func enable():
+func enable() -> void:
 	player_currently_in_range = true
 	player_in_range.emit(true)
 
-func disable():
+func disable() -> void:
 	player_currently_in_range = false
 	player_in_range.emit(false)

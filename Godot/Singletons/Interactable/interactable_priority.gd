@@ -25,6 +25,7 @@ func remove_interactable(interactable : InteractionDetector):
 	if interactable == active_interactable:
 		active_interactable.disable()
 		interactable_priority.pop_back()
+		active_interactable = null
 		if not interactable_priority.is_empty():
 			active_interactable = interactable_priority[-1]
 			active_interactable.enable()

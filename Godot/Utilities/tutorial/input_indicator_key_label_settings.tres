@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dcsc602vf2vvk"]
+
+[ext_resource type="FontFile" uid="uid://w4kmxbbwxg4c" path="res://Assets/Fonts/Inria_Sans/InriaSans-Regular.ttf" id="1_n5koy"]
+
+[resource]
+font = ExtResource("1_n5koy")
+font_color = Color(0, 0, 0, 1)

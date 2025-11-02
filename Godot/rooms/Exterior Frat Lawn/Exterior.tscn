@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ch4xrdlj43bah" path="res://rooms/Exterior Frat Lawn/Exterior_TCom_OrnamentBorder0333_1_S.png" id="3_qokoo"]
 [ext_resource type="Script" uid="uid://cyn7mdbv1saaq" path="res://rooms/Exterior Frat Lawn/jog_controls_popup.gd" id="4_81i5n"]
 [ext_resource type="Texture2D" uid="uid://ddr8f0a45pnoy" path="res://rooms/Exterior Frat Lawn/Exterior_51dc8d5e7ac559bb47ade3dfd3ba5b58.jpg" id="4_s6f1y"]
+[ext_resource type="PackedScene" path="res://Utilities/tutorial/input_indicator.tscn" id="5_42tb4"]
 [ext_resource type="Texture2D" uid="uid://dj2kkd15yuake" path="res://rooms/Exterior Frat Lawn/Exterior_Door.png" id="5_nnx0v"]
 [ext_resource type="Script" uid="uid://gq7614xvk2hc" path="res://Utilities/spawn_point.gd" id="5_pkvil"]
 [ext_resource type="Texture2D" uid="uid://jhfdrr25x8hn" path="res://rooms/Exterior Frat Lawn/Exterior_RoofingTiles014B_1K-JPG_Color-RoofingTiles014B_1K-JPG_Opacity.png" id="7_72fye"]
@@ -2882,19 +2883,20 @@ first_visit_json = ExtResource("3_42tb4")
 visible = false
 script = ExtResource("4_81i5n")
 
-[node name="PanelContainer" type="PanelContainer" parent="JogControlsPopup"]
-anchors_preset = 5
+[node name="InputIndicator" parent="JogControlsPopup" instance=ExtResource("5_42tb4")]
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -65.0
-offset_top = 250.0
-offset_right = 65.0
-offset_bottom = 273.0
-grow_horizontal = 2
-
-[node name="Label" type="Label" parent="JogControlsPopup/PanelContainer"]
-layout_mode = 2
-text = "hold SHIFT while moving to jog"
+anchor_bottom = 0.5
+offset_left = -114.0
+offset_top = -25.0
+offset_right = 114.0
+offset_bottom = 25.0
+description_text = "hold to jog"
+action_name = &"jog"
+composite_action_names = Array[StringName]([&"jog", &""])
+action_name = &"jog"
 
 [node name="ShowTimer" type="Timer" parent="JogControlsPopup"]
 unique_name_in_owner = true

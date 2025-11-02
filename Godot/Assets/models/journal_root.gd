@@ -11,17 +11,19 @@ const TWEEN_TIME : float = .5
 
 @export var bookflip : BookFlip
 @export var static_page : MeshInstance3D
-var toggle_inventory_button : Area3D
+@export var toggle_inventory_button : Area3D
 
 
 func _enter_tree() -> void:
 	Events.open_inventory.connect(show_inventory)
 	Events.close_inventory.connect(hide_inventory)
 
+func _exit_tree() -> void:
+	Events.open_inventory.disconnect(show_inventory)
+	Events.close_inventory.disconnect(hide_inventory)
+
 
 func _ready() -> void:
-	if bookflip:
-		toggle_inventory_button = bookflip.get_node("ToggleInventoryButton")
 	normal_pos = position
 	up_pos = normal_pos - transform.basis.z.normalized()*.65
 	og_scale = scale
