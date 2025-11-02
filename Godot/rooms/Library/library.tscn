@@ -1527,6 +1527,22 @@ skeleton = NodePath("")
 [node name="Railings" parent="Balcony" instance=ExtResource("2_6fo57")]
 transform = Transform3D(-4.99212, 0, 1.74137e-06, 0, 5.34422, 0, -1.62664e-06, 0, -5.34422, -2.78296, 5.34237, 16.5994)
 
+[node name="BalconyExtension" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.187118, 0, 7.732917e-08, 0, 0.187118, 0, -7.732917e-08, 0, 0.187118, 3.069, -1.176, 10.409)
+layers = 524288
+mesh = SubResource("ArrayMesh_c7b50")
+skeleton = NodePath("")
+
+[node name="Railings" parent="BalconyExtension" instance=ExtResource("2_6fo57")]
+transform = Transform3D(-4.99212, 0, 1.74137e-06, 0, 5.34422, 0, -1.62664e-06, 0, -5.34422, -2.78296, 5.34237, 16.5994)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="BalconyExtension"]
+transform = Transform3D(5.3442216, -2.0305872e-06, 1.3399426e-06, 2.0305868e-06, 2.1018834, -4.913532, 1.3399427e-06, 4.913532, 2.1018834, -31.212112, -11.179375, -10.9092865)
+light_color = Color(0.18, 0.849667, 1, 1)
+light_energy = 0.71
+light_bake_mode = 1
+light_cull_mask = 4294443008
+
 [node name="Chandelier" parent="." instance=ExtResource("4_30q20")]
 transform = Transform3D(0.27786, 0, 0, 0, 0.27786, 0, 0, 0, 0.27786, -2.7911, 0.501003, 1.48577)
 
@@ -2493,6 +2509,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 10)
 [editable path="SceneLoader_Ghost hallway/InteractionDetector"]
 [editable path="Room/BackWall/Bookshelves/Upstairs"]
 [editable path="Balcony/Railings"]
+[editable path="BalconyExtension/Railings"]
 [editable path="Chandelier"]
 [editable path="WallLamps/WallLamp"]
 [editable path="WallLamps/WallLamp2"]
