@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://0uqmr277coge"]
+
+[ext_resource type="Script" uid="uid://dju26diqu8vca" path="res://Assets/GUIPrefabs/JournalPrefabs/ArrowPrefabs/arrows.gd" id="1_ow2yf"]
+[ext_resource type="PackedScene" uid="uid://dv3eb8tvsff5k" path="res://Assets/GUIPrefabs/JournalPrefabs/ArrowPrefabs/arrow.tscn" id="1_vu1di"]
+
+[node name="Arrows" type="Control" node_paths=PackedStringArray("left_arrow", "right_arrow")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ow2yf")
+left_arrow = NodePath("LeftArrow")
+right_arrow = NodePath("RightArrow")
+
+[node name="RightArrow" parent="." instance=ExtResource("1_vu1di")]
+layout_mode = 1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_right = -32.0
+offset_bottom = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="LeftArrow" parent="." instance=ExtResource("1_vu1di")]
+layout_mode = 1
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_bottom = -32.0
+grow_horizontal = 1
+grow_vertical = 0
+flip_h = true
