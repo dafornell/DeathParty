@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=4 uid="uid://busrnnhrujsqx"]
+[gd_scene load_steps=100 format=4 uid="uid://busrnnhrujsqx"]
 
 [ext_resource type="Texture2D" uid="uid://dwqn2srjfxhnt" path="res://rooms/party_room/PartyRoom layout_wood panel big.png" id="2_1xrom"]
 [ext_resource type="PackedScene" uid="uid://b5sjjc5i61576" path="res://Singletons/ContentLoader/TeleportPoint.tscn" id="2_ir6ct"]
@@ -30,6 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://ce647ee5srh8k" path="res://Assets/CharacterAssets/alberto_ma/alberto_ma.tscn" id="26_ib5sr"]
 [ext_resource type="PackedScene" uid="uid://d1gjbrx5kjv5g" path="res://Assets/CharacterAssets/frat_boys/green_frat_boy/green_frat_boy.tscn" id="26_ly50g"]
 [ext_resource type="PackedScene" uid="uid://ba276vhgtl31m" path="res://Assets/CharacterAssets/benny/benny.tscn" id="27_5o5c1"]
+[ext_resource type="PackedScene" uid="uid://d3lt3kgvcji47" path="res://Assets/props/balloons/balloons_four_short.tscn" id="28_prrke"]
 [ext_resource type="PackedScene" uid="uid://d1ao6n4p81227" path="res://Assets/CharacterAssets/bunnies/white_bunny/white_bunny.tscn" id="29_yyfmc"]
 [ext_resource type="PackedScene" uid="uid://bm3olvlwfwvp1" path="res://Assets/environment/door/door.glb" id="30_0yn4t"]
 [ext_resource type="PackedScene" uid="uid://b0xusmrkexal4" path="res://Assets/CharacterAssets/frat_boys/pink_hair_frat_boy/pink_hair_frat_boy.tscn" id="31_8hjut"]
@@ -2037,13 +2038,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.59392, 4.2, -4.01154)
 [node name="Balloons" type="Node3D" parent="Props"]
 
 [node name="BalloonsThreeFloating" parent="Props/Balloons" instance=ExtResource("21_x156b")]
-transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 4.99089, 6, 6.00758)
+transform = Transform3D(-0.39056265, -0.1634291, -0.9059545, -0.06446818, 0.98655504, -0.15017666, 0.91831714, -0.000248151, -0.39584747, -0.25301284, 4.1635904, 0.7293199)
 
 [node name="BalloonsThreeShort" parent="Props/Balloons" instance=ExtResource("22_mb0s8")]
-transform = Transform3D(-0.258819, 0, 1.06252, 0, 1.146, 0, -0.965926, 0, -0.284701, -3.99999, 0.1, -0.00607332)
+transform = Transform3D(-0.92296183, 0, 0.38489178, 0, 1, 0, -0.38489178, 0, -0.92296183, -1.1813934, 1.2992376, 4.9402156)
 
 [node name="BalloonsFourTall" parent="Props/Balloons" instance=ExtResource("23_lwnio")]
-transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 6.99696, -0.00569966, 2.01063)
+transform = Transform3D(0.8660255, 0, 0.49999985, 0, 1, 0, -0.49999985, 0, 0.8660255, 1.6246847, -0.15734339, 4.7303553)
+
+[node name="BalloonsFourShort" parent="Props/Balloons" instance=ExtResource("28_prrke")]
+transform = Transform3D(-1.2999985, 0, 0.0019739198, 0, 1.3, 0, -0.0019739198, 0, -1.2999985, 0.24484253, 2.3873074, 5.9353604)
 
 [node name="NPCs" type="Node3D" parent="."]
 
@@ -2662,7 +2666,7 @@ transform = Transform3D(-0.9194788, 0, -0.3931397, 0, 1, 0, 0.3931397, 0, -0.919
 event_name = "event:/000_SFX/100_Environment/Crowd"
 event_guid = "{9e4d86e6-afa7-406e-ba12-08656547d254}"
 autoplay = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00303666, 1, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9999986, 1, 0.001515777)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

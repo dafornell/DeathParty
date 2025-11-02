@@ -79,7 +79,7 @@ func on_interact() -> void:
 	print("Teleport point for ", target_scene, " is ", teleport_point.spawn_number, " vs ", local_spawn_point)
 	ContentLoader.scene_loader_teleport(target_scene, teleport_point)
 	handle_audio()
-		
+
 
 func on_in_range(in_range: bool) -> void:
 	if !enabled: return

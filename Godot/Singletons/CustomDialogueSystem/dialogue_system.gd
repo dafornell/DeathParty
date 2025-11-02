@@ -103,6 +103,7 @@ func end_dialogue() -> void:
 	if current_dialogue_box == text_message_box: #if focused dialogue box is message app
 		current_phone_resource.end_chat(current_conversation)
 		current_phone_resource = null
+		current_dialogue_box = null
 	else:
 		current_dialogue_box.visible = false
 		current_dialogue_box.queue_free()
@@ -118,15 +119,17 @@ func pause_dialogue(revert_address : bool = false) -> void:
 		current_conversation.pop_back()
 	
 	print("trying to pause: ", current_dialogue_box, current_character_resource)
-	if current_dialogue_box and current_character_resource:
+	if current_dialogue_box != text_message_box and current_dialogue_box and current_character_resource:
 		print("Pausing in character")
-		current_character_resource.pause_chat()
 		current_dialogue_box.visible = false
+		current_character_resource.pause_chat()
 		current_dialogue_box.queue_free()
 		current_character_resource = null
 	elif current_phone_resource:
 		current_phone_resource.pause_chat(current_conversation) # stores Inky hierarchy
 		current_phone_resource = null 
+		current_dialogue_box = null
+	current_conversation = []
 	print("Pausing dialogue")
 	in_dialogue = false
 ##
@@ -328,6 +331,16 @@ func match_command(text_ : String) -> void:
 			var npc_model : NPC = ContentLoader.get_active_npc(character_name).npc
 			if npc_model:
 				npc_model.play_animation(animation_name)
+		
+		"/emit_signal":
+			var signal_name : String = parameters_array[1]
+			if Events.has_signal(signal_name):
+				# use callv to pass variable number of arguments
+				var res : int = Events.emit_signal.callv(parameters_array.slice(1))
+				if res == ERR_UNAVAILABLE:
+					push_error("Signal " + signal_name + " called with wrong arguments.")
+			else:
+				push_error("Signal " + signal_name + " does not exist in Events singleton.")
 
 	if display_content_after:
 		display_content()

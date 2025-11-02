@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=4 uid="uid://o1miuonfuk7"]
+[gd_scene load_steps=86 format=4 uid="uid://o1miuonfuk7"]
 
 [ext_resource type="Texture2D" uid="uid://bwyduh5ck58ao" path="res://rooms/Bathroom/Bathroom layout_IMG_4144.png" id="1_3eiq5"]
 [ext_resource type="Script" uid="uid://c00klyh6eq146" path="res://rooms/Bathroom/bathroom.gd" id="1_qgpod"]
@@ -42,7 +42,7 @@
 [ext_resource type="PackedScene" uid="uid://522s4uc8y6ni" path="res://Assets/CharacterAssets/Cop/cop.tscn" id="34_jy5jw"]
 [ext_resource type="PackedScene" uid="uid://cjkogt4y2w5dp" path="res://Assets/CharacterAssets/bunnies/red_bunny/red_bunny.tscn" id="35_rjeq7"]
 [ext_resource type="PackedScene" uid="uid://ba200ffpgk2tg" path="res://Assets/CharacterAssets/gamers/dino_gamer/dino_gamer.tscn" id="36_17afp"]
-[ext_resource type="PackedScene" uid="uid://5ssjaesop020" path="res://Assets/CharacterAssets/free_hug_guy/free_hug_guy.tscn" id="40_46x1s"]
+[ext_resource type="PackedScene" uid="uid://d1lmv76sg8rx0" path="res://Assets/CharacterAssets/free_hug_guy/free_hug_guy.tscn" id="40_46x1s"]
 [ext_resource type="PackedScene" uid="uid://srm6yxmh01rl" path="res://rooms/Bathroom/toilet.glb" id="47_icx1l"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qlpr6"]
@@ -918,10 +918,10 @@ transform = Transform3D(0.510693, 0, -0.963312, 0, 1.09031, 0, 0.963312, 0, 0.51
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.09054, -2.53435, -0.728308)
 
 [node name="BalloonsFourTall" parent="Props/Balloons" instance=ExtResource("25_dn2c2")]
-transform = Transform3D(0.724668, 0, 1.02247, 0, 1.01304, 0, -0.70789, 0, 1.0467, -0.946187, -0.759696, 1.59792)
+transform = Transform3D(0.57227147, 0, 0.8070877, 0, 0.8, 0, -0.55902183, 0, 0.8262169, -0.946187, -0.011983633, 1.59792)
 
 [node name="BalloonsThreeShort" parent="Props/Balloons" instance=ExtResource("26_ha557")]
-transform = Transform3D(-0.237819, 0.0217732, 6.19561e-09, 0, 1.17865e-07, -0.262231, -0.0157459, -0.328854, -9.35761e-08, -0.028357, 0.294794, -1.39003)
+transform = Transform3D(0.82574403, 0, 0.564045, 0, 1, 0, -0.564045, 0, 0.82574403, 6.586948, 0.33402205, -3.4706867)
 
 [node name="CupsOnFloor" type="Node3D" parent="Props"]
 transform = Transform3D(1.24315, 0, 0, 0, 1.24315, 0, 0, 0, 1.24315, 8.56035, -3.39921, -7.01277)
@@ -1346,6 +1346,9 @@ bones/60/rotation = Quaternion(-0.021729823, 0.06770299, 0.9923866, 0.10056366)
 bones/61/rotation = Quaternion(-0.8189035, 0.03844906, -0.09322636, 0.56500226)
 bones/62/rotation = Quaternion(0.28909022, 0.061684735, 0.09363969, 0.95071214)
 bones/63/rotation = Quaternion(0.28179958, 0.06336792, -0.09783081, 0.95236695)
+
+[node name="BoneAttachment3D" parent="NPCs/free hug2/CharacterBody3D/free hug/Skeleton3D" index="4"]
+transform = Transform3D(0.29192227, 0.16626693, -0.9418793, -0.956097, 0.077181555, -0.28270411, 0.025691522, 0.9830556, 0.18149847, 23.404936, 0.9478364, -26.079012)
 
 [node name="AnimationPlayer" parent="NPCs/free hug2/CharacterBody3D" index="2"]
 autoplay = "puke"

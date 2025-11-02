@@ -1,4 +1,4 @@
-[gd_scene load_steps=217 format=4 uid="uid://dph5ihe40llhe"]
+[gd_scene load_steps=220 format=4 uid="uid://dph5ihe40llhe"]
 
 [ext_resource type="Script" uid="uid://c7lpgksj3ddcu" path="res://rooms/Exterior Frat Lawn/exterior.gd" id="1_nnx0v"]
 [ext_resource type="Environment" uid="uid://ca3e8txjiikuc" path="res://Assets/environments/new Exterior environment.tres" id="2_maypx"]
@@ -57,6 +57,9 @@
 [ext_resource type="PackedScene" uid="uid://b5sjjc5i61576" path="res://Singletons/ContentLoader/TeleportPoint.tscn" id="54_txmqg"]
 [ext_resource type="PackedScene" uid="uid://bbyg62wymptn6" path="res://Singletons/ContentLoader/scene_loader.tscn" id="55_maypx"]
 [ext_resource type="PackedScene" uid="uid://d1lmv76sg8rx0" path="res://Assets/CharacterAssets/free_hug_guy/free_hug_guy.tscn" id="55_txmqg"]
+[ext_resource type="PackedScene" uid="uid://d3lt3kgvcji47" path="res://Assets/props/balloons/balloons_four_short.tscn" id="58_pkvil"]
+[ext_resource type="PackedScene" uid="uid://dxahcd25ocjsx" path="res://Assets/props/balloons/balloons_four_tall.tscn" id="59_42tb4"]
+[ext_resource type="PackedScene" uid="uid://48e2dw6eco7w" path="res://Assets/props/balloons/balloons_three_short.tscn" id="60_a3xny"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y8ruy"]
 size = Vector3(85.0753, 13.7554, 87.9012)
@@ -4543,6 +4546,27 @@ attached = false
 autoplay = true
 volume = 0.075
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0)
+
+[node name="BalloonsFourShort" parent="." instance=ExtResource("58_pkvil")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5908198, -5.9582534, 19.000135)
+
+[node name="BalloonsFourTall" parent="." instance=ExtResource("59_42tb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4133835, -7.126508, 18.163286)
+
+[node name="BalloonsThreeShort" parent="." instance=ExtResource("60_a3xny")]
+transform = Transform3D(0.8842633, 0, 0.46698865, 0, 1, 0, -0.46698865, 0, 0.8842633, -3.7784534, -6.984945, 38.119827)
+
+[node name="BalloonsFourShort2" parent="." instance=ExtResource("58_pkvil")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4804678, -4.6742, 9.245198)
+
+[node name="BalloonsFourShort3" parent="." instance=ExtResource("58_pkvil")]
+transform = Transform3D(0.8286079, 0, -0.55982935, 0, 1, 0, 0.55982935, 0, 0.8286079, 1.8206577, -5.9207687, 11.225269)
+
+[node name="BalloonsThreeShort2" parent="." instance=ExtResource("60_a3xny")]
+transform = Transform3D(-0.5554252, 0, -0.8315667, 0, 1, 0, 0.8315667, 0, -0.5554252, -3.0858572, -6.9849443, 11.333035)
+
+[node name="BalloonsFourShort4" parent="." instance=ExtResource("58_pkvil")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0812433, 1.2171526, 5.903897)
 
 [connection signal="timeout" from="JogControlsPopup/ShowTimer" to="JogControlsPopup" method="_on_show_timer_timeout"]
 [connection signal="timeout" from="JogControlsPopup/HideTimer" to="JogControlsPopup" method="_on_hide_timer_timeout"]

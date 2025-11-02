@@ -43,6 +43,7 @@ func load_chat(json : JSON) -> void:
 	#end notification
 
 	unread.emit(true)
+	Events.new_phone_message.emit(self)
 	
 func start_chat() -> void:
 	if (paused_ink_address):

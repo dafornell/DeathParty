@@ -25,6 +25,7 @@ signal toggle_dialogue_instructions(value: bool)
 signal open_inventory
 signal close_inventory
 
+signal new_phone_message(chat_resource: ChatResource)
 
 func _enter_tree() -> void:
 	toggle_quest_marker.connect(_on_toggle_quest_marker)

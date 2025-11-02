@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bm1q5w4b7f5ma"]
+[gd_scene load_steps=20 format=3 uid="uid://bm1q5w4b7f5ma"]
 
 [ext_resource type="Texture2D" uid="uid://cv7rlbne3cno1" path="res://Assets/PhoneTextures/connection_battery.png" id="1_2ovql"]
 [ext_resource type="FontFile" uid="uid://boycxonuwk8ms" path="res://Assets/Fonts/Jaro/Jaro-Regular-VariableFont_opsz.ttf" id="2_e8led"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b8m0h5rj0kxlu" path="res://Assets/PhoneTextures/messages_icon.png" id="5_cdioe"]
 [ext_resource type="Texture2D" uid="uid://dfq4d4rl8521p" path="res://Assets/PhoneTextures/home_button_olivia.png" id="5_d1h66"]
 [ext_resource type="Script" uid="uid://bqkuvvcygqkbe" path="res://Assets/GUIFunctionalityScripts/home_button.gd" id="5_hnfnb"]
+[ext_resource type="PackedScene" uid="uid://dpko77hndss54" path="res://phone_notification_badge.tscn" id="6_gnbtu"]
 [ext_resource type="Texture2D" uid="uid://dcrk2hh32ugb8" path="res://Assets/PhoneTextures/social_media_icon_bg.png" id="7_v6nn1"]
 [ext_resource type="Texture2D" uid="uid://c0fol0xdq57ef" path="res://Assets/PhoneTextures/social_media_icon.png" id="8_jddta"]
 [ext_resource type="Texture2D" uid="uid://ctg2fgacyanxt" path="res://Assets/PhoneTextures/Now playing_ 黒い涙 DJ name.png" id="9_4k4bk"]
@@ -172,6 +173,14 @@ grow_vertical = 2
 texture = ExtResource("5_cdioe")
 expand_mode = 3
 stretch_mode = 5
+
+[node name="PhoneNotificationBadge" parent="Phone/Screen/Background/Apps/Messages/Icon" instance=ExtResource("6_gnbtu")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.799
+anchor_top = 0.158
+anchor_right = 0.799
+anchor_bottom = 0.158
 
 [node name="Button" type="Button" parent="Phone/Screen/Background/Apps/Messages" node_paths=PackedStringArray("show_element")]
 layout_mode = 1
