@@ -51,7 +51,7 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
-		if GuiSystem.in_title_screen == true:
+		if GuiSystem.in_title_screen and not visible:
 			return
 
 		elif GuiSystem.loading_screen_visible:
@@ -64,10 +64,13 @@ func _physics_process(_delta: float) -> void:
 			GuiSystem.hide_gui("Phone")
 
 		elif settings_menu.visible:
-			settings_menu.hide()
-			main_pause_menu.show()
-			settings_button.grab_focus()
-			click_sound.play()
+			if GuiSystem.in_title_screen:
+				toggle_pause()
+			else:
+				settings_menu.hide()
+				main_pause_menu.show()
+				settings_button.grab_focus()
+				click_sound.play()
 
 		elif input_menu.visible:
 			input_menu.hide()
