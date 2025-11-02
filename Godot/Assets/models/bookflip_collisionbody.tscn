@@ -1,9 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://bgrnyakmgghyq"]
+[gd_scene load_steps=28 format=3 uid="uid://bgrnyakmgghyq"]
 
 [ext_resource type="Script" uid="uid://bxxt4jkxn55ob" path="res://Assets/models/journal_root.gd" id="1_47kpb"]
 [ext_resource type="PackedScene" uid="uid://ctxn4d5hysbqv" path="res://Assets/models/bookflip_model.tscn" id="2_7ovfm"]
 [ext_resource type="Script" uid="uid://wi8scqg3b40v" path="res://Assets/models/inventory_items.gd" id="3_7ovfm"]
+[ext_resource type="Texture2D" uid="uid://di3j7gbd0fqah" path="res://Assets/JournalTextures/InventoryTabDefault.png" id="3_w436v"]
 [ext_resource type="Texture2D" uid="uid://b10xkyr1i6p24" path="res://Assets/JournalTextures/olivia_backpack.png" id="4_e2q15"]
+[ext_resource type="Texture2D" uid="uid://x2e68m4tl04g" path="res://Assets/JournalTextures/InventoyTabHighlighted.png" id="4_oehee"]
 [ext_resource type="Script" uid="uid://buku5tvg1gfb4" path="res://Assets/models/inventory_item_slot.gd" id="5_r58e7"]
 [ext_resource type="Material" uid="uid://dlhvvfgrqs5ib" path="res://Assets/Shaders/LightUpShader.tres" id="6_0upgx"]
 [ext_resource type="Resource" uid="uid://bisc78i8lblcq" path="res://Singletons/SaveSystem/DefaultResources/InventoryItemResources/polaroid_camera_properties.tres" id="6_w436v"]
@@ -21,6 +23,58 @@ viewport_path = NodePath("Armature/Skeleton3D/AnimatableBody3D/Cube_004/SubViewp
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_e2q15"]
 viewport_path = NodePath("Armature/Skeleton3D/AnimatableBody3D2/Cube_005/SubViewport")
+
+[sub_resource type="Animation" id="Animation_j6vea"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_w436v")]
+}
+
+[sub_resource type="Animation" id="Animation_fmlac"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_w436v")]
+}
+
+[sub_resource type="Animation" id="Animation_xm1lo"]
+resource_name = "highlighted"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_oehee")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ye4ae"]
+_data = {
+&"RESET": SubResource("Animation_fmlac"),
+&"default": SubResource("Animation_j6vea"),
+&"hovered": SubResource("Animation_xm1lo")
+}
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ngl8b"]
 
@@ -101,6 +155,19 @@ transform = Transform3D(1.074718, -1.6940659e-21, -1.4210855e-14, 0, 1, -1.42108
 
 [node name="Tabs" parent="bookflip" index="3"]
 transform = Transform3D(1.074718, -1.6940659e-21, -1.4210855e-14, 0, 1, -1.4210855e-14, -3.100631e-22, 1.7763568e-14, 0.9275239, -0.00017506839, 0, -0.11869836)
+
+[node name="ToggleInventoryButton" parent="bookflip" index="4" node_paths=PackedStringArray("animation_player")]
+animation_player = NodePath("ToggleInventoryButtonAnimationPlayer")
+default_animation = &"default"
+hovered_animation = &"hovered"
+
+[node name="Sprite3D" parent="bookflip/ToggleInventoryButton" index="1"]
+texture = ExtResource("3_w436v")
+
+[node name="ToggleInventoryButtonAnimationPlayer" type="AnimationPlayer" parent="bookflip/ToggleInventoryButton" index="2"]
+libraries = {
+&"": SubResource("AnimationLibrary_ye4ae")
+}
 
 [node name="new_book_animated" parent="bookflip" index="5"]
 transform = Transform3D(-4.6977412e-08, -1.6940659e-21, -1.074718, -1.7763568e-14, 1, -8.4703295e-22, 1.074718, 1.7763568e-14, -4.6977412e-08, -0.00017506839, 0, -0.11869836)

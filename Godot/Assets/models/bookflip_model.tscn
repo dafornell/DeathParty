@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ctxn4d5hysbqv"]
+[gd_scene load_steps=19 format=3 uid="uid://ctxn4d5hysbqv"]
 
 [ext_resource type="Script" uid="uid://b7e4s6slidb3u" path="res://Assets/models/bookflip_script.gd" id="2_epq3o"]
 [ext_resource type="PackedScene" uid="uid://jsemqtn1uy4m" path="res://Assets/GUIPrefabs/JournalPrefabs/Pages/FirstPage.tscn" id="3_mp1ih"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://bts0ul42uo1me" path="res://Assets/GUIFunctionalityScripts/toggle_inventory_button.gd" id="12_hbhch"]
 [ext_resource type="Texture2D" uid="uid://bc2xbya4n41la" path="res://Assets/JournalTextures/InventoryTab.png" id="13_hbhch"]
 [ext_resource type="PackedScene" uid="uid://bl6eco6i5wbuc" path="res://Assets/models/new_book_animated.tscn" id="14_n4ygd"]
+[ext_resource type="PackedScene" uid="uid://0uqmr277coge" path="res://Assets/GUIPrefabs/JournalPrefabs/ArrowPrefabs/arrows.tscn" id="14_pa0ph"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_fq2mh"]
 viewport_path = NodePath("new_book_animated/Armature/Skeleton3D/Page animate R/SubViewport")
@@ -21,12 +22,12 @@ viewport_path = NodePath("new_book_animated/Armature/Skeleton3D/Page animate R/S
 viewport_path = NodePath("new_book_animated/Armature/Skeleton3D/Page animate L/SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ieb6y"]
-size = Vector3(1.55786, 0.391174, 1.47409)
+size = Vector3(1.183563, 0.391174, 2.1180992)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8foen"]
 size = Vector3(10, 4, 10)
 
-[node name="bookflip" type="Node3D" node_paths=PackedStringArray("animation_player", "page1", "page2", "page1_subviewport", "page2_subviewport", "tabs_node")]
+[node name="bookflip" type="Node3D" node_paths=PackedStringArray("animation_player", "page1", "page2", "page1_subviewport", "page2_subviewport", "container_left", "container_right", "arrows_left", "arrows_right", "tabs_node")]
 transform = Transform3D(-1, -8.74228e-08, -3.82137e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, 0, 0, 0)
 script = ExtResource("2_epq3o")
 animation_player = NodePath("new_book_animated/AnimationPlayer")
@@ -34,20 +35,24 @@ page1 = NodePath("new_book_animated/Armature/Skeleton3D/Page animate R")
 page2 = NodePath("new_book_animated/Armature/Skeleton3D/Page animate L")
 page1_subviewport = NodePath("new_book_animated/Armature/Skeleton3D/Page animate R/SubViewport")
 page2_subviewport = NodePath("new_book_animated/Armature/Skeleton3D/Page animate L/SubViewport")
+container_left = NodePath("new_book_animated/Armature/Skeleton3D/Page animate L/SubViewport/LeftPageContainer")
+container_right = NodePath("new_book_animated/Armature/Skeleton3D/Page animate R/SubViewport/RightPageContainer")
+arrows_left = NodePath("new_book_animated/Armature/Skeleton3D/Page animate L/SubViewport/LeftPageArrows")
+arrows_right = NodePath("new_book_animated/Armature/Skeleton3D/Page animate R/SubViewport/RightPageArrows")
 viewport_texture1 = SubResource("ViewportTexture_fq2mh")
 viewport_texture2 = SubResource("ViewportTexture_mp1ih")
-journal_textures = [ExtResource("3_mp1ih"), ExtResource("4_8foen"), ExtResource("4_6b4ny")]
+journal_textures = Array[PackedScene]([ExtResource("3_mp1ih"), ExtResource("4_8foen"), ExtResource("4_6b4ny")])
 tabs_node = NodePath("Tabs")
 
 [node name="LeftPageCollider" type="Area3D" parent="." node_paths=PackedStringArray("bookflip_instance")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00585831, 0.234975, -0.00277737)
 collision_layer = 9
 script = ExtResource("7_fq2mh")
-flip_backwards = true
+direction = -1
 bookflip_instance = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LeftPageCollider"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.77, -0.009, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6956291, -0.009000003, 0.004426983)
 shape = SubResource("BoxShape3D_ieb6y")
 debug_color = Color(0.799815, 0.0309134, 1, 0.42)
 
@@ -58,7 +63,7 @@ script = ExtResource("7_fq2mh")
 bookflip_instance = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RightPageCollider"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.792, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.67922235, 0, 0)
 shape = SubResource("BoxShape3D_ieb6y")
 debug_color = Color(0.799815, 0.0309134, 1, 0.42)
 
@@ -102,5 +107,25 @@ bones/0/rotation = Quaternion(-0.6304101, 9.253769e-08, -7.515075e-08, 0.7762622
 bones/1/rotation = Quaternion(-0.056300364, -3.335961e-15, -1.3423051e-08, 0.998414)
 bones/2/rotation = Quaternion(-0.044178925, 1.08769305e-14, -1.05330775e-08, 0.99902374)
 bones/3/rotation = Quaternion(-0.05661862, 2.5020157e-16, -1.3498932e-08, 0.998396)
+
+[node name="LeftPageContainer" type="Control" parent="new_book_animated/Armature/Skeleton3D/Page animate L/SubViewport" index="0"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeftPageArrows" parent="new_book_animated/Armature/Skeleton3D/Page animate L/SubViewport" index="1" instance=ExtResource("14_pa0ph")]
+
+[node name="RightPageContainer" type="Control" parent="new_book_animated/Armature/Skeleton3D/Page animate R/SubViewport" index="0"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RightPageArrows" parent="new_book_animated/Armature/Skeleton3D/Page animate R/SubViewport" index="1" instance=ExtResource("14_pa0ph")]
 
 [editable path="new_book_animated"]
