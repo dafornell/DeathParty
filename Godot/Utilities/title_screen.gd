@@ -14,7 +14,7 @@ func _on_settings_button_pressed() -> void:
 
 
 func _on_quit_button_pressed() -> void:
-	get_tree().quit()
+	Events.title_screen_quit_button_pressed.emit()
 
 
 func _on_start_game_button_pressed() -> void:

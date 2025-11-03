@@ -19,6 +19,7 @@ signal toggle_quest_marker(npc_name: String, value: bool)
 
 signal title_screen_start_game_button_pressed
 signal title_screen_settings_button_pressed
+signal title_screen_quit_button_pressed
 
 signal toggle_dialogue_instructions(value: bool)
 
