@@ -54,7 +54,7 @@
 			<destination>{149f9b6b-432e-4d46-8a7b-3eb1bcf0399a}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{9fab94d1-6375-44dd-8a07-10800f698760}</destination>
+			<destination>{5d874d78-92ed-472a-896e-801bd647b3ce}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{910ce82f-47ad-453f-9a5f-d2c11578c420}" />
@@ -153,6 +153,8 @@
 	<object class="MixerBusEffectChain" id="{62e306f3-9fbe-46e7-9185-7307f4a9c5ee}">
 		<relationship name="effects">
 			<destination>{e6042795-d90d-4dc4-9d96-dc8be25864d3}</destination>
+			<destination>{5fcb937e-6af1-4dc6-8b8a-be9ab79ac977}</destination>
+			<destination>{c36ac446-7376-4ca8-90ad-14ed3046cbdc}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{5db32c90-f427-4bfd-9211-88a15849c7a4}" />
@@ -194,6 +196,40 @@
 	</object>
 	<object class="MixerBusPanner" id="{c83063e9-2c34-4bc3-ae01-5e9f892283ae}" />
 	<object class="MixerBusFader" id="{e6042795-d90d-4dc4-9d96-dc8be25864d3}" />
+	<object class="ThreeEQEffect" id="{5fcb937e-6af1-4dc6-8b8a-be9ab79ac977}">
+		<property name="lowGain">
+			<value>-80</value>
+		</property>
+		<property name="midGain">
+			<value>-5</value>
+		</property>
+	</object>
+	<object class="SFXReverbEffect" id="{c36ac446-7376-4ca8-90ad-14ed3046cbdc}">
+		<property name="earlyDelay">
+			<value>7</value>
+		</property>
+		<property name="lateDelay">
+			<value>11</value>
+		</property>
+		<property name="HFDecayRatio">
+			<value>67</value>
+		</property>
+		<property name="diffusion">
+			<value>50</value>
+		</property>
+		<property name="lowShelfGain">
+			<value>-36</value>
+		</property>
+		<property name="highCut">
+			<value>4050</value>
+		</property>
+		<property name="earlyLateMix">
+			<value>66</value>
+		</property>
+		<property name="wetLevel">
+			<value>-26</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{c0870dd0-b3f8-43ac-bfe1-77f38e52b69b}" />
 	<object class="MixerBusFader" id="{a7a86d25-b112-4c9f-83a8-9262c1907d4d}" />
 </objects>

@@ -5,8 +5,9 @@
 [ext_resource type="Script" uid="uid://b3v8ab5ipsaa" path="res://Common/Object Viewer/journal_item_info.gd" id="4_1fteh"]
 [ext_resource type="Texture2D" uid="uid://dcud5d3stalvt" path="res://Common/Object Viewer/display box.tres" id="4_8yl1a"]
 [ext_resource type="FontFile" uid="uid://bbnxos5pn23n1" path="res://Assets/Fonts/Patrick_Hand_SC/PatrickHandSC-Regular.ttf" id="4_km8sy"]
-[ext_resource type="Script" uid="uid://dw58hnvvcb3px" path="res://Common/Object Viewer/richtext_increase_size_until_visible.gd" id="5_8yl1a"]
+[ext_resource type="Script" uid="uid://ct744mmnnvcwm" path="res://Common/Object Viewer/richtext_shrink_to_fit.gd" id="5_8yl1a"]
 [ext_resource type="Texture2D" uid="uid://cm2qh7ey3npqp" path="res://Common/Object Viewer/icon_close.png" id="6_1fteh"]
+[ext_resource type="StyleBox" uid="uid://cexemclelckrl" path="res://Common/Object Viewer/display_box_stylebox.tres" id="6_81px2"]
 
 [sub_resource type="Shader" id="Shader_o7dqn"]
 code = "shader_type canvas_item;
@@ -113,7 +114,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_o7dqn")
-description_label = NodePath("DescriptionFitter/MarginContainer/Description")
+description_label = NodePath("DescriptionPanel/Description")
 button = NodePath("ItemInfoExit")
 object_viewer = NodePath("..")
 
@@ -135,42 +136,45 @@ texture_disabled = ExtResource("6_1fteh")
 texture_focused = ExtResource("6_1fteh")
 stretch_mode = 0
 
-[node name="DescriptionFitter" type="AspectRatioContainer" parent="ObjectViewer/ItemInfo" node_paths=PackedStringArray("rt_label")]
-custom_minimum_size = Vector2(0, 128)
+[node name="DescriptionPanel" type="PanelContainer" parent="ObjectViewer/ItemInfo"]
 layout_mode = 1
 anchors_preset = -1
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_top = -79.0
+offset_top = -32.0
 offset_bottom = -32.0
+grow_horizontal = 2
 grow_vertical = 0
-ratio = 3.3368
-script = ExtResource("5_8yl1a")
-base_minimum_size = Vector2(0, 128)
-rt_label = NodePath("MarginContainer/Description")
-increment = 32
+theme_override_styles/panel = ExtResource("6_81px2")
 
-[node name="DisplayBox" type="TextureRect" parent="ObjectViewer/ItemInfo/DescriptionFitter"]
-layout_mode = 2
-texture = ExtResource("4_8yl1a")
-expand_mode = 2
-stretch_mode = 4
-
-[node name="MarginContainer" type="Control" parent="ObjectViewer/ItemInfo/DescriptionFitter"]
-layout_mode = 2
-
-[node name="Description" type="RichTextLabel" parent="ObjectViewer/ItemInfo/DescriptionFitter/MarginContainer"]
+[node name="Description" type="RichTextLabel" parent="ObjectViewer/ItemInfo/DescriptionPanel"]
 clip_contents = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.068
-anchor_top = 0.206
-anchor_right = 0.915
-anchor_bottom = 0.76
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 20
+fit_content = true
 scroll_active = false
+script = ExtResource("5_8yl1a")
+
+[node name="ControlsPanel" type="PanelContainer" parent="ObjectViewer/ItemInfo"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+theme_override_styles/panel = ExtResource("6_81px2")
+
+[node name="Label" type="Label" parent="ObjectViewer/ItemInfo/ControlsPanel"]
+layout_mode = 2
+text = "Click and Drag to Rotate"
+label_settings = SubResource("LabelSettings_km8sy")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ControlsFitter" type="AspectRatioContainer" parent="ObjectViewer/ItemInfo"]
 layout_mode = 1

@@ -2807,9 +2807,6 @@ target_scene = 6
 local_spawn_point = 1
 door_sound_type = 1
 
-[node name="DoorSound" parent="SceneLoader_Basement" index="0"]
-event_guid = "{00000000-0000-0000-0000-000000000000}"
-
 [node name="Popup" parent="SceneLoader_Basement" index="1"]
 transform = Transform3D(-6.55671e-09, 0, -0.15, 0, 0.15, 0, 0.15, 0, -6.55671e-09, 0, 1.75, -1.25)
 texture = null
@@ -3838,7 +3835,7 @@ volume = 2.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.41829, 2.27886)
 
 [node name="beerpong trophie" parent="." instance=ExtResource("61_ntvq4")]
-transform = Transform3D(0.311296, 0, 0.34852, 0, 0.467302, 0, -0.34852, 0, 0.311296, -4.11684, 1.03161, 3.12317)
+transform = Transform3D(0.15482537, 0.027057577, 0.17202881, 0.005450524, 0.22932135, -0.04097432, -0.17405841, 0.03124882, 0.15173696, -4.11684, 1.0302794, 3.12317)
 
 [node name="brush2" parent="." instance=ExtResource("63_81kv4")]
 transform = Transform3D(0.599649, -0.365484, -0.897297, 0.26079, 1.07719, -0.264477, 0.933118, -0.0661845, 0.650546, -3.60937, -0.105501, 3.40987)
@@ -3846,9 +3843,6 @@ transform = Transform3D(0.599649, -0.365484, -0.897297, 0.26079, 1.07719, -0.264
 [node name="SceneLoader_Hourhand hallway" parent="." instance=ExtResource("2_llsdw")]
 transform = Transform3D(1.13943, 0, 0, 0, 1.13943, 0, 0, 0, 1.13943, 0.974497, -1.74971, 1.00802)
 target_scene = 11
-
-[node name="DoorSound" parent="SceneLoader_Hourhand hallway" index="0"]
-event_guid = "{00000000-0000-0000-0000-000000000000}"
 
 [node name="Popup" parent="SceneLoader_Hourhand hallway" index="1"]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 1.75, 0)

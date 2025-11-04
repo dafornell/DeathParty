@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://l7ghxl1sga8j"]
+[gd_scene load_steps=4 format=3 uid="uid://8x3tcu4xsvvn"]
 
-[ext_resource type="PackedScene" uid="uid://psh336exq4ts" path="res://Assets/props/inventory_items/inventory_item_base.tscn" id="1_qdy33"]
+[ext_resource type="PackedScene" uid="uid://l0ljp7dxs4g4" path="res://Assets/props/inventory_items/inventory_item_base.tscn" id="1_qdy33"]
 [ext_resource type="PackedScene" uid="uid://dsti2l63426xr" path="res://rooms/Storage Room/glove.glb" id="2_jga8a"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jga8a"]

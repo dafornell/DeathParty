@@ -20,7 +20,7 @@ var facing: int = 0
 var movement_direction: int = 0
 var prev_movement_direction: int = 0
 
-var jog_speed_multiplier := 1.5
+var jog_speed_multiplier := 1.6
 
 # animation enum and vars
 enum AnimationState {IDLE, WALK, TURN, JOG} # TURN currently unused

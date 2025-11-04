@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://iprjr7kw0pf0"]
+[gd_scene load_steps=8 format=3 uid="uid://iprjr7kw0pf0"]
 
 [ext_resource type="PackedScene" uid="uid://bh12eagb0x4sn" path="res://rooms/Storage Room/Daisy Paint Brush1.glb" id="1_52v0e"]
-[ext_resource type="Script" uid="uid://bea7y4hurcesx" path="res://Utilities/scripts/interactable.gd" id="2_swwfa"]
+[ext_resource type="Script" uid="uid://d2uuq0rxwht5" path="res://Utilities/scripts/interactable.gd" id="2_swwfa"]
 [ext_resource type="Resource" uid="uid://co3xxjb67ucb" path="res://Singletons/SaveSystem/DefaultResources/TalkingObjectResources/paint_brush_properties.tres" id="3_htcy3"]
+[ext_resource type="Resource" uid="uid://c0gs7ypvg3co1" path="res://Singletons/SaveSystem/DefaultResources/InventoryItemResources/paint_brush_properties.tres" id="4_swwfa"]
 [ext_resource type="PackedScene" uid="uid://3dt1w7lckdyq" path="res://Entities/interaction_detector.tscn" id="4_xaeli"]
 [ext_resource type="PackedScene" uid="uid://cqxjk5afxrhem" path="res://Common/Popup UI/object_interact_popup.tscn" id="5_cj2di"]
 
@@ -13,6 +14,7 @@ size = Vector3(1.97247, 2.02496, 2.84531)
 [node name="Daisy Paint Brush1" instance=ExtResource("1_52v0e")]
 script = ExtResource("2_swwfa")
 talking_object_resource = ExtResource("3_htcy3")
+inventory_item = ExtResource("4_swwfa")
 
 [node name="InteractionDetector" parent="." index="1" instance=ExtResource("4_xaeli")]
 

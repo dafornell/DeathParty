@@ -16,7 +16,7 @@ shape = SubResource("BoxShape3D_qh38h")
 [node name="MeshContainer" type="Node3D" parent="."]
 
 [node name="HoverSound" type="FmodEventEmitter3D" parent="."]
-event_name = "event:/000_SFX/300_UI/FocusChange"
-event_guid = "{eb371b83-cd23-4eb7-ad77-336db695af66}"
+event_name = "event:/000_SFX/300_UI/InventoryHover/BaseInventoryItemHover"
+event_guid = "{09c2835d-055b-4c03-9799-928113f188ff}"
 volume = 0.5
 unique_name_in_owner = true

@@ -16,12 +16,12 @@
 [ext_resource type="PackedScene" uid="uid://bgrvflukoipup" path="res://Assets/environment/stone_arch_window.tscn" id="10_72phb"]
 [ext_resource type="PackedScene" uid="uid://bv8nlpv8yo7tj" path="res://Assets/environment/dj_set/dj_set.tscn" id="12_ca1dh"]
 [ext_resource type="PackedScene" uid="uid://bont0a7c7jekf" path="res://Assets/props/jack_o_lanterns/pumpkin_with_beers.tscn" id="13_72phb"]
-[ext_resource type="PackedScene" uid="uid://d0qviybdp0h2g" path="res://Assets/props/speaker/speaker.tscn" id="14_gl0i2"]
 [ext_resource type="PackedScene" uid="uid://te45o0a3h24h" path="res://Assets/props/jack_o_lanterns/jack_o_lantern_hanging.tscn" id="15_x2x32"]
 [ext_resource type="PackedScene" uid="uid://s51v6ume0dg2" path="res://Assets/props/red_cup/red_cup.glb" id="18_wl6hb"]
 [ext_resource type="PackedScene" uid="uid://bjguuep7ueh1l" path="res://Assets/props/cobwebs/cobweb_wide.tscn" id="19_8886l"]
 [ext_resource type="PackedScene" uid="uid://c088ha3843ea2" path="res://Assets/props/wooden_table/wood_table.tscn" id="20_0yn4t"]
 [ext_resource type="PackedScene" uid="uid://cwjfbxbvm4u45" path="res://Assets/props/cobwebs/cobweb_corner.tscn" id="20_rjxkp"]
+[ext_resource type="PackedScene" uid="uid://cqukvtingeell" path="res://Assets/environment/speaker.tscn" id="21_2fylr"]
 [ext_resource type="PackedScene" uid="uid://c5eugkbr3dtpg" path="res://Assets/props/balloons/balloons_three_floating.tscn" id="21_x156b"]
 [ext_resource type="PackedScene" uid="uid://48e2dw6eco7w" path="res://Assets/props/balloons/balloons_three_short.tscn" id="22_mb0s8"]
 [ext_resource type="PackedScene" uid="uid://dxahcd25ocjsx" path="res://Assets/props/balloons/balloons_four_tall.tscn" id="23_lwnio"]
@@ -1647,6 +1647,21 @@ skeleton = NodePath("")
 [node name="DJ set" parent="Stage" instance=ExtResource("12_ca1dh")]
 transform = Transform3D(0.99172, -0.0125777, 0.127804, 0.0131142, 0.999909, -0.00335727, -0.12775, 0.00500554, 0.991794, 0.128466, 1.2793, 0.552212)
 
+[node name="Cube_048" parent="Stage/DJ set" index="1"]
+transform = Transform3D(0.41441774, -1.3877788e-15, -3.7252903e-09, 9.402201e-16, 0.4144178, 5.551115e-17, -3.7252903e-09, 4.440892e-16, 0.4144177, 0.65217733, 0.40547645, 0.7914336)
+
+[node name="Plane_1312" parent="Stage/DJ set" index="2"]
+transform = Transform3D(0.41441765, -4.656613e-10, -3.7252903e-09, 6.303985e-15, 0.41219586, -0.04285688, -2.2351742e-08, 0.042856872, 0.41219583, -0.078574896, 0.89847076, 0.42308593)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Stage/DJ set/Plane_1312" index="0"]
+transform = Transform3D(2.7686582, 3.1106174e-07, -8.940697e-07, 0, 2.7686598, -3.874302e-07, 0, -1.1920929e-07, 2.7686577, -0.09043586, -0.27480984, -1.134759)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Stage/DJ set/Plane_1312" index="1"]
+transform = Transform3D(2.7686582, 3.1106174e-07, -8.940697e-07, 0, 2.76866, -8.940697e-08, 0, -3.874302e-07, 2.7686577, 0.05744517, 0.53827906, 0.6829891)
+
+[node name="Plane_1313" parent="Stage/DJ set" index="3"]
+visible = false
+
 [node name="RedCup" parent="Stage" instance=ExtResource("18_wl6hb")]
 transform = Transform3D(0.103808, 0.00407983, -0.204614, -0.00157103, 0.229439, 0.00377778, 0.204649, -0.00030813, 0.103819, -2.02715, 1.80205, 1.23776)
 
@@ -1939,17 +1954,17 @@ transform = Transform3D(-3.20851, 0, -1.73971, 0, 1.86624, 0, 1.85244, 0, -3.013
 
 [node name="Speakers" type="Node3D" parent="Props"]
 
-[node name="Speaker" parent="Props/Speakers" instance=ExtResource("14_gl0i2")]
-transform = Transform3D(0.961589, 0, 0.274497, 0, 1, 0, -0.274497, 0, 0.961589, 2.82413, 2.84539, 6.73564)
+[node name="Speaker" parent="Props/Speakers" instance=ExtResource("21_2fylr")]
+transform = Transform3D(0.96158904, 0, 0.274497, 0, 1, 0, -0.274497, 0, 0.96158904, 2.8241303, 2.84539, 6.73564)
 
-[node name="Speaker2" parent="Props/Speakers" instance=ExtResource("14_gl0i2")]
-transform = Transform3D(0.961589, 0, 0.274497, 0, 1, 0, -0.274497, 0, 0.961589, -2.37455, 2.84539, 6.73747)
+[node name="Speaker2" parent="Props/Speakers" instance=ExtResource("21_2fylr")]
+transform = Transform3D(0.96158904, 0, 0.274497, 0, 1, 0, -0.274497, 0, 0.96158904, -2.3745503, 2.84539, 6.73747)
 
-[node name="Speaker3" parent="Props/Speakers" instance=ExtResource("14_gl0i2")]
-transform = Transform3D(0.992221, 0, -0.124502, 0, 1, 0, 0.124502, 0, 0.992221, 2.37131, 1.20099, 3.51577)
+[node name="Speaker3" parent="Props/Speakers" instance=ExtResource("21_2fylr")]
+transform = Transform3D(0.99222106, 0, -0.124502, 0, 1, 0, 0.124502, 0, 0.99222106, 2.37131, 1.20099, 3.5157702)
 
-[node name="Speaker4" parent="Props/Speakers" instance=ExtResource("14_gl0i2")]
-transform = Transform3D(0.736288, 0, 0.676672, 0, 1, 0, -0.676672, 0, 0.736288, -1.82749, 1.18241, 3.08169)
+[node name="Speaker4" parent="Props/Speakers" instance=ExtResource("21_2fylr")]
+transform = Transform3D(0.736288, 0, 0.67667204, 0, 1, 0, -0.67667204, 0, 0.736288, -1.8274901, 1.18241, 3.0816903)
 
 [node name="Table" parent="Props" instance=ExtResource("20_0yn4t")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 5.64993, 0, -5.12526)
@@ -2037,7 +2052,7 @@ transform = Transform3D(-0.653751, 0, -0.75671, 0, 1, 0, 0.75671, 0, -0.653751, 
 visible = false
 
 [node name="Benny" parent="NPCs" instance=ExtResource("27_5o5c1")]
-transform = Transform3D(-0.999999, 0, 0.0015184, 0, 1, 0, -0.0015184, 0, -0.999999, 1.93569, 0.778855, 1.30822)
+transform = Transform3D(-0.999999, 0, 0.0015184, 0, 1, 0, -0.0015184, 0, -0.999999, 1.5247086, 0.778855, 1.6940027)
 
 [node name="WhiteBunny" parent="NPCs" instance=ExtResource("29_yyfmc")]
 transform = Transform3D(-0.767087, 0, 0.641544, 0, 1, 0, -0.641544, 0, -0.767087, -3.85985, 0.00303605, -5.13697)
@@ -2647,7 +2662,7 @@ transform = Transform3D(-0.9194788, 0, -0.3931397, 0, 1, 0, 0.3931397, 0, -0.919
 event_name = "event:/000_SFX/100_Environment/Crowd"
 event_guid = "{9e4d86e6-afa7-406e-ba12-08656547d254}"
 autoplay = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00303666, 1, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9999986, 1, 0.001515777)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
@@ -2658,6 +2673,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00303666, 1, -2)
 [editable path="SceneLoader_Bathroom/InteractionDetector"]
 [editable path="SceneLoader_Ghost hallway"]
 [editable path="SceneLoader_Ghost hallway/InteractionDetector"]
+[editable path="Stage/DJ set"]
 [editable path="DiscoLightDecoration"]
 [editable path="DiscoLightDecoration/added drapes"]
 [editable path="NPCs/DinoGamer"]

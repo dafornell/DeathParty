@@ -122,7 +122,7 @@ func zoom_absolute(factor : float) -> void:
 
 #Scroll in and out of item
 func _input(event : InputEvent) -> void:
-	if active_item == null: return
+	if active_item == null or active_item.name == "BookflipBody": return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed and Interact.grabbed_scroll_container == null:
 			zoom(1.15)

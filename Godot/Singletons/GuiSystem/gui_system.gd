@@ -45,19 +45,25 @@ func _ready() -> void:
 	for obj in gui_objects:
 		gui_dict[obj.name] = obj
 
+
 func _physics_process(_delta: float) -> void:
 	if prevent_gui or (DialogueSystem.in_dialogue and in_phone == false): return
 	if Input.is_action_just_pressed("toggle_journal"):
-		if in_journal:
+		if in_phone:
+			return
+		elif in_journal:
 			hide_journal()
 		else:
 			show_journal()
 
 	elif Input.is_action_just_pressed("toggle_phone"):
-		if in_phone:
+		if in_journal:
+			return
+		elif in_phone:
 			hide_phone()
 		else:
 			show_phone()
+
 
 func set_gui_enabled(toggle: bool) -> void:
 	prevent_gui = !toggle

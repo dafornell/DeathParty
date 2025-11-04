@@ -4,12 +4,12 @@
 [ext_resource type="Script" uid="uid://bea7y4hurcesx" path="res://Utilities/scripts/interactable.gd" id="2_5wkox"]
 [ext_resource type="PackedScene" uid="uid://3dt1w7lckdyq" path="res://Entities/interaction_detector.tscn" id="2_dthte"]
 [ext_resource type="PackedScene" uid="uid://cqxjk5afxrhem" path="res://Common/Popup UI/object_interact_popup.tscn" id="3_ni08f"]
-[ext_resource type="Resource" uid="uid://d21raodbcr3u3" path="res://Singletons/SaveSystem/DefaultResources/TalkingObjectResources/triangle_properties.tres" id="3_q25mj"]
-[ext_resource type="Resource" path="res://Singletons/SaveSystem/DefaultResources/InventoryItemResources/triangle_properties.tres" id="4_q25mj"]
+[ext_resource type="Resource" uid="uid://dlcl0ifvew3ga" path="res://Singletons/SaveSystem/DefaultResources/TalkingObjectResources/triangle_properties.tres" id="3_q25mj"]
+[ext_resource type="Resource" uid="uid://c67a1m6fudgvb" path="res://Singletons/SaveSystem/DefaultResources/InventoryItemResources/triangle_properties.tres" id="4_q25mj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5wkox"]
 resource_local_to_scene = true
-size = Vector3(1.97247, 2.02496, 2.84531)
+size = Vector3(1.1677246, 2.02496, 1.5439453)
 
 [node name="Josef Scale" instance=ExtResource("1_3afqg")]
 script = ExtResource("2_5wkox")
@@ -22,7 +22,7 @@ transform = Transform3D(0.19980267, -0.002079981, -0.20312396, -0.13268496, -0.2
 [node name="InteractionDetector" parent="." index="1" instance=ExtResource("2_dthte")]
 
 [node name="CollisionShape3D" parent="InteractionDetector" index="0"]
-transform = Transform3D(1.295, 0, 0, 0, 1.295, 0, 0, 0, 1.295, -0.193758, 0.512483, 0.362533)
+transform = Transform3D(1.295, 0, 0, 0, 1.295, 0, 0, 0, 1.295, -0.193758, 0.512483, 0.38656133)
 shape = SubResource("BoxShape3D_5wkox")
 
 [node name="Popup" parent="." index="2" instance=ExtResource("3_ni08f")]

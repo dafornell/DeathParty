@@ -58,11 +58,13 @@ var state: States:
 				phone_controls_popup.hide()
 			States.OPEN_JOURNAL:
 				DialogueSystem.begin_dialogue(on_phone_close_dialogue)
+				Events.toggle_dialogue_instructions.emit(true)
 				print("TUTORIAL STEP: OPEN JOURNAL")
 				journal_controls_popup.show()
 			States.USING_JOURNAL:
 				print("TUTORIAL STEP: USING JOURNAL")
 				DialogueSystem.begin_dialogue(on_journal_dialogue)
+				Events.toggle_dialogue_instructions.emit(false)
 				journal_controls_popup.hide()
 			States.PICK_UP_CAMERA:
 				print("TUTORIAL STEP: PICK UP CAMERA")

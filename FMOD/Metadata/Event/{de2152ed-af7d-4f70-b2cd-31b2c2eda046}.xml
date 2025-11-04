@@ -54,7 +54,7 @@
 			<destination>{db4f452c-5845-4a50-994a-59ccb1ef67e0}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{9fab94d1-6375-44dd-8a07-10800f698760}</destination>
+			<destination>{5d874d78-92ed-472a-896e-801bd647b3ce}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{725d1594-7fd2-41b7-a878-fd095ef4e6d4}" />
@@ -208,6 +208,7 @@
 		<relationship name="effects">
 			<destination>{e1d2ad62-af90-4087-9c4f-44f2437e2483}</destination>
 			<destination>{a2ada054-84b8-4428-b0e1-32ddc215ab30}</destination>
+			<destination>{2645a648-5006-4417-806b-ffe4339b5d60}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{6d39ef5f-a2c3-45b2-8adf-5be48c1b7e61}" />
@@ -238,7 +239,36 @@
 			<value>-80</value>
 		</property>
 		<property name="highGain">
-			<value>-10</value>
+			<value>-12</value>
+		</property>
+		<property name="lowCrossover">
+			<value>500</value>
+		</property>
+	</object>
+	<object class="SFXReverbEffect" id="{2645a648-5006-4417-806b-ffe4339b5d60}">
+		<property name="earlyDelay">
+			<value>7</value>
+		</property>
+		<property name="lateDelay">
+			<value>11</value>
+		</property>
+		<property name="HFDecayRatio">
+			<value>67</value>
+		</property>
+		<property name="diffusion">
+			<value>50</value>
+		</property>
+		<property name="lowShelfGain">
+			<value>-36</value>
+		</property>
+		<property name="highCut">
+			<value>4050</value>
+		</property>
+		<property name="earlyLateMix">
+			<value>66</value>
+		</property>
+		<property name="wetLevel">
+			<value>-26</value>
 		</property>
 	</object>
 </objects>

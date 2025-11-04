@@ -109,10 +109,11 @@
 	<object class="MixerBusPanner" id="{07ceefd5-fee5-4779-9da8-863f5a1f7734}" />
 	<object class="MixerBusEffectChain" id="{fa874864-88c0-4153-beae-9b013bdf5b5b}">
 		<relationship name="effects">
-			<destination>{32f64370-4925-48da-9b55-40e71c5dcb33}</destination>
+			<destination>{612ff5ca-a3f1-4396-9a04-32ae5cb29d2c}</destination>
 			<destination>{0e485607-02ed-40a5-b1c7-3f1061b69c39}</destination>
-			<destination>{277a0d1b-c2e6-41c9-afc3-dd8fda5b9c52}</destination>
 			<destination>{549c7a89-c7c7-4c81-abca-52ae6d803468}</destination>
+			<destination>{32f64370-4925-48da-9b55-40e71c5dcb33}</destination>
+			<destination>{277a0d1b-c2e6-41c9-afc3-dd8fda5b9c52}</destination>
 			<destination>{b020d40d-b866-463b-8f49-7f28dd32246f}</destination>
 			<destination>{e985a65c-b150-4c13-9527-3cc41e7db047}</destination>
 		</relationship>
@@ -129,27 +130,9 @@
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{2f271e13-c1f1-4896-80e6-c1e297d7e60f}" />
-	<object class="CompressorEffect" id="{32f64370-4925-48da-9b55-40e71c5dcb33}">
-		<property name="bypass">
-			<value>true</value>
-		</property>
-		<property name="wetDryEnabled">
-			<value>true</value>
-		</property>
-		<property name="wetMix">
-			<value>25</value>
-		</property>
-		<property name="threshold">
-			<value>-10</value>
-		</property>
-		<property name="attackTime">
-			<value>25</value>
-		</property>
-		<property name="releaseTime">
-			<value>250</value>
-		</property>
+	<object class="GainEffect" id="{612ff5ca-a3f1-4396-9a04-32ae5cb29d2c}">
 		<property name="gain">
-			<value>10</value>
+			<value>-2</value>
 		</property>
 	</object>
 	<object class="SFXReverbEffect" id="{0e485607-02ed-40a5-b1c7-3f1061b69c39}">
@@ -175,7 +158,6 @@
 			<value>-5</value>
 		</property>
 	</object>
-	<object class="MixerBusFader" id="{277a0d1b-c2e6-41c9-afc3-dd8fda5b9c52}" />
 	<object class="SpatialiserEffect" id="{549c7a89-c7c7-4c81-abca-52ae6d803468}">
 		<property name="maximumDistance">
 			<value>50</value>
@@ -190,6 +172,27 @@
 			<value>10</value>
 		</property>
 	</object>
+	<object class="CompressorEffect" id="{32f64370-4925-48da-9b55-40e71c5dcb33}">
+		<property name="wetDryEnabled">
+			<value>true</value>
+		</property>
+		<property name="wetMix">
+			<value>60</value>
+		</property>
+		<property name="threshold">
+			<value>-10</value>
+		</property>
+		<property name="ratio">
+			<value>8</value>
+		</property>
+		<property name="attackTime">
+			<value>25</value>
+		</property>
+		<property name="releaseTime">
+			<value>250</value>
+		</property>
+	</object>
+	<object class="MixerBusFader" id="{277a0d1b-c2e6-41c9-afc3-dd8fda5b9c52}" />
 	<object class="ThreeEQEffect" id="{b020d40d-b866-463b-8f49-7f28dd32246f}">
 		<property name="highGain">
 			<value>-20</value>

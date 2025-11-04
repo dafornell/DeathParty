@@ -1,4 +1,11 @@
 extends Node
+## signal bus for sending signals between scenes so they can communicate
+## without referencing each other and getting coupled together
+
+# NOTE: sorry for the bad naming conventions on a lot of these lol
+#		(if you're adding to this, try to use past tense names for signals
+#		like `dialogue_box_text_changed`)
+#				- jack
 
 
 ## emitted every time a character is printed to the main dialogue boxes
@@ -12,6 +19,8 @@ signal toggle_quest_marker(npc_name: String, value: bool)
 
 signal title_screen_start_game_button_pressed
 signal title_screen_settings_button_pressed
+
+signal toggle_dialogue_instructions(value: bool)
 
 signal open_inventory
 signal close_inventory

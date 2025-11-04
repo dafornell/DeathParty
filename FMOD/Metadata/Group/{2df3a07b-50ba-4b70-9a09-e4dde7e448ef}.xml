@@ -29,7 +29,7 @@
 			<value>0</value>
 		</property>
 		<property name="inputFormat">
-			<value>2</value>
+			<value>0</value>
 		</property>
 		<relationship name="mixerReturn">
 			<destination>{8937bf1c-0f6e-4026-ac5f-faad564c1039}</destination>
@@ -40,7 +40,7 @@
 			<value>0</value>
 		</property>
 		<property name="inputFormat">
-			<value>2</value>
+			<value>0</value>
 		</property>
 		<relationship name="mixerReturn">
 			<destination>{85c1fcc6-e312-4a48-8605-477445438ee5}</destination>

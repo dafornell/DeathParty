@@ -1,4 +1,4 @@
-[gd_scene load_steps=144 format=4 uid="uid://d3cv36i34m681"]
+[gd_scene load_steps=143 format=4 uid="uid://d3cv36i34m681"]
 
 [ext_resource type="Script" path="res://rooms/Library/library.gd" id="1_508o3"]
 [ext_resource type="PackedScene" uid="uid://bbyg62wymptn6" path="res://Singletons/ContentLoader/scene_loader.tscn" id="1_j03r7"]
@@ -1872,7 +1872,7 @@ transform = Transform3D(-0.0983471, 0, 0.995152, 0, 1, 0, -0.995152, 0, -0.09834
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.15962, -3.71333, 7.38065)
 
 [node name="beerpong trophie" parent="Props" instance=ExtResource("53_iso52")]
-transform = Transform3D(0.313237, 0, 0.303293, 0, 0.43601, 0, -0.303293, 0, 0.313237, 0.969747, -2.87133, 0.861133)
+transform = Transform3D(0.20059861, 0, 0.19423042, 0, 0.27922308, 0, -0.19423042, 0, 0.20059861, 0.969747, -2.619006, 0.861133)
 
 [node name="spiderwebs" type="Node3D" parent="Props"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.89104, -2.13548, 1.2603)
