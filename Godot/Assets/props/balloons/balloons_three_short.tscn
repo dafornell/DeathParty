@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=4 uid="uid://48e2dw6eco7w"]
+[gd_scene load_steps=7 format=4 uid="uid://48e2dw6eco7w"]
 
 [ext_resource type="Texture2D" uid="uid://bxrp15id6i5gs" path="res://Assets/textures/entrance_room_props/entrance room props_ballllloon a.png" id="1_tee4g"]
+[ext_resource type="PackedScene" uid="uid://dw5upqygm053b" path="res://Assets/props/balloons/small Balloons.glb" id="2_ayxvi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_46a6e"]
 resource_name = "Material.002"
@@ -48,7 +49,8 @@ radius = 0.7
 [node name="BalloonsThreeShort" type="StaticBody3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.218598, 0, 0, 0, 8.97317e-08, -0.24051, 0, 0.250908, 8.60131e-08, 0, 0, 0)
+transform = Transform3D(0.218598, 0, 0, 0, -1.0967536e-08, -0.24051, 0, 0.250908, -1.0513026e-08, 0, 0, 0)
+visible = false
 lod_bias = 0.1
 mesh = SubResource("ArrayMesh_65r5e")
 skeleton = NodePath("")
@@ -56,3 +58,6 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_tee4g")
+
+[node name="small Balloons" parent="." instance=ExtResource("2_ayxvi")]
+transform = Transform3D(-0.949921, 0, 0.0122526465, 0, 0.95, 0, -0.0122526465, 0, -0.949921, -0.0006759763, -0.0032031536, 0.056143522)

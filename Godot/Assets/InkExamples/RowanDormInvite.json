@@ -323,6 +323,7 @@
 						],
 						"g-4": [
 							"^See you then.",
+							"^/emit_signal party_invite_accepted",
 							"\n",
 							"end",
 							{

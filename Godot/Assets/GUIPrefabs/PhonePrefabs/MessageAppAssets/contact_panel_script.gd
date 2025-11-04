@@ -5,7 +5,7 @@ class_name ContactPanel extends Control
 @export var time_label : RichTextLabel
 @export var message_label : RichTextLabel
 @export var image_label : TextureRect
-@export var unread_alert : Control
+@export var notification_badge : PhoneNotificationBadge
 
 var message_app : MessageAppBox
 var contact : ChatResource
@@ -13,11 +13,7 @@ var contact : ChatResource
 func on_pressed() -> void:
 	message_app.on_contact_press(contact)
 
-func on_unread(active : bool) -> void:
-	if active:
-		unread_alert.activate()
-	else:
-		unread_alert.deactivate()
+func on_unread(_active : bool) -> void:
 	message_label.text = "[color=black]"+contact.display_message+"[/color]"
 
 func _ready() -> void:
@@ -27,3 +23,4 @@ func _ready() -> void:
 	message_label.text = "[color=black]"+contact.display_message+"[/color]"
 	if contact.image != null:
 		image_label.texture = contact.image
+	notification_badge.chat_resource = contact

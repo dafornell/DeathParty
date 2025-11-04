@@ -1,20 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://br8euj271narl"]
+[gd_scene load_steps=6 format=3 uid="uid://br8euj271narl"]
 
 [ext_resource type="Texture2D" uid="uid://djx0yq4hfer6g" path="res://Assets/CharacterAssets/CharacterTextures/kai_jax_waistup.png" id="1_fnffg"]
 [ext_resource type="Script" uid="uid://ceow5wxh8w4ea" path="res://Assets/GUIPrefabs/PhonePrefabs/MessageAppAssets/contact_panel_script.gd" id="2_2kose"]
-[ext_resource type="Script" uid="uid://kfd42qu8rovq" path="res://Assets/GUIPrefabs/PhonePrefabs/MessageAppAssets/unread_button.gd" id="2_hyfm0"]
+[ext_resource type="PackedScene" uid="uid://dpko77hndss54" path="res://phone_notification_badge.tscn" id="3_5b2yo"]
 [ext_resource type="FontFile" uid="uid://w4kmxbbwxg4c" path="res://Assets/Fonts/Inria_Sans/InriaSans-Regular.ttf" id="4_2wpag"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2kose"]
-bg_color = Color(0.14731, 0.407406, 1, 1)
-corner_radius_top_left = 40
-corner_radius_top_right = 40
-corner_radius_bottom_right = 40
-corner_radius_bottom_left = 40
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2kose"]
 
-[node name="ContactPanel" type="HBoxContainer" node_paths=PackedStringArray("contact_button", "name_label", "message_label", "image_label", "unread_alert")]
+[node name="ContactPanel" type="HBoxContainer" node_paths=PackedStringArray("contact_button", "name_label", "message_label", "image_label", "notification_badge")]
 custom_minimum_size = Vector2(0, 55)
 anchors_preset = 10
 anchor_right = 1.0
@@ -26,47 +19,26 @@ contact_button = NodePath("ChatInfo/Button")
 name_label = NodePath("ChatInfo/Name")
 message_label = NodePath("ChatInfo/LastText")
 image_label = NodePath("Control/Image")
-unread_alert = NodePath("Control/UnreadAlert")
+notification_badge = NodePath("Control/Image/PhoneNotificationBadge")
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="AspectRatioContainer" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Image" type="TextureRect" parent="Control"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.1
-anchor_top = 0.1
-anchor_right = 0.9
-anchor_bottom = 0.9
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("1_fnffg")
-expand_mode = 3
+expand_mode = 1
 stretch_mode = 5
 
-[node name="UnreadAlert" type="Control" parent="Control" node_paths=PackedStringArray("panel")]
-layout_mode = 1
-anchor_right = 0.4
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.0
-script = ExtResource("2_hyfm0")
-panel = NodePath("Panel")
-
-[node name="Panel" type="Panel" parent="Control/UnreadAlert"]
+[node name="PhoneNotificationBadge" parent="Control/Image" instance=ExtResource("3_5b2yo")]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.4
-anchor_top = 0.4
-anchor_right = 0.4
-anchor_bottom = 0.4
-offset_right = 10.0
-offset_bottom = 10.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_2kose")
+anchor_left = 0.78400004
+anchor_top = 0.28
+anchor_right = 0.78400004
+anchor_bottom = 0.28
 
 [node name="ChatInfo" type="ColorRect" parent="."]
 layout_mode = 2

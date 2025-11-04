@@ -53,3 +53,5 @@ var player: Player
 var polaroid_camera_ui: PolaroidLayer
 
 var jog_controls_popup_shown := false
+
+var skip_chat_delays := false

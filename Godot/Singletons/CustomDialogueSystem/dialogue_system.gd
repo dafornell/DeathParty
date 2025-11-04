@@ -103,6 +103,7 @@ func end_dialogue() -> void:
 	if current_dialogue_box == text_message_box: #if focused dialogue box is message app
 		current_phone_resource.end_chat(current_conversation)
 		current_phone_resource = null
+		current_dialogue_box = null
 	else:
 		current_dialogue_box.visible = false
 		current_dialogue_box.queue_free()
@@ -127,6 +128,8 @@ func pause_dialogue(revert_address : bool = false) -> void:
 	elif current_phone_resource:
 		current_phone_resource.pause_chat(current_conversation) # stores Inky hierarchy
 		current_phone_resource = null 
+		current_dialogue_box = null
+	current_conversation = []
 	print("Pausing dialogue")
 	in_dialogue = false
 ##

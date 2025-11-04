@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://cg2pbsmfxnmmf"]
+
+[ext_resource type="Script" uid="uid://ca0lkukmote6e" path="res://Utilities/tutorial/tutorial_highlight.gd" id="1_vac5w"]
+[ext_resource type="Texture2D" uid="uid://bhswcwjpttu2s" path="res://Utilities/tutorial/inventory_highlight.png" id="2_tlsm5"]
+
+[node name="Highlight" type="Control" node_paths=PackedStringArray("highlight_oval")]
+modulate = Color(0, 0, 0, 0.7019608)
+layout_mode = 3
+anchor_left = -1.0
+anchor_top = -1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource("1_vac5w")
+highlight_oval = NodePath("HBoxContainer/VBoxContainer/HighlightOval")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="ColorRect3" type="ColorRect" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="HighlightOval" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_tlsm5")
+expand_mode = 5
+
+[node name="ColorRect2" type="ColorRect" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="ColorRect4" type="ColorRect" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2

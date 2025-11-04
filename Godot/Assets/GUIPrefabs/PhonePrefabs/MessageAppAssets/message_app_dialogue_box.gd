@@ -106,6 +106,8 @@ func on_contact_press(contact: ChatResource) -> void:
 	setup_dms(contact)
 	tween_forward()
 	contact_pressed = false
+	
+	Events.contact_pressed.emit()
 
 func setup_dms(contact: ChatResource) -> void:
 	set_participants(contact)
@@ -137,6 +139,7 @@ func on_back_pressed() -> void:
 	#if !DialogueSystem.are_choices: #only allows you to leave if you aren't at a choice point
 	tween_backward()
 	pause_conversation()
+	Events.message_app_back_pressed.emit()
 
 ## INHERITED
 var last_speaker: String = ""
@@ -175,7 +178,12 @@ func add_line(line: InkLineInfo, skip_delay : bool = false) -> void:
 		first_message = false
 	else:
 		delayed_lines.push_back(line)
-		await get_tree().create_timer(delay_time).timeout
+		# note: still needs to wait a frame for 
+		# resizing stuff
+		if Globals.skip_chat_delays:
+			await get_tree().process_frame
+		else:
+			await get_tree().create_timer(delay_time).timeout
 		var newline : InkLineInfo = delayed_lines.pop_back()
 		if newline == null or line != newline:
 			#a different conversation has started

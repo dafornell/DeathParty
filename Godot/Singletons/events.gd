@@ -19,12 +19,36 @@ signal toggle_quest_marker(npc_name: String, value: bool)
 
 signal title_screen_start_game_button_pressed
 signal title_screen_settings_button_pressed
+signal title_screen_quit_button_pressed
 
 signal toggle_dialogue_instructions(value: bool)
 
 signal open_inventory
 signal close_inventory
 
+signal new_phone_message(chat_resource: ChatResource)
+
+signal intro_finished
+signal party_invite_accepted
+signal interactables_enabled
+
+signal phone_opened
+signal phone_closed
+signal contact_pressed
+signal message_app_back_pressed
+
+signal journal_opened
+signal journal_closed
+
+signal interaction_area_entered(interactable: Interactable)
+signal interaction_area_exited(interactable: Interactable)
+signal interacted(interactable: Interactable)
+
+signal collected_polaroid
+# emitted by dialogue OliviaDormCamera.ink.json
+signal ready_to_take_photo_of_corkboard
+
+signal tutorial_skipped
 
 func _enter_tree() -> void:
 	toggle_quest_marker.connect(_on_toggle_quest_marker)

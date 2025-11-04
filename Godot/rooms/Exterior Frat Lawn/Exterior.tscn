@@ -1,4 +1,4 @@
-[gd_scene load_steps=217 format=4 uid="uid://dph5ihe40llhe"]
+[gd_scene load_steps=220 format=4 uid="uid://dph5ihe40llhe"]
 
 [ext_resource type="Script" uid="uid://c7lpgksj3ddcu" path="res://rooms/Exterior Frat Lawn/exterior.gd" id="1_nnx0v"]
 [ext_resource type="Environment" uid="uid://ca3e8txjiikuc" path="res://Assets/environments/new Exterior environment.tres" id="2_maypx"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ch4xrdlj43bah" path="res://rooms/Exterior Frat Lawn/Exterior_TCom_OrnamentBorder0333_1_S.png" id="3_qokoo"]
 [ext_resource type="Script" uid="uid://cyn7mdbv1saaq" path="res://rooms/Exterior Frat Lawn/jog_controls_popup.gd" id="4_81i5n"]
 [ext_resource type="Texture2D" uid="uid://ddr8f0a45pnoy" path="res://rooms/Exterior Frat Lawn/Exterior_51dc8d5e7ac559bb47ade3dfd3ba5b58.jpg" id="4_s6f1y"]
+[ext_resource type="PackedScene" path="res://Utilities/tutorial/input_indicator.tscn" id="5_42tb4"]
 [ext_resource type="Texture2D" uid="uid://dj2kkd15yuake" path="res://rooms/Exterior Frat Lawn/Exterior_Door.png" id="5_nnx0v"]
 [ext_resource type="Script" uid="uid://gq7614xvk2hc" path="res://Utilities/spawn_point.gd" id="5_pkvil"]
 [ext_resource type="Texture2D" uid="uid://jhfdrr25x8hn" path="res://rooms/Exterior Frat Lawn/Exterior_RoofingTiles014B_1K-JPG_Color-RoofingTiles014B_1K-JPG_Opacity.png" id="7_72fye"]
@@ -57,6 +58,9 @@
 [ext_resource type="PackedScene" uid="uid://b5sjjc5i61576" path="res://Singletons/ContentLoader/TeleportPoint.tscn" id="54_txmqg"]
 [ext_resource type="PackedScene" uid="uid://bbyg62wymptn6" path="res://Singletons/ContentLoader/scene_loader.tscn" id="55_maypx"]
 [ext_resource type="PackedScene" uid="uid://d1lmv76sg8rx0" path="res://Assets/CharacterAssets/free_hug_guy/free_hug_guy.tscn" id="55_txmqg"]
+[ext_resource type="PackedScene" uid="uid://d3lt3kgvcji47" path="res://Assets/props/balloons/balloons_four_short.tscn" id="58_pkvil"]
+[ext_resource type="PackedScene" uid="uid://dxahcd25ocjsx" path="res://Assets/props/balloons/balloons_four_tall.tscn" id="59_42tb4"]
+[ext_resource type="PackedScene" uid="uid://48e2dw6eco7w" path="res://Assets/props/balloons/balloons_three_short.tscn" id="60_a3xny"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y8ruy"]
 size = Vector3(85.0753, 13.7554, 87.9012)
@@ -2879,19 +2883,20 @@ first_visit_json = ExtResource("3_42tb4")
 visible = false
 script = ExtResource("4_81i5n")
 
-[node name="PanelContainer" type="PanelContainer" parent="JogControlsPopup"]
-anchors_preset = 5
+[node name="InputIndicator" parent="JogControlsPopup" instance=ExtResource("5_42tb4")]
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -65.0
-offset_top = 250.0
-offset_right = 65.0
-offset_bottom = 273.0
-grow_horizontal = 2
-
-[node name="Label" type="Label" parent="JogControlsPopup/PanelContainer"]
-layout_mode = 2
-text = "hold SHIFT while moving to jog"
+anchor_bottom = 0.5
+offset_left = -114.0
+offset_top = -25.0
+offset_right = 114.0
+offset_bottom = 25.0
+description_text = "hold to jog"
+action_name = &"jog"
+composite_action_names = Array[StringName]([&"jog", &""])
+action_name = &"jog"
 
 [node name="ShowTimer" type="Timer" parent="JogControlsPopup"]
 unique_name_in_owner = true
@@ -4181,31 +4186,31 @@ skeleton = NodePath("")
 transform = Transform3D(0.879742, 0, 0, 0, 0.879742, 0, 0, 0, 0.879742, 8.34688, 1.36731, 16.3188)
 
 [node name="Pumpkins" type="Node3D" parent="Props"]
-transform = Transform3D(6.18685e-08, 0, -0.471798, 0, 0.557144, 0, 0.471798, 0, 6.18685e-08, 0.8496, 0.117743, 12.8237)
+transform = Transform3D(3.563501e-08, 0, -0.472, 0, 0.472, 0, 0.472, 0, 3.563501e-08, 0.8496, 0.117743, 12.8237)
 
 [node name="JackOLantern" parent="Props/Pumpkins" instance=ExtResource("28_3h7io")]
-transform = Transform3D(-3.25422, 0, 5.62673, 0, 6.4999995, 0, -5.62673, 0, -3.25422, -5.7038, -0.02437687, -0.06149769)
+transform = Transform3D(-3.2542205, 0, 5.62673, 0, 6.4999995, 0, -5.62673, 0, -3.2542205, -5.7038, -0.02437687, -0.06149769)
 
 [node name="JackOLanternSquashed" parent="Props/Pumpkins" instance=ExtResource("31_uqhvr")]
-transform = Transform3D(-1.38868, 0, 2.65924, 0, 2.765, 0, -2.65924, 0, -1.38868, 11.5696, -0.333429, -0.981361)
+transform = Transform3D(-1.3886809, 0, 2.6592414, 0, 3, 0, -2.6592414, 0, -1.3886809, 11.5696, -0.333429, -0.981361)
 
 [node name="JackOLantern2" parent="Props/Pumpkins" instance=ExtResource("28_3h7io")]
-transform = Transform3D(3.81396, 0, 4.63181, 0, 5.685, 0, -4.63181, 0, 3.81396, -6.88108, -0.203864, -14.5672)
+transform = Transform3D(3.8139625, 0, 4.6318126, 0, 6, 0, -4.6318126, 0, 3.8139625, -6.88108, -0.203864, -14.5672)
 
 [node name="JackOLanternSquashed2" parent="Props/Pumpkins" instance=ExtResource("31_uqhvr")]
-transform = Transform3D(2.6166668, 0, 1.2541366, 0, 2.4079986, 0, -1.3846271, 0, 2.3700666, -17.1259, -0.35221672, -13.1528)
+transform = Transform3D(2.6162882, 0, 1.3844271, 0, 2.9600003, 0, -1.3844271, 0, 2.6162882, -17.125904, -0.35221672, -13.279774)
 
 [node name="JackOLanternTall2" parent="Props/Pumpkins" instance=ExtResource("32_3ege1")]
-transform = Transform3D(1.7970704, 0, 2.4021904, 0, 1.8949995, 0, -2.4021904, 0, 1.7970704, 18.854198, -0.13219833, -15.087098)
+transform = Transform3D(1.1351507, 0, 1.5173854, 0, 1.8950001, 0, -1.5173854, 0, 1.1351507, 18.854195, -0.065644264, -15.087099)
 
 [node name="JackOLantern3" parent="Props/Pumpkins" instance=ExtResource("28_3h7io")]
 transform = Transform3D(-1.96509, 0, 5.66908, 0, 6, 0, -5.66908, 0, -1.96509, 21.1334, 0, -1.12959)
 
 [node name="JackOLanternSquashed3" parent="Props/Pumpkins" instance=ExtResource("31_uqhvr")]
-transform = Transform3D(-2.08787, 0, 2.08787, 0, 2.10232, 0, -2.08787, 0, -2.08787, 32.0277, -0.333429, -0.919775)
+transform = Transform3D(-2.0880864, 0, 2.0880864, 0, 2.953, 0, -2.0880864, 0, -2.0880864, 32.0277, -0.333429, -0.919775)
 
 [node name="JackOLantern4" parent="Props/Pumpkins" instance=ExtResource("28_3h7io")]
-transform = Transform3D(4.35282, 0, 4.12952, 0, 4.5, 0, -4.12952, 0, 4.35282, 30.4676, -0.203864, -14.3761)
+transform = Transform3D(4.3528214, 0, 4.1295214, 0, 6.0000005, 0, -4.1295214, 0, 4.3528214, 30.467598, -0.22189045, -14.376101)
 
 [node name="JackOLanternTall4" parent="Props/Pumpkins" instance=ExtResource("32_3ege1")]
 transform = Transform3D(1.09561, 0, 1.46454, 0, 1.2117699, 0, -1.46454, 0, 1.09561, 41.056202, -0.310277, -13.819699)
@@ -4214,7 +4219,7 @@ transform = Transform3D(1.09561, 0, 1.46454, 0, 1.2117699, 0, -1.46454, 0, 1.095
 transform = Transform3D(-2.62268e-07, 0, 6, 0, 6, 0, -6, 0, -2.62268e-07, 43.8004, -0.179218, -0.750999)
 
 [node name="JackOLanternSquashed6" parent="Props/Pumpkins" instance=ExtResource("31_uqhvr")]
-transform = Transform3D(2.43175, 0, 1.75687, 0, 2.08068, 0, -1.75687, 0, 2.43175, 50.6949, -0.422076, -13.3704)
+transform = Transform3D(1.6868241, 0, 1.2186822, 0, 2.081, 0, -1.2186822, 0, 1.6868241, 50.6949, -0.422076, -13.3704)
 
 [node name="wallet and ID" parent="Props" instance=ExtResource("44_qxka8")]
 transform = Transform3D(0.1398062, -3.5037266e-16, 0.60823095, 0.30317733, 0.5410336, -0.06968739, -0.5272837, 0.31108293, 0.121199764, 1.7217338, 0.94294834, 16.071657)
@@ -4543,6 +4548,27 @@ attached = false
 autoplay = true
 volume = 0.075
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0)
+
+[node name="BalloonsFourShort" parent="." instance=ExtResource("58_pkvil")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5908198, -5.9582534, 19.000135)
+
+[node name="BalloonsFourTall" parent="." instance=ExtResource("59_42tb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4133835, -7.126508, 18.163286)
+
+[node name="BalloonsThreeShort" parent="." instance=ExtResource("60_a3xny")]
+transform = Transform3D(0.8842633, 0, 0.46698865, 0, 1, 0, -0.46698865, 0, 0.8842633, -3.7784534, -6.984945, 38.119827)
+
+[node name="BalloonsFourShort2" parent="." instance=ExtResource("58_pkvil")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4804678, -4.6742, 9.245198)
+
+[node name="BalloonsFourShort3" parent="." instance=ExtResource("58_pkvil")]
+transform = Transform3D(0.8286079, 0, -0.55982935, 0, 1, 0, 0.55982935, 0, 0.8286079, 1.8206577, -5.9207687, 11.225269)
+
+[node name="BalloonsThreeShort2" parent="." instance=ExtResource("60_a3xny")]
+transform = Transform3D(-0.5554252, 0, -0.8315667, 0, 1, 0, 0.8315667, 0, -0.5554252, -3.0858572, -6.9849443, 11.333035)
+
+[node name="BalloonsFourShort4" parent="." instance=ExtResource("58_pkvil")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0812433, 1.2171526, 5.903897)
 
 [connection signal="timeout" from="JogControlsPopup/ShowTimer" to="JogControlsPopup" method="_on_show_timer_timeout"]
 [connection signal="timeout" from="JogControlsPopup/HideTimer" to="JogControlsPopup" method="_on_hide_timer_timeout"]

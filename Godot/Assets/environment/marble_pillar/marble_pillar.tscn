@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=4 uid="uid://ci0x5744ru78a"]
+[gd_scene load_steps=15 format=4 uid="uid://ci0x5744ru78a"]
 
 [ext_resource type="Texture2D" uid="uid://cijdsma3jnomh" path="res://Assets/environment/marble_pillar/pillar_party windows.png" id="1_h3u10"]
 [ext_resource type="Texture2D" uid="uid://b2rfbjbnqpd32" path="res://Assets/environment/marble_pillar/pillar_marble.png" id="2_fww8y"]
 [ext_resource type="Texture2D" uid="uid://c00vgl66675ap" path="res://Assets/environment/marble_pillar/pillar_TCom_OrnamentBorder0333_1_S.png" id="3_14ry2"]
+[ext_resource type="PackedScene" uid="uid://dquw1vwnwx6pu" path="res://Assets/environment/marble_pillar/pillar.glb" id="4_fww8y"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hqxcs"]
 resource_name = "Material"
@@ -190,9 +191,13 @@ skeleton = NodePath("")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.195503, 0, 0, 0, 0.349905, 0, 0, 0, 0.19834, -0.00215669, 1.69896, 0.00582685)
+visible = false
 mesh = SubResource("ArrayMesh_xpmjg")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.04832, 0)
 shape = SubResource("CylinderShape3D_4mvp1")
+
+[node name="pillar" parent="." instance=ExtResource("4_fww8y")]
+transform = Transform3D(0.7753501, 0, 0, 0, 1.0085846, 0, 0, 0, 0.73538065, -0.023119342, -3.6736152, 0.019731283)

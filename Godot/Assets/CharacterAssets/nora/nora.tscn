@@ -3623,8 +3623,10 @@ _data = {
 &"walk": SubResource("Animation_m0ci2")
 }
 
-[node name="Nora" instance=ExtResource("1_o7wdt")]
+[node name="Nora" node_paths=PackedStringArray("primary_mesh") instance=ExtResource("1_o7wdt")]
 character_resource = ExtResource("3_1mxnw")
+primary_mesh = NodePath("CharacterBody3D/model/Skeleton3D/nora")
+use_first_mesh = false
 
 [node name="model" type="Node3D" parent="CharacterBody3D" index="1"]
 transform = Transform3D(0.155, 0, 0, 0, 0.155, 0, 0, 0, 0.155, 0, 0, 0)

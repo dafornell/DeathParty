@@ -161,7 +161,7 @@ func rotate_model(delta: float) -> void:
 func reset_position() -> void:
 	global_position = spawn_position
 	##ALSO MAKE IT SO IT LOADS THE ORIGINAL SCENES
-	ContentLoader.reset()
+	#ContentLoader.reset()
 
 
 func _on_world_boundary_body_entered(body: Node3D) -> void:
