@@ -13,4 +13,4 @@ func _pressed() -> void:
 				message_app.on_back_pressed()
 			app.visible = false
 	if no_apps_visible:
-		GuiSystem.hide_gui("Phone")
+		GuiSystem.hide_phone()
