@@ -1,4 +1,4 @@
-[gd_scene load_steps=116 format=4 uid="uid://d3uev5wxhcoe1"]
+[gd_scene load_steps=117 format=4 uid="uid://d3uev5wxhcoe1"]
 
 [ext_resource type="Script" uid="uid://b8ij6ghpwhgox" path="res://rooms/entrance.gd" id="1_3k57g"]
 [ext_resource type="Texture2D" uid="uid://cn8ag1br2becc" path="res://Assets/textures/entrance_room_environment/entrance room layout_big floor.png" id="3_ekhf5"]
@@ -50,6 +50,7 @@
 [ext_resource type="PackedScene" uid="uid://bagpax3yb0uf7" path="res://Assets/CharacterAssets/christmas_tree/christmas_tree.tscn" id="47_yqsuh"]
 [ext_resource type="PackedScene" uid="uid://b5sjjc5i61576" path="res://Singletons/ContentLoader/TeleportPoint.tscn" id="49_a6eg1"]
 [ext_resource type="PackedScene" uid="uid://csh7q4aonjs3d" path="res://Assets/CharacterAssets/frat_boys/red_hat_frat_boy/Frat boy red hat.glb" id="49_cygoc"]
+[ext_resource type="PackedScene" uid="uid://c1vyk1h1qwesf" path="res://Common/Popup UI/npc_bark_popup.tscn" id="50_ylx8s"]
 [ext_resource type="PackedScene" uid="uid://eyb48ss6xfgu" path="res://Assets/CharacterAssets/shy_girl/shy_girl.tscn" id="51_1e4ar"]
 [ext_resource type="Texture2D" uid="uid://dut3t6ajv8wp" path="res://Assets/textures/entrance_room_environment/two doors_IMG_4472.png" id="51_f4d3f"]
 [ext_resource type="PackedScene" uid="uid://bte4agxfg1yhm" path="res://Assets/CharacterAssets/frat_boys/Long_Hair_frat_boy/Frat boy long hair.glb" id="51_t3a1b"]
@@ -1715,6 +1716,9 @@ bones/63/rotation = Quaternion(0.390428, 0.249392, -0.0498785, 0.884806)
 
 [node name="AnimationPlayer" parent="NPCs/Frat boy red hat" index="1"]
 autoplay = "sitt bored"
+
+[node name="BarkPopup" parent="NPCs/Frat boy red hat" instance=ExtResource("50_ylx8s")]
+transform = Transform3D(1.415, 0, -5.9604645e-08, 0, 1.415, 0, 5.9604645e-08, 0, 1.415, -0.20643711, 1.7005143, 0.064089775)
 
 [node name="cone ghost" parent="NPCs" instance=ExtResource("46_ihq26")]
 transform = Transform3D(0.232546, 0, -0.972585, 0, 1, 0, 0.972585, 0, 0.232546, 5.01882, -0.00239445, 1.40468)
