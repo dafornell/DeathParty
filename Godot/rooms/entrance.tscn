@@ -1718,7 +1718,7 @@ bones/63/rotation = Quaternion(0.390428, 0.249392, -0.0498785, 0.884806)
 autoplay = "sitt bored"
 
 [node name="BarkPopup" parent="NPCs/Frat boy red hat" instance=ExtResource("50_ylx8s")]
-transform = Transform3D(1.415, 0, -5.9604645e-08, 0, 1.415, 0, 5.9604645e-08, 0, 1.415, -0.20643711, 1.7005143, 0.064089775)
+transform = Transform3D(0.25, 0, -2.9217967e-08, 0, 0.25, 0, 2.9217967e-08, 0, 0.25, -0.30103874, 1.7005143, -0.37756348)
 
 [node name="cone ghost" parent="NPCs" instance=ExtResource("46_ihq26")]
 transform = Transform3D(0.232546, 0, -0.972585, 0, 1, 0, 0.972585, 0, 0.232546, 5.01882, -0.00239445, 1.40468)

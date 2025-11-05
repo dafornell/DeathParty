@@ -1,47 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://c1vyk1h1qwesf"]
+[gd_scene load_steps=6 format=3 uid="uid://c1vyk1h1qwesf"]
 
 [ext_resource type="Texture2D" uid="uid://bxq1a7k8kqnew" path="res://Assets/PNGAssets/bark_bg.png" id="1_4k0qy"]
+[ext_resource type="Script" uid="uid://qkx286pky47d" path="res://Common/Popup UI/npc_bark_popup.gd" id="1_wwsvw"]
 [ext_resource type="Texture2D" uid="uid://mc48knps2dsm" path="res://Assets/PNGAssets/bark_tail.png" id="2_gqaax"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4k0qy"]
-transparency = 1
-albedo_texture = ExtResource("1_4k0qy")
-albedo_texture_force_srgb = true
-billboard_mode = 2
-billboard_keep_scale = true
-
-[sub_resource type="QuadMesh" id="QuadMesh_gqaax"]
-material = SubResource("StandardMaterial3D_4k0qy")
-size = Vector2(7, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q7v7q"]
-transparency = 1
-albedo_texture = ExtResource("2_gqaax")
-billboard_mode = 2
-billboard_keep_scale = true
-
-[sub_resource type="QuadMesh" id="QuadMesh_wwsvw"]
-material = SubResource("StandardMaterial3D_q7v7q")
-size = Vector2(6, 1)
+[ext_resource type="FontFile" uid="uid://bnoeu4ueg0d7" path="res://Assets/Fonts/Gantari/Gantari-Italic-VariableFont_wght.ttf" id="3_q7v7q"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_gqaax"]
 viewport_path = NodePath("SubViewportContainer/SubViewport")
 
-[node name="BarkPopup" type="Node3D"]
-
-[node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(0.095, 0, 0, 0, 0.095, 0, 0, 0, 0.095, -0.128, -0.15402098, 0)
-visible = false
-
-[node name="BarkBox" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(2.2105265, 0, 0, 0, 2.2105265, 0, 0, 0, 2.2105265, 1.3473686, 1.6212736, 0)
-mesh = SubResource("QuadMesh_gqaax")
-skeleton = NodePath("../..")
-
-[node name="BarkTail" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0)
-mesh = SubResource("QuadMesh_wwsvw")
-skeleton = NodePath("../..")
+[node name="BarkPopup" type="Node3D" node_paths=PackedStringArray("tail", "board", "text")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+script = ExtResource("1_wwsvw")
+tail = NodePath("SubViewportContainer/SubViewport/BarkTail")
+board = NodePath("SubViewportContainer/SubViewport/BarkBoard")
+text = NodePath("SubViewportContainer/SubViewport/BarkText")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 offset_left = 2.0
@@ -55,16 +27,6 @@ handle_input_locally = false
 size = Vector2i(5000, 235)
 render_target_update_mode = 4
 
-[node name="BarkBoard" type="TextureRect" parent="SubViewportContainer/SubViewport"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -661.5
-offset_right = 661.5
-offset_bottom = 184.0
-grow_horizontal = 2
-texture = ExtResource("1_4k0qy")
-
 [node name="BarkTail" type="TextureRect" parent="SubViewportContainer/SubViewport"]
 anchors_preset = -1
 anchor_left = 0.5
@@ -72,25 +34,35 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -385.0
-offset_top = -51.0
+offset_top = -50.0
 offset_right = 165.5
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("2_gqaax")
 stretch_mode = 2
 
-[node name="Label" type="Label" parent="SubViewportContainer/SubViewport"]
+[node name="BarkBoard" type="TextureRect" parent="SubViewportContainer/SubViewport"]
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.25
 anchor_right = 0.5
-anchor_bottom = 0.43
-offset_left = -34.0
-offset_top = -1.75
-offset_right = 34.0
-offset_bottom = -12.050003
+offset_left = -661.5
+offset_right = 661.5
+offset_bottom = 184.0
 grow_horizontal = 2
-text = "Test text"
+texture = ExtResource("1_4k0qy")
+expand_mode = 1
+
+[node name="BarkText" type="Label" parent="SubViewportContainer/SubViewport"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -27.0
+offset_top = 45.0
+offset_right = 27.0
+offset_bottom = 131.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_q7v7q")
+theme_override_font_sizes/font_size = 71
 horizontal_alignment = 1
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
