@@ -18,6 +18,34 @@ var paused_ink_address : InkAddress
 
 signal unread
 
+func get_save_state() -> Dictionary:
+	if chat_in_progress:
+		push_error("CANNOT SAVE PHONE CHAT WHILE IN PROGRESS.")
+	var ink_line_to_dict := func(line: InkLineInfo) -> Dictionary[String, String]:
+		return {
+			"speaker": line.speaker,
+			"text": line.text
+		}
+	return {
+		"past_chats": past_chats.map(ink_line_to_dict)
+	}
+	
+func load_save_state(save_data: Dictionary) -> void:
+	var dict_to_ink_line := func(dict: Dictionary) -> InkLineInfo:
+		var speaker: String = dict["speaker"]
+		var text: String = dict["text"]
+		var line_info := InkLineInfo.new(
+			null,
+			"",
+			speaker,
+			text
+		)
+		return line_info
+	
+	var saved_past_chats: Array = save_data.get("past_chats", [])
+	
+	past_chats.assign(saved_past_chats.map(dict_to_ink_line))
+
 ##INHERITED
 func initialize() -> void:
 	parse_participants()

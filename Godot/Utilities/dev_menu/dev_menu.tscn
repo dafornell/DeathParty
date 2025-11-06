@@ -1,133 +1,169 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmink41yr1q8i"]
+[gd_scene load_steps=11 format=3 uid="uid://cmink41yr1q8i"]
 
 [ext_resource type="Script" uid="uid://cyq4ufcsp62p7" path="res://Utilities/dev_menu/dev_menu.gd" id="1_wbp6d"]
 [ext_resource type="Script" uid="uid://ced0i6abh24hp" path="res://Utilities/dev_menu/dev_menu_skip_tutorial.gd" id="2_1dsnd"]
 [ext_resource type="Script" uid="uid://dehiqcd3jycjf" path="res://Utilities/dev_menu/dev_menu_list_inventory_items.gd" id="2_c1403"]
 [ext_resource type="Script" uid="uid://cuemtfmr7vkbb" path="res://Utilities/dev_menu/dev_menu_give_item.gd" id="3_3xkyt"]
+[ext_resource type="Script" uid="uid://cpx2btutrdlsb" path="res://Utilities/dev_menu/dev_menu_open_save_dir.gd" id="3_5wtoc"]
 [ext_resource type="Script" uid="uid://dx65muhakj1rp" path="res://Utilities/dev_menu/dev_menu_toggle_skip_chat_delays.gd" id="3_hvnh0"]
 [ext_resource type="Script" uid="uid://cxm6k3yxmhmid" path="res://Utilities/dev_menu/dev_menu_give_all_inventory_items.gd" id="4_3xkyt"]
+[ext_resource type="Script" uid="uid://bfrfkp7or4qnk" path="res://Utilities/dev_menu/dev_menu_write_save.gd" id="4_apubs"]
+[ext_resource type="Script" uid="uid://n5rapef1to57" path="res://Utilities/dev_menu/dev_menu_delete_save.gd" id="5_bsov8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bsov8"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.19076231, 0.19076234, 0.19076222, 1)
 
 [node name="DevMenu" type="CanvasLayer"]
 layer = 99
 script = ExtResource("1_wbp6d")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-offset_right = 359.0
-offset_bottom = 210.0
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 50
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(0, 500)
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 323.0
+offset_bottom = 516.0
+horizontal_scroll_mode = 0
 
-[node name="Background" type="ColorRect" parent="MarginContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="ScrollContainer"]
 layout_mode = 2
-color = Color(0.0980392, 0.0980392, 0.0980392, 0.392157)
+theme_override_styles/panel = SubResource("StyleBoxFlat_bsov8")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/PanelContainer"]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="DevMenuTitle" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="DevMenuTitle" type="Label" parent="ScrollContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
 text = "DEV MENU (toggle with ` or F7)"
 
-[node name="ResetPlayerButton" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="ResetPlayerButton" type="Button" parent="ScrollContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
 text = "reset player"
 
-[node name="PlayerSpeedButton" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="PlayerSpeedButton" type="Button" parent="ScrollContainer/PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 toggle_mode = true
 text = "increase player speed"
 
-[node name="SlowMotionButton" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="SlowMotionButton" type="Button" parent="ScrollContainer/PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 toggle_mode = true
 text = "slow motion"
 
-[node name="SkipMusicButton" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="SkipMusicButton" type="Button" parent="ScrollContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
 text = "skip party room music to next track"
 
-[node name="Skip tutorial" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Skip tutorial" type="Button" parent="ScrollContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
 text = "skip tutorial"
 script = ExtResource("2_1dsnd")
 
-[node name="Toggle Skip Chat Delays" type="CheckButton" parent="MarginContainer/VBoxContainer"]
+[node name="FoldableContainer3" type="FoldableContainer" parent="ScrollContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+title = "Save"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/PanelContainer/VBoxContainer/FoldableContainer3"]
+layout_mode = 2
+
+[node name="Open save dir" type="Button" parent="ScrollContainer/PanelContainer/VBoxContainer/FoldableContainer3/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "open save dir"
+script = ExtResource("3_5wtoc")
+
+[node name="Write save" type="Button" parent="ScrollContainer/PanelContainer/VBoxContainer/FoldableContainer3/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "write save"
+script = ExtResource("4_apubs")
+
+[node name="Delete save" type="Button" parent="ScrollContainer/PanelContainer/VBoxContainer/FoldableContainer3/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "delete save"
+script = ExtResource("5_bsov8")
+
+[node name="Toggle Skip Chat Delays" type="CheckButton" parent="ScrollContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 text = "skip chat delays"
 script = ExtResource("3_hvnh0")
 
-[node name="FoldableContainer" type="FoldableContainer" parent="MarginContainer/VBoxContainer"]
+[node name="FoldableContainer" type="FoldableContainer" parent="ScrollContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 folded = true
 title = "Inventory utils"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/FoldableContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/PanelContainer/VBoxContainer/FoldableContainer"]
 visible = false
 layout_mode = 2
 
-[node name="ListInventoryItems" type="Button" parent="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer"]
+[node name="ListInventoryItems" type="Button" parent="ScrollContainer/PanelContainer/VBoxContainer/FoldableContainer/VBoxContainer"]
 layout_mode = 2
 text = "List inventory items"
 script = ExtResource("2_c1403")
 
-[node name="GiveItemContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer" node_paths=PackedStringArray("line_edit", "status_text")]
+[node name="GiveItemContainer" type="VBoxContainer" parent="ScrollContainer/PanelContainer/VBoxContainer/FoldableContainer/VBoxContainer" node_paths=PackedStringArray("line_edit", "status_text")]
 layout_mode = 2
 script = ExtResource("3_3xkyt")
 line_edit = NodePath("VBoxContainer/GiveItemLineEdit")
 status_text = NodePath("GiveItemStatusText")
 
-[node name="VBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer/GiveItemContainer"]
+[node name="VBoxContainer" type="HBoxContainer" parent="ScrollContainer/PanelContainer/VBoxContainer/FoldableContainer/VBoxContainer/GiveItemContainer"]
 layout_mode = 2
 
-[node name="GiveItemLineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer/GiveItemContainer/VBoxContainer"]
+[node name="GiveItemLineEdit" type="LineEdit" parent="ScrollContainer/PanelContainer/VBoxContainer/FoldableContainer/VBoxContainer/GiveItemContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Item name"
 keep_editing_on_text_submit = true
 
-[node name="GiveItem" type="Button" parent="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer/GiveItemContainer/VBoxContainer"]
+[node name="GiveItem" type="Button" parent="ScrollContainer/PanelContainer/VBoxContainer/FoldableContainer/VBoxContainer/GiveItemContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
 text = "Give"
 
-[node name="GiveItemStatusText" type="Label" parent="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer/GiveItemContainer"]
+[node name="GiveItemStatusText" type="Label" parent="ScrollContainer/PanelContainer/VBoxContainer/FoldableContainer/VBoxContainer/GiveItemContainer"]
 visible = false
 layout_mode = 2
 
-[node name="GiveAllInventoryItemsButton" type="Button" parent="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer"]
+[node name="GiveAllInventoryItemsButton" type="Button" parent="ScrollContainer/PanelContainer/VBoxContainer/FoldableContainer/VBoxContainer"]
 layout_mode = 2
 text = "Give all inventory items"
 script = ExtResource("4_3xkyt")
 
-[node name="GiveAllInventoryItemsWithUniqueModels" type="Button" parent="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer"]
+[node name="GiveAllInventoryItemsWithUniqueModels" type="Button" parent="ScrollContainer/PanelContainer/VBoxContainer/FoldableContainer/VBoxContainer"]
 layout_mode = 2
 text = "Give all inventory items with unique models"
 
-[node name="TeleportLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="FoldableContainer2" type="FoldableContainer" parent="ScrollContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
-text = "teleport to a room:"
+folded = true
+title = "Teleport"
 
-[node name="TeleportButtonContainer" type="GridContainer" parent="MarginContainer/VBoxContainer"]
+[node name="TeleportButtonContainer" type="GridContainer" parent="ScrollContainer/PanelContainer/VBoxContainer/FoldableContainer2"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 columns = 3
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/ResetPlayerButton" to="." method="_on_reset_player_button_pressed"]
-[connection signal="toggled" from="MarginContainer/VBoxContainer/PlayerSpeedButton" to="." method="_on_player_speed_button_toggled"]
-[connection signal="toggled" from="MarginContainer/VBoxContainer/SlowMotionButton" to="." method="_on_slow_motion_button_toggled"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/SkipMusicButton" to="." method="_on_skip_music_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer/ListInventoryItems" to="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer/ListInventoryItems" method="_on_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer/GiveItemContainer/VBoxContainer/GiveItem" to="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer/GiveItemContainer" method="_on_give_item_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer/GiveAllInventoryItemsButton" to="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer/GiveAllInventoryItemsButton" method="_on_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer/GiveAllInventoryItemsWithUniqueModels" to="MarginContainer/VBoxContainer/FoldableContainer/VBoxContainer/GiveAllInventoryItemsButton" method="give_all_inventory_items_with_unique_models"]
+[connection signal="pressed" from="ScrollContainer/PanelContainer/VBoxContainer/ResetPlayerButton" to="." method="_on_reset_player_button_pressed"]
+[connection signal="toggled" from="ScrollContainer/PanelContainer/VBoxContainer/PlayerSpeedButton" to="." method="_on_player_speed_button_toggled"]
+[connection signal="toggled" from="ScrollContainer/PanelContainer/VBoxContainer/SlowMotionButton" to="." method="_on_slow_motion_button_toggled"]
+[connection signal="pressed" from="ScrollContainer/PanelContainer/VBoxContainer/SkipMusicButton" to="." method="_on_skip_music_button_pressed"]
+[connection signal="pressed" from="ScrollContainer/PanelContainer/VBoxContainer/FoldableContainer/VBoxContainer/ListInventoryItems" to="ScrollContainer/PanelContainer/VBoxContainer/FoldableContainer/VBoxContainer/ListInventoryItems" method="_on_pressed"]
+[connection signal="pressed" from="ScrollContainer/PanelContainer/VBoxContainer/FoldableContainer/VBoxContainer/GiveItemContainer/VBoxContainer/GiveItem" to="ScrollContainer/PanelContainer/VBoxContainer/FoldableContainer/VBoxContainer/GiveItemContainer" method="_on_give_item_pressed"]
+[connection signal="pressed" from="ScrollContainer/PanelContainer/VBoxContainer/FoldableContainer/VBoxContainer/GiveAllInventoryItemsButton" to="ScrollContainer/PanelContainer/VBoxContainer/FoldableContainer/VBoxContainer/GiveAllInventoryItemsButton" method="_on_pressed"]
+[connection signal="pressed" from="ScrollContainer/PanelContainer/VBoxContainer/FoldableContainer/VBoxContainer/GiveAllInventoryItemsWithUniqueModels" to="ScrollContainer/PanelContainer/VBoxContainer/FoldableContainer/VBoxContainer/GiveAllInventoryItemsButton" method="give_all_inventory_items_with_unique_models"]

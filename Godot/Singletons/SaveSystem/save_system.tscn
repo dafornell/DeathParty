@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://w6vbwxq2fbt0"]
+
+[ext_resource type="Script" uid="uid://mccfa56yus3f" path="res://Singletons/SaveSystem/save_system.gd" id="1_5tgud"]
+[ext_resource type="Resource" uid="uid://b5prmshbjg2f6" path="res://Singletons/SaveSystem/DefaultResources/save_file.tres" id="2_hwu66"]
+
+[node name="SaveSystem" type="Node"]
+script = ExtResource("1_5tgud")
+blank_save_file = ExtResource("2_hwu66")

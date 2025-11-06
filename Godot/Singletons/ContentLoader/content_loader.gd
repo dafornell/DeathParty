@@ -36,7 +36,12 @@ signal finished_loading
 signal added_scene
 signal switched_scene
 
+const SAVE_KEY_SCENE := "scene"
+
 func _ready() -> void:
+	SaveSystem.pre_save.connect(_save_system_pre_save)
+	SaveSystem.loaded.connect(_save_system_loaded)
+	
 	print(tree.get_nodes_in_group("loadable_scene"))
 	if main_node:
 		main_node_data = GameObject.new(main_node)
@@ -50,14 +55,27 @@ func _ready() -> void:
 			on_node_added(node)
 			
 	tree.node_added.connect(on_node_added)
+
+func _save_system_pre_save() -> void:
+	SaveSystem.data.set(SAVE_KEY_SCENE, active_scene_enum)
+
+func _save_system_loaded() -> void:
+	if not loaded:
+		await finished_loading
+	var saved_scene := Globals.SCENES.Bedroom
+	saved_scene = SaveSystem.data.get(SAVE_KEY_SCENE, Globals.SCENES.Bedroom)
+	if saved_scene != active_scene_enum:
+		direct_teleport_player(saved_scene)
 	
+		
+
 func on_finished_loading_scenes() -> void:
 	##Make sure they are all loaded
 	if scene_data_dict.keys().size() < loadable_scenes_size: return
 	for scene_enum : Globals.SCENES in scene_data_dict:
 		scene_data_dict[scene_enum].set_teleport_points()
 	load_player()
-	direct_teleport_player(og_scene_enum)
+	_save_system_loaded()
 	finished_loading.emit()
 	
 func get_scene(scene_enum : Globals.SCENES) -> LoadableScene:

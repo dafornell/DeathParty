@@ -1,21 +1,36 @@
 class_name TalkingObjectResource extends DefaultResource
 
 #CHATS
-var upcoming_chats : Array[JSON] = []
-var default_chat : JSON
+var upcoming_chats: Array[JSON] = []
+var default_chat: JSON
 
-var paused_ink_address : InkAddress
+var paused_ink_address: InkAddress
 
 ## ORDER: Room-specific -> Everywhere
-@export var default_chats : Dictionary[Globals.SCENES, JSON] = {}
-@export var queue_chats : Dictionary[Globals.SCENES, JSONArray] = {}
+@export var default_chats: Dictionary[Globals.SCENES, JSON] = {}
+@export var queue_chats: Dictionary[Globals.SCENES, JSONArray] = {}
+
+var queue_chat_indices: Dictionary[Globals.SCENES, int] = {}
+
+func get_save_state() -> Dictionary:
+	return {
+		"upcoming_chats_paths": upcoming_chats.map(json_to_path),
+		"queue_chat_indices": queue_chat_indices,
+	}
+
+func load_save_state(save_data: Dictionary) -> void:
+	var saved_upcoming_chat_paths: Array = save_data.get("upcoming_chats", [])
+	var saved_queue_chat_indices: Dictionary = save_data.get("queue_chat_indices", {})
+	var saved_upcoming_chats := saved_upcoming_chat_paths.map(path_to_json)
+	upcoming_chats.assign(saved_upcoming_chats)
+	queue_chat_indices.assign(saved_queue_chat_indices)
 
 signal unread(tf:bool)
 
 func initialize() -> void:
 	load_chats_for_room()
 	ContentLoader.finished_loading.connect(load_chats_for_room)
-	ContentLoader.switched_scene.connect( func() -> void:
+	ContentLoader.switched_scene.connect(func() -> void:
 		load_chats_for_room()
 	)
 
@@ -26,37 +41,42 @@ var first_chat: JSON:
 		else:
 			return upcoming_chats.front()
 
+func _load_default_chat(room: Globals.SCENES) -> void:
+	if default_chats.has(room) and default_chats[room] != null:
+		default_chat = default_chats[room]
+
+func _load_queue_chats(room: Globals.SCENES) -> void:
+	if not queue_chats.has(room):
+		return
+	
+	var chats := queue_chats[room].json_array
+	var start_index: int = 0
+	if queue_chat_indices.has(room):
+		start_index = queue_chat_indices[room]
+	upcoming_chats.append_array(chats.slice(start_index))
+	
+
 func load_chats_for_room() -> void:
 	if ContentLoader.active_scene_enum == Globals.SCENES.Nowhere: return
 	
 	default_chat = null
 	upcoming_chats = []
 
-	#set default chat
-	var room : Globals.SCENES = ContentLoader.active_scene_enum
-	if default_chats.has(room) and default_chats[room] != null:
-		default_chat = default_chats[room]
-		
-	elif default_chats.has(Globals.SCENES.Everywhere) and default_chats[Globals.SCENES.Everywhere] != null:
-		print("Has everywhere default chat: ", name, default_chats[Globals.SCENES.Everywhere])
-		default_chat = default_chats[Globals.SCENES.Everywhere]
+	_load_default_chat(ContentLoader.active_scene_enum)
+	_load_default_chat(Globals.SCENES.Everywhere)
 
-	#set queue chats
-	if queue_chats.has(room) and not queue_chats[room].json_array.is_empty():
-		upcoming_chats.append_array(queue_chats[room].json_array)
-	if queue_chats.has(Globals.SCENES.Everywhere) and not queue_chats[Globals.SCENES.Everywhere].json_array.is_empty():
-		upcoming_chats.append_array(queue_chats[Globals.SCENES.Everywhere].json_array)
-
-	print(name, " default chat for "+Globals.get_scene_name(room)+": ", default_chat)
+	_load_queue_chats(ContentLoader.active_scene_enum)
+	_load_queue_chats(Globals.SCENES.Everywhere)
 
 func chat_already_loaded(file : JSON) -> bool:
-	for chat : JSON in upcoming_chats:
+	for chat: JSON in upcoming_chats:
 		if chat.resource_path == file.resource_path:
 			return true
 	return false
 
-func load_chat(json : JSON) -> void:
-	if chat_already_loaded(json): return
+func load_chat(json: JSON) -> void:
+	if chat_already_loaded(json):
+		return
 	upcoming_chats.push_back(json)
 	unread.emit(true)
 	
@@ -81,8 +101,8 @@ func end_chat(_current_conversation : Array[InkLineInfo] = []) -> void:
 	print("Ended chat with ", name)
 	upcoming_chats.pop_front()
 	if queue_chats.has(ContentLoader.active_scene_enum):
-		var scene_chats : Array[JSON] = queue_chats[ContentLoader.active_scene_enum].json_array
-		scene_chats.pop_front()
+		var cur_idx: int = queue_chat_indices.get(ContentLoader.active_scene_enum, 0)
+		queue_chat_indices[ContentLoader.active_scene_enum] = cur_idx + 1
 
 func pause_chat() -> void:
 	#save current InkTree address

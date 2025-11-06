@@ -7,6 +7,4 @@
 script = ExtResource("1_4dwtx")
 description = "A vintage instant Polaroid camera with a built-in flash. The camera can be used to take photos at key moments throughout the party."
 model = ExtResource("1_3thgo")
-inventory_scale = 3.0
-inventory_position = Vector2(0.5, 0.6)
 name = "Camera"
