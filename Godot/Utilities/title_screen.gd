@@ -9,6 +9,10 @@ func _ready() -> void:
 	GuiSystem.in_title_screen = true
 
 
+func _exit_tree() -> void:
+	GuiSystem.in_title_screen = false
+
+
 func _on_settings_button_pressed() -> void:
 	Events.title_screen_settings_button_pressed.emit()
 
