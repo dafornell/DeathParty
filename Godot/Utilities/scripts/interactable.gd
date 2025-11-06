@@ -27,6 +27,7 @@ var interaction_detector: InteractionDetector
 
 ## If not null, this item will despawn whenever the player has this item
 @export var inventory_item: InventoryItemResource
+@export var bark_popup: Bark3D
 
 var popup: Node3D
 var surface_material: StandardMaterial3D = null
@@ -62,6 +63,8 @@ func _ready() -> void:
 		create_outline()
 	if popup:
 		popup.visible = false
+	if bark_popup:
+		bark_popup.visible = false
 
 
 func create_outline() -> void:
@@ -92,6 +95,10 @@ func toggle_popup(on: bool) -> void:
 	if talking_object_resource:
 		talking_object_resource = SaveSystem.get_talking_object(talking_object_resource.name)
 
+func toggle_bark_popup(is_on: bool) -> void:
+	if bark_popup and not bark_popup.activated_bark:
+		bark_popup.visible = is_on
+
 
 ##OVERRIDE THESE METHODS (but call super() at the beginning)
 # NOTE: you might need to also add the enabled check at the beginning
@@ -99,6 +106,8 @@ func toggle_popup(on: bool) -> void:
 func on_interact() -> void:
 	if !enabled :return
 	toggle_popup(false)
+	if bark_popup:
+		bark_popup.activate_bark()
 	Events.interacted.emit(self)
 	if talking_object_resource:
 		talking_object_resource.start_chat()
@@ -116,6 +125,7 @@ func on_interact() -> void:
 func on_in_range(in_range: bool) -> void:
 	if !enabled: return
 	toggle_popup(in_range)
+	toggle_bark_popup(in_range)
 	if in_range:
 		Events.interaction_area_entered.emit(self)
 	else:

@@ -17,7 +17,6 @@ func _process(_delta: float) -> void:
 
 
 func _on_body_entered(body: Node3D) -> void:
-	print("On body entered: ", body)
 	if body.is_in_group("player"):
 		# NOTE: sorry for this weird code - this is basically to stop it from
 		# 		adding npcs that you cant talk to to the priority list and

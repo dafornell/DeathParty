@@ -1,19 +1,38 @@
-[gd_scene load_steps=6 format=3 uid="uid://c1vyk1h1qwesf"]
+[gd_scene load_steps=10 format=3 uid="uid://c1vyk1h1qwesf"]
 
-[ext_resource type="Texture2D" uid="uid://bxq1a7k8kqnew" path="res://Assets/PNGAssets/bark_bg.png" id="1_4k0qy"]
 [ext_resource type="Script" uid="uid://qkx286pky47d" path="res://Common/Popup UI/npc_bark_popup.gd" id="1_wwsvw"]
 [ext_resource type="Texture2D" uid="uid://mc48knps2dsm" path="res://Assets/PNGAssets/bark_tail.png" id="2_gqaax"]
 [ext_resource type="FontFile" uid="uid://bnoeu4ueg0d7" path="res://Assets/Fonts/Gantari/Gantari-Italic-VariableFont_wght.ttf" id="3_q7v7q"]
+[ext_resource type="Texture2D" uid="uid://besbyihexlewc" path="res://Assets/PNGAssets/bark_interact.png" id="4_wwsvw"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_24r7k"]
+light_mode = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q7v7q"]
+bg_color = Color(0.43137255, 0.35686275, 0.35686275, 1)
+corner_radius_top_left = 35
+corner_radius_top_right = 35
+corner_radius_bottom_right = 35
+corner_radius_bottom_left = 35
+
+[sub_resource type="Gradient" id="Gradient_wwsvw"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w4jpq"]
+gradient = SubResource("Gradient_wwsvw")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_gqaax"]
 viewport_path = NodePath("SubViewportContainer/SubViewport")
 
-[node name="BarkPopup" type="Node3D" node_paths=PackedStringArray("tail", "board", "text")]
+[node name="BarkPopup" type="Node3D" node_paths=PackedStringArray("bark_tail", "bark_board", "bark_text", "bark_bubble", "bark_interact")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 script = ExtResource("1_wwsvw")
-tail = NodePath("SubViewportContainer/SubViewport/BarkTail")
-board = NodePath("SubViewportContainer/SubViewport/BarkBoard")
-text = NodePath("SubViewportContainer/SubViewport/BarkText")
+bark_tail = NodePath("SubViewportContainer/SubViewport/CanvasGroup/BarkTail")
+bark_board = NodePath("SubViewportContainer/SubViewport/CanvasGroup/BarkBoard")
+bark_text = NodePath("SubViewportContainer/SubViewport/BarkText")
+bark_bubble = NodePath("BarkBubble")
+bark_interact = NodePath("BarkInteract")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 offset_left = 2.0
@@ -27,33 +46,38 @@ handle_input_locally = false
 size = Vector2i(5000, 235)
 render_target_update_mode = 4
 
-[node name="BarkTail" type="TextureRect" parent="SubViewportContainer/SubViewport"]
-anchors_preset = -1
+[node name="CanvasGroup" type="CanvasGroup" parent="SubViewportContainer/SubViewport"]
+self_modulate = Color(0.15487596, 0.154876, 0.15487596, 0.9490196)
+
+[node name="BarkTail" type="TextureRect" parent="SubViewportContainer/SubViewport/CanvasGroup"]
+material = SubResource("CanvasItemMaterial_24r7k")
+anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -385.0
-offset_top = -50.0
-offset_right = 165.5
+offset_left = 2220.0
+offset_top = 182.0
+offset_right = 2665.5
+offset_bottom = 233.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("2_gqaax")
 stretch_mode = 2
 
-[node name="BarkBoard" type="TextureRect" parent="SubViewportContainer/SubViewport"]
-anchors_preset = -1
+[node name="BarkBoard" type="Panel" parent="SubViewportContainer/SubViewport/CanvasGroup"]
+custom_minimum_size = Vector2(69, 0)
+anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -661.5
-offset_right = 661.5
+offset_left = 2213.0
+offset_right = 2787.0
 offset_bottom = 184.0
 grow_horizontal = 2
-texture = ExtResource("1_4k0qy")
-expand_mode = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_q7v7q")
 
 [node name="BarkText" type="Label" parent="SubViewportContainer/SubViewport"]
-anchors_preset = -1
+anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -27.0
@@ -63,8 +87,21 @@ offset_bottom = 131.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("3_q7v7q")
 theme_override_font_sizes/font_size = 71
+text = "okay"
 horizontal_alignment = 1
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="TailHider" type="PointLight2D" parent="SubViewportContainer/SubViewport"]
+position = Vector2(2381.5, 206.5)
+scale = Vector2(4.546877, 0.79687494)
+energy = 0.0
+texture = SubResource("GradientTexture2D_w4jpq")
+
+[node name="BarkBubble" type="Sprite3D" parent="."]
+visible = false
 billboard = 1
 texture = SubResource("ViewportTexture_gqaax")
+
+[node name="BarkInteract" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1, 0, 2)
+billboard = 1
+texture = ExtResource("4_wwsvw")
