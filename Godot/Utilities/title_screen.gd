@@ -3,10 +3,18 @@ extends CanvasLayer
 
 @export var title_image: TextureRect
 
+@onready var click_sound: FmodEventEmitter3D = %ClickSound
+@onready var hover_sound: FmodEventEmitter3D = %HoverSound
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GuiSystem.in_title_screen = true
+
+	var all_buttons: Array[Node] = find_children("*", "Button", true, false)
+	for button: Button in all_buttons:
+		button.pressed.connect(_on_any_button_pressed)
+		button.mouse_entered.connect(_on_any_button_hovered)
 
 
 func _exit_tree() -> void:
@@ -33,3 +41,11 @@ func _on_start_game_button_pressed() -> void:
 	hide()
 	Events.title_screen_start_game_button_pressed.emit()
 	GuiSystem.in_title_screen = false
+
+
+func _on_any_button_pressed() -> void:
+	click_sound.play()
+
+
+func _on_any_button_hovered() -> void:
+	hover_sound.play()
