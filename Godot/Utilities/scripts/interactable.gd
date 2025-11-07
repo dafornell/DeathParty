@@ -2,6 +2,7 @@ class_name Interactable extends Node3D
 
 @export var primary_mesh: MeshInstance3D
 @export var use_first_mesh: bool = true
+@export var surface_index: int = 0
 @export var outline_thickness: float = 3
 @export var outline_depth_offset : float = 0.00005
 
@@ -67,11 +68,9 @@ func _ready() -> void:
 func create_outline() -> void:
 	#print("Creating outline")
 	if primary_mesh == null: return
-	surface_material = primary_mesh.get_active_material(0)
+	surface_material = primary_mesh.get_active_material(surface_index)
 	var new_shader: ShaderMaterial = outline_shader.duplicate()
 	new_shader.set_shader_parameter("alpha", 0)
-	new_shader.set_shader_parameter("thickness", outline_thickness)
-	new_shader.set_shader_parameter("depth_offset", outline_depth_offset)
 	surface_material.next_pass = new_shader
 
 
@@ -86,8 +85,9 @@ func toggle_popup(on: bool) -> void:
 			value = 0.0
 		var shader: ShaderMaterial = surface_material.next_pass
 
-		# this is commented out to disable the outline shader temporarily
-		# should work like normal if we un-comment
+		# set the thickness here just in case it's modified in the editor
+		shader.set_shader_parameter("thickness", outline_thickness)
+		shader.set_shader_parameter("depth_offset", outline_depth_offset)
 		shader.set_shader_parameter("alpha", value)
 	if talking_object_resource:
 		talking_object_resource = SaveSystem.get_talking_object(talking_object_resource.name)
