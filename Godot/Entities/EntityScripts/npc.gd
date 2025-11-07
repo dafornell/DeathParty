@@ -47,5 +47,6 @@ func play_animation(anim_name: String) -> void:
 	animation_player.play(anim_name)
 
 func _toggle_quest_marker(value: bool) -> void:
-	character_resource.quest_marker_enabled = value
+	if character_resource:
+		character_resource.quest_marker_enabled = value
 	npc_interact_popup.quest_marker_enabled = value
