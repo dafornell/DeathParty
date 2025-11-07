@@ -67,6 +67,9 @@ func show_dialogue_box(in_phone : bool) -> void:
 
 func begin_dialogue(file : JSON, in_phone : bool = false) -> void:
 	assert(file != null, "You forgot to assign a JSON file!")
+	if GuiSystem.in_title_screen:
+		await Events.title_screen_start_game_button_pressed
+	
 	if in_dialogue:
 		print("In dialogue already")
 		pause_dialogue()
