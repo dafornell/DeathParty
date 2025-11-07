@@ -1,6 +1,7 @@
 extends Node
 
 @export var blank_save_file: SaveFile
+@export var _save_icon: SaveIcon
 
 var active_save_file : SaveFile
 var player_data: PlayerData:
@@ -24,6 +25,7 @@ func _ready() -> void:
 func save_to_disk() -> void:
 	pre_save.emit()
 	active_save_file.save_to_filesystem()
+	_save_icon.show_icon()
 
 func _init_save_file() -> void:
 	active_save_file = blank_save_file.duplicate(true)

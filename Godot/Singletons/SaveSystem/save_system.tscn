@@ -1,8 +1,76 @@
-[gd_scene load_steps=3 format=3 uid="uid://w6vbwxq2fbt0"]
+[gd_scene load_steps=9 format=3 uid="uid://w6vbwxq2fbt0"]
 
 [ext_resource type="Script" uid="uid://mccfa56yus3f" path="res://Singletons/SaveSystem/save_system.gd" id="1_5tgud"]
 [ext_resource type="Resource" uid="uid://b5prmshbjg2f6" path="res://Singletons/SaveSystem/DefaultResources/save_file.tres" id="2_hwu66"]
+[ext_resource type="Texture2D" uid="uid://e1rsbcqp4mfp" path="res://Singletons/SaveSystem/Save Icon.png" id="3_rwfnh"]
+[ext_resource type="Script" uid="uid://swq7nm6ljp24" path="res://Singletons/SaveSystem/save_icon.gd" id="4_a5bi8"]
+[ext_resource type="Script" uid="uid://dn2crvic3ldxd" path="res://Singletons/SaveSystem/autosave.gd" id="5_cpelo"]
 
-[node name="SaveSystem" type="Node"]
+[sub_resource type="Animation" id="Animation_a5bi8"]
+resource_name = "show"
+length = 2.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 0.13333334, 2.1, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.5058824), Color(1, 1, 1, 0.5058824), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_cpelo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.5058824)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x6728"]
+_data = {
+&"RESET": SubResource("Animation_cpelo"),
+&"show": SubResource("Animation_a5bi8")
+}
+
+[node name="SaveSystem" type="Node" node_paths=PackedStringArray("_save_icon")]
 script = ExtResource("1_5tgud")
 blank_save_file = ExtResource("2_hwu66")
+_save_icon = NodePath("CanvasLayer/SaveIcon")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SaveIcon" type="TextureRect" parent="CanvasLayer" node_paths=PackedStringArray("animation_player")]
+modulate = Color(1, 1, 1, 0.5058824)
+custom_minimum_size = Vector2(32, 32)
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -32.0
+offset_bottom = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("3_rwfnh")
+expand_mode = 2
+script = ExtResource("4_a5bi8")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/SaveIcon"]
+libraries = {
+&"": SubResource("AnimationLibrary_x6728")
+}
+
+[node name="Autosave" type="Node" parent="."]
+script = ExtResource("5_cpelo")
