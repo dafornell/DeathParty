@@ -1,7 +1,6 @@
 extends Interactable
 
 @export var take: Node3D
-@export var title: CanvasLayer
 
 func _ready() -> void:
 	super()
@@ -17,7 +16,6 @@ func on_interact() -> void:
 	#				- jack
 	if !enabled: return
 	super ()
-	title.visible = false
 	Globals.polaroid_camera_ui.visible = true
 	# TODO: create a global in_polaroid_camera variable, maybe with a setter
 	#		function to handle enabling/disabling movement while player is
