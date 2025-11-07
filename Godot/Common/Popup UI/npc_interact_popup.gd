@@ -1,5 +1,5 @@
 @tool
-extends Node3D
+class_name NPCInteractPopup extends Node3D
 ## this script handles the logic for the quest marker as well as the pop-up
 ## because the marker was previously part of the pop-up - the marker could have
 ## its own script but most of the old logic didn't change with the new setup
@@ -42,8 +42,6 @@ var quest_marker_tween_duration := 1.0
 
 
 func _enter_tree() -> void:
-	Events.toggle_quest_marker.connect(_on_toggle_quest_marker)
-
 	match_quest_marker_var_to_value_in_resource()
 
 
@@ -54,14 +52,6 @@ func _physics_process(_delta: float) -> void:
 	# keep its position consistent
 	if parent_npc:
 		global_position = parent_npc.global_position + Vector3(x_offset, y_offset, 0)
-
-
-func _on_toggle_quest_marker(npc_name: String, value: bool) -> void:
-	if npc_name != parent_npc.name:
-		return
-
-	quest_marker_enabled = value
-
 
 func match_quest_marker_var_to_value_in_resource() -> void:
 	# NOTE: this didnt work until i added this line to wait a frame - i think
