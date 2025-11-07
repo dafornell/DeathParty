@@ -20,15 +20,22 @@ func get_save_state() -> Dictionary:
 
 func load_save_state(save_data: Dictionary) -> void:
 	var saved_upcoming_chat_paths: Array = save_data.get("upcoming_chats", [])
-	var saved_queue_chat_indices: Dictionary = save_data.get("queue_chat_indices", {})
 	var saved_upcoming_chats := saved_upcoming_chat_paths.map(path_to_json)
+	var saved_queue_chat_indices: Dictionary = save_data.get("queue_chat_indices", {})
+	
 	upcoming_chats.assign(saved_upcoming_chats)
-	queue_chat_indices.assign(saved_queue_chat_indices)
+	queue_chat_indices = {}
+	# can't use assign b/c keys are strings and values are floats
+	for scene_index_string: String in saved_queue_chat_indices:
+		var queue_chat_index: int = saved_queue_chat_indices[scene_index_string]
+		var scene_index := int(scene_index_string)
+		queue_chat_indices[scene_index] = queue_chat_index
+		
+	load_chats_for_room()
 
 signal unread(tf:bool)
 
 func initialize() -> void:
-	load_chats_for_room()
 	ContentLoader.finished_loading.connect(load_chats_for_room)
 	ContentLoader.switched_scene.connect(func() -> void:
 		load_chats_for_room()
@@ -96,13 +103,18 @@ func start_chat() -> void:
 			DialogueSystem.from_character(self, default_chat)
 	else:
 		DialogueSystem.from_character(self, first_chat)
-		
+
+func _increment_queue_chat_indices(chat: JSON, scene: Globals.SCENES) -> void:
+	if queue_chats.has(scene) and chat in queue_chats[scene].json_array:
+		var cur_idx: int = queue_chat_indices.get(scene, 0)
+		queue_chat_indices[scene] = cur_idx + 1
+
 func end_chat(_current_conversation : Array[InkLineInfo] = []) -> void:
 	print("Ended chat with ", name)
-	upcoming_chats.pop_front()
-	if queue_chats.has(ContentLoader.active_scene_enum):
-		var cur_idx: int = queue_chat_indices.get(ContentLoader.active_scene_enum, 0)
-		queue_chat_indices[ContentLoader.active_scene_enum] = cur_idx + 1
+	var chat: JSON = upcoming_chats.pop_front()
+	_increment_queue_chat_indices(chat, ContentLoader.active_scene_enum)
+	_increment_queue_chat_indices(chat, Globals.SCENES.Everywhere)
+	
 
 func pause_chat() -> void:
 	#save current InkTree address
