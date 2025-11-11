@@ -1,14 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://cmink41yr1q8i"]
+[gd_scene load_steps=13 format=3 uid="uid://cmink41yr1q8i"]
 
 [ext_resource type="Script" uid="uid://cyq4ufcsp62p7" path="res://Utilities/dev_menu/dev_menu.gd" id="1_wbp6d"]
 [ext_resource type="Script" uid="uid://ced0i6abh24hp" path="res://Utilities/dev_menu/dev_menu_skip_tutorial.gd" id="2_1dsnd"]
 [ext_resource type="Script" uid="uid://dehiqcd3jycjf" path="res://Utilities/dev_menu/dev_menu_list_inventory_items.gd" id="2_c1403"]
 [ext_resource type="Script" uid="uid://cuemtfmr7vkbb" path="res://Utilities/dev_menu/dev_menu_give_item.gd" id="3_3xkyt"]
-[ext_resource type="Script" uid="uid://cpx2btutrdlsb" path="res://Utilities/dev_menu/dev_menu_open_save_dir.gd" id="3_5wtoc"]
+[ext_resource type="Script" path="res://Utilities/dev_menu/dev_menu_open_save_dir.gd" id="3_5wtoc"]
 [ext_resource type="Script" uid="uid://dx65muhakj1rp" path="res://Utilities/dev_menu/dev_menu_toggle_skip_chat_delays.gd" id="3_hvnh0"]
 [ext_resource type="Script" uid="uid://cxm6k3yxmhmid" path="res://Utilities/dev_menu/dev_menu_give_all_inventory_items.gd" id="4_3xkyt"]
-[ext_resource type="Script" uid="uid://bfrfkp7or4qnk" path="res://Utilities/dev_menu/dev_menu_write_save.gd" id="4_apubs"]
-[ext_resource type="Script" uid="uid://n5rapef1to57" path="res://Utilities/dev_menu/dev_menu_delete_save.gd" id="5_bsov8"]
+[ext_resource type="Script" path="res://Utilities/dev_menu/dev_menu_write_save.gd" id="4_apubs"]
+[ext_resource type="Script" uid="uid://d4no60pm1o06l" path="res://Utilities/dev_menu/dev_menu_enable_saving.gd" id="4_krgna"]
+[ext_resource type="Script" uid="uid://7hq0kvcb2tpv" path="res://Utilities/dev_menu/dev_menu_enable_loading.gd" id="5_atbxd"]
+[ext_resource type="Script" path="res://Utilities/dev_menu/dev_menu_delete_save.gd" id="5_bsov8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bsov8"]
 content_margin_left = 8.0
@@ -93,6 +95,16 @@ title = "Save"
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/PanelContainer/VBoxContainer/Save"]
 visible = false
 layout_mode = 2
+
+[node name="Enable saving" type="CheckButton" parent="ScrollContainer/PanelContainer/VBoxContainer/Save/VBoxContainer"]
+layout_mode = 2
+text = "Enable saving"
+script = ExtResource("4_krgna")
+
+[node name="Enable loading" type="CheckButton" parent="ScrollContainer/PanelContainer/VBoxContainer/Save/VBoxContainer"]
+layout_mode = 2
+text = "Enable loading"
+script = ExtResource("5_atbxd")
 
 [node name="Open save dir" type="Button" parent="ScrollContainer/PanelContainer/VBoxContainer/Save/VBoxContainer"]
 layout_mode = 2

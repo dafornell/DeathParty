@@ -13,19 +13,40 @@ var data: Dictionary:
 
 const save_file_location := "user://save.tres"
 
+## If false, only stores save data in memory, and never interacts with filesystem
+var saving_enabled := true
+var loading_enabled := true
+
 signal time_changed
 signal inventory_changed(addremove: String, item: InventoryItemResource)
 signal tasks_changed
 signal pre_save
 signal loaded
 
+const dev_settings_section := "save_system"
+const dev_settings_saving_enabled_key := "saving_enabled"
+const dev_settings_loading_enabled_key := "loading_enabled"
+
 func _ready() -> void:
+	DevSettings.ensure_loaded()
+	saving_enabled = DevSettings.config.get_value(
+		dev_settings_section,
+		dev_settings_saving_enabled_key,
+		true
+	)
+	loading_enabled = DevSettings.config.get_value(
+		dev_settings_section,
+		dev_settings_loading_enabled_key,
+		true
+	)
+	
 	load_from_disk()
 
 func save_to_disk() -> void:
 	pre_save.emit()
-	active_save_file.save_to_filesystem()
-	_save_icon.show_icon()
+	if saving_enabled:
+		active_save_file.save_to_filesystem()
+		_save_icon.show_icon()
 
 func _init_save_file() -> void:
 	active_save_file = blank_save_file.duplicate(true)
@@ -38,7 +59,8 @@ func create_new_save() -> void:
 
 func load_from_disk() -> void:
 	_init_save_file()
-	active_save_file.try_load_from_filesystem()
+	if loading_enabled:
+		active_save_file.try_load_from_filesystem()
 	loaded.emit()
 
 func load_inventory() -> void: 
