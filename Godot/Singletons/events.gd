@@ -14,6 +14,7 @@ signal dialogue_box_text_changed
 
 signal title_screen_start_game_button_pressed
 signal title_screen_settings_button_pressed
+signal title_screen_quit_button_pressed
 
 signal toggle_dialogue_instructions(value: bool)
 

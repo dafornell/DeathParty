@@ -31,6 +31,7 @@ extends CanvasLayer
 
 func _enter_tree() -> void:
 	Events.title_screen_settings_button_pressed.connect(toggle_pause)
+	Events.title_screen_quit_button_pressed.connect(_on_quit_button_pressed)
 
 
 func _ready() -> void:
@@ -51,7 +52,7 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
-		if GuiSystem.in_title_screen == true:
+		if GuiSystem.in_title_screen and not visible:
 			return
 
 		elif GuiSystem.loading_screen_visible:
@@ -69,6 +70,9 @@ func _physics_process(_delta: float) -> void:
 			settings_button.grab_focus()
 			click_sound.play()
 
+			if GuiSystem.in_title_screen:
+				toggle_pause()
+
 		elif input_menu.visible:
 			input_menu.hide()
 			settings_menu.show()
@@ -82,10 +86,13 @@ func _physics_process(_delta: float) -> void:
 			click_sound.play()
 
 		elif quit_menu.visible:
-			quit_menu.hide()
-			main_pause_menu.show()
-			quit_button.grab_focus()
-			click_sound.play()
+			if GuiSystem.in_title_screen:
+				_on_no_quit_button_pressed()
+			else:
+				quit_menu.hide()
+				main_pause_menu.show()
+				quit_button.grab_focus()
+				click_sound.play()
 
 		else:
 			toggle_pause()
@@ -163,6 +170,7 @@ func _on_video_back_button_pressed() -> void:
 
 
 func _on_quit_button_pressed() -> void:
+	show()
 	main_pause_menu.hide()
 	quit_menu.show()
 	yes_quit_button.grab_focus()
@@ -176,6 +184,9 @@ func _on_no_quit_button_pressed() -> void:
 	quit_menu.hide()
 	main_pause_menu.show()
 	quit_button.grab_focus()
+
+	if GuiSystem.in_title_screen:
+		toggle_pause()
 
 
 func on_any_button_pressed() -> void:

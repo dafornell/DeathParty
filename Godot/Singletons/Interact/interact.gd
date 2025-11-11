@@ -219,7 +219,9 @@ func convert_position(global_position_hit : Vector3, viewport : Viewport, map_me
 var deepest_node : ThreeDGUI
 var deepest_node_depth : int = 0
 func find_raycasted_ui_recursive(coords : Vector2, node : Control, cur_depth : int) -> void:
-	for child : Control in node.get_children():
+	for child_node in node.get_children():
+		var child := child_node as Control
+		if child == null: continue
 		if child.visible:
 			var hover_area : Rect2 = Rect2(child.global_position, child.size)
 			if hover_area.has_point(coords):

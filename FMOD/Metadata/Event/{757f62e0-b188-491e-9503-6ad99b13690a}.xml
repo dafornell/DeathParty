@@ -160,7 +160,7 @@
 	</object>
 	<object class="SpatialiserEffect" id="{549c7a89-c7c7-4c81-abca-52ae6d803468}">
 		<property name="maximumDistance">
-			<value>50</value>
+			<value>300</value>
 		</property>
 		<property name="overrideRange">
 			<value>true</value>
@@ -293,6 +293,7 @@
 			<destination>{31732893-5fea-4ec6-9cea-07e0dd106949}</destination>
 			<destination>{bd5dc3f3-475f-4384-a1ce-27b69df4340f}</destination>
 			<destination>{0ebb4ceb-68b3-4892-bef7-80a42ff6173d}</destination>
+			<destination>{78ed15e3-f016-4398-bc6a-d8f71b9172c1}</destination>
 		</relationship>
 	</object>
 	<object class="AutomationPoint" id="{04c1e783-2672-48fd-bf12-0842c6b1708a}">
@@ -364,7 +365,7 @@
 			<value>8</value>
 		</property>
 		<property name="value">
-			<value>-25</value>
+			<value>-30</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{a12a7a16-8a33-4cb8-a995-1ed8c0e3e5ff}">
@@ -380,7 +381,7 @@
 			<value>0</value>
 		</property>
 		<property name="value">
-			<value>0</value>
+			<value>-5</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{80dffa63-0f46-424e-babc-60cff4bbf324}">
@@ -388,7 +389,7 @@
 			<value>1</value>
 		</property>
 		<property name="value">
-			<value>-9.99999905</value>
+			<value>-20</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{42efc01e-4bd5-44e4-898b-ce25f41b5362}">
@@ -396,7 +397,7 @@
 			<value>2</value>
 		</property>
 		<property name="value">
-			<value>-9.99999905</value>
+			<value>-80</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{05b89801-f3c1-4d95-bcb1-471a5cb67520}">
@@ -428,7 +429,7 @@
 			<value>6</value>
 		</property>
 		<property name="value">
-			<value>-9.99999905</value>
+			<value>-15</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{31732893-5fea-4ec6-9cea-07e0dd106949}">
@@ -444,7 +445,7 @@
 			<value>8</value>
 		</property>
 		<property name="value">
-			<value>-80</value>
+			<value>-10</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{0ebb4ceb-68b3-4892-bef7-80a42ff6173d}">
@@ -453,6 +454,14 @@
 		</property>
 		<property name="value">
 			<value>-10</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{78ed15e3-f016-4398-bc6a-d8f71b9172c1}">
+		<property name="position">
+			<value>10</value>
+		</property>
+		<property name="value">
+			<value>-80</value>
 		</property>
 	</object>
 </objects>

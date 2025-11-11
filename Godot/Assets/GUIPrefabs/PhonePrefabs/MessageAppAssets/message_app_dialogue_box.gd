@@ -13,7 +13,14 @@ var right_anchor_after: float
 const duration: float = .5
 var contact_pressed := false
 
+@export_group("Settings")
+@export var delay_between_messsages := 0.2
+@export var delay_per_char := 0.05
+@export var min_delay := 0.5
+@export var max_delay := 2
+
 ## NODES
+@export_group("Node references")
 @export var contact_name_label: RichTextLabel
 @export var back_button: Button
 @export var all_contacts: VBoxContainer
@@ -24,11 +31,14 @@ var contact_pressed := false
 @export var touch_screen: Control
 
 ## PREFABS/SCENES
+@export_group("Prefabs")
 @export var contact_panel_scene: PackedScene = preload("res://Assets/GUIPrefabs/PhonePrefabs/MessageAppAssets/contact_panel.tscn")
 @export var participant_prefab: PackedScene = preload("res://Assets/GUIPrefabs/PhonePrefabs/MessageAppAssets/participant_panel.tscn")
 
 @export var text_message_prefab_protag: PackedScene
 @export var text_message_prefab_npc: PackedScene
+@export var text_message_typing_indicator: PackedScene
+@export var text_message_typing_indicator_protag: PackedScene
 @export var choice_prefab: PackedScene
 
 var delayed_lines : Array[InkLineInfo] = []
@@ -144,10 +154,11 @@ func on_back_pressed() -> void:
 ## INHERITED
 var last_speaker: String = ""
 var previous_text_instance : DialogueLineExpand
+
+func _calculate_line_delay(text: String) -> float:
+	return clampf(len(text) * delay_per_char, min_delay, max_delay)
+
 func add_line(line: InkLineInfo, skip_delay : bool = false) -> void:
-	#DELAY BEFORE SHOWING (except on first message)
-	var delay_time : float = line.text.length()/20.0
-	
 	dialogue_scroll_container.offset_bottom = 0
 	touch_screen.visible = true
 	var clone: DialogueLine
@@ -166,15 +177,29 @@ func add_line(line: InkLineInfo, skip_delay : bool = false) -> void:
 	if last_speaker == line.speaker:
 		clone.toggle_image(false)
 	else:
-		if line.speaker != "Olivia":
-			delay_time+=1 ##Delay if NPC is replying
-		else:
-			delay_time = 0
 		clone.set_image(character.image_profile)
 	last_speaker = line.speaker
+	
+	var speaker_is_olivia := line.speaker == "Olivia"
+	
+	# remove margin from previous
+	if previous_text_instance:
+		previous_text_instance.minimum_y_size = 0
+		previous_text_instance.resize()
+	
+	var typing_indicator_instance: Node = null
+	if not Globals.skip_chat_delays and not skip_delay:
+		await get_tree().create_timer(delay_between_messsages).timeout
+		var prefab := (
+			text_message_typing_indicator_protag 
+			if speaker_is_olivia 
+			else text_message_typing_indicator
+		)
+		typing_indicator_instance = prefab.instantiate()
+		dialogue_container.add_child(typing_indicator_instance)
 
 	##DELAY BEFORE SHOWING MESSAGE
-	if first_message or skip_delay or !DialogueSystem.in_dialogue:
+	if first_message or skip_delay or not DialogueSystem.in_dialogue:
 		first_message = false
 	else:
 		delayed_lines.push_back(line)
@@ -183,16 +208,16 @@ func add_line(line: InkLineInfo, skip_delay : bool = false) -> void:
 		if Globals.skip_chat_delays:
 			await get_tree().process_frame
 		else:
+			var delay_time: float = _calculate_line_delay(line.text)
 			await get_tree().create_timer(delay_time).timeout
 		var newline : InkLineInfo = delayed_lines.pop_back()
 		if newline == null or line != newline:
 			#a different conversation has started
 			return
-
-	if previous_text_instance:
-		previous_text_instance.minimum_y_size = 0
-		previous_text_instance.resize()
+	
 	#add to tree
+	if typing_indicator_instance != null:
+		dialogue_container.remove_child(typing_indicator_instance)
 	dialogue_container.add_child(clone)
 
 	#animate text (fires the "done" signal so the dialogue can advance)

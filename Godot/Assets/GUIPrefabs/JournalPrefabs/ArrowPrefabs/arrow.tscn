@@ -1,0 +1,79 @@
+[gd_scene load_steps=8 format=3 uid="uid://dv3eb8tvsff5k"]
+
+[ext_resource type="Texture2D" uid="uid://bmmi6o0bt0x36" path="res://Assets/JournalTextures/rightarrow.png" id="1_h4asn"]
+[ext_resource type="Script" uid="uid://ckjonuqioymiy" path="res://Assets/GUIPrefabs/JournalPrefabs/Pages/cursor_hover_threed.gd" id="2_dd8jp"]
+[ext_resource type="Texture2D" uid="uid://cl2wmphdrhdku" path="res://Assets/JournalTextures/RightArrowDefault.png" id="3_dd8jp"]
+
+[sub_resource type="Animation" id="Animation_w32nr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_h4asn")]
+}
+
+[sub_resource type="Animation" id="Animation_h4asn"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_dd8jp")]
+}
+
+[sub_resource type="Animation" id="Animation_dd8jp"]
+resource_name = "hovered"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_h4asn")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w32nr"]
+_data = {
+&"RESET": SubResource("Animation_w32nr"),
+&"default": SubResource("Animation_h4asn"),
+&"hovered": SubResource("Animation_dd8jp")
+}
+
+[node name="Arrow" type="TextureRect" node_paths=PackedStringArray("animation_player")]
+custom_minimum_size = Vector2(260, 100)
+anchors_preset = -1
+anchor_left = 0.797
+anchor_top = 0.841
+anchor_right = 1.0
+anchor_bottom = 0.981
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_h4asn")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("2_dd8jp")
+animation_player = NodePath("AnimationPlayer")
+default_animation_name = &"default"
+hovered_animation_name = &"hovered"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_w32nr")
+}
