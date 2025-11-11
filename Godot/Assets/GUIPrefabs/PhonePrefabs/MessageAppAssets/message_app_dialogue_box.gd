@@ -13,11 +13,12 @@ var right_anchor_after: float
 const duration: float = .5
 var contact_pressed := false
 
-@export_group("Settings")
+@export_group("Delay Settings")
 @export var delay_between_messsages := 0.2
 @export var delay_per_char := 0.05
 @export var min_delay := 0.5
-@export var max_delay := 2
+@export var max_delay := 2.0
+@export var delay_before_choices := 1.0
 
 ## NODES
 @export_group("Node references")
@@ -236,6 +237,7 @@ func add_line(line: InkLineInfo, skip_delay : bool = false) -> void:
 	DialogueSystem.advance_dialogue()
 
 func set_choices(choices: Array[InkChoiceInfo]) -> void:
+	await get_tree().create_timer(delay_before_choices).timeout
 	touch_screen.visible = false
 	for choice in choices:
 		MessageAppChoiceButton.new(self, choice_container, choice)

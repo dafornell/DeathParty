@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://bffdpcyyowj58" path="res://Assets/GUIDesignScripts/scroll_container.gd" id="4_q2qpm"]
 [ext_resource type="PackedScene" uid="uid://bbdcge3tqhcpw" path="res://Assets/GUIPrefabs/ChoicePrefabs/choice_button_text_message.tscn" id="4_y6bpy"]
 [ext_resource type="Texture2D" uid="uid://da7cbng1hddfn" path="res://Assets/PhoneTextures/back_arrow_chats.png" id="5_jgsn4"]
-[ext_resource type="PackedScene" uid="uid://dpsb08n3ywdw2" path="res://Assets/GUIPrefabs/DialogueLinePrefabs/dialogue_line_typing_indicator_protag.tscn" id="5_qioer"]
+[ext_resource type="PackedScene" uid="uid://c0qymarirfxa0" path="res://Assets/GUIPrefabs/DialogueLinePrefabs/protag_typing_indicator.tscn" id="5_qioer"]
 [ext_resource type="Texture2D" uid="uid://dofbdwec2q72h" path="res://Assets/PhoneTextures/chat_separators.png" id="5_skhv3"]
 [ext_resource type="Script" uid="uid://dehejbaawpqyj" path="res://Assets/GUIFunctionalityScripts/clock.gd" id="5_wopup"]
 [ext_resource type="Texture2D" uid="uid://ddiut72q13vxf" path="res://Assets/PhoneTextures/text_box_outline_chats.png" id="11_wopup"]
@@ -239,7 +239,7 @@ anchors_preset = -1
 anchor_left = 0.03
 anchor_top = 0.15
 anchor_right = 0.97
-anchor_bottom = 0.85
+anchor_bottom = 0.82
 offset_left = 4.57764e-05
 grow_horizontal = 2
 grow_vertical = 2
