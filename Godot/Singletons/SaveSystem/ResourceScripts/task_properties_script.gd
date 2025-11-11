@@ -23,3 +23,15 @@ func update() -> void:
 func complete() -> void:
 	finished = true
 	print("Task complete: ", name)
+
+func get_save_state() -> Dictionary:
+	return {
+		"assigned": assigned,
+		"finished": finished,
+		"time_updated": time_updated,
+	}
+
+func load_save_state(save_data: Dictionary) -> void:
+	assigned = save_data.get("assigned", false)
+	finished = save_data.get("finished", false)
+	time_updated = save_data.get("time_updated", 0.0)

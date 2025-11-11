@@ -5,7 +5,7 @@ var outline: Node3D
 
 @export var character_resource: CharacterResource
 @export var dialogue_box: DialogueBoxResource = preload("res://Assets/Resources/DialogueBoxResources/main_dialogue_box_properties.tres")
-
+@export var npc_interact_popup: NPCInteractPopup
 
 func _ready() -> void:
 	super()
@@ -40,8 +40,13 @@ func on_interact() -> void:
 	if character_resource:
 		character_resource.start_chat()
 
-	Events.toggle_quest_marker.emit(name, false)
+	_toggle_quest_marker(false)
 
 
 func play_animation(anim_name: String) -> void:
 	animation_player.play(anim_name)
+
+func _toggle_quest_marker(value: bool) -> void:
+	if character_resource:
+		character_resource.quest_marker_enabled = value
+	npc_interact_popup.quest_marker_enabled = value

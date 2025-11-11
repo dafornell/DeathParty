@@ -2,6 +2,8 @@ extends CanvasLayer
 
 
 @export var title_image: TextureRect
+@onready var music: FmodEventEmitter3D = %Music
+
 
 @onready var click_sound: FmodEventEmitter3D = %ClickSound
 @onready var hover_sound: FmodEventEmitter3D = %HoverSound
@@ -10,6 +12,10 @@ extends CanvasLayer
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GuiSystem.in_title_screen = true
+	#if ContentLoader.active_scene == null:
+		#await ContentLoader.finished_loading
+		#if ContentLoader.active_scene.name != "Bedroom":
+			#FmodServer.set_global_parameter_by_name("InTitleScreen", 0)
 
 	var all_buttons: Array[Node] = find_children("*", "Button", true, false)
 	for button: Button in all_buttons:

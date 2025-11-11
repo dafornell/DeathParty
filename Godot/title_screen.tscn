@@ -1166,6 +1166,13 @@ rotation = 0.0636526
 focus_mode = 0
 theme = SubResource("Theme_ak2if")
 
+[node name="Music" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/900_MX/main menu music"
+event_guid = "{1640f143-1cde-44a9-9ad9-08a48055bb14}"
+attached = false
+autoplay = true
+volume = 0.25
+
 [node name="ClickSound" type="FmodEventEmitter3D" parent="."]
 event_name = "event:/000_SFX/000_Demo_Test/007_SFX_UIClick"
 event_guid = "{e96fe609-82c4-494e-9458-401b87f34d25}"

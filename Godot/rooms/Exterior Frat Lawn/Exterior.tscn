@@ -2879,9 +2879,10 @@ rowan_spawn = NodePath("RowanSpawn")
 room_environment = ExtResource("2_maypx")
 first_visit_json = ExtResource("3_42tb4")
 
-[node name="JogControlsPopup" type="CanvasLayer" parent="."]
+[node name="JogControlsPopup" type="CanvasLayer" parent="." node_paths=PackedStringArray("input_indicator")]
 visible = false
 script = ExtResource("4_81i5n")
+input_indicator = NodePath("InputIndicator")
 
 [node name="InputIndicator" parent="JogControlsPopup" instance=ExtResource("5_42tb4")]
 anchors_preset = 8
@@ -2897,17 +2898,6 @@ description_text = "hold to jog"
 action_name = &"jog"
 composite_action_names = Array[StringName]([&"jog", &""])
 action_name = &"jog"
-
-[node name="ShowTimer" type="Timer" parent="JogControlsPopup"]
-unique_name_in_owner = true
-wait_time = 5.0
-one_shot = true
-autostart = true
-
-[node name="HideTimer" type="Timer" parent="JogControlsPopup"]
-unique_name_in_owner = true
-wait_time = 5.0
-one_shot = true
 
 [node name="RoomArea" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.57209, -0.991425, 36.2669)
@@ -4569,9 +4559,6 @@ transform = Transform3D(-0.5554252, 0, -0.8315667, 0, 1, 0, 0.8315667, 0, -0.555
 
 [node name="BalloonsFourShort4" parent="." instance=ExtResource("58_pkvil")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0812433, 1.2171526, 5.903897)
-
-[connection signal="timeout" from="JogControlsPopup/ShowTimer" to="JogControlsPopup" method="_on_show_timer_timeout"]
-[connection signal="timeout" from="JogControlsPopup/HideTimer" to="JogControlsPopup" method="_on_hide_timer_timeout"]
 
 [editable path="SceneLoader_Entrance"]
 [editable path="SceneLoader_Entrance/InteractionDetector"]
