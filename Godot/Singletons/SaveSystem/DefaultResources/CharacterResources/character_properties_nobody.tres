@@ -1,9 +1,8 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://c3mtafxp5xicm"]
+[gd_resource type="Resource" script_class="CharacterResource" load_steps=3 format=3 uid="uid://c3mtafxp5xicm"]
 
-[ext_resource type="Script" uid="uid://cmr58186dx31r" path="res://Assets/Resources/CharacterResources/Default Resource (DO NOT EDIT)/character_properties_script.gd" id="1_xf1g1"]
+[ext_resource type="Script" uid="uid://d1yny6oqf2gvp" path="res://Singletons/SaveSystem/ResourceScripts/json_array.gd" id="1_wopgj"]
+[ext_resource type="Script" uid="uid://cmr58186dx31r" path="res://Singletons/SaveSystem/ResourceScripts/character_properties_script.gd" id="1_xf1g1"]
 
 [resource]
 script = ExtResource("1_xf1g1")
-name = ""
-name_color = ""
-text_color = ""
+name = "nobody"

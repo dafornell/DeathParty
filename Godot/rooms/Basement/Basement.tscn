@@ -1,4 +1,4 @@
-[gd_scene load_steps=177 format=4 uid="uid://3iwh0xc60rih"]
+[gd_scene load_steps=178 format=4 uid="uid://3iwh0xc60rih"]
 
 [ext_resource type="Script" uid="uid://ct6edy87engi4" path="res://rooms/Basement/basement.gd" id="1_e2jnh"]
 [ext_resource type="Texture2D" uid="uid://cphr3akbxc7wm" path="res://rooms/Basement/basement layout_Entryway wood.png" id="1_xu4va"]
@@ -67,6 +67,7 @@
 [ext_resource type="PackedScene" uid="uid://bascssj1owqq1" path="res://rooms/Basement/asian flag.glb" id="51_hfud8"]
 [ext_resource type="PackedScene" uid="uid://04h45wmndeqi" path="res://rooms/Kitchen/beerpong trophie.glb" id="60_1mcaq"]
 [ext_resource type="PackedScene" uid="uid://d1lmv76sg8rx0" path="res://Assets/CharacterAssets/free_hug_guy/free_hug_guy.tscn" id="61_5eouh"]
+[ext_resource type="PackedScene" uid="uid://b1e31j7rea4bf" path="res://Assets/props/table_tennis_table/table_tennis_table.tscn" id="69_g8hj1"]
 [ext_resource type="PackedScene" uid="uid://h0tswjr1iy5v" path="res://Assets/environment/caution_tape.tscn" id="77_2nnqp"]
 [ext_resource type="PackedScene" uid="uid://eyb48ss6xfgu" path="res://Assets/CharacterAssets/shy_girl/shy_girl.tscn" id="77_kk7s6"]
 [ext_resource type="VideoStream" uid="uid://durjhoccw8ld2" path="res://rooms/Basement/Mario Kart (1).ogv" id="78_kk7s6"]
@@ -2003,6 +2004,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.79789, 0.67735, 3.73823)
 
 [node name="PoolTable" parent="GameTables" instance=ExtResource("39_5ryib")]
 transform = Transform3D(1.10296, 0, 0, 0, 1.10296, 0, 0, 0, 1.10296, 0.0786896, 0, 3.20972)
+visible = false
 
 [node name="FoosballTable" parent="GameTables" instance=ExtResource("40_5ryib")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6544, 0.077455, -3.17905)
@@ -2142,6 +2144,9 @@ skeleton = NodePath("")
 light_color = Color(0.5, 1, 0, 1)
 light_energy = 5.222
 omni_range = 3.264
+
+[node name="TableTennisTable" parent="Props" instance=ExtResource("69_g8hj1")]
+transform = Transform3D(-0.17378972, 0, 0.07554789, 0, 0.18950027, 0, -0.07554789, 0, -0.17378972, -13.454111, -1.2694771, 5.8577194)
 
 [node name="NPCs" type="Node3D" parent="."]
 

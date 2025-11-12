@@ -38,15 +38,20 @@ func resize() -> void:
 	if control == null or label == null: return
 	#print("Resizing-------", control.name)
 	if self.resize_x:
-		var actual_content_width : float = theme_font.get_string_size(label.text, HORIZONTAL_ALIGNMENT_LEFT, -1, theme_font_size).x
-		var content_width : float = clamp(actual_content_width, 0, MAX_WIDTH) + padding_horizontal
-		control.size.x = content_width
+		var actual_content_width : float = theme_font.get_string_size(
+			label.text,
+			HORIZONTAL_ALIGNMENT_LEFT,
+			-1,
+			theme_font_size
+		).x
+		var content_width : float = clamp(actual_content_width, 0, MAX_WIDTH - padding_horizontal)
+		control.size.x = content_width + padding_horizontal
 	else:
 		await label.get_tree().process_frame
 	
 	control.custom_minimum_size.x = control.size.x
-	label.custom_minimum_size.x = control.size.x
-	label.size.x = control.size.x
+	#label.custom_minimum_size.x = control.size.x
+	label.size.x = control.size.x - padding_horizontal
 	if resize_y:
 		var content_height : int = label.get_content_height()
 		var new_min_size_y : float = content_height + padding_bottom

@@ -1,11 +1,10 @@
 extends Interactable
 
 @export var take: Node3D
-@export var title: CanvasLayer
 
 func _ready() -> void:
 	super()
-	Events.collected_polaroid.connect(_on_collected_polaroid)
+	Events.ready_to_take_photo_of_corkboard.connect(_on_ready_to_take_photo_of_corkboard)
 
 func on_interact() -> void:
 	# NOTE: this kind of confused me because i couldn't get this interactable
@@ -29,5 +28,5 @@ func on_interact() -> void:
 	enabled = false
 
 
-func _on_collected_polaroid() -> void:
+func _on_ready_to_take_photo_of_corkboard() -> void:
 	enabled = true

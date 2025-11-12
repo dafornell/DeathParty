@@ -1,4 +1,4 @@
-[gd_scene load_steps=220 format=4 uid="uid://dph5ihe40llhe"]
+[gd_scene load_steps=221 format=4 uid="uid://dph5ihe40llhe"]
 
 [ext_resource type="Script" uid="uid://c7lpgksj3ddcu" path="res://rooms/Exterior Frat Lawn/exterior.gd" id="1_nnx0v"]
 [ext_resource type="Environment" uid="uid://ca3e8txjiikuc" path="res://Assets/environments/new Exterior environment.tres" id="2_maypx"]
@@ -6,11 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://ch4xrdlj43bah" path="res://rooms/Exterior Frat Lawn/Exterior_TCom_OrnamentBorder0333_1_S.png" id="3_qokoo"]
 [ext_resource type="Script" uid="uid://cyn7mdbv1saaq" path="res://rooms/Exterior Frat Lawn/jog_controls_popup.gd" id="4_81i5n"]
 [ext_resource type="Texture2D" uid="uid://ddr8f0a45pnoy" path="res://rooms/Exterior Frat Lawn/Exterior_51dc8d5e7ac559bb47ade3dfd3ba5b58.jpg" id="4_s6f1y"]
-[ext_resource type="PackedScene" path="res://Utilities/tutorial/input_indicator.tscn" id="5_42tb4"]
+[ext_resource type="PackedScene" uid="uid://ces2kuj1gqfpy" path="res://Utilities/tutorial/input_indicator.tscn" id="5_42tb4"]
 [ext_resource type="Texture2D" uid="uid://dj2kkd15yuake" path="res://rooms/Exterior Frat Lawn/Exterior_Door.png" id="5_nnx0v"]
 [ext_resource type="Script" uid="uid://gq7614xvk2hc" path="res://Utilities/spawn_point.gd" id="5_pkvil"]
 [ext_resource type="Texture2D" uid="uid://jhfdrr25x8hn" path="res://rooms/Exterior Frat Lawn/Exterior_RoofingTiles014B_1K-JPG_Color-RoofingTiles014B_1K-JPG_Opacity.png" id="7_72fye"]
 [ext_resource type="Texture2D" uid="uid://b0to4splsbr7y" path="res://rooms/Exterior Frat Lawn/Exterior_RoofingTiles014B_1K-JPG_Roughness.png" id="8_c8lo3"]
+[ext_resource type="Texture2D" uid="uid://br4t0ftwvslpw" path="res://rooms/Exterior Frat Lawn/Exterior ground_TCom_StoneJapanese0065_1_S (1).png" id="9_efiih"]
 [ext_resource type="Texture2D" uid="uid://5bpex64vp0vd" path="res://rooms/Exterior Frat Lawn/Exterior_RoofingTiles014B_1K-JPG_NormalGL.jpg" id="9_qhpyv"]
 [ext_resource type="PackedScene" uid="uid://dc7be02jksvfv" path="res://Assets/props/party_here_sign.tscn" id="9_qxka8"]
 [ext_resource type="Texture2D" uid="uid://54w50kggafl3" path="res://rooms/Exterior Frat Lawn/Exterior_TCom_WoodPlanksPainted0330_2_seamless_S.jpg" id="10_3t4m6"]
@@ -21,7 +22,6 @@
 [ext_resource type="Texture2D" uid="uid://d21clkb822t6n" path="res://rooms/Exterior Frat Lawn/Exterior_TCom_StoneRegular0232_2_seamless_S.png" id="13_22jmq"]
 [ext_resource type="Texture2D" uid="uid://dq61bbkm0c40m" path="res://rooms/Exterior Frat Lawn/Exterior_Front panel.png" id="14_f5kro"]
 [ext_resource type="Texture2D" uid="uid://bf2jwq0ulqwny" path="res://rooms/Exterior Frat Lawn/Exterior_haloparty.png" id="15_3h7io"]
-[ext_resource type="Texture2D" uid="uid://cns2loqtfpi5p" path="res://rooms/Exterior Frat Lawn/Exterior ground_TCom_StoneJapanese0065_1_S (1).jpg" id="16_y8ruy"]
 [ext_resource type="PackedScene" uid="uid://bqs0pnlpslkp2" path="res://Assets/environment/house_right_wing.tscn" id="17_j827k"]
 [ext_resource type="PackedScene" uid="uid://conilv6pb6vsk" path="res://Assets/props/banners/die_banner/die_banner.glb" id="18_s6f1y"]
 [ext_resource type="PackedScene" uid="uid://craae7sxr3poi" path="res://rooms/Basement/DIE flag.glb" id="19_nnx0v"]
@@ -105,7 +105,7 @@ emission = Color(0.055, 0, 0.33, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a6erb"]
 resource_name = "Material.014"
 cull_mode = 2
-albedo_texture = ExtResource("16_y8ruy")
+albedo_texture = ExtResource("9_efiih")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_axjfd"]
 _surfaces = [{
@@ -130,7 +130,7 @@ _surfaces = [{
 "index_count": 6,
 "index_data": PackedByteArray("AAABAAIAAAADAAEA"),
 "material": SubResource("StandardMaterial3D_a6erb"),
-"name": "Material.014",
+"name": "exterior_cobbleFloor",
 "primitive": 3,
 "uv_scale": Vector4(14.9043, 14.9043, 0, 0),
 "vertex_count": 4,
@@ -2879,9 +2879,10 @@ rowan_spawn = NodePath("RowanSpawn")
 room_environment = ExtResource("2_maypx")
 first_visit_json = ExtResource("3_42tb4")
 
-[node name="JogControlsPopup" type="CanvasLayer" parent="."]
+[node name="JogControlsPopup" type="CanvasLayer" parent="." node_paths=PackedStringArray("input_indicator")]
 visible = false
 script = ExtResource("4_81i5n")
+input_indicator = NodePath("InputIndicator")
 
 [node name="InputIndicator" parent="JogControlsPopup" instance=ExtResource("5_42tb4")]
 anchors_preset = 8
@@ -2897,17 +2898,6 @@ description_text = "hold to jog"
 action_name = &"jog"
 composite_action_names = Array[StringName]([&"jog", &""])
 action_name = &"jog"
-
-[node name="ShowTimer" type="Timer" parent="JogControlsPopup"]
-unique_name_in_owner = true
-wait_time = 5.0
-one_shot = true
-autostart = true
-
-[node name="HideTimer" type="Timer" parent="JogControlsPopup"]
-unique_name_in_owner = true
-wait_time = 5.0
-one_shot = true
 
 [node name="RoomArea" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.57209, -0.991425, 36.2669)
@@ -3282,7 +3272,7 @@ material = SubResource("FogMaterial_bvbbn")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.452639, -7.09999, 34.1502)
 
 [node name="Path" type="MeshInstance3D" parent="Ground"]
-transform = Transform3D(-0.699314, 0, 0.000339189, 0, 0.699314, 0, -0.000339189, 0, -0.699314, 0, 0, 0)
+transform = Transform3D(-0.699314, 0, 0.000339189, 0, 0.699314, 0, -0.000339189, 0, -0.699314, -2.0124452, 0, 0)
 mesh = SubResource("ArrayMesh_y0mh7")
 skeleton = NodePath("")
 
@@ -4569,9 +4559,6 @@ transform = Transform3D(-0.5554252, 0, -0.8315667, 0, 1, 0, 0.8315667, 0, -0.555
 
 [node name="BalloonsFourShort4" parent="." instance=ExtResource("58_pkvil")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0812433, 1.2171526, 5.903897)
-
-[connection signal="timeout" from="JogControlsPopup/ShowTimer" to="JogControlsPopup" method="_on_show_timer_timeout"]
-[connection signal="timeout" from="JogControlsPopup/HideTimer" to="JogControlsPopup" method="_on_hide_timer_timeout"]
 
 [editable path="SceneLoader_Entrance"]
 [editable path="SceneLoader_Entrance/InteractionDetector"]

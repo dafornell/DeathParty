@@ -17,7 +17,15 @@ var journal_music: FmodEventEmitter3D
 var journal_backpack_bg: PackedScene = preload("res://Assets/JournalTextures/backpack_background.tscn")
 
 ##STATES
-var in_title_screen: bool = false
+var in_title_screen: bool = true:
+	set(value):
+		if value == true:
+			FmodServer.set_global_parameter_by_name("InTitleScreen", 1)
+			print("global fmod param is now ", FmodServer.get_global_parameter_by_name("InTitleScreen"))
+		else:
+			FmodServer.set_global_parameter_by_name("InTitleScreen", 0)
+			print("global fmod param is now ", FmodServer.get_global_parameter_by_name("InTitleScreen"))
+		in_title_screen = value
 var in_journal: bool = false
 var inventory_showing: bool = false # used within journal scripts
 var in_gui: bool = false

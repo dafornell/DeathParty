@@ -1,0 +1,95 @@
+[gd_scene load_steps=6 format=3 uid="uid://cklqj64t8wngp"]
+
+[ext_resource type="Texture2D" uid="uid://c6ijukgwqnhvn" path="res://Assets/GUIPrefabs/DialogueLinePrefabs/typing_circle.png" id="1_1525g"]
+[ext_resource type="Script" uid="uid://cpno4y86ri0gy" path="res://Assets/GUIPrefabs/DialogueLinePrefabs/typing_animation.gd" id="1_ainu5"]
+
+[sub_resource type="Animation" id="Animation_e6d0k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("circle1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.16924527, 0.1692453, 0.16924527, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vicvd"]
+resource_name = "typing"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("circle1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.47058824), Color(1, 1, 1, 1), Color(1, 1, 1, 0.47058824)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("circle2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 1.0166667, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.47058824), Color(1, 1, 1, 1), Color(1, 1, 1, 0.47058824)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("circle3:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.47058824), Color(1, 1, 1, 0.47058824), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6opu8"]
+_data = {
+&"RESET": SubResource("Animation_e6d0k"),
+&"typing": SubResource("Animation_vicvd")
+}
+
+[node name="TypingAnimation" type="HBoxContainer"]
+script = ExtResource("1_ainu5")
+
+[node name="circle1" type="TextureRect" parent="."]
+modulate = Color(0.16924527, 0.1692453, 0.16924527, 1)
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 2
+texture = ExtResource("1_1525g")
+expand_mode = 1
+
+[node name="circle2" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.4705882)
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 2
+texture = ExtResource("1_1525g")
+expand_mode = 1
+
+[node name="circle3" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 2
+texture = ExtResource("1_1525g")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_6opu8")
+}
+autoplay = "typing"
