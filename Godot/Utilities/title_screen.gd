@@ -58,6 +58,9 @@ func _on_start_game_button_pressed() -> void:
 	Events.title_screen_start_game_button_pressed.emit()
 	GuiSystem.in_title_screen = false
 
+	await get_tree().create_timer(5).timeout
+	queue_free()
+
 
 func _on_any_button_pressed() -> void:
 	click_sound.play()
