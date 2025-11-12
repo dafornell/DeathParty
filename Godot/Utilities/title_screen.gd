@@ -23,6 +23,7 @@ func _ready() -> void:
 		i += 1
 
 	if FmodServer.get_global_parameter_by_name("Room") == 2:
+		music.volume = 0.0
 		FmodServer.set_global_parameter_by_name("InTitleScreen", 0)
 
 	music.play()
