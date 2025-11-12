@@ -3201,7 +3201,6 @@ transform = Transform3D(0.565345, 0.845524, -0.227634, 0.139033, 0.180841, 1.017
 autoplay = "IDLE"
 
 [node name="Music" type="FmodEventEmitter3D" parent="."]
-event_name = "event:/900_MX/Olivia room music"
 event_guid = "{ae9cb825-c6ee-408e-a544-82929c10a82d}"
 autoplay = true
 volume = 0.5

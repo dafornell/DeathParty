@@ -28,6 +28,16 @@ colors = PackedColorArray(0, 0, 0, 1, 0.95811516, 0.95811516, 0.95811516, 1, 1, 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ph0pu"]
 gradient = SubResource("Gradient_42nwo")
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4q0hv"]
+light_mode = 2
+
+[sub_resource type="Gradient" id="Gradient_42nwo"]
+offsets = PackedFloat32Array(0, 0.041884817, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.95811516, 0.95811516, 0.95811516, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ph0pu"]
+gradient = SubResource("Gradient_42nwo")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_42nwo"]
 shader = ExtResource("7_42nwo")
 shader_parameter/lod = 2.4
@@ -677,12 +687,10 @@ drag_right_margin = 0.0
 drag_bottom_margin = 0.0
 
 [node name="OpenCameraSound" type="FmodEventEmitter2D" parent="."]
-event_name = "event:/000_SFX/300_UI/CameraOpen"
 event_guid = "{f66a3a62-ff08-40ec-a9e5-79369f12d281}"
 attached = false
 
 [node name="TakePhotoSound" type="FmodEventEmitter2D" parent="."]
-event_name = "event:/000_SFX/300_UI/TakePhoto"
 event_guid = "{b2a0008b-bd4c-4686-aeac-002d88b62243}"
 attached = false
 
