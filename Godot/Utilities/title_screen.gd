@@ -12,10 +12,20 @@ extends CanvasLayer
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GuiSystem.in_title_screen = true
-	#if ContentLoader.active_scene == null:
-		#await ContentLoader.finished_loading
-		#if ContentLoader.active_scene.name != "Bedroom":
-			#FmodServer.set_global_parameter_by_name("InTitleScreen", 0)
+
+	await ContentLoader.finished_loading
+
+	# rlly grim sorry lol but i think if i dont do this it doesnt get the
+	# correct parameter from fmod (probably a better workaround im not thinking of)
+	var i := 0
+	while i < 5:
+		await get_tree().process_frame
+		i += 1
+
+	if FmodServer.get_global_parameter_by_name("Room") == 2:
+		FmodServer.set_global_parameter_by_name("InTitleScreen", 0)
+
+	music.play()
 
 	var all_buttons: Array[Node] = find_children("*", "Button", true, false)
 	for button: Button in all_buttons:

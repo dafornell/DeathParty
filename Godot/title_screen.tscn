@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=4 uid="uid://4au417aywrdh"]
 
-[ext_resource type="Script" uid="uid://bh5bh38a45mj" path="res://Utilities/title_screen.gd" id="1_05l2w"]
+[ext_resource type="Script" uid="uid://cojv3niyhhlrd" path="res://Utilities/title_screen.gd" id="1_05l2w"]
 [ext_resource type="Texture2D" uid="uid://b5evdr7vcsetd" path="res://Assets/PNGAssets/titlescreen.png" id="1_v6p8y"]
 [ext_resource type="Theme" uid="uid://dy4pwf3gcuc6g" path="res://Assets/themes/title_screen_button.tres" id="2_ak2if"]
 
@@ -1167,11 +1167,10 @@ focus_mode = 0
 theme = SubResource("Theme_ak2if")
 
 [node name="Music" type="FmodEventEmitter3D" parent="."]
-event_name = "event:/900_MX/main menu music"
 event_guid = "{1640f143-1cde-44a9-9ad9-08a48055bb14}"
 attached = false
-autoplay = true
 volume = 0.25
+unique_name_in_owner = true
 
 [node name="ClickSound" type="FmodEventEmitter3D" parent="."]
 event_name = "event:/000_SFX/000_Demo_Test/007_SFX_UIClick"
