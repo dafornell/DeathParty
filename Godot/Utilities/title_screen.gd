@@ -18,7 +18,7 @@ func _ready() -> void:
 	# rlly grim sorry lol but i think if i dont do this it doesnt get the
 	# correct parameter from fmod (probably a better workaround im not thinking of)
 	var i := 0
-	while i < 5:
+	while i < 3:
 		await get_tree().process_frame
 		i += 1
 
