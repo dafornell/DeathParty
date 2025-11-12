@@ -1,46 +1,64 @@
 class_name PolaroidLayer extends CanvasLayer
 
+
 @export var viewfinder_camera: Camera2D
 
 # variable hold the image that the camera is looking at  
-@export var picture: TextureRect
-@export var shoot: Button
-@export var move_speed: float
+@export var Picture: TextureRect
+@export var shoot:Button
+# takes in picture count 
+var count =0
 
-# since you press E to interact with picture objects,
-# we must wait at least a frame to be able to take a picture
-var ready_to_take_picture := false
 
 func _ready() -> void:
 	Globals.polaroid_camera_ui = self
-	# connect deferred so that we call it on the next frame, see ready_to_take_picture
-	visibility_changed.connect(_on_visibility_changed, CONNECT_DEFERRED)
 
-func _on_visibility_changed() -> void:
-	ready_to_take_picture = visible
 
 # function for movement of camera
-func _process(delta: float) -> void:
-	if ready_to_take_picture and Input.is_action_just_pressed("take_picture"):
-		shoot.pressed.emit()
+func _physics_process(delta) -> void:
+	# picture movement corresponds with player input	
+	#if (Picture!=""):	
+		# counts the first E when opening the picture taking scene, so have to
+		# shoot on the second picture take input	
+		if self.visible and Input.is_action_just_pressed("take_picture"):
+			count+=1
+			if count ==2:
+				shoot.pressed.emit()
+		if Input.is_action_pressed("move_right"):
+			Picture.position.x -= 3
+		if Input.is_action_pressed("move_left"):
+			Picture.position.x += 3
+		if Input.is_action_pressed("move_down"):
+			Picture.position.y -= 3
+		if Input.is_action_pressed("move_up"):
+			Picture.position.y += 3
 
-	_move_picture(delta)
-	_clamp_picture_to_bounds()
+	# keeps image within the bounds 
+		if Picture.position.x > 0:
+			Picture.position.x =0
 
-func _move_picture(delta: float) -> void:
-	var move_dir := Input.get_vector(
-		"move_left", "move_right",
-		"move_up", "move_down"
-	)
-	var move_delta := move_dir * move_speed * delta
-	# subtract b/c we're moving the background, not the camera
-	picture.position -= move_delta
+		if Picture.position.x < -(Picture.size.x*Picture.scale.x-get_viewport().size.x):
+			Picture.position.x = -(Picture.size.x*Picture.scale.x-get_viewport().size.x)
 
-func _clamp_picture_to_bounds() -> void:
-	@warning_ignore("unsafe_property_access")
-	var viewport_size: Vector2 = get_viewport().size
-	var lower_bound := viewport_size - picture.size
-	picture.position = picture.position.clamp(
-		lower_bound,
-		Vector2.ZERO,
-	)
+		if Picture.position.y > 0:
+			Picture.position.y = 0
+
+		if Picture.position.y < -(Picture.size.y*Picture.scale.y-get_viewport().size.y):
+			Picture.position.y = -(Picture.size.y*Picture.scale.y-get_viewport().size.y)
+
+
+# this function need to be called first to set the picture being taken 
+func assign_picture(picture):
+	$body/MainImage.Texture=ImageTexture.create_from_image(picture)
+	Picture=$body/MainImage
+	$body/MainImage.visible=true
+
+
+# ignore this function. Was used previously to open the picture taking scene
+func _on_question_mark_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+	# detects when player clicks on question mark
+	if event is InputEventMouseButton:
+		# pops up picture taking scene and switch to 2D camera	
+		$body/MainImage/Camera2D.enabled=true
+		$body/MainImage/Camera2D.make_current()
+		visible=true	
