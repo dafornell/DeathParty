@@ -113,11 +113,11 @@ filter_control = NodePath("body/ViewFinder/filter_control")
 [node name="body" type="Node2D" parent="."]
 
 [node name="MainImage" type="TextureRect" parent="body"]
-offset_left = -449.0
-offset_top = -261.0
-offset_right = 1039.0
-offset_bottom = 562.0
-scale = Vector2(1.43, 1.43)
+offset_left = 18.000004
+offset_top = -73.000015
+offset_right = 3013.0
+offset_bottom = 1836.0
+scale = Vector2(0.6, 0.6)
 expand_mode = 1
 stretch_mode = 4
 
@@ -126,9 +126,9 @@ visible = false
 material = SubResource("CanvasItemMaterial_4q0hv")
 offset_left = -449.0
 offset_top = -261.0
-offset_right = 1039.0
-offset_bottom = 562.0
-scale = Vector2(1.43, 1.43)
+offset_right = 2546.0
+offset_bottom = 1648.0
+scale = Vector2(0.415, 0.415)
 expand_mode = 1
 stretch_mode = 4
 
@@ -351,7 +351,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -3.0
-offset_top = 134.0
+offset_top = 125.0
 offset_right = 1277.0
 offset_bottom = 854.0
 grow_horizontal = 2

@@ -1,6 +1,5 @@
 extends Interactable
 #first barrel 
-@export var take: Node3D
 
 #var tracker=0
 func on_interact() -> void:
@@ -10,7 +9,9 @@ func on_interact() -> void:
 	#if tracker==0:
 	print("wine barrel interacted")
 #		pass in the image and also the filtered image and the lens color  to polaroid layer script 
-	Globals.polaroid_camera_ui.start("res://Assets/PNGAssets/barrels.png","R","res://Assets/PNGAssets/filter_barrels.png")
+#	call function that sets the area 2d's and their position 
+	Globals.polaroid_camera_ui.start("res://Assets/PNGAssets/barrels_normal.png","R","res://Assets/PNGAssets/barrel_red.png")
+#	call the target function with set positions and sizes here 
 	Globals.polaroid_camera_ui.visible = true
 		#tracker+=1
 	#if tracker==1:

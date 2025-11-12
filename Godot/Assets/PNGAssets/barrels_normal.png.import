@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwxk4ociq7vkx"
-path="res://.godot/imported/corkbaord.png-81e34997546f8b2cbec721eebaa446fb.ctex"
+uid="uid://dedw4fyx6dih4"
+path="res://.godot/imported/barrels_normal.png-95ff9f9a101fdade0ac494537e6f9169.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/PNGAssets/corkbaord.png"
-dest_files=["res://.godot/imported/corkbaord.png-81e34997546f8b2cbec721eebaa446fb.ctex"]
+source_file="res://Assets/PNGAssets/barrels_normal.png"
+dest_files=["res://.godot/imported/barrels_normal.png-95ff9f9a101fdade0ac494537e6f9169.ctex"]
 
 [params]
 

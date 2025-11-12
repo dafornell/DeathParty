@@ -1,4 +1,4 @@
-[gd_scene load_steps=274 format=4 uid="uid://c7033b4susyvc"]
+[gd_scene load_steps=279 format=4 uid="uid://c7033b4susyvc"]
 
 [ext_resource type="Script" uid="uid://uvrra8rcndm8" path="res://rooms/Storage Room/storageroom.gd" id="1_tlveg"]
 [ext_resource type="PackedScene" uid="uid://bbyg62wymptn6" path="res://Singletons/ContentLoader/scene_loader.tscn" id="2_llsdw"]
@@ -32,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://fakfjibs86fh" path="res://rooms/Storage Room/storage layout_wine cut.jpg" id="18_k150o"]
 [ext_resource type="PackedScene" uid="uid://btpa3cwked3ip" path="res://Assets/props/speaker/speaker.glb" id="19_llsdw"]
 [ext_resource type="Texture2D" uid="uid://d3ufnfikudi3k" path="res://rooms/Storage Room/storage layout_IMG_4936.jpg" id="19_qdb20"]
+[ext_resource type="Script" uid="uid://coe1uaoy040en" path="res://rooms/Storage Room/interactable.gd" id="21_5haen"]
 [ext_resource type="Texture2D" uid="uid://csbgtwatxxeqo" path="res://rooms/Storage Room/broken pool table_IMG_4162.png" id="21_8q48a"]
 [ext_resource type="Texture2D" uid="uid://dx1dits3fgs6" path="res://rooms/Storage Room/broken pool table_dark b.png" id="22_2x8kc"]
 [ext_resource type="Texture2D" uid="uid://buqwuheayhivo" path="res://rooms/Storage Room/broken pool table_dirty fabric.png" id="23_l86uh"]
@@ -47,6 +48,8 @@
 [ext_resource type="Texture2D" uid="uid://c8qm5ptl0lio7" path="res://rooms/Storage Room/Candlestands (1)_1.png" id="41_wtehf"]
 [ext_resource type="Texture2D" uid="uid://dhe3abyj5jao0" path="res://rooms/Storage Room/Candlestands (1)_2.png" id="42_cyd7f"]
 [ext_resource type="Texture2D" uid="uid://bsgn8im6gxqk5" path="res://rooms/Storage Room/Candlestands (1)_3.png" id="43_3to2u"]
+[ext_resource type="Script" uid="uid://t5m2kqtph7n6" path="res://rooms/Storage Room/interactable_chair.gd" id="44_do7od"]
+[ext_resource type="Script" uid="uid://d4gphq1eqisee" path="res://Common/Popup UI/object_interact_popup.gd" id="44_e0eie"]
 [ext_resource type="Texture2D" uid="uid://bn7f0wv0hdunu" path="res://rooms/Storage Room/Candlestands (1)_4.png" id="44_mm5ph"]
 [ext_resource type="Texture2D" uid="uid://dief37hiqhsq6" path="res://rooms/Storage Room/Candlestands (1)_5.png" id="45_tea3s"]
 [ext_resource type="PackedScene" uid="uid://b8ucr48tcuk2p" path="res://rooms/bedroom/dorm desk.glb" id="46_4jmcr"]
@@ -2724,6 +2727,12 @@ shadow_mesh = SubResource("ArrayMesh_ku71a")
 resource_local_to_scene = true
 size = Vector3(2.38733, 2.80212, 2.93723)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_dtsk5"]
+size = Vector3(3.965, 3.47, 4.63)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lgcl3"]
+size = Vector3(3.085, 3.895, 3.55)
+
 [node name="Storageroom" type="Area3D" node_paths=PackedStringArray("room_area") groups=["loadable_scene"]]
 transform = Transform3D(0.877632, 0, 0, 0, 0.877632, 0, 0, 0, 0.877632, 0, 0, 0)
 collision_mask = 2
@@ -3487,10 +3496,9 @@ transform = Transform3D(0.000934166, -0.000988275, 9.32216e-05, 0, -0.00012801, 
 mesh = SubResource("ArrayMesh_osjnd")
 skeleton = NodePath("")
 
-[node name="wine barrels" type="Node3D" parent="." node_paths=PackedStringArray("take")]
+[node name="wine barrels" type="Node3D" parent="."]
 transform = Transform3D(0.951302, 0, 0, 0, 0.951302, 0, 0, 0, 0.951302, 1.52404, -1.16917, -0.527863)
 script = ExtResource("28_xroff")
-take = NodePath("Popup")
 metadata/_custom_type_script = "uid://bea7y4hurcesx"
 
 [node name="InteractionDetector" type="Area3D" parent="wine barrels" node_paths=PackedStringArray("collision_shape")]
@@ -3864,8 +3872,77 @@ transform = Transform3D(0.7346666, 0.4459977, -0.74809825, -0.31249833, 1.048516
 [node name="Daisy Paint Brush1" parent="." instance=ExtResource("62_xs4sd")]
 transform = Transform3D(0.930178, 0.240213, -0.191199, -0.138683, 0.872984, 0.422088, 0.27391, -0.373749, 0.863004, 5.79299, -1.27139, 0.764982)
 
+[node name="mirror" type="Node3D" parent="."]
+transform = Transform3D(-0.5890499, -0.8299067, 0.16128398, -0.20897594, -0.04754305, -1.0078698, -0.8191988, 0.608878, 0.141134, -6.7016735, -0.9406911, -0.0068571875)
+script = ExtResource("21_5haen")
+metadata/_custom_type_script = "uid://bea7y4hurcesx"
+
+[node name="InteractionDetector" type="Area3D" parent="mirror" node_paths=PackedStringArray("collision_shape")]
+transform = Transform3D(1.0000001, 1.1920929e-07, 0, 2.9802322e-08, 1.0000001, -7.450581e-09, 1.4901161e-08, -7.450581e-09, 1, -2.3841858e-07, 4.7683716e-07, 1.6391277e-07)
+collision_mask = 2
+script = ExtResource("31_kc1yc")
+collision_shape = NodePath("CollisionShape3D")
+metadata/_custom_type_script = "uid://dc0eglbdf0sq7"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mirror/InteractionDetector"]
+transform = Transform3D(0.9999997, -7.748604e-07, -5.9604645e-08, 0, 0.99999917, 5.2154064e-08, -7.4505806e-08, 0, 0.9999999, 0.209, 0.033, -0.916)
+shape = SubResource("BoxShape3D_dtsk5")
+debug_color = Color(0.7038239, 0.47262132, 0.36504865, 0.41960785)
+
+[node name="Popup" parent="mirror" instance=ExtResource("29_kc1yc")]
+transform = Transform3D(0.99999976, -5.662441e-07, -5.9604645e-08, -2.9802322e-08, 0.99999934, 3.7252903e-08, -4.4703484e-08, -1.4901161e-08, 0.9999999, 0.31425285, -0.9617095, -0.915977)
+
+[node name="Background" parent="mirror/Popup" index="0"]
+texture = ExtResource("30_vjwut")
+
+[node name="NameLabel" parent="mirror/Popup" index="1"]
+transform = Transform3D(0.9999998, 0, 2.9802322e-08, 1.4901161e-07, 0.9999999, -2.9802322e-08, 2.9802322e-08, 7.450581e-09, 1, -0.04748583, -0.037712574, -0.112930775)
+text = "take"
+font_size = 190
+
+[node name="TakeLabel" parent="mirror/Popup" index="2"]
+transform = Transform3D(0.9999996, 0, 7.4505806e-08, 2.9802322e-07, 0.9999999, -5.9604645e-08, 8.195639e-08, 1.4901161e-08, 1, -0.13691854, -0.18596554, 0.0075507164)
+text = "photo"
+font_size = 65
+
+[node name="d_chair" type="Node3D" parent="."]
+transform = Transform3D(-0.102655984, 0, -1.1347997, 0, 1.1394299, 0, 1.1347997, 0, -0.102655984, -6.78251, 0.0185424, 6.80841)
+script = ExtResource("44_do7od")
+metadata/_custom_type_script = "uid://bea7y4hurcesx"
+
+[node name="InteractionDetector" type="Area3D" parent="d_chair" node_paths=PackedStringArray("collision_shape")]
+collision_mask = 2
+script = ExtResource("31_kc1yc")
+collision_shape = NodePath("CollisionShape3D")
+metadata/_custom_type_script = "uid://dc0eglbdf0sq7"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="d_chair/InteractionDetector"]
+transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 0.99999976, -0.39001036, 0, -0.3875146)
+shape = SubResource("BoxShape3D_lgcl3")
+
+[node name="Popup" parent="d_chair" instance=ExtResource("29_kc1yc")]
+transform = Transform3D(0.99999946, 0, 1.4901161e-08, 0, 1, 0, -1.4901161e-08, 0, 0.99999946, -0.6036153, 0.5509609, -0.3986292)
+script = ExtResource("44_e0eie")
+
+[node name="Background" parent="d_chair/Popup" index="0"]
+texture = ExtResource("30_vjwut")
+
+[node name="NameLabel" parent="d_chair/Popup" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.008002758, 0.07783526, -0.08846283)
+text = "take"
+font_size = 180
+
+[node name="TakeLabel" parent="d_chair/Popup" index="2"]
+transform = Transform3D(1, 0, 7.450581e-09, 0, 1, 0, -7.450581e-09, 0, 1, -0.13383341, 0.027311921, -0.28987026)
+text = "photo"
+font_size = 68
+
 [connection signal="body_entered" from="wine barrels/InteractionDetector" to="wine barrels/InteractionDetector" method="_on_body_entered"]
 [connection signal="body_exited" from="wine barrels/InteractionDetector" to="wine barrels/InteractionDetector" method="_on_body_exited"]
+[connection signal="body_entered" from="mirror/InteractionDetector" to="mirror/InteractionDetector" method="_on_body_entered"]
+[connection signal="body_exited" from="mirror/InteractionDetector" to="mirror/InteractionDetector" method="_on_body_exited"]
+[connection signal="body_entered" from="d_chair/InteractionDetector" to="d_chair/InteractionDetector" method="_on_body_entered"]
+[connection signal="body_exited" from="d_chair/InteractionDetector" to="d_chair/InteractionDetector" method="_on_body_exited"]
 
 [editable path="SceneLoader_Basement"]
 [editable path="SceneLoader_Basement/InteractionDetector"]
@@ -3875,3 +3952,5 @@ transform = Transform3D(0.930178, 0.240213, -0.191199, -0.138683, 0.872984, 0.42
 [editable path="box suitcase"]
 [editable path="SceneLoader_Hourhand hallway"]
 [editable path="SceneLoader_Hourhand hallway/InteractionDetector"]
+[editable path="mirror/Popup"]
+[editable path="d_chair/Popup"]

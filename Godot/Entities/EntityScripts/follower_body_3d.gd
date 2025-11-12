@@ -1,4 +1,4 @@
- extends CharacterBody3D
+extends CharacterBody3D
 class_name FollowerBody3D
 
 @export var movement_speed: float = 2.1

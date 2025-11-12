@@ -1,15 +1,17 @@
 class_name PolaroidLayer extends Node2D
-
-
 @export var viewfinder_camera: Camera2D
 
 # variable hold the image that the camera is looking at  
 @export var Picture: TextureRect
+#variable holds the filtered image 
 @export var FilteredPicture: TextureRect
+#button for taking a picture
 @export var shoot:Button
+#filter wheel on camera 
 @export var filter_control: Node2D
-# takes in picture count 
+
 var count =0
+#variables that are passed in to a function 
 var color=""
 var picture=""
 var filter_image=""
@@ -20,20 +22,20 @@ func _ready() -> void:
 func _physics_process(delta) -> void:
 	# picture movement corresponds with player input	
 	
-	# counts the first E when opening the picture taking scene, so have to
-	# shoot on the second picture take input	
+	# program counts the first E when opening the picture taking scene, so have to
+	# shoot pciture on the second picture take input	
 	if self.visible and Input.is_action_just_pressed("take_picture"):
 		count+=1
 		if count ==2:
 			shoot.pressed.emit()
 	if Input.is_action_pressed("move_right"):
-		Picture.position.x -= 3
+		Picture.position.x -= 5
 	if Input.is_action_pressed("move_left"):
-		Picture.position.x += 3
+		Picture.position.x += 5
 	if Input.is_action_pressed("move_down"):
-		Picture.position.y -= 3
+		Picture.position.y -= 5
 	if Input.is_action_pressed("move_up"):
-		Picture.position.y += 3
+		Picture.position.y += 5
 
 # keeps image within the bounds 
 	if Picture.position.x > 0:
@@ -49,7 +51,9 @@ func _physics_process(delta) -> void:
 		Picture.position.y = -(Picture.size.y*Picture.scale.y-get_viewport().size.y)
 		
 	FilteredPicture.position = Picture.position
-
+#	use this to determine the position of the target function 
+	print(Picture.position)
+	
 #this function need to be called first to set the picture being taken 
 func start(picture: String, filter_color: String,filter_picture: String):
 	#var image = Image.load_from_file(picture)
@@ -59,10 +63,6 @@ func start(picture: String, filter_color: String,filter_picture: String):
 	if filter_color!="null":
 		FilteredPicture.texture=load(filter_picture)
 		filter_control.filter_image(filter_color)
-	#if color!="null":
-		#filter_control.filter_image(color,filter_picture);
-	#$body/MainImage.visible=true
-	#self.visible=true
 	
 #ignore this function. Was used previously to open the picture taking scene
 func _on_question_mark_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
