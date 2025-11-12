@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxnlsonqi74wb"]
+
+[ext_resource type="Script" uid="uid://bn3iao1mmmohl" path="res://Utilities/polaroid_camera/polaroid_scene.gd" id="1_gsstc"]
+[ext_resource type="Texture2D" uid="uid://b5kgjksg3cd0g" path="res://max_page_1.png" id="2_t3lmf"]
+
+[node name="PolaroidSceneBase" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 2119.4563
+offset_bottom = 1192.0
+script = ExtResource("1_gsstc")
+
+[node name="UnfilteredTextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_t3lmf")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="PicturePoints" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

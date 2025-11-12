@@ -1167,7 +1167,6 @@ focus_mode = 0
 theme = SubResource("Theme_ak2if")
 
 [node name="Music" type="FmodEventEmitter3D" parent="."]
-event_name = "event:/900_MX/main menu music"
 event_guid = "{1640f143-1cde-44a9-9ad9-08a48055bb14}"
 attached = false
 autoplay = true

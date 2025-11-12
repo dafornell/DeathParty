@@ -1,9 +1,9 @@
 @tool
 class_name PolaroidReadyIndicator extends Node
 
-@export_range(0.0, 1.0) var alpha: float = 1.0:
+@export_range(0.0, 1.0) var aim_indicator_intensity: float = 1.0:
 	set(v):
-		alpha = clampf(v, 0.0, 1.0)
+		aim_indicator_intensity = clampf(v, 0.0, 1.0)
 		if is_node_ready():
 			_update_indicators()
 
@@ -13,11 +13,15 @@ class_name PolaroidReadyIndicator extends Node
 		if is_node_ready():
 			_update_indicators()
 
-@export var tween_duration: float = 0.1
+@export var _tween_duration: float = 0.1
+
+@export var _min_animation_speed := 0.5
+@export var _max_animation_speed := 2.0
 
 @export_group("References")
-@export var input_indicator: Control
-@export var aim_indicator: Control
+@export var _input_indicator: Control
+@export var _aim_indicator: Control
+@export var _aim_indicator_animation_players: Array[AnimationPlayer] = []
 
 var _input_indicator_tween: Tween = null
 
@@ -25,9 +29,13 @@ func _ready() -> void:
 	_update_indicators()
 
 func _update_indicators() -> void:
-	assert(input_indicator != null)
-	assert(aim_indicator != null)
-	aim_indicator.modulate.a = alpha
+	assert(_input_indicator != null)
+	assert(_aim_indicator != null)
+	_aim_indicator.modulate.a = aim_indicator_intensity
+	var animation_speed := lerpf(_min_animation_speed, _max_animation_speed, aim_indicator_intensity)
+	for animation_player: AnimationPlayer in _aim_indicator_animation_players:
+		animation_player.speed_scale = animation_speed
+	
 	_tween_input_indicator_alpha(1.0 if ready_to_take else 0.0)
 	
 func _tween_input_indicator_alpha(value: float) -> void:
@@ -37,8 +45,8 @@ func _tween_input_indicator_alpha(value: float) -> void:
 	
 	_input_indicator_tween = get_tree().create_tween()
 	_input_indicator_tween.tween_property(
-		input_indicator,
+		_input_indicator,
 		"modulate:a",
 		value,
-		tween_duration
+		_tween_duration
 	)

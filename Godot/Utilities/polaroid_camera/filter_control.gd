@@ -1,4 +1,4 @@
-extends Node2D
+class_name FilterControl extends Node2D
 
 @export var left_button: Button
 @export var right_button: Button
@@ -6,6 +6,7 @@ extends Node2D
 @export var lens: TextureRect
 @export var ViewFinder: TextureRect
 @export var filter_letter: TextureRect 
+@export var f_image:TextureRect
 
 @onready var blue_filter: Image = Image.load_from_file("res://Assets/PNGAssets/blue_lens.png")
 @onready var red_filter: Image = Image.load_from_file("res://Assets/PNGAssets/red_lens.png")
@@ -17,14 +18,17 @@ extends Node2D
 @onready var B: Image = Image.load_from_file("res://Assets/PNGAssets/B.png")
 
 var lens_color=""
-
-#filter wheel stays in place with the camera 
-#is breaking the filter change, when you comment this out it works 
-#func _physics_process(delta):
-	#position = ViewFinder.position 
-
-#left and right buttons not in use right now buy may change later in game.
-#function for when the player turns the filter wheel left 
+var correct_color=""
+#reassign filter image
+func filter_image(color:String):
+	if color=="R":
+		correct_color="red"
+	if color=="G":
+		correct_color="green"
+	if color=="B":
+		correct_color="blue"
+	
+	
 func _on_left_button_pressed() -> void:
 	left_button.disabled=true
 	#turns wheel 90 degrees to the left from its current orientation	
@@ -58,14 +62,26 @@ func _on_selector_area_shape_entered(area_rid: RID, area: Area2D, area_shape_ind
 		lens_color="white"
 		lens_change(lens_color)
 	if area.name=="blue":
-		lens_color="blue"
-		lens_change(lens_color)
+		if correct_color==area.name:
+			f_image.visible=true
+		else:
+			f_image.visible=false
+			lens_color="blue"
+			lens_change(lens_color)
 	if area.name=="red":
-		lens_color="red"
-		lens_change(lens_color)
+		if correct_color==area.name:
+			f_image.visible=true
+		else:
+			f_image.visible=false
+			lens_color="red"
+			lens_change(lens_color)
 	if area.name=="green":
-		lens_color="green"
-		lens_change(lens_color)
+		if correct_color==area.name:
+			f_image.visible=true
+		else:
+			f_image.visible=false
+			lens_color="green"
+			lens_change(lens_color)
 
 #function for displaying the filter color 
 func lens_change(lens_color: String):
@@ -77,7 +93,6 @@ func lens_change(lens_color: String):
 		lens.visible=true
 		lens.texture=ImageTexture.create_from_image(blue_filter)
 		filter_letter.texture=ImageTexture.create_from_image(B)
-		
 	if lens_color=="red":
 		lens.visible=true
 		lens.texture=ImageTexture.create_from_image(red_filter)
@@ -87,15 +102,8 @@ func lens_change(lens_color: String):
 		lens.visible=true
 		lens.texture=ImageTexture.create_from_image(green_filter)
 		filter_letter.texture=ImageTexture.create_from_image(G)
-		
 
-#area 2d of the filter base, not in use 
-#func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-		#if event is InputEventMouseButton:
-			#print('clicked!')
-
-#turns wheel when clicked 
-
+#function for turning 
 func _on_filter_base_button_pressed() -> void:
 	filter_base_button.disabled=true
 	print ("button clicked")

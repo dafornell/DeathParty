@@ -1,6 +1,7 @@
 extends Interactable
 
 @export var take: Node3D
+@export var polaroid_scene: PackedScene
 
 func _ready() -> void:
 	super()
@@ -15,13 +16,15 @@ func on_interact() -> void:
 	#		enabled check here too 💭
 	#				- jack
 	if !enabled: return
-	super ()
+	super()
+	
+	Globals.polaroid_camera_ui.set_scene_from_packed(polaroid_scene)
 	Globals.polaroid_camera_ui.visible = true
 	# TODO: create a global in_polaroid_camera variable, maybe with a setter
 	#		function to handle enabling/disabling movement while player is
 	#		using camera globally instead of doing it here
-	if Globals.polaroid_camera_ui.visible == true:
-		Globals.player.movement_disabled = true
+	#if Globals.polaroid_camera_ui.visible == true:
+		#Globals.player.movement_disabled = true
 	print("camera scene should be on")
 	enabled = false
 
