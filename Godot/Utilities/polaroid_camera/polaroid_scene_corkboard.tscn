@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://0ajola4qc6rr"]
+[gd_scene load_steps=5 format=3 uid="uid://0ajola4qc6rr"]
 
 [ext_resource type="PackedScene" uid="uid://cxnlsonqi74wb" path="res://Utilities/polaroid_camera/polaroid_scene_base.tscn" id="1_kkpe2"]
 [ext_resource type="Texture2D" uid="uid://csr88qar27apo" path="res://Assets/PNGAssets/corkboard.png" id="2_8hly7"]
 [ext_resource type="Script" uid="uid://boqlwm6fdsbka" path="res://Utilities/polaroid_camera/polaroid_picture_point.gd" id="3_a3xkx"]
+[ext_resource type="Resource" uid="uid://boe1p6i18u1e3" path="res://Singletons/SaveSystem/DefaultResources/InventoryItemResources/polaroid_corkboard_properties.tres" id="4_h1srt"]
 
 [node name="PolaroidSceneBase" node_paths=PackedStringArray("picture_points") instance=ExtResource("1_kkpe2")]
 offset_right = 2166.8247
@@ -23,4 +24,5 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_a3xkx")
+polaroid_item = ExtResource("4_h1srt")
 metadata/_custom_type_script = "uid://boqlwm6fdsbka"

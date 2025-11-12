@@ -109,6 +109,11 @@ func _try_take_photo() -> void:
 	
 	await get_tree().create_timer(_close_camera_delay).timeout
 	
+	var inventory_item := _closest_picture_point.polaroid_item
+	assert(inventory_item != null, "Picture point has no polaroid_item")
+	
+	SaveSystem.add_item(inventory_item.name)
+	
 	visible = false
 	
 		
