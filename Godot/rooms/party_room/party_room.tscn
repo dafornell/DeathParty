@@ -860,13 +860,13 @@ transform = Transform3D(0.8290298, 0, 1.041699, 0, 1.03033, 0, -0.9879992, 0, 0.
 transform = Transform3D(0.8290298, 0, 1.041699, 0, 1.03033, 0, -0.9879992, 0, 0.87408936, -2.59168, -8.48158, 10.2159)
 
 [node name="MarblePillar6" parent="MarblePillars" instance=ExtResource("4_yruca")]
-transform = Transform3D(0.8290298, 0, 1.041699, 0, 0.95391, 0, -0.9879992, 0, 0.87408936, -7.69582, -8.74743, 8.93358)
+transform = Transform3D(0.82902986, 0, 1.0416992, 0, 0.95391, 0, -0.9879992, 0, 0.8740894, -8.025696, -8.74743, 8.93308)
 
 [node name="MarblePillar7" parent="MarblePillars" instance=ExtResource("4_yruca")]
-transform = Transform3D(0.8290298, 0, 1.041699, 0, 0.95391, 0, -0.9879992, 0, 0.87408936, -7.68754, -8.7518, 2.70155)
+transform = Transform3D(0.82902986, 0, 1.0416992, 0, 0.95391, 0, -0.9879992, 0, 0.8740894, -8.017416, -8.7518, 2.7010493)
 
 [node name="MarblePillar8" parent="MarblePillars" instance=ExtResource("4_yruca")]
-transform = Transform3D(0.8290298, 0, 1.041699, 0, 0.95391, 0, -0.9879992, 0, 0.87408936, -7.67826, -8.7518, -3.40758)
+transform = Transform3D(0.82902986, 0, 1.0416992, 0, 0.95391, 0, -0.9879992, 0, 0.8740894, -8.008136, -8.7518, -3.408081)
 
 [node name="Balcony" type="Node3D" parent="."]
 
