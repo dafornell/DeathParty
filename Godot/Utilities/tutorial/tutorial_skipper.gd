@@ -20,6 +20,7 @@ func _ready() -> void:
 	)
 
 func _on_tutorial_skipped() -> void:
+	Globals.player.movement_disabled = false
 	if not party_invite_accepted:
 		Events.party_invite_accepted.emit()
 	if not collected_polaroid:

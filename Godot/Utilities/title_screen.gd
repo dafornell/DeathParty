@@ -11,6 +11,8 @@ extends CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Events.tutorial_skipped.connect(_on_tutorial_skipped)
+
 	GuiSystem.in_title_screen = true
 
 	await ContentLoader.finished_loading
@@ -27,11 +29,22 @@ func _ready() -> void:
 		FmodServer.set_global_parameter_by_name("InTitleScreen", 0)
 
 	music.play()
+	#if ContentLoader.active_scene == null:
+		#await ContentLoader.finished_loading
+		#if ContentLoader.active_scene.name != "Bedroom":
+			#FmodServer.set_global_parameter_by_name("InTitleScreen", 0)
 
 	var all_buttons: Array[Node] = find_children("*", "Button", true, false)
 	for button: Button in all_buttons:
 		button.pressed.connect(_on_any_button_pressed)
 		button.mouse_entered.connect(_on_any_button_hovered)
+
+
+func _on_tutorial_skipped() -> void:
+	if not GuiSystem.in_title_screen:
+		return
+	
+	_close_title_screen()
 
 
 func _exit_tree() -> void:
@@ -55,6 +68,9 @@ func _on_start_game_button_pressed() -> void:
 
 	await tween.finished
 
+	_close_title_screen()
+
+func _close_title_screen() -> void:
 	hide()
 	Events.title_screen_start_game_button_pressed.emit()
 	GuiSystem.in_title_screen = false

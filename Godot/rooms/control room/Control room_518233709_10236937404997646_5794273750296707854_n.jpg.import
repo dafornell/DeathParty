@@ -2,15 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ceaey4kptqr4x"
+uid="uid://d0urteudj425a"
 path.s3tc="res://.godot/imported/Control room_518233709_10236937404997646_5794273750296707854_n.jpg-8f4e03bdf2a0fbb56a5830e6d4dd96bb.s3tc.ctex"
 path.etc2="res://.godot/imported/Control room_518233709_10236937404997646_5794273750296707854_n.jpg-8f4e03bdf2a0fbb56a5830e6d4dd96bb.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "98f8698d450133713a87517b117be948"
 }
 
 [deps]

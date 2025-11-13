@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItemResource" load_steps=3 format=3 uid="uid://boe1p6i18u1e3"]
+
+[ext_resource type="Script" uid="uid://cwplai8fhufrp" path="res://Singletons/SaveSystem/ResourceScripts/inventory_properties_script.gd" id="1_2rs83"]
+[ext_resource type="PackedScene" uid="uid://dhrdr3de5ryvj" path="res://Assets/props/inventory_items/polaroid_corkboard.tscn" id="1_x52pg"]
+
+[resource]
+script = ExtResource("1_2rs83")
+description = "A photo of Olivia's corkboard"
+model = ExtResource("1_x52pg")
+name = "Polaroid of Corkboard"
+metadata/_custom_type_script = "uid://cwplai8fhufrp"

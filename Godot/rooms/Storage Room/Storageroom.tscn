@@ -1,4 +1,4 @@
-[gd_scene load_steps=269 format=4 uid="uid://c7033b4susyvc"]
+[gd_scene load_steps=279 format=4 uid="uid://c7033b4susyvc"]
 
 [ext_resource type="Script" uid="uid://uvrra8rcndm8" path="res://rooms/Storage Room/storageroom.gd" id="1_tlveg"]
 [ext_resource type="PackedScene" uid="uid://bbyg62wymptn6" path="res://Singletons/ContentLoader/scene_loader.tscn" id="2_llsdw"]
@@ -32,17 +32,24 @@
 [ext_resource type="Texture2D" uid="uid://fakfjibs86fh" path="res://rooms/Storage Room/storage layout_wine cut.jpg" id="18_k150o"]
 [ext_resource type="PackedScene" uid="uid://btpa3cwked3ip" path="res://Assets/props/speaker/speaker.glb" id="19_llsdw"]
 [ext_resource type="Texture2D" uid="uid://d3ufnfikudi3k" path="res://rooms/Storage Room/storage layout_IMG_4936.jpg" id="19_qdb20"]
+[ext_resource type="Script" uid="uid://coe1uaoy040en" path="res://rooms/Storage Room/interactable.gd" id="21_5haen"]
 [ext_resource type="Texture2D" uid="uid://csbgtwatxxeqo" path="res://rooms/Storage Room/broken pool table_IMG_4162.png" id="21_8q48a"]
 [ext_resource type="Texture2D" uid="uid://dx1dits3fgs6" path="res://rooms/Storage Room/broken pool table_dark b.png" id="22_2x8kc"]
 [ext_resource type="Texture2D" uid="uid://buqwuheayhivo" path="res://rooms/Storage Room/broken pool table_dirty fabric.png" id="23_l86uh"]
 [ext_resource type="Texture2D" uid="uid://crioixblxctev" path="res://rooms/Storage Room/broken pool table_pool_table_mat_baseColor.png" id="24_vjwkw"]
 [ext_resource type="Texture2D" uid="uid://dwi5o308qjic6" path="res://rooms/Storage Room/broken pool table_pool_table_mat_metallicRoughness.png" id="25_ujawa"]
 [ext_resource type="Texture2D" uid="uid://b4pinofab4yd0" path="res://rooms/Storage Room/broken pool table_pool_table_mat_normal.png" id="26_tdj1f"]
+[ext_resource type="Script" uid="uid://c1pynepeakf1f" path="res://rooms/Storage Room/wine_barrels.gd" id="28_xroff"]
+[ext_resource type="PackedScene" uid="uid://cqxjk5afxrhem" path="res://Common/Popup UI/object_interact_popup.tscn" id="29_kc1yc"]
+[ext_resource type="Texture2D" uid="uid://dyv30oenjkqi8" path="res://Assets/PNGAssets/BackgroundLeft.png" id="30_vjwut"]
+[ext_resource type="Script" uid="uid://dc0eglbdf0sq7" path="res://Utilities/scripts/interaction_detector.gd" id="31_kc1yc"]
 [ext_resource type="PackedScene" uid="uid://1wdjcnj5qyj5" path="res://rooms/Storage Room/crates with drapes over.glb" id="39_34k8s"]
 [ext_resource type="Texture2D" uid="uid://cmlwn34r1xhir" path="res://rooms/Storage Room/Candlestands (1)_0.png" id="40_peelm"]
 [ext_resource type="Texture2D" uid="uid://c8qm5ptl0lio7" path="res://rooms/Storage Room/Candlestands (1)_1.png" id="41_wtehf"]
 [ext_resource type="Texture2D" uid="uid://dhe3abyj5jao0" path="res://rooms/Storage Room/Candlestands (1)_2.png" id="42_cyd7f"]
 [ext_resource type="Texture2D" uid="uid://bsgn8im6gxqk5" path="res://rooms/Storage Room/Candlestands (1)_3.png" id="43_3to2u"]
+[ext_resource type="Script" uid="uid://t5m2kqtph7n6" path="res://rooms/Storage Room/interactable_chair.gd" id="44_do7od"]
+[ext_resource type="Script" uid="uid://d4gphq1eqisee" path="res://Common/Popup UI/object_interact_popup.gd" id="44_e0eie"]
 [ext_resource type="Texture2D" uid="uid://bn7f0wv0hdunu" path="res://rooms/Storage Room/Candlestands (1)_4.png" id="44_mm5ph"]
 [ext_resource type="Texture2D" uid="uid://dief37hiqhsq6" path="res://rooms/Storage Room/Candlestands (1)_5.png" id="45_tea3s"]
 [ext_resource type="PackedScene" uid="uid://b8ucr48tcuk2p" path="res://rooms/bedroom/dorm desk.glb" id="46_4jmcr"]
@@ -1927,6 +1934,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_hjnug")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_do7od"]
+size = Vector3(3.105, 4.027, 5.695)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_puac4"]
 resource_name = "Material.008"
 albedo_texture = ExtResource("6_erfr2")
@@ -2717,6 +2727,12 @@ shadow_mesh = SubResource("ArrayMesh_ku71a")
 resource_local_to_scene = true
 size = Vector3(2.38733, 2.80212, 2.93723)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_dtsk5"]
+size = Vector3(3.965, 3.47, 4.63)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lgcl3"]
+size = Vector3(3.085, 3.895, 3.55)
+
 [node name="Storageroom" type="Area3D" node_paths=PackedStringArray("room_area") groups=["loadable_scene"]]
 transform = Transform3D(0.877632, 0, 0, 0, 0.877632, 0, 0, 0, 0.877632, 0, 0, 0)
 collision_mask = 2
@@ -3482,6 +3498,38 @@ skeleton = NodePath("")
 
 [node name="wine barrels" type="Node3D" parent="."]
 transform = Transform3D(0.951302, 0, 0, 0, 0.951302, 0, 0, 0, 0.951302, 1.52404, -1.16917, -0.527863)
+script = ExtResource("28_xroff")
+metadata/_custom_type_script = "uid://bea7y4hurcesx"
+
+[node name="InteractionDetector" type="Area3D" parent="wine barrels" node_paths=PackedStringArray("collision_shape")]
+transform = Transform3D(1.0000002, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, 0, 0, 0)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("31_kc1yc")
+collision_shape = NodePath("CollisionShape3D")
+metadata/_custom_type_script = "uid://dc0eglbdf0sq7"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wine barrels/InteractionDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33463228, 0.9833588, 0)
+shape = SubResource("BoxShape3D_do7od")
+debug_color = Color(0.99300927, 0.45221817, 0.7367748, 0.41960785)
+
+[node name="Popup" parent="wine barrels" instance=ExtResource("29_kc1yc")]
+transform = Transform3D(0.3255665, -0.00021812768, 0.7410976, -0.7410973, 3.2499013e-08, 0.32556653, 8.776151e-05, 0.80945635, 0.0001996938, 0.923, 0.049999952, 1.6520002)
+
+[node name="Background" parent="wine barrels/Popup" index="0"]
+transform = Transform3D(1, -7.275958e-12, -3.0549074e-09, 0, 0.99999994, 2.910383e-11, -3.0549039e-09, 0, 1, -0.15788627, 0, 0.06935996)
+texture = ExtResource("30_vjwut")
+
+[node name="NameLabel" parent="wine barrels/Popup" index="1"]
+transform = Transform3D(1, -7.275958e-12, -1.5206652e-07, -4.3655746e-11, 0.9999996, -1.1641532e-10, -6.2659566e-08, 8.731149e-11, 0.9999996, -0.20424831, -2.193451e-05, 0.17846876)
+text = "take"
+font_size = 190
+
+[node name="TakeLabel" parent="wine barrels/Popup" index="2"]
+transform = Transform3D(1, -7.275958e-12, -3.606828e-07, -1.0186341e-10, 0.99999905, -2.3283064e-10, -6.265958e-08, 1.4551915e-10, 0.99999917, -0.102368355, -5.1617622e-05, 0.254049)
+text = "photo"
+font_size = 65
 
 [node name="Circle_001" type="MeshInstance3D" parent="wine barrels"]
 transform = Transform3D(0.924905, -0.000619684, 2.10539, -2.10539, 1.69425e-08, 0.924905, 0.000249255, 2.29959, 0.000567345, -1.29942, 0.00170678, -0.679941)
@@ -3789,7 +3837,6 @@ skeleton = NodePath("")
 transform = Transform3D(-1.13392, 0, 0.111921, 0, 1.13943, 0, -0.111921, 0, -1.13392, 7.89147, -1.22022, 0.403218)
 
 [node name="RumbleAmbience" type="FmodEventEmitter3D" parent="."]
-event_name = "event:/000_SFX/100_Environment/rumble ambience"
 event_guid = "{36631b25-d3e7-42fa-85c9-22c1deecf5cf}"
 autoplay = true
 volume = 2.0
@@ -3825,10 +3872,85 @@ transform = Transform3D(0.7346666, 0.4459977, -0.74809825, -0.31249833, 1.048516
 [node name="Daisy Paint Brush1" parent="." instance=ExtResource("62_xs4sd")]
 transform = Transform3D(0.930178, 0.240213, -0.191199, -0.138683, 0.872984, 0.422088, 0.27391, -0.373749, 0.863004, 5.79299, -1.27139, 0.764982)
 
+[node name="mirror" type="Node3D" parent="."]
+transform = Transform3D(-0.5890499, -0.8299067, 0.16128398, -0.20897594, -0.04754305, -1.0078698, -0.8191988, 0.608878, 0.141134, -6.7016735, -0.9406911, -0.0068571875)
+script = ExtResource("21_5haen")
+metadata/_custom_type_script = "uid://bea7y4hurcesx"
+
+[node name="InteractionDetector" type="Area3D" parent="mirror" node_paths=PackedStringArray("collision_shape")]
+transform = Transform3D(1.0000001, 1.1920929e-07, 0, 2.9802322e-08, 1.0000001, -7.450581e-09, 1.4901161e-08, -7.450581e-09, 1, -2.3841858e-07, 4.7683716e-07, 1.6391277e-07)
+collision_mask = 2
+script = ExtResource("31_kc1yc")
+collision_shape = NodePath("CollisionShape3D")
+metadata/_custom_type_script = "uid://dc0eglbdf0sq7"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mirror/InteractionDetector"]
+transform = Transform3D(0.9999997, -7.748604e-07, -5.9604645e-08, 0, 0.99999917, 5.2154064e-08, -7.4505806e-08, 0, 0.9999999, 0.209, 0.033, -0.916)
+shape = SubResource("BoxShape3D_dtsk5")
+debug_color = Color(0.7038239, 0.47262132, 0.36504865, 0.41960785)
+
+[node name="Popup" parent="mirror" instance=ExtResource("29_kc1yc")]
+transform = Transform3D(0.99999976, -5.662441e-07, -5.9604645e-08, -2.9802322e-08, 0.99999934, 3.7252903e-08, -4.4703484e-08, -1.4901161e-08, 0.9999999, 0.31425285, -0.9617095, -0.915977)
+
+[node name="Background" parent="mirror/Popup" index="0"]
+texture = ExtResource("30_vjwut")
+
+[node name="NameLabel" parent="mirror/Popup" index="1"]
+transform = Transform3D(0.9999998, 0, 2.9802322e-08, 1.4901161e-07, 0.9999999, -2.9802322e-08, 2.9802322e-08, 7.450581e-09, 1, -0.04748583, -0.037712574, -0.112930775)
+text = "take"
+font_size = 190
+
+[node name="TakeLabel" parent="mirror/Popup" index="2"]
+transform = Transform3D(0.9999996, 0, 7.4505806e-08, 2.9802322e-07, 0.9999999, -5.9604645e-08, 8.195639e-08, 1.4901161e-08, 1, -0.13691854, -0.18596554, 0.0075507164)
+text = "photo"
+font_size = 65
+
+[node name="d_chair" type="Node3D" parent="."]
+transform = Transform3D(-0.102655984, 0, -1.1347997, 0, 1.1394299, 0, 1.1347997, 0, -0.102655984, -6.78251, 0.0185424, 6.80841)
+script = ExtResource("44_do7od")
+metadata/_custom_type_script = "uid://bea7y4hurcesx"
+
+[node name="InteractionDetector" type="Area3D" parent="d_chair" node_paths=PackedStringArray("collision_shape")]
+collision_mask = 2
+script = ExtResource("31_kc1yc")
+collision_shape = NodePath("CollisionShape3D")
+metadata/_custom_type_script = "uid://dc0eglbdf0sq7"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="d_chair/InteractionDetector"]
+transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 0.99999976, -0.39001036, 0, -0.3875146)
+shape = SubResource("BoxShape3D_lgcl3")
+
+[node name="Popup" parent="d_chair" instance=ExtResource("29_kc1yc")]
+transform = Transform3D(0.99999946, 0, 1.4901161e-08, 0, 1, 0, -1.4901161e-08, 0, 0.99999946, -0.6036153, 0.5509609, -0.3986292)
+script = ExtResource("44_e0eie")
+
+[node name="Background" parent="d_chair/Popup" index="0"]
+texture = ExtResource("30_vjwut")
+
+[node name="NameLabel" parent="d_chair/Popup" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.008002758, 0.07783526, -0.08846283)
+text = "take"
+font_size = 180
+
+[node name="TakeLabel" parent="d_chair/Popup" index="2"]
+transform = Transform3D(1, 0, 7.450581e-09, 0, 1, 0, -7.450581e-09, 0, 1, -0.13383341, 0.027311921, -0.28987026)
+text = "photo"
+font_size = 68
+
+[connection signal="body_entered" from="wine barrels/InteractionDetector" to="wine barrels/InteractionDetector" method="_on_body_entered"]
+[connection signal="body_exited" from="wine barrels/InteractionDetector" to="wine barrels/InteractionDetector" method="_on_body_exited"]
+[connection signal="body_entered" from="mirror/InteractionDetector" to="mirror/InteractionDetector" method="_on_body_entered"]
+[connection signal="body_exited" from="mirror/InteractionDetector" to="mirror/InteractionDetector" method="_on_body_exited"]
+[connection signal="body_entered" from="d_chair/InteractionDetector" to="d_chair/InteractionDetector" method="_on_body_entered"]
+[connection signal="body_exited" from="d_chair/InteractionDetector" to="d_chair/InteractionDetector" method="_on_body_exited"]
+
 [editable path="SceneLoader_Basement"]
 [editable path="SceneLoader_Basement/InteractionDetector"]
+[editable path="wine barrels/Popup"]
 [editable path="hang lights"]
 [editable path="crates with drapes over"]
 [editable path="box suitcase"]
 [editable path="SceneLoader_Hourhand hallway"]
 [editable path="SceneLoader_Hourhand hallway/InteractionDetector"]
+[editable path="mirror/Popup"]
+[editable path="d_chair/Popup"]

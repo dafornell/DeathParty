@@ -1,4 +1,4 @@
-[gd_scene load_steps=273 format=4 uid="uid://c44l5t4o5i1qg"]
+[gd_scene load_steps=274 format=4 uid="uid://c44l5t4o5i1qg"]
 
 [ext_resource type="Texture2D" uid="uid://di3fxmhwsgn4v" path="res://rooms/bedroom/Bedroom_IMG_4162.png" id="1_aasoq"]
 [ext_resource type="Script" uid="uid://bh46on0pmp3la" path="res://rooms/bedroom/bedroom.gd" id="1_lxtj2"]
@@ -68,6 +68,7 @@
 [ext_resource type="Texture2D" uid="uid://cc86ku3golyuq" path="res://rooms/Basement/standing lamp_IMG_4331.png" id="48_fa1og"]
 [ext_resource type="PackedScene" uid="uid://r11twgabwx5k" path="res://Assets/environment/bookshelves/dorm_bookshelf.tscn" id="50_shd6j"]
 [ext_resource type="Texture2D" uid="uid://cgvs4fwjt83jn" path="res://rooms/bedroom/punk posters_IMG_0684.png" id="51_kvlly"]
+[ext_resource type="PackedScene" uid="uid://0ajola4qc6rr" path="res://Utilities/polaroid_camera/polaroid_scene_corkboard.tscn" id="51_smp45"]
 [ext_resource type="Texture2D" uid="uid://6p5vltopl887" path="res://rooms/bedroom/punk posters_IMG_4143.png" id="53_5smtm"]
 [ext_resource type="Script" uid="uid://bn1qsu53uxsg0" path="res://rooms/bedroom/cork_board.gd" id="54_8ahpd"]
 [ext_resource type="Texture2D" uid="uid://q8smajfubmrv" path="res://rooms/bedroom/punk posters_corkboard.png" id="54_p0j85"]
@@ -2374,10 +2375,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_o7qs3")
 
-[node name="Bedroom" type="Area3D" node_paths=PackedStringArray("title_screen", "closet", "room_area", "path_follow_node") groups=["loadable_scene"]]
+[node name="Bedroom" type="Area3D" node_paths=PackedStringArray("closet", "room_area", "path_follow_node") groups=["loadable_scene"]]
 collision_mask = 2
 script = ExtResource("1_lxtj2")
-title_screen = NodePath("")
 closet = NodePath("Closet")
 room_area = NodePath("RoomArea")
 path_follow_node = NodePath("IntroCameraPath/PathFollow3D")
@@ -2463,6 +2463,10 @@ target_scene = 9
 play_door_sound = true
 use_first_mesh = true
 enabled = false
+
+[node name="DoorSound" parent="SceneLoader_Exterior" index="0"]
+event_name = ""
+event_guid = "{00000000-0000-0000-0000-000000000000}"
 
 [node name="Popup" parent="SceneLoader_Exterior" index="1"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 1.5, 1.75, 0)
@@ -2801,11 +2805,11 @@ shadow_enabled = true
 [node name="Chair" parent="." instance=ExtResource("8_8bc0i")]
 transform = Transform3D(0.998259, 0, -0.102315, 0, 1.00349, 0, 0.102315, 0, 0.998259, -0.776669, 0.361875, 0.718062)
 
-[node name="CorkBoard" type="Node3D" parent="." node_paths=PackedStringArray("take", "title")]
+[node name="CorkBoard" type="Node3D" parent="." node_paths=PackedStringArray("take")]
 transform = Transform3D(1.12343, 0, 0, 0, 1.12343, 0, 0, 0, 1.12343, -0.926211, 1.4748, -1.18352)
 script = ExtResource("54_8ahpd")
 take = NodePath("Popup")
-title = NodePath("")
+polaroid_scene = ExtResource("51_smp45")
 enabled = false
 metadata/_custom_type_script = "uid://bea7y4hurcesx"
 
@@ -3197,7 +3201,6 @@ transform = Transform3D(0.565345, 0.845524, -0.227634, 0.139033, 0.180841, 1.017
 autoplay = "IDLE"
 
 [node name="Music" type="FmodEventEmitter3D" parent="."]
-event_name = "event:/900_MX/Olivia room music"
 event_guid = "{ae9cb825-c6ee-408e-a544-82929c10a82d}"
 autoplay = true
 volume = 0.5

@@ -2,15 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bk2cxm07d8gtg"
+uid="uid://cvd8t567kdj3k"
 path.s3tc="res://.godot/imported/hourhand hallway_New Concret (1).png-fa540db1df03211ae1200a7d6a4d3abd.s3tc.ctex"
 path.etc2="res://.godot/imported/hourhand hallway_New Concret (1).png-fa540db1df03211ae1200a7d6a4d3abd.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "99c2ce4ea18c80e3288347be6d2b7876"
 }
 
 [deps]
