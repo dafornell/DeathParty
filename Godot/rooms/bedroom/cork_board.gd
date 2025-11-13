@@ -18,8 +18,7 @@ func on_interact() -> void:
 	if !enabled: return
 	super()
 	
-	Globals.polaroid_camera_ui.set_scene_from_packed(polaroid_scene)
-	Globals.polaroid_camera_ui.visible = true
+	Globals.polaroid_camera_ui.open_with_scene_from_packed(polaroid_scene)
 	# TODO: create a global in_polaroid_camera variable, maybe with a setter
 	#		function to handle enabling/disabling movement while player is
 	#		using camera globally instead of doing it here

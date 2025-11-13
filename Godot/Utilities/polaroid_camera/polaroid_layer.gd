@@ -13,6 +13,7 @@ class_name PolaroidLayer extends CanvasLayer
 @export var _viewfinder_center: Control
 @export var _take_photo_button: Button
 @export var _scene_container: Control
+@export var _filter_control: FilterControl
 
 @export_group("Ready indicator")
 @export var _ready_indicator: PolaroidReadyIndicator
@@ -48,17 +49,34 @@ var _viewport_size: Vector2:
 		@warning_ignore("unsafe_property_access")
 		return get_viewport().size
 
-func set_scene(scene: PolaroidScene) -> void:
+func set_scene(scene: PolaroidScene) -> bool:
 	if _polaroid_scene != null:
 		_polaroid_scene.queue_free()
 		_polaroid_scene = null
+	assert(scene != null)
+	# if no more picture points, just exit to prevent softlock
+	if not scene.has_uncollected_picture_points:
+		return false
 	_scene_container.add_child(scene)
 	_polaroid_scene = scene
+	return true
 
-func set_scene_from_packed(packed_scene: PackedScene) -> void:
+func open_with_scene(scene: PolaroidScene) -> bool:
+	if set_scene(scene):
+		visible = true
+		return true
+	return false
+
+func set_scene_from_packed(packed_scene: PackedScene) -> bool:
 	var instance: PolaroidScene = packed_scene.instantiate()
 	assert(instance != null, "packed_scene did not instantiate to a PolaroidScene")
-	set_scene(instance)
+	return set_scene(instance)
+
+func open_with_scene_from_packed(packed_scene: PackedScene) -> bool:
+	if set_scene_from_packed(packed_scene):
+		visible = true
+		return true
+	return false
 
 func _on_visibility_changed() -> void:
 	if visible and _polaroid_scene != null:
@@ -81,6 +99,7 @@ func _ready() -> void:
 	_take_photo_button.pressed.connect(_try_take_photo)
 	visibility_changed.connect(_on_visibility_changed)
 	_flash_animation_player.assigned_animation = _flash_animation_name
+	_filter_control.filter_changed.connect(_on_filter_changed)
 
 # function for movement of camera
 func _process(delta: float) -> void:
@@ -112,7 +131,7 @@ func _try_take_photo() -> void:
 	var inventory_item := _closest_picture_point.polaroid_item
 	assert(inventory_item != null, "Picture point has no polaroid_item")
 	
-	SaveSystem.add_item(inventory_item.name)
+	SaveSystem.add_item(inventory_item.name, true)
 	
 	visible = false
 	
@@ -164,12 +183,11 @@ func _find_closest_picture_point() -> void:
 func _process_indicators() -> void:
 	if _polaroid_scene == null:
 		return
+	
 	if _took_photo:
 		_ready_indicator.aim_indicator_intensity = 0
 		_ready_indicator.ready_to_take = false
 		return
-	
-	assert(_closest_picture_point != null, "No picture points")
 	
 	var distance_percent := clampf(
 		(_closest_picture_point_distance - _ready_distance_threshold)
@@ -181,3 +199,9 @@ func _process_indicators() -> void:
 	var intensity := _indicator_intensity_curve.sample(intensity_t)
 	_ready_indicator.aim_indicator_intensity = intensity
 	_ready_indicator.ready_to_take = _can_take_picture
+
+func _on_filter_changed(new_color: String) -> void:
+	if _polaroid_scene == null:
+		return
+	
+	_polaroid_scene.filter_color = new_color

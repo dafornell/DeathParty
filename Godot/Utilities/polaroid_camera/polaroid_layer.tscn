@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://d0sd1bp5esd04"]
+[gd_scene load_steps=69 format=3 uid="uid://d0sd1bp5esd04"]
 
 [ext_resource type="Script" uid="uid://bjhwro6hrfg4p" path="res://Utilities/polaroid_camera/polaroid_layer.gd" id="1_42nwo"]
 [ext_resource type="Script" uid="uid://byck0gxa42prg" path="res://Utilities/polaroid_camera/polaroid_ready_indicator.gd" id="2_qpijf"]
@@ -9,27 +9,22 @@
 [ext_resource type="Shader" uid="uid://cx7fj2cmeblbc" path="res://Utilities/polaroid_camera/polaroid_layer_unblur.gdshader" id="6_7wtwj"]
 [ext_resource type="Texture2D" uid="uid://c705u2xg8e5gb" path="res://Assets/PNGAssets/viewfinder_aim.png" id="6_42nwo"]
 [ext_resource type="Shader" uid="uid://ccc6w6g5spnr7" path="res://Utilities/polaroid_camera/polaroid_layer.gdshader" id="7_42nwo"]
-[ext_resource type="Script" path="res://Utilities/polaroid_camera/polaroid_indicator_circle.gd" id="7_ph0pu"]
+[ext_resource type="Script" uid="uid://b6hrtkaykbf1c" path="res://Utilities/polaroid_camera/polaroid_indicator_circle.gd" id="7_ph0pu"]
 [ext_resource type="Texture2D" uid="uid://bv6px42lbjq5f" path="res://Assets/PNGAssets/temp_rotate_arrow.png" id="11_42nwo"]
 [ext_resource type="Texture2D" uid="uid://djidfl63ug16b" path="res://Assets/PNGAssets/inner_ring.png" id="12_7wtwj"]
+[ext_resource type="Texture2D" uid="uid://bs0w0s2cjrm8q" path="res://Assets/PNGAssets/R.png" id="12_pxotk"]
+[ext_resource type="Texture2D" uid="uid://d0pn83y470dpd" path="res://Assets/PNGAssets/G.png" id="13_bid8k"]
 [ext_resource type="Texture2D" uid="uid://cdvberuogb0k" path="res://Assets/PNGAssets/base_final.png" id="13_qpijf"]
+[ext_resource type="Texture2D" uid="uid://dunjd210hepx8" path="res://Assets/PNGAssets/B.png" id="14_47y0a"]
 [ext_resource type="Texture2D" uid="uid://8cmqnmgxkmiu" path="res://Assets/PNGAssets/filter_color_dots.png" id="14_pxotk"]
 [ext_resource type="Texture2D" uid="uid://bvyh22qg3pxas" path="res://Assets/PNGAssets/N.png" id="15_7wtwj"]
+[ext_resource type="Texture2D" uid="uid://d4klw85b36vwj" path="res://Assets/PNGAssets/red_lens.png" id="15_q4hu4"]
+[ext_resource type="Texture2D" uid="uid://dn335pqx6mfup" path="res://Assets/PNGAssets/blue_lens.png" id="16_gnj1l"]
 [ext_resource type="PackedScene" uid="uid://ces2kuj1gqfpy" path="res://Utilities/tutorial/input_indicator.tscn" id="17_7wtwj"]
 
 [sub_resource type="Curve" id="Curve_7wtwj"]
 _data = [Vector2(0, 0), 0.0, 1.2487968, 0, 0, Vector2(1, 1), 3.3740833, 0.0, 0, 0]
 point_count = 2
-
-[sub_resource type="Gradient" id="Gradient_42nwo"]
-offsets = PackedFloat32Array(0, 0.041884817, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.95811516, 0.95811516, 0.95811516, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ph0pu"]
-gradient = SubResource("Gradient_42nwo")
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4q0hv"]
-light_mode = 2
 
 [sub_resource type="Gradient" id="Gradient_42nwo"]
 offsets = PackedFloat32Array(0, 0.041884817, 1)
@@ -236,33 +231,6 @@ radius = 17.0294
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lj084"]
 
-[sub_resource type="Animation" id="Animation_bid8k"]
-resource_name = "flash"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Flash:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Flash:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
 [sub_resource type="Animation" id="Animation_47y0a"]
 length = 0.001
 tracks/0/type = "value"
@@ -290,18 +258,46 @@ tracks/1/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_bid8k"]
+resource_name = "flash"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flash:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Flash:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q4hu4"]
 _data = {
 &"RESET": SubResource("Animation_47y0a"),
 &"flash": SubResource("Animation_bid8k")
 }
 
-[node name="PolaroidCamera" type="CanvasLayer" node_paths=PackedStringArray("_flash_animation_player", "_viewfinder_center", "_take_photo_button", "_scene_container", "_ready_indicator", "_open_camera_sound", "_take_photo_sound")]
+[node name="PolaroidCamera" type="CanvasLayer" node_paths=PackedStringArray("_flash_animation_player", "_viewfinder_center", "_take_photo_button", "_scene_container", "_filter_control", "_ready_indicator", "_open_camera_sound", "_take_photo_sound")]
 script = ExtResource("1_42nwo")
 _flash_animation_player = NodePath("Flash/FlashAnimationPlayer")
 _viewfinder_center = NodePath("body/ViewFinder/Center")
 _take_photo_button = NodePath("body/ViewFinder/filter_control/shoot")
 _scene_container = NodePath("body/SceneContainer")
+_filter_control = NodePath("body/ViewFinder/filter_control")
 _ready_indicator = NodePath("PolaroidReadyIndicator")
 _indicator_intensity_curve = SubResource("Curve_7wtwj")
 _open_camera_sound = NodePath("OpenCameraSound")
@@ -471,7 +467,7 @@ offset_bottom = 3045.0
 texture = ExtResource("4_a6jrl")
 expand_mode = 1
 
-[node name="filter_control" type="Node2D" parent="body/ViewFinder" node_paths=PackedStringArray("left_button", "right_button", "filter_base_button", "lens", "ViewFinder", "filter_letter", "f_image")]
+[node name="filter_control" type="Node2D" parent="body/ViewFinder" node_paths=PackedStringArray("left_button", "right_button", "filter_base_button", "lens", "ViewFinder", "filter_letter", "filter_base")]
 position = Vector2(-1345, -335)
 scale = Vector2(5, 5)
 script = ExtResource("5_omcg7")
@@ -481,7 +477,14 @@ filter_base_button = NodePath("filter_base/filter_base_button")
 lens = NodePath("../filter")
 ViewFinder = NodePath("..")
 filter_letter = NodePath("filter_letter")
-f_image = NodePath("")
+letter_n_texture = ExtResource("15_7wtwj")
+letter_r_texture = ExtResource("12_pxotk")
+letter_g_texture = ExtResource("13_bid8k")
+letter_b_texture = ExtResource("14_47y0a")
+red_filter_texture = ExtResource("15_q4hu4")
+green_filter_texture = ExtResource("4_a6jrl")
+blue_filter_texture = ExtResource("16_gnj1l")
+filter_base = NodePath("filter_base")
 
 [node name="inner_ring" type="TextureRect" parent="body/ViewFinder/filter_control"]
 custom_minimum_size = Vector2(0, 100)

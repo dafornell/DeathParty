@@ -3,12 +3,13 @@
 [ext_resource type="Script" uid="uid://bn3iao1mmmohl" path="res://Utilities/polaroid_camera/polaroid_scene.gd" id="1_gsstc"]
 [ext_resource type="Texture2D" uid="uid://b5kgjksg3cd0g" path="res://max_page_1.png" id="2_t3lmf"]
 
-[node name="PolaroidSceneBase" type="Control"]
+[node name="PolaroidSceneBase" type="Control" node_paths=PackedStringArray("unfiltered_texture_rect")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 2119.4563
 offset_bottom = 1192.0
 script = ExtResource("1_gsstc")
+unfiltered_texture_rect = NodePath("UnfilteredTextureRect")
 
 [node name="UnfilteredTextureRect" type="TextureRect" parent="."]
 layout_mode = 1
