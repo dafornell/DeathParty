@@ -11,6 +11,7 @@ extends Node
 ## emitted every time a character is printed to the main dialogue boxes
 ## (or when new text is loaded by skipping dialogue)
 signal dialogue_box_text_changed
+signal dialogue_line_displayed(line: InkLineInfo)
 
 signal title_screen_start_game_button_pressed
 signal title_screen_settings_button_pressed

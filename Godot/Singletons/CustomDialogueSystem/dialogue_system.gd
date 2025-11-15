@@ -205,6 +205,7 @@ func display_content() -> void:
 		else:
 			current_dialogue_box.add_line(line)
 			current_conversation.push_back(line)
+			Events.dialogue_line_displayed.emit(line)
 	elif content[0] is InkChoiceInfo:
 		var choices : Array[InkChoiceInfo] = []
 		for choice : InkChoiceInfo in content:

@@ -46,6 +46,7 @@ InteractablePriority="*res://Singletons/Interactable/interactable_priority.gd"
 MenuFocusGrabber="*res://Singletons/menu_focus_grabber.gd"
 DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
 Events="*res://Singletons/events.gd"
+VoiceLinePlayer="*res://Singletons/VoiceLinePlayer/voice_line_player.tscn"
 
 [debug]
 
