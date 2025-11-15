@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://hcaf5hlfklbu"]
+[gd_scene load_steps=4 format=3 uid="uid://b1kmtpl7lkqjd"]
 
-[ext_resource type="PackedScene" uid="uid://psh336exq4ts" path="res://Assets/props/inventory_items/inventory_item_base.tscn" id="1_m108d"]
+[ext_resource type="PackedScene" uid="uid://l0ljp7dxs4g4" path="res://Assets/props/inventory_items/inventory_item_base.tscn" id="1_m108d"]
 [ext_resource type="PackedScene" uid="uid://bh12eagb0x4sn" path="res://rooms/Storage Room/Daisy Paint Brush1.glb" id="1_y4t2s"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a0rlp"]
@@ -15,3 +15,7 @@ shape = SubResource("BoxShape3D_a0rlp")
 
 [node name="Daisy Paint Brush1" parent="MeshContainer" index="0" instance=ExtResource("1_y4t2s")]
 transform = Transform3D(2.415, 0, 0, 0, 2.415, 0, 0, 0, 2.415, 0, -0.7782227, 0)
+
+[node name="HoverSound" parent="." index="2"]
+event_name = "event:/000_SFX/300_UI/InventoryHover/BrushHover"
+event_guid = "{f667b64f-ab58-4337-8759-94e4d993ae15}"
