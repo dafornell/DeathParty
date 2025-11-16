@@ -11,7 +11,7 @@ class_name Interactable extends Node3D
 #@export var outline_shader : ShaderMaterial = preload("res://Assets/Shaders/OutlineShader.tres")
 var outline_shader: ShaderMaterial = preload("res://Assets/Shaders/OutlineShader/TestOutlineShader.tres")
 var interaction_detector_file: PackedScene = preload("res://Entities/interaction_detector.tscn")
-var interaction_detector: InteractionDetector
+@export var interaction_detector: InteractionDetector
 
 @export var enabled: bool = true:
 	set(value):
@@ -37,8 +37,9 @@ func _ready() -> void:
 	if inventory_item:
 		_despawn_if_has_item()
 		SaveSystem.inventory_changed.connect(_on_inventory_changed)
-
-	interaction_detector = get_node_or_null("InteractionDetector")
+	
+	if not interaction_detector:
+		interaction_detector = get_node_or_null("InteractionDetector")
 	if interaction_detector == null:
 		interaction_detector = interaction_detector_file.instantiate()
 		var char_body: CharacterBody3D = get_node_or_null("CharacterBody3D")

@@ -1,0 +1,64 @@
+{
+    "number_of_conversations": 5,
+    "number_of_speakers": 2,
+    "conversations": [
+        [
+            {
+                "speaker": 0,
+                "text": "Wow you're really bad at this game, how high are you, dude?"
+            },
+            {
+                "speaker": 1,
+                "text": "Shut the fuck up, I'm not high."
+            }
+        ],
+        [
+            {
+                "speaker": 0,
+                "text": "Who's your main?"
+            },
+            {
+                "speaker": 1,
+                "text": "Seedoo, they're stupid broken."
+            },
+            {
+                "speaker": 0,
+                "text": "Nah, man, they're super bad, you should play Baphomet."
+            }
+        ],
+        [
+            {
+                "speaker": 0,
+                "text": "Dude, why did you pick this stage? It's way too big."
+            },
+            {
+                "speaker": 1,
+                "text": "I dunno what you're talking about- its the perfect size."
+            }
+        ],
+        [
+            {
+                "speaker": 0,
+                "text": "GOTTEM!"
+            },
+            {
+                "speaker": 1,
+                "text": "That move is so unfair- your hitbox is like half the stage!"
+            },
+            {
+                "speaker": 0,
+                "text": "HAHAHA, YOU MAD!"
+            }
+        ],
+        [
+            {
+                "speaker": 0,
+                "text": "First one to die has to take a shot."
+            },
+            {
+                "speaker": 1,
+                "text": "You're on!"
+            }
+        ]
+    ]
+}
