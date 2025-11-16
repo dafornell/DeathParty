@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://de1rjbb6rtf13"]
+
+[ext_resource type="Script" uid="uid://dvsaenwxoiiip" path="res://Common/Popup UI/bark_container.gd" id="1_1h4pt"]
+[ext_resource type="Texture2D" uid="uid://besbyihexlewc" path="res://Assets/PNGAssets/bark_interact.png" id="2_l5w51"]
+
+[node name="BarkContainer" type="Node3D" node_paths=PackedStringArray("bark_interact")]
+script = ExtResource("1_1h4pt")
+bark_interact = NodePath("BarkInteract")
+
+[node name="BarkInteract" type="Sprite3D" parent="."]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.523, 0, 0)
+billboard = 1
+texture = ExtResource("2_l5w51")

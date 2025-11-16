@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://c1vyk1h1qwesf"]
+[gd_scene load_steps=9 format=3 uid="uid://c1vyk1h1qwesf"]
 
 [ext_resource type="Script" uid="uid://qkx286pky47d" path="res://Common/Popup UI/npc_bark_popup.gd" id="1_wwsvw"]
 [ext_resource type="Texture2D" uid="uid://mc48knps2dsm" path="res://Assets/PNGAssets/bark_tail.png" id="2_gqaax"]
 [ext_resource type="FontFile" uid="uid://bnoeu4ueg0d7" path="res://Assets/Fonts/Gantari/Gantari-Italic-VariableFont_wght.ttf" id="3_q7v7q"]
-[ext_resource type="Texture2D" uid="uid://besbyihexlewc" path="res://Assets/PNGAssets/bark_interact.png" id="4_wwsvw"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_24r7k"]
 light_mode = 2
@@ -25,14 +24,13 @@ gradient = SubResource("Gradient_wwsvw")
 [sub_resource type="ViewportTexture" id="ViewportTexture_gqaax"]
 viewport_path = NodePath("SubViewportContainer/SubViewport")
 
-[node name="BarkPopup" type="Node3D" node_paths=PackedStringArray("bark_tail", "bark_board", "bark_text", "bark_bubble", "bark_interact")]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+[node name="BarkPopup" type="Node3D" node_paths=PackedStringArray("bark_tail_left", "bark_tail_right", "bark_board", "bark_text", "bark_bubble")]
 script = ExtResource("1_wwsvw")
-bark_tail = NodePath("SubViewportContainer/SubViewport/CanvasGroup/BarkTail")
-bark_board = NodePath("SubViewportContainer/SubViewport/CanvasGroup/BarkBoard")
+bark_tail_left = NodePath("SubViewportContainer/SubViewport/BarkBubbleContainer/BarkTailLeft")
+bark_tail_right = NodePath("SubViewportContainer/SubViewport/BarkBubbleContainer/BarkTailRight")
+bark_board = NodePath("SubViewportContainer/SubViewport/BarkBubbleContainer/BarkBoard")
 bark_text = NodePath("SubViewportContainer/SubViewport/BarkText")
 bark_bubble = NodePath("BarkBubble")
-bark_interact = NodePath("BarkInteract")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 offset_left = 2.0
@@ -46,10 +44,10 @@ handle_input_locally = false
 size = Vector2i(5000, 235)
 render_target_update_mode = 4
 
-[node name="CanvasGroup" type="CanvasGroup" parent="SubViewportContainer/SubViewport"]
+[node name="BarkBubbleContainer" type="CanvasGroup" parent="SubViewportContainer/SubViewport"]
 self_modulate = Color(0.15487596, 0.154876, 0.15487596, 0.9490196)
 
-[node name="BarkTail" type="TextureRect" parent="SubViewportContainer/SubViewport/CanvasGroup"]
+[node name="BarkTailLeft" type="TextureRect" parent="SubViewportContainer/SubViewport/BarkBubbleContainer"]
 material = SubResource("CanvasItemMaterial_24r7k")
 anchors_preset = 7
 anchor_left = 0.5
@@ -65,7 +63,25 @@ grow_vertical = 0
 texture = ExtResource("2_gqaax")
 stretch_mode = 2
 
-[node name="BarkBoard" type="Panel" parent="SubViewportContainer/SubViewport/CanvasGroup"]
+[node name="BarkTailRight" type="TextureRect" parent="SubViewportContainer/SubViewport/BarkBubbleContainer"]
+visible = false
+material = SubResource("CanvasItemMaterial_24r7k")
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 2425.0
+offset_top = 184.0
+offset_right = 2870.5
+offset_bottom = 235.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_gqaax")
+stretch_mode = 2
+flip_h = true
+
+[node name="BarkBoard" type="Panel" parent="SubViewportContainer/SubViewport/BarkBubbleContainer"]
 custom_minimum_size = Vector2(69, 0)
 anchors_preset = 5
 anchor_left = 0.5
@@ -91,17 +107,12 @@ text = "okay"
 horizontal_alignment = 1
 
 [node name="TailHider" type="PointLight2D" parent="SubViewportContainer/SubViewport"]
-position = Vector2(2381.5, 206.5)
-scale = Vector2(4.546877, 0.79687494)
+position = Vector2(2505.5, 206.5)
+scale = Vector2(9.078126, 0.79687494)
 energy = 0.0
 texture = SubResource("GradientTexture2D_w4jpq")
 
 [node name="BarkBubble" type="Sprite3D" parent="."]
-visible = false
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 billboard = 1
 texture = SubResource("ViewportTexture_gqaax")
-
-[node name="BarkInteract" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1, 0, 2)
-billboard = 1
-texture = ExtResource("4_wwsvw")

@@ -750,6 +750,9 @@ target_scene = 9
 local_spawn_point = 1
 play_door_sound = true
 
+[node name="DoorSound" parent="SceneLoader_Exterior" index="0"]
+event_name = "event:/000_SFX/100_Environment/door"
+
 [node name="Popup" parent="SceneLoader_Exterior" index="1"]
 texture = null
 
@@ -762,6 +765,9 @@ target_scene = 10
 play_door_sound = true
 use_first_mesh = true
 
+[node name="DoorSound" parent="SceneLoader_Kitchen" index="0"]
+event_name = "event:/000_SFX/100_Environment/door"
+
 [node name="Popup" parent="SceneLoader_Kitchen" index="1"]
 transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0, 2, 1.25)
 
@@ -773,6 +779,9 @@ shape = SubResource("BoxShape3D_f4d3f")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -4.96324)
 interactable = false
 target_scene = 3
+
+[node name="DoorSound" parent="SceneLoader_PartyRoom" index="0"]
+event_name = "event:/000_SFX/100_Environment/door"
 
 [node name="Popup" parent="SceneLoader_PartyRoom" index="1"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 1, 0)
@@ -787,6 +796,9 @@ transform = Transform3D(-0.00280997, 0, -0.999996, 0, 1, 0, 0.999996, 0, -0.0028
 target_scene = 6
 play_door_sound = true
 use_first_mesh = true
+
+[node name="DoorSound" parent="SceneLoader_Basement" index="0"]
+event_name = "event:/000_SFX/100_Environment/door"
 
 [node name="Popup" parent="SceneLoader_Basement" index="1"]
 transform = Transform3D(-4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, 0, 1, 2)
