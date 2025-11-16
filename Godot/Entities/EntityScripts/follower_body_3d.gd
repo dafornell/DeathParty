@@ -6,6 +6,7 @@ class_name FollowerBody3D
 @export var navigation_agent: NavigationAgent3D
 @export var model: Node3D
 @export var animation_tree: AnimationTree
+@export var is_following_player: bool = true
 
 var player_position: Vector3
 var sprint_distance_squared: float = 30
@@ -60,6 +61,8 @@ func _on_velocity_computed(safe_velocity: Vector3) -> void:
 
 
 func _move_to_player(player_pos: Vector3) -> void:
+	if not is_following_player:
+		return
 	player_position = player_pos
 	set_movement_target(player_pos)
 
