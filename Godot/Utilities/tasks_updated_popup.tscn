@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccsubp61quww2"]
+
+[ext_resource type="Script" uid="uid://dcethklyifj40" path="res://Utilities/tasks_updated_popup.gd" id="1_55r10"]
+[ext_resource type="PackedScene" uid="uid://ces2kuj1gqfpy" path="res://Utilities/tutorial/input_indicator.tscn" id="1_uoikw"]
+[ext_resource type="StyleBox" uid="uid://y5gl84pfh3gf" path="res://Utilities/tutorial/input_indicator_stylebox.tres" id="2_55r10"]
+[ext_resource type="LabelSettings" uid="uid://dnyu206aslan5" path="res://Utilities/tutorial/input_indicator_description_label_settings.tres" id="3_se15b"]
+
+[node name="TasksUpdatedPopup" type="CanvasLayer" node_paths=PackedStringArray("timer", "popup")]
+script = ExtResource("1_55r10")
+timer = NodePath("Timer")
+popup = NodePath("TasksUpdatedPopup")
+
+[node name="InputIndicator" parent="." instance=ExtResource("1_uoikw")]
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -328.0
+offset_top = 150.0
+offset_right = -100.0
+offset_bottom = 200.0
+grow_horizontal = 0
+grow_vertical = 1
+action_name = &"toggle_journal"
+action_name = &"toggle_journal"
+
+[node name="TasksUpdatedPopup" type="PanelContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -305.0
+offset_top = 50.0
+offset_right = -120.0
+offset_bottom = 95.00003
+grow_horizontal = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("2_55r10")
+
+[node name="Label" type="Label" parent="TasksUpdatedPopup"]
+layout_mode = 2
+text = "Tasks updated!"
+label_settings = ExtResource("3_se15b")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

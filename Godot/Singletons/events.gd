@@ -45,3 +45,5 @@ signal collected_polaroid
 signal ready_to_take_photo_of_corkboard
 
 signal tutorial_skipped
+
+signal tasks_updated
