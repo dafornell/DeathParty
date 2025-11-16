@@ -39,7 +39,7 @@ func _enter_tree() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if DialogueSystem.in_dialogue or GuiSystem.in_gui or movement_disabled:
+	if DialogueSystem.in_dialogue or GuiSystem.in_gui or movement_disabled or Globals.polaroid_camera_ui.visible == true:
 		player_velocity = Vector3.ZERO
 		handle_animations(delta)
 		return

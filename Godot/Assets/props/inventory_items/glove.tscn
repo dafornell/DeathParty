@@ -15,3 +15,7 @@ shape = SubResource("BoxShape3D_jga8a")
 
 [node name="glove" parent="MeshContainer" index="0" instance=ExtResource("2_jga8a")]
 transform = Transform3D(3.385, 0, 0, 0, -1.4796305e-07, -3.385, 0, 3.385, -1.4796305e-07, 0, -0.16249353, 0)
+
+[node name="HoverSound" parent="." index="2"]
+event_name = "event:/000_SFX/300_UI/InventoryHover/GloveHover"
+event_guid = "{aaf25c6a-67cc-4072-954b-fbc67e5af9b5}"

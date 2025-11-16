@@ -25,3 +25,11 @@ func end_chat(_current_conversation : Array[InkLineInfo] = []) -> void:
 	super()
 	interaction_ended.emit()
 	
+func get_save_state() -> Dictionary:
+	var save_state := super()
+	save_state["quest_marker_enabled"] = quest_marker_enabled
+	return save_state
+
+func load_save_state(save_state: Dictionary) -> void:
+	super(save_state)
+	quest_marker_enabled = save_state.get("quest_marker_enabled", false)

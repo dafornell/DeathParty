@@ -1,16 +1,18 @@
 class_name DialogueLineExpand extends DialogueLine
 
 @export var control_to_resize : Control
-@export var chat_backer : Control
+@export var chat_backer : PanelContainer
 @export var minimum_y_size : float = 0
 var resize_control : ResizableControl
 
 func _ready() -> void:
+	assert(chat_backer)
+	var stylebox := chat_backer.get_theme_stylebox(&"panel")
+	var padding_x := stylebox.content_margin_left + stylebox.content_margin_right
+	var padding_y := stylebox.content_margin_top + stylebox.content_margin_bottom
 	resize_control = ResizableControl.new(control_to_resize, Text)
-	# if Img and Img.texture: #extra padding if it is a message with a pfp
-	# 	resize_control = ResizableControl.new(control_to_resize, Text, true, true, 5, 0, minimum_y_size)
-	# else:
-	# 	resize_control = ResizableControl.new(control_to_resize, Text)
+	resize_control.padding_horizontal = padding_x
+	resize_control.padding_bottom = padding_y
 	resize()
 	print("Custom minimum size: ", self.control_to_resize.custom_minimum_size.y)
 	custom_minimum_size.y = self.control_to_resize.custom_minimum_size.y

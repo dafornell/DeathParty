@@ -2,15 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cijp2mc61b5x0"
+uid="uid://bi55glnkuthw6"
 path.s3tc="res://.godot/imported/white_bunny_phone.png-3911699452e1b8f966992c8475848a4a.s3tc.ctex"
 path.etc2="res://.godot/imported/white_bunny_phone.png-3911699452e1b8f966992c8475848a4a.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "0c9719f8314bbe796e804d09c515bf8c"
 }
 
 [deps]

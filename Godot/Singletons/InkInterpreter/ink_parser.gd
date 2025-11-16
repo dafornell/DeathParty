@@ -3,9 +3,11 @@ extends Node
 var json_dict : Dictionary #Dictionary from JSON file
 var evaluation_mode : bool = false #Are we pushing/popping variables onto the stack?
 var string_evaluation_mode : bool = false #Are we collecting choice text?
+var tag_evaluation_mode: bool = false
 var evaluation_stack_items : Array = [] #Used for T/F calculations using player variables
 var string_eval_stream : String = "" #Stores text for choices (text inside evaluation mode)
 var last_speaker : String = "" #Inferred speaker
+var tag: String = ""
 
 const HASH_F : String = char(35) + "f"
 func hash_f_only(dict : Dictionary) -> bool:
@@ -17,6 +19,7 @@ func hash_f_only(dict : Dictionary) -> bool:
 ##EVAL STACK FUNCTIONS
 func pop() -> Variant:
 	return evaluation_stack_items.pop_back()
+
 func push(item : Variant) -> void:
 	evaluation_stack_items.push_back(item)
 
@@ -98,6 +101,18 @@ func parse(file : JSON) -> InkTree:
 	
 	return new_tree
 
+func _add_tag_to_line_info(line_info: InkLineInfo) -> void:
+	var tokens := tag.split(" ", false)
+	for token in tokens:
+		if ":" in token:
+			var kv := token.split(":", false, 1)
+			var key := kv[0]
+			var value := kv[1]
+			line_info.metadata[key] = value
+		else:
+			line_info.tags.push_back(token)
+			
+
 func match_eval_cmd(new_container : InkContainer, path : String, next:Variant) -> bool:
 	var was_command : bool = true
 	match (next):
@@ -105,6 +120,15 @@ func match_eval_cmd(new_container : InkContainer, path : String, next:Variant) -
 			evaluation_mode = true
 		"/ev":
 			evaluation_mode = false
+		"#":
+			tag_evaluation_mode = true
+		"/#":
+			assert(len(new_container.dialogue_lines) > 0, "Encountered tag, but no line to add tag to")
+			var last_line: InkLineInfo = new_container.dialogue_lines[-1]
+			assert(last_line != null, "Tried to add tag to a container")
+			_add_tag_to_line_info(last_line)
+			tag = ""
+			tag_evaluation_mode = false
 		"str":
 			string_evaluation_mode = true
 		"/str":
@@ -130,7 +154,8 @@ func match_eval_cmd(new_container : InkContainer, path : String, next:Variant) -
 func classify_line(arr_index : int, new_container : InkContainer, next : Variant) -> void:
 	var path : String = new_container.path + "." + str(arr_index)
 	new_container.total_nodes_inclusive += 1;
-	if match_eval_cmd(new_container, path, next): return #if it's a command
+	if match_eval_cmd(new_container, path, next):
+		return
 
 	# NESTING
 	if next is Array: #means there is a branch condition (either a choice or something condition-based)
@@ -149,10 +174,12 @@ func classify_line(arr_index : int, new_container : InkContainer, next : Variant
 		var next_str : String = next
 		if next_str[0] == '^': #is string
 			next_str = next_str.substr(1)
-			if next_str.replace(" ", "").length() == 0: #if it is just empty space
+			if next_str.strip_edges().is_empty():
 				return
 			if string_evaluation_mode: #string eval mode takes precedence
 				string_eval_stream = string_eval_stream + next_str
+			elif tag_evaluation_mode:
+				tag += next_str
 			else:
 				var line_info : InkLineInfo = break_up_dialogue(new_container, path, next_str) #returns {"speaker":char_name, "text":dialogue_text}
 				# if line_info.parent_container:

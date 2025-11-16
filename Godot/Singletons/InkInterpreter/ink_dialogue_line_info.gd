@@ -2,6 +2,8 @@ class_name InkLineInfo extends InkNode
 
 var speaker : String
 var text : String
+var tags: Array[String] = []
+var metadata: Dictionary[String, String] = {}
 
 func _init( 
 	_parent_container: InkContainer,

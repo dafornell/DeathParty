@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ibs6xbf36j7"]
+[gd_scene load_steps=23 format=3 uid="uid://ibs6xbf36j7"]
 
 [ext_resource type="Script" uid="uid://hxb8rnfqqsl" path="res://Assets/GUIPrefabs/PhonePrefabs/MessageAppAssets/message_app_dialogue_box.gd" id="1_pesbb"]
 [ext_resource type="PackedScene" uid="uid://g8mue586ud5x" path="res://Assets/GUIPrefabs/DialogueLinePrefabs/dialogue_line_text_message_protag.tscn" id="2_det87"]
@@ -9,10 +9,12 @@
 [ext_resource type="PackedScene" uid="uid://jwdi6yghs0j5" path="res://Assets/GUIPrefabs/DialogueLinePrefabs/dialogue_line_text_message.tscn" id="3_y6bpy"]
 [ext_resource type="FontFile" uid="uid://boycxonuwk8ms" path="res://Assets/Fonts/Jaro/Jaro-Regular-VariableFont_opsz.ttf" id="4_4k43y"]
 [ext_resource type="Texture2D" uid="uid://gtqlae4reefa" path="res://Assets/PhoneTextures/messages_backer.png" id="4_bhp3y"]
+[ext_resource type="PackedScene" uid="uid://2o1oksu3fj2q" path="res://Assets/GUIPrefabs/DialogueLinePrefabs/dialogue_line_typing_indicator.tscn" id="4_oh8qq"]
 [ext_resource type="FontFile" uid="uid://djdb1gk0322b" path="res://Assets/Fonts/Jaro/static/Jaro-Regular.ttf" id="4_ojvwc"]
 [ext_resource type="Script" uid="uid://bffdpcyyowj58" path="res://Assets/GUIDesignScripts/scroll_container.gd" id="4_q2qpm"]
 [ext_resource type="PackedScene" uid="uid://bbdcge3tqhcpw" path="res://Assets/GUIPrefabs/ChoicePrefabs/choice_button_text_message.tscn" id="4_y6bpy"]
 [ext_resource type="Texture2D" uid="uid://da7cbng1hddfn" path="res://Assets/PhoneTextures/back_arrow_chats.png" id="5_jgsn4"]
+[ext_resource type="PackedScene" uid="uid://c0qymarirfxa0" path="res://Assets/GUIPrefabs/DialogueLinePrefabs/protag_typing_indicator.tscn" id="5_qioer"]
 [ext_resource type="Texture2D" uid="uid://dofbdwec2q72h" path="res://Assets/PhoneTextures/chat_separators.png" id="5_skhv3"]
 [ext_resource type="Script" uid="uid://dehejbaawpqyj" path="res://Assets/GUIFunctionalityScripts/clock.gd" id="5_wopup"]
 [ext_resource type="Texture2D" uid="uid://ddiut72q13vxf" path="res://Assets/PhoneTextures/text_box_outline_chats.png" id="11_wopup"]
@@ -42,6 +44,8 @@ choice_container = NodePath("HBoxContainer/MessagePanel/TextsArea/Choices")
 touch_screen = NodePath("HBoxContainer/MessagePanel/TextsArea/TouchScreen")
 text_message_prefab_protag = ExtResource("2_det87")
 text_message_prefab_npc = ExtResource("3_y6bpy")
+text_message_typing_indicator = ExtResource("4_oh8qq")
+text_message_typing_indicator_protag = ExtResource("5_qioer")
 choice_prefab = ExtResource("4_y6bpy")
 
 [node name="Background" type="ColorRect" parent="."]
@@ -235,7 +239,7 @@ anchors_preset = -1
 anchor_left = 0.03
 anchor_top = 0.15
 anchor_right = 0.97
-anchor_bottom = 0.85
+anchor_bottom = 0.82
 offset_left = 4.57764e-05
 grow_horizontal = 2
 grow_vertical = 2

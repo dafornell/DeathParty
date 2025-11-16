@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://0w2paq30hhop"]
+
+[ext_resource type="Script" uid="uid://bebwrelfi484y" path="res://Singletons/VoiceLinePlayer/voice_line_player.gd" id="1_6wq8f"]
+
+[node name="VoiceLinePlayer" type="Node"]
+script = ExtResource("1_6wq8f")

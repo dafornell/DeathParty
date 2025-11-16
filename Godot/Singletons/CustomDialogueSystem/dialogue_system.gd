@@ -67,6 +67,9 @@ func show_dialogue_box(in_phone : bool) -> void:
 
 func begin_dialogue(file : JSON, in_phone : bool = false) -> void:
 	assert(file != null, "You forgot to assign a JSON file!")
+	if GuiSystem.in_title_screen:
+		await Events.title_screen_start_game_button_pressed
+	
 	if in_dialogue:
 		print("In dialogue already")
 		pause_dialogue()
@@ -202,6 +205,7 @@ func display_content() -> void:
 		else:
 			current_dialogue_box.add_line(line)
 			current_conversation.push_back(line)
+			Events.dialogue_line_displayed.emit(line)
 	elif content[0] is InkChoiceInfo:
 		var choices : Array[InkChoiceInfo] = []
 		for choice : InkChoiceInfo in content:

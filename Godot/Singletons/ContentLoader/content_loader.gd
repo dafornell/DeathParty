@@ -7,7 +7,8 @@ var player_file : PackedScene = preload("res://Entities/player.tscn")
 var player_aabb : AABB
 var player_spawn_pos : Vector3
 
-var scene_teleport_pos : Vector3
+var scene_teleport_pos_valid := false
+var scene_teleport_pos: Vector3
 
 var scene_data_dict : Dictionary[Globals.SCENES, LoadableScene] = {}
 var cell_grids : Dictionary[Globals.SCENES, Vector3] = {
@@ -36,7 +37,13 @@ signal finished_loading
 signal added_scene
 signal switched_scene
 
+const SAVE_KEY_SCENE := "scene"
+const SAVE_KEY_SPAWN_POINT := "scene_spawn_point"
+
 func _ready() -> void:
+	SaveSystem.pre_save.connect(_save_system_pre_save)
+	SaveSystem.loaded.connect(_save_system_loaded)
+	
 	print(tree.get_nodes_in_group("loadable_scene"))
 	if main_node:
 		main_node_data = GameObject.new(main_node)
@@ -50,14 +57,41 @@ func _ready() -> void:
 			on_node_added(node)
 			
 	tree.node_added.connect(on_node_added)
+
+func _save_system_pre_save() -> void:
+	SaveSystem.data.set(SAVE_KEY_SCENE, active_scene_enum)
+	if scene_teleport_pos_valid:
+		SaveSystem.data.set(SAVE_KEY_SPAWN_POINT, {
+			"x": scene_teleport_pos.x,
+			"y": scene_teleport_pos.y,
+			"z": scene_teleport_pos.z,
+		})
+
+func _save_system_loaded() -> void:
+	if not loaded:
+		await finished_loading
+	var saved_scene := Globals.SCENES.Bedroom
+	saved_scene = SaveSystem.data.get(SAVE_KEY_SCENE, Globals.SCENES.Bedroom)
+	if SAVE_KEY_SPAWN_POINT in SaveSystem.data:
+		var pos_dict: Dictionary = SaveSystem.data.get(SAVE_KEY_SPAWN_POINT)
+		var x: float = pos_dict.get("x")
+		var y: float = pos_dict.get("y")
+		var z: float = pos_dict.get("z")
+		var teleport_pos := Vector3(x, y, z)
+		scene_loader_teleport_position(saved_scene, teleport_pos)
+		return
 	
+	if saved_scene != active_scene_enum:
+		direct_teleport_player(saved_scene)
+		
+
 func on_finished_loading_scenes() -> void:
 	##Make sure they are all loaded
 	if scene_data_dict.keys().size() < loadable_scenes_size: return
 	for scene_enum : Globals.SCENES in scene_data_dict:
 		scene_data_dict[scene_enum].set_teleport_points()
 	load_player()
-	direct_teleport_player(og_scene_enum)
+	_save_system_loaded()
 	finished_loading.emit()
 	
 func get_scene(scene_enum : Globals.SCENES) -> LoadableScene:
@@ -157,14 +191,18 @@ func offload_old_scene() -> void:
 ##END LOADING/OFFLOADING
 
 ##TELEPORTING
-func scene_loader_teleport(scene_enum : Globals.SCENES, new_position : TeleportPointData) -> void:
+func scene_loader_teleport(scene: Globals.SCENES, teleport: TeleportPointData) -> void:
+	scene_loader_teleport_position(scene, teleport.teleport_pos)
+
+func scene_loader_teleport_position(scene: Globals.SCENES, teleport_pos: Vector3) -> void:
 	var screen_tween : Tween = GuiSystem.fade_loading_screen_in()
 	screen_tween.finished.connect(func() -> void:
-		scene_teleport_pos = new_position.teleport_pos
-		var scene : Node3D = load_scene(scene_enum)
-		scene.ready.connect(func() -> void:
-			print("Teleporting player to ", Globals.get_scene_name(scene_enum))
-			player.global_position = new_position.teleport_pos
+		scene_teleport_pos = teleport_pos
+		scene_teleport_pos_valid = true
+		var scene_instance : Node3D = load_scene(scene)
+		scene_instance.ready.connect(func() -> void:
+			print("Teleporting player to ", Globals.get_scene_name(scene))
+			player.global_position = teleport_pos
 			player.spawn_position = player.global_position
 			GlobalCameraScript.move_camera_jump.emit()
 			

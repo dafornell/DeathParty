@@ -18,10 +18,11 @@ emission_texture = ExtResource("5_n5nax")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wsr1g"]
 
-[node name="NPC" instance=ExtResource("1_mky6d")]
+[node name="NPC" node_paths=PackedStringArray("npc_interact_popup") instance=ExtResource("1_mky6d")]
 script = ExtResource("2_wsr1g")
 character_resource = null
 dialogue_box = ExtResource("3_n5nax")
+npc_interact_popup = NodePath("Popup")
 
 [node name="Popup" parent="." index="0" instance=ExtResource("2_hnw2t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.15, 2, 0)

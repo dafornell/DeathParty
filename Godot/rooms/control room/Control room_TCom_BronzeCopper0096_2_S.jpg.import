@@ -2,15 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cle7hy6g6cs7i"
+uid="uid://chk06ycs6unv8"
 path.s3tc="res://.godot/imported/Control room_TCom_BronzeCopper0096_2_S.jpg-8bff278da0de79d4c0f479766f815758.s3tc.ctex"
 path.etc2="res://.godot/imported/Control room_TCom_BronzeCopper0096_2_S.jpg-8bff278da0de79d4c0f479766f815758.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "62a9a0a6149b42f6cf653c430ff72650"
 }
 
 [deps]

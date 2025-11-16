@@ -1,152 +1,73 @@
 extends Node
 
-enum SaveSlots {
-	ONE,
-	TWO,
-	THREE,
-}
+@export var blank_save_file: SaveFile
+@export var _save_icon: SaveIcon
 
-var active_save_slot : SaveSlots
 var active_save_file : SaveFile
-var player_data : PlayerData
+var player_data: PlayerData:
+	get: 
+		return active_save_file.player_data
 
-##START DATA
-#Phone chats depend on Characters so load Characters first
-const DIRECTORIES : Dictionary[String, String] = {
-	TASKS = "res://Singletons/SaveSystem/DefaultResources/TaskResources/",
-	CHARACTERS = "res://Singletons/SaveSystem/DefaultResources/CharacterResources/",
-	TALKING_OBJECTS = "res://Singletons/SaveSystem/DefaultResources/TalkingObjectResources/",
-	PHONE_CHATS = "res://Singletons/SaveSystem/DefaultResources/ChatResources/",
-	INVENTORY_ITEMS = "res://Singletons/SaveSystem/DefaultResources/InventoryItemResources/",
-	JOURNAL_ITEMS = "res://Singletons/SaveSystem/DefaultResources/JournalItemResources/",
-}
-const DIRECTORIES_TO_DICTIONARIES : Dictionary[String, String] = {
-	DIRECTORIES.TASKS : "tasks",
-	DIRECTORIES.CHARACTERS : "characters",
-	DIRECTORIES.TALKING_OBJECTS : "talking_objects",
-	DIRECTORIES.PHONE_CHATS : "phone_chats",
-	DIRECTORIES.INVENTORY_ITEMS : "inventory_items",
-	DIRECTORIES.JOURNAL_ITEMS : "journal_items",
-}
-const SLOT_TO_PATH : Dictionary[SaveSlots, String] = {
-	SaveSlots.ONE: "Singletons/SaveSystem/SaveFiles/File1/save_file.tres",
-	SaveSlots.TWO: "Singletons/SaveSystem/SaveFiles/File2/save_file.tres",
-	SaveSlots.THREE: "Singletons/SaveSystem/SaveFiles/File3/save_file.tres",
-}
-##END DATA
+var data: Dictionary:
+	get: return player_data.extra_data
 
-#For creating new save files
-var blank_save_file : SaveFile = load("res://Singletons/SaveSystem/DefaultResources/save_file.tres")
-#For creating new inventory items at runtime (e.g. taking polaroids)
-const default_inventory_item_resource : InventoryItemResource = preload("res://Singletons/SaveSystem/DefaultResources/InventoryItemResources/Default Resource (DO NOT EDIT)/inventory_item_properties.tres")
+const save_file_location := "user://save.tres"
+
+## If false, only stores save data in memory, and never interacts with filesystem
+var saving_enabled := true
+var loading_enabled := true
 
 signal time_changed
-signal stats_changed
-signal inventory_changed(addremove : String, item : InventoryItemResource)
+signal inventory_changed(addremove: String, item: InventoryItemResource)
 signal tasks_changed
+signal pre_save
 signal loaded
 
+const dev_settings_section := "save_system"
+const dev_settings_saving_enabled_key := "saving_enabled"
+const dev_settings_loading_enabled_key := "loading_enabled"
+
 func _ready() -> void:
-	#Check if there is an existing save file (if not, a new one will be created at SaveSlots.ONE)
-	if FileAccess.file_exists(SLOT_TO_PATH[SaveSlots.ONE]):
-		active_save_slot = SaveSlots.ONE
-	elif FileAccess.file_exists(SLOT_TO_PATH[SaveSlots.TWO]):
-		active_save_slot = SaveSlots.TWO
-	elif FileAccess.file_exists(SLOT_TO_PATH[SaveSlots.THREE]):
-		active_save_slot = SaveSlots.THREE
-	else:
-		active_save_slot = SaveSlots.ONE
+	DevSettings.ensure_loaded()
+	saving_enabled = DevSettings.config.get_value(
+		dev_settings_section,
+		dev_settings_saving_enabled_key,
+		true
+	)
+	loading_enabled = DevSettings.config.get_value(
+		dev_settings_section,
+		dev_settings_loading_enabled_key,
+		true
+	)
+	
+	load_from_disk()
 
-	load_active_save_file()
+func save_to_disk() -> void:
+	pre_save.emit()
+	if saving_enabled:
+		active_save_file.save_to_filesystem()
+		_save_icon.show_icon()
 
-func update_save_file(file : SaveFile) -> void:
-	for directory_name : String in DIRECTORIES:
-		var directory : String = DIRECTORIES[directory_name]
-		var dictionary_name : String = DIRECTORIES_TO_DICTIONARIES[directory]
-		var dictionary : Dictionary = file[dictionary_name]
-		load_into_dictionary(directory, dictionary)
+func _init_save_file() -> void:
+	active_save_file = blank_save_file.duplicate(true)
+	active_save_file.load_from_resources()
 
-#SAVE/LOAD
-func save_data() -> void:
-	ResourceSaver.save(active_save_file, SLOT_TO_PATH[active_save_slot])
-
-func save_data_to_slot(slot : SaveSlots) -> void:
-	var slot_path : String = SLOT_TO_PATH[slot]
-	ResourceSaver.save(active_save_file, slot_path)
-
-func load_file_from_slot(slot : SaveSlots) -> void:
-	active_save_slot = slot
-	load_active_save_file()
-
-func load_active_save_file() -> void:
-	if !FileAccess.file_exists(SLOT_TO_PATH[active_save_slot]):
-		## if no file found, create one
-		var clone : SaveFile = blank_save_file.duplicate(true)
-		ResourceSaver.save(clone, SLOT_TO_PATH[active_save_slot])
-
-	active_save_file = ResourceLoader.load(SLOT_TO_PATH[active_save_slot])
-	update_save_file(active_save_file)
-	player_data = active_save_file.player_data
-	load_inventory()
+func create_new_save() -> void:
+	_init_save_file()
+	save_to_disk()
 	loaded.emit()
-##END SAVE/LOAD
 
-func load_into_dictionary(address : String, dict : Dictionary) -> void:
-	print("Loading into dict: ", address)
-	## To clear out any extra keys (such as old items that don't exist anymore),
-	## keep track of the mentioned keys here and check against dict afterward
-	var dict_keys : Array[String] = []
-	var dir : DirAccess = DirAccess.open(address)
-	dir.list_dir_begin()
-	var file_name : String = dir.get_next()
-	if dir:
-		while file_name != "":
-			if !dir.current_is_dir():
-				var file : DefaultResource = load(address + file_name)
-				if file == null: continue
-				var filename : String = file.name
-				dict_keys.push_back(filename)
-				if !dict.has(filename):
-					dict[filename] = file.duplicate(true)
-					var rsc : DefaultResource = dict[filename]
-					rsc.initialize()
-			file_name = dir.get_next()
-	else:
-		print("An error occurred when trying to access the directory " + address)
-	
-	#remove old entries
-	for key : String in dict:
-		if !(key in dict_keys):
-			dict.erase(key)
-
-## New inventory items (like snapped polaroids)
-func create_new_item(item_name:String, description:String, node:Node3D) -> void:
-	if key_exists(item_name):
-		print("Item ", item_name, " already exists!")
-		return
-	#save node as scene
-	var scene_save_path : String = "res://Assets/props/inventory_items/" + name + ".tscn"
-	if !FileAccess.file_exists(scene_save_path):
-		var scene : PackedScene = PackedScene.new()
-		scene.pack(node)
-		ResourceSaver.save(scene, scene_save_path)
-	var saved_scene : PackedScene = load(scene_save_path)
-	#assign scene to new resource
-	var resource : InventoryItemResource = default_inventory_item_resource.duplicate()
-	resource.name = name
-	resource.description = description
-	resource.model = saved_scene
-	
-	var resource_save_path : String = DIRECTORIES.INVENTORY_ITEMS + name + ".tres"
-	ResourceSaver.save(resource, resource_save_path)
-	active_save_file.inventory_items[name] = load(resource_save_path)
-	active_save_file.inventory_items[name].amount_owned = 0
+func load_from_disk() -> void:
+	_init_save_file()
+	if loading_enabled:
+		active_save_file.try_load_from_filesystem()
+	loaded.emit()
 
 func load_inventory() -> void: 
-	#Make sure player has an entry for each possible item
-	#add in any new items
-	for item_name : String in active_save_file.inventory_items:
-		if !player_data.journal_entries.has(item_name):
+	# Make sure player has an entry for each possible item
+	# add in any new items
+	for item_name: String in active_save_file.inventory_items:
+		if not player_data.journal_entries.has(item_name):
 			player_data.journal_entries[item_name] = false
 
 #TYPE SAFETY
@@ -207,10 +128,6 @@ func set_key(key:String, value:Variant) -> void:
 			value = false
 	print("set key function: ", key, " value: ", value)
 	player_data.variable_dict[key] = value
-	if key == "time":
-		time_changed.emit(value)
-	else:
-		stats_changed.emit(key, value)
 	
 func increment(key:String) -> void:
 	set_key(key, player_data.variable_dict[key]+1) #will also emit signal
