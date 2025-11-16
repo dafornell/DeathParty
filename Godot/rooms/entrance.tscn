@@ -1,9 +1,8 @@
-[gd_scene load_steps=116 format=4 uid="uid://d3uev5wxhcoe1"]
+[gd_scene load_steps=117 format=4 uid="uid://d3uev5wxhcoe1"]
 
 [ext_resource type="Script" uid="uid://b8ij6ghpwhgox" path="res://rooms/entrance.gd" id="1_3k57g"]
 [ext_resource type="Texture2D" uid="uid://cn8ag1br2becc" path="res://Assets/textures/entrance_room_environment/entrance room layout_big floor.png" id="3_ekhf5"]
 [ext_resource type="Texture2D" uid="uid://crk0vj8w35rm1" path="res://Assets/textures/entrance_room_props/entrance wall_MAT_wallpaper_DIFFUSE.png" id="3_t7spl"]
-[ext_resource type="Texture2D" uid="uid://6sxva7xhuvix" path="res://Assets/pop_ups/EnterArrowRight.png" id="4_f4d3f"]
 [ext_resource type="Script" uid="uid://gq7614xvk2hc" path="res://Utilities/spawn_point.gd" id="4_pvy67"]
 [ext_resource type="PackedScene" uid="uid://gvcvg7qptl0c" path="res://Assets/environment/entrance_room_wall.tscn" id="4_tmedt"]
 [ext_resource type="Texture2D" uid="uid://wmjauu70t6b1" path="res://Assets/textures/entrance_room_environment/entrance room layout_IMG_4162.png" id="5_8jruo"]
@@ -49,7 +48,9 @@
 [ext_resource type="PackedScene" uid="uid://s3crydfiatmy" path="res://Assets/CharacterAssets/cone_ghost/cone_ghost.tscn" id="46_ihq26"]
 [ext_resource type="PackedScene" uid="uid://bagpax3yb0uf7" path="res://Assets/CharacterAssets/christmas_tree/christmas_tree.tscn" id="47_yqsuh"]
 [ext_resource type="PackedScene" uid="uid://b5sjjc5i61576" path="res://Singletons/ContentLoader/TeleportPoint.tscn" id="49_a6eg1"]
+[ext_resource type="Script" uid="uid://bea7y4hurcesx" path="res://Utilities/scripts/interactable.gd" id="49_bg7u6"]
 [ext_resource type="PackedScene" uid="uid://csh7q4aonjs3d" path="res://Assets/CharacterAssets/frat_boys/red_hat_frat_boy/Frat boy red hat.glb" id="49_cygoc"]
+[ext_resource type="PackedScene" uid="uid://c1vyk1h1qwesf" path="res://Common/Popup UI/npc_bark_popup.tscn" id="50_ylx8s"]
 [ext_resource type="PackedScene" uid="uid://eyb48ss6xfgu" path="res://Assets/CharacterAssets/shy_girl/shy_girl.tscn" id="51_1e4ar"]
 [ext_resource type="Texture2D" uid="uid://dut3t6ajv8wp" path="res://Assets/textures/entrance_room_environment/two doors_IMG_4472.png" id="51_f4d3f"]
 [ext_resource type="PackedScene" uid="uid://bte4agxfg1yhm" path="res://Assets/CharacterAssets/frat_boys/Long_Hair_frat_boy/Frat boy long hair.glb" id="51_t3a1b"]
@@ -749,6 +750,9 @@ target_scene = 9
 local_spawn_point = 1
 play_door_sound = true
 
+[node name="DoorSound" parent="SceneLoader_Exterior" index="0"]
+event_name = "event:/000_SFX/100_Environment/door"
+
 [node name="Popup" parent="SceneLoader_Exterior" index="1"]
 texture = null
 
@@ -761,6 +765,9 @@ target_scene = 10
 play_door_sound = true
 use_first_mesh = true
 
+[node name="DoorSound" parent="SceneLoader_Kitchen" index="0"]
+event_name = "event:/000_SFX/100_Environment/door"
+
 [node name="Popup" parent="SceneLoader_Kitchen" index="1"]
 transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0, 2, 1.25)
 
@@ -772,6 +779,9 @@ shape = SubResource("BoxShape3D_f4d3f")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -4.96324)
 interactable = false
 target_scene = 3
+
+[node name="DoorSound" parent="SceneLoader_PartyRoom" index="0"]
+event_name = "event:/000_SFX/100_Environment/door"
 
 [node name="Popup" parent="SceneLoader_PartyRoom" index="1"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 1, 0)
@@ -787,9 +797,11 @@ target_scene = 6
 play_door_sound = true
 use_first_mesh = true
 
+[node name="DoorSound" parent="SceneLoader_Basement" index="0"]
+event_name = "event:/000_SFX/100_Environment/door"
+
 [node name="Popup" parent="SceneLoader_Basement" index="1"]
 transform = Transform3D(-4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, 0, 1, 2)
-texture = ExtResource("4_f4d3f")
 
 [node name="InteractionDetector" parent="SceneLoader_Basement" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0123334, 0.0255487, -0.312664)
@@ -1610,10 +1622,15 @@ transform = Transform3D(0.699775, 0, -0.714363, 0, 1, 0, 0.714363, 0, 0.699775, 
 [node name="chi omega2" parent="NPCs" instance=ExtResource("45_la1vu")]
 transform = Transform3D(-0.252289, 0, 0.967652, 0, 1, 0, -0.967652, 0, -0.252289, -2.59934, 4.58581, -3.70973)
 
-[node name="Frat boy red hat" parent="NPCs" instance=ExtResource("49_cygoc")]
+[node name="Frat boy red hat" type="Node3D" parent="NPCs" node_paths=PackedStringArray("bark_popup")]
 transform = Transform3D(0.661547, 0, -0.749903, 0, 1, 0, 0.749903, 0, 0.661547, 8.29458, 0.0127136, 8.69468)
+script = ExtResource("49_bg7u6")
+bark_popup = NodePath("BarkPopup")
+metadata/_custom_type_script = "uid://bea7y4hurcesx"
 
-[node name="Skeleton3D" parent="NPCs/Frat boy red hat/Frat bro red hat" index="0"]
+[node name="Frat boy red hat" parent="NPCs/Frat boy red hat" instance=ExtResource("49_cygoc")]
+
+[node name="Skeleton3D" parent="NPCs/Frat boy red hat/Frat boy red hat/Frat bro red hat" index="0"]
 bones/0/position = Vector3(-0.617108, -30.4216, -64.9034)
 bones/0/rotation = Quaternion(-0.876723, 0.0504048, -0.0255086, 0.477668)
 bones/1/rotation = Quaternion(0.0512295, -0.00681319, -0.0046528, 0.998653)
@@ -1713,8 +1730,11 @@ bones/61/rotation = Quaternion(-0.766254, -0.049752, -0.00703735, 0.64057)
 bones/62/rotation = Quaternion(0.446909, -0.0495294, -0.0822152, 0.889416)
 bones/63/rotation = Quaternion(0.390428, 0.249392, -0.0498785, 0.884806)
 
-[node name="AnimationPlayer" parent="NPCs/Frat boy red hat" index="1"]
+[node name="AnimationPlayer" parent="NPCs/Frat boy red hat/Frat boy red hat" index="1"]
 autoplay = "sitt bored"
+
+[node name="BarkPopup" parent="NPCs/Frat boy red hat" instance=ExtResource("50_ylx8s")]
+transform = Transform3D(0.24999999, 0, -2.9802322e-08, 0, 0.25, 0, 2.9802322e-08, 0, 0.24999999, -0.30103874, 1.7005143, -0.37756348)
 
 [node name="cone ghost" parent="NPCs" instance=ExtResource("46_ihq26")]
 transform = Transform3D(0.232546, 0, -0.972585, 0, 1, 0, 0.972585, 0, 0.232546, 5.01882, -0.00239445, 1.40468)
@@ -2199,7 +2219,7 @@ transform = Transform3D(1.28783, 0, 0.000274488, 0, 0.828329, 0, -0.000426944, 0
 [editable path="Chandeliers/Chandelier"]
 [editable path="Chandeliers/Chandelier2"]
 [editable path="NPCs/free hug2"]
-[editable path="NPCs/Frat boy red hat"]
+[editable path="NPCs/Frat boy red hat/Frat boy red hat"]
 [editable path="NPCs/Frat boy long hair"]
 [editable path="NPCs/Frat boy long hair2"]
 [editable path="NPCs/Shy Girl"]
