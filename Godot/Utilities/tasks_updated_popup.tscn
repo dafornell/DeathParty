@@ -5,10 +5,11 @@
 [ext_resource type="StyleBox" uid="uid://y5gl84pfh3gf" path="res://Utilities/tutorial/input_indicator_stylebox.tres" id="2_55r10"]
 [ext_resource type="LabelSettings" uid="uid://dnyu206aslan5" path="res://Utilities/tutorial/input_indicator_description_label_settings.tres" id="3_se15b"]
 
-[node name="TasksUpdatedPopup" type="CanvasLayer" node_paths=PackedStringArray("timer", "popup")]
+[node name="TasksUpdatedPopup" type="CanvasLayer" node_paths=PackedStringArray("timer", "popup", "sound")]
 script = ExtResource("1_55r10")
 timer = NodePath("Timer")
 popup = NodePath("TasksUpdatedPopup")
+sound = NodePath("PencilScribbleSound")
 
 [node name="InputIndicator" parent="." instance=ExtResource("1_uoikw")]
 visible = false
@@ -47,5 +48,10 @@ uppercase = true
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
+
+[node name="PencilScribbleSound" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/000_SFX/300_UI/PencilScribble"
+event_guid = "{07aea46c-ce87-46b9-9124-ec37393a3a3f}"
+volume = 0.5
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
