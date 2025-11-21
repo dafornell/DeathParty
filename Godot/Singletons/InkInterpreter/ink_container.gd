@@ -10,9 +10,12 @@ var dialogue_lines : Array[InkNode] ## could be InkLineInfo or InkContainer
 var total_nodes_inclusive : int
 var dialogue_choices : Array[InkChoiceInfo] ## InkChoice info
 var redirects : Dictionary[String, InkContainer]
-var visits : int = 0
+var visits : int :
+	get:
+		return get_save_variable("visits")
 
 func _init(
+	_parent_filepath : String,
 	_parent_container: InkContainer,
 	_name : String,
 	_path : String, 
@@ -20,13 +23,19 @@ func _init(
 	is_redirect : bool = false,
 ) -> void:
 	#print("Initial container names: ", _name)
-	super(_parent_container, _path, _evaluation_stacks)
+	super(_parent_filepath, _parent_container, _path, _evaluation_stacks)
 	name = _name
 	if parent_container:
 		if is_redirect:
 			parent_container.redirects[self.name] = self
 		else:
 			parent_container.dialogue_lines.push_back(self)
+	
+	load_save_variable("visits", 0)
+
+func visit() -> void:
+	print("Visited new container: ", path)
+	set_save_variable("visits", visits+1)
 
 func tostring() -> String:
 	var export_str : String = "------CONTAINER " + name + " at " + path + ":\n"

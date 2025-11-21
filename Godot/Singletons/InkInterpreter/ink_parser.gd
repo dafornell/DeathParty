@@ -43,13 +43,16 @@ func push(item : Variant) -> void:
 	evaluation_stack_items.push_back(item)
 
 class InkParseInfo:
+	var tree : InkTree
 	var speaker : String
 	var text_components : Array[String] = []
 	var condition_stacks : Array[Array] = []
 	var parent_container : InkContainer
 	var path : String
-	func _init(_parent_container : InkContainer, _path : String) -> void:
+	func _init(_tree : InkTree, _parent_container : InkContainer, _path : String) -> void:
 		InkParser.line_string_eval_mode = true
+
+		tree = _tree
 		speaker = ""
 		parent_container = _parent_container
 		path = _path
@@ -68,14 +71,14 @@ class InkParseInfo:
 			#Automatically pushes itself to choices array
 			#no redirect path required because it is only used as flavor text to the choices UI
 			var choice_info_text : String = text_components[0]
-			InkChoiceInfo.new(parent_container, path, choice_info_text, "")
+			InkChoiceInfo.new(tree.filepath, parent_container, path, choice_info_text, "")
 		else:
-			InkLineInfo.new(parent_container, path, speaker, text_components, condition_stacks)
+			InkLineInfo.new(tree.filepath, parent_container, path, speaker, text_components, condition_stacks)
 
-func start_constructing_line(parent_container : InkContainer, path : String) -> bool:
+func start_constructing_line(tree : InkTree, parent_container : InkContainer, path : String) -> bool:
 	var new_line : bool = line_string_eval_mode == false
 	if (new_line):
-		line_in_construction = InkParseInfo.new(parent_container, path)
+		line_in_construction = InkParseInfo.new(tree, parent_container, path)
 
 	return new_line
 
@@ -103,10 +106,13 @@ class InkParseContainer:
 		elif parent_container:
 			path = parent_container.path + "." + name
 		else:
-			path = "0"
+			path = name
 
 		# Will automatically parent itself to parent_container if not null
-		var new_ink_container : InkContainer = InkContainer.new(parent_container, name, path, [], is_redirect)
+		var filepath : String = ""
+		if tree:
+			filepath = tree.filepath
+		var new_ink_container : InkContainer = InkContainer.new(filepath, parent_container, name, path, [], is_redirect)
 		
 		#Find redirect table
 		var last_element : Variant = root[root.size()-1]
@@ -118,7 +124,7 @@ class InkParseContainer:
 					if !(last_dict[other_container_name] is Array): continue
 					var other_container : Array = last_dict[other_container_name]
 					InkParseContainer.new( 
-						null,
+						tree,
 						new_ink_container, 
 						other_container_name, 
 						other_container,
@@ -129,7 +135,7 @@ class InkParseContainer:
 		# Assign contents
 		var arr_index : int = 0
 		for item : Variant in root:
-			InkParser.classify_line(arr_index, new_ink_container, item)
+			InkParser.classify_line(inktree, arr_index, new_ink_container, item)
 			arr_index += 1
 
 		# Add to InkTree if no parent container
@@ -137,13 +143,13 @@ class InkParseContainer:
 			tree.containers[name] = new_ink_container
 
 func parse(file : JSON) -> InkTree:
-	print("CONTAINER F PARSING -------------------------------")
+	print("CONTAINER PARSING -------------------------------")
 	## Convert from JSON to dict
 	var filepath : String = file.resource_path
 	var json_as_text : String = FileAccess.get_file_as_string(filepath)
 	json_dict = JSON.parse_string(json_as_text)
 
-	var new_tree : InkTree = InkTree.new()
+	var new_tree : InkTree = InkTree.new(filepath)
 
 	##ROOT
 	var root_container : Array = json_dict["root"][0]
@@ -167,9 +173,9 @@ func _add_tag_to_line_info(line_info: InkLineInfo) -> void:
 			line_info.metadata[key] = value
 		else:
 			line_info.tags.push_back(token)
-			
 
-func match_eval_cmd(new_container : InkContainer, path : String, next:Variant) -> bool:
+
+func match_eval_cmd(tree : InkTree, new_container : InkContainer, path : String, next:Variant) -> bool:
 	var was_command : bool = true
 	match (next):
 		"ev":
@@ -200,6 +206,7 @@ func match_eval_cmd(new_container : InkContainer, path : String, next:Variant) -
 			string_eval_stream = ""
 		"end":
 			InkLineInfo.new(
+					tree.filepath,
 					new_container,
 					path,
 					"System",
@@ -207,13 +214,14 @@ func match_eval_cmd(new_container : InkContainer, path : String, next:Variant) -
 				)
 		"nop":
 			InkLineInfo.new(
+					tree.filepath, 
 					new_container,
 					path,
 					"System",
 					["nop"],
 				)
 		"out":
-			var new_line : bool = start_constructing_line(new_container, path)
+			var new_line : bool = start_constructing_line(tree, new_container, path)
 			if (new_line):
 				print("Starting new line after the fact")
 				#lets InkLineInfo know you need to parse a condition stack to append onto the sentence
@@ -224,10 +232,10 @@ func match_eval_cmd(new_container : InkContainer, path : String, next:Variant) -
 			was_command = false
 	return was_command
 
-func classify_line(arr_index : int, new_container : InkContainer, next : Variant) -> void:
+func classify_line(tree: InkTree, arr_index : int, new_container : InkContainer, next : Variant) -> void:
 	var path : String = new_container.path + "." + str(arr_index)
 	new_container.total_nodes_inclusive += 1;
-	if match_eval_cmd(new_container, path, next):
+	if match_eval_cmd(tree, new_container, path, next):
 		return
 
 	# NESTING
@@ -235,7 +243,7 @@ func classify_line(arr_index : int, new_container : InkContainer, next : Variant
 		#print("Going into array: ", hierarchy)
 		var arr : Array = next
 		InkParseContainer.new(
-			null, # no InkTree b/c we want to parent it to current container
+			tree, # no InkTree b/c we want to parent it to current container
 			new_container, # this container
 			path, # name (anonymous bc it is not in a dictionary)
 			arr, # array root
@@ -259,7 +267,7 @@ func classify_line(arr_index : int, new_container : InkContainer, next : Variant
 			elif tag_evaluation_mode:
 				tag += next_str
 			else:
-				start_constructing_line(new_container, path)
+				start_constructing_line(tree, new_container, path)
 				break_up_dialogue(next_str) #returns {"speaker":char_name, "text":dialogue_text}
 			return
 
@@ -273,11 +281,11 @@ func classify_line(arr_index : int, new_container : InkContainer, next : Variant
 			if next is Dictionary:
 				var next_dict : Dictionary = next
 				if next_dict.has("VAR?"):
-					var variable_name : String = next["VAR="]
+					var variable_name : String = next["VAR?"]
 					push(SaveSystem.get_key(variable_name))
 				elif next_dict.has("VAR="):
 					var variable_name : String = next["VAR="]
-					print("Found variable named ", variable_name, " = ", SaveSystem.get_key(variable_name))
+					#print("Found variable named ", variable_name, " = ", SaveSystem.get_key(variable_name))
 					# don't reassign if already assigned
 					if !SaveSystem.key_exists(variable_name):
 						var new_value : Variant = pop()
@@ -330,8 +338,6 @@ func classify_line(arr_index : int, new_container : InkContainer, next : Variant
 			if next_dict.has("*"):
 				#Get choice text and any conditions that come with it (pushed on stack)
 				var choice_text : String = pop_of_type(TYPE_STRING)
-				#print("Choice text: ", string_eval_stream)
-				#string_eval_stream = ""
 
 				#Choice's redirect
 				var redirect_location : String = next_dict["*"]
@@ -357,6 +363,7 @@ func classify_line(arr_index : int, new_container : InkContainer, next : Variant
 					once_only = true
 				
 				InkChoiceInfo.new(
+					tree.filepath, 
 					new_container, 
 					path, 
 					choice_text,
@@ -373,9 +380,11 @@ func classify_line(arr_index : int, new_container : InkContainer, next : Variant
 				if next_dict.has("c"):
 					#condition = next_dict["c"]
 					eval_stack = evaluation_stack_items.duplicate()
+					print("Redirect has a condition! ", eval_stack)
 					evaluation_stack_items = []
 
 				InkRedirect.new(
+					tree.filepath, 
 					new_container, 
 					redirect,
 					path,
@@ -387,6 +396,7 @@ func classify_line(arr_index : int, new_container : InkContainer, next : Variant
 				eval_stack.push_back(next_dict)
 				evaluation_stack_items = []
 				InkLogicNode.new(
+					tree.filepath, 
 					new_container, 
 					path,
 					[eval_stack],

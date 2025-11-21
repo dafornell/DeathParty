@@ -5,6 +5,11 @@ var parent_container : InkContainer
 var path : String
 var all_evaluation_stacks : Array[Array]
 
+# SaveSystem variables
+var SAVE_SYSTEM_UID : String = ""
+var parent_filepath : String
+var save_variables : Dictionary[String, Variant]
+
 # At runtime
 const ALL_OPERATORS : Array[String] = ["+", "-", "/", "*", "%", "==", ">", "<", ">=", "<=", "!=", "!", "&&", "||", "MIN", "MAX"]
 var runtime_stack : Array = []
@@ -12,10 +17,12 @@ var runtime_stack : Array = []
 ##EVAL STACK FUNCTIONS
 func pop() -> Variant:
 	return runtime_stack.pop_back()
+
 func push(item : Variant) -> void:
 	runtime_stack.push_back(item)
 
 func _init(
+	_parent_filepath : String,
 	_container: InkContainer, 
 	_path : String, 
 	_all_evaluation_stacks: Array[Array], 
@@ -23,6 +30,36 @@ func _init(
 	parent_container = _container
 	path = _path
 	all_evaluation_stacks = _all_evaluation_stacks
+
+	parent_filepath = _parent_filepath
+	if parent_filepath != "":
+		parent_filepath = parent_filepath.substr(21)
+		SAVE_SYSTEM_UID = parent_filepath + "/" + path
+
+func validate_save_uid() -> void:
+	if parent_filepath != "":
+		SAVE_SYSTEM_UID = parent_filepath + path
+	assert(SAVE_SYSTEM_UID != "", "InkNode " + path + " is not connected to a .json filepath, so you cannot access its save data.")
+
+func load_save_variable(key : String, default_value : Variant) -> void:
+	validate_save_uid()
+	var KEY_ID : String = SAVE_SYSTEM_UID + "-" + key
+	if !SaveSystem.key_exists(KEY_ID):
+		SaveSystem.set_key(KEY_ID, 0)
+		save_variables[key] = default_value
+	else:
+		save_variables[key] = SaveSystem.get_key(KEY_ID)
+
+func set_save_variable(key : String, value : Variant) -> void:
+	validate_save_uid()
+	var KEY_ID : String = SAVE_SYSTEM_UID + "-" + key
+	save_variables[key] = value
+	SaveSystem.set_key(KEY_ID, value)
+
+func get_save_variable(key : String) -> Variant:
+	validate_save_uid()
+	var KEY_ID : String = SAVE_SYSTEM_UID + "-" + key
+	return SaveSystem.get_key(KEY_ID)
 
 func tostring() -> String:
 	var eval_stack_str : String = "Evaluation stack: \n"
@@ -85,16 +122,14 @@ func is_visible() -> bool:
 	var result : Variant = pop()
 	print("Result: ", result)
 
-	if (result is bool):
-		var bool_res : bool = result
-		return bool_res
-	else:
-		return true
+	if not (result is bool):
+		result = true
 	
 	runtime_stack = []
 	return result
 
 func logical_operation(current_operator : String) -> Variant:
+	print("Logical operation. Current stack: ", runtime_stack)
 	var arg1 : Variant = pop()
 	var arg2 : Variant = null
 	if current_operator != "!": # ! is a single argument function
@@ -104,9 +139,11 @@ func logical_operation(current_operator : String) -> Variant:
 func operate(op : String, arg1 : Variant, arg2 : Variant) -> Variant:
 	if arg2 != null:
 		if typeof(arg1) != typeof(arg2):
-			#puts them both in true or false terms
-			arg1 = !!arg1
-			arg2 = !!arg2
+			var number_mismatch : bool = (arg1 is int || arg1 is float) && (arg2 is int || arg2 is float)
+			if !number_mismatch:
+				#puts them both in true or false terms
+				arg1 = !!arg1
+				arg2 = !!arg2
 	#print("OPERATING: ", arg1, op, arg2)
 	var result : Variant#can be bool or number
 	match (op):
