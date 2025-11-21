@@ -38,7 +38,7 @@ func _init(
 
 func validate_save_uid() -> void:
 	if parent_filepath != "":
-		SAVE_SYSTEM_UID = parent_filepath + path
+		SAVE_SYSTEM_UID = parent_filepath + "/" + path
 	assert(SAVE_SYSTEM_UID != "", "InkNode " + path + " is not connected to a .json filepath, so you cannot access its save data.")
 
 func load_save_variable(key : String, default_value : Variant) -> void:

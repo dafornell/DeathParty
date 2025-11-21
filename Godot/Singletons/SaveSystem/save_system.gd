@@ -80,7 +80,9 @@ func key_exists_assert(key:String) -> void: # returns location of key & errors i
 
 func key_is_type(key:String, type:int, value:Variant) -> void: # errors if types don't match (passing type enum)
 	key_exists_assert(key)
-	assert(typeof(player_data.variable_dict[key])==type, "TYPE ERROR: " + key + " (current value: " + str(player_data.variable_dict[key]) + ") not of incoming type " + str(type) + " (current value: " + str(value) + ")")
+	var stored_value_type : int = typeof(player_data.variable_dict[key])
+	var number_mismatch : bool = (stored_value_type == TYPE_INT || stored_value_type == TYPE_FLOAT) && (type == TYPE_INT || type == TYPE_FLOAT)
+	assert(number_mismatch || stored_value_type==type, "TYPE ERROR: " + key + " (current value: " + str(player_data.variable_dict[key]) + ") not of incoming type " + str(type) + " (current value: " + str(value) + ")")
 
 func match_type(key:String, value:Variant) -> void: # errors if types don't match (passing new value)
 	key_is_type(key, typeof(value), value)
