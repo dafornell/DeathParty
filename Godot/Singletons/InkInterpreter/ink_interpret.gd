@@ -21,7 +21,7 @@ func from_JSON(json: JSON) -> void:
 	var container : InkContainer = tree.containers["root"]
 	var index : int = 0
 	address = InkAddress.new(tree, container, index)
-	print("Start address: ", address.container.name, ", ", address.index)
+	print("----------- INTERPRET -- Start address: ", address.container.name, ", ", address.index)
 
 func from_address(_address : InkAddress) -> void:
 	address = _address
@@ -52,17 +52,29 @@ func add_new_to_cache(filepath : String, tree : InkTree) -> void:
 
 func get_content() -> Array[InkNode]:
 	var nodes : Array[InkNode] = address_to_node(address)
-	print("GetContent() Address: ", address.container.path, ".", address.index)
+	
 	address.index += 1
 	if nodes.is_empty():
+		print("Node is empty, skipping")
 		return get_content()
 
 	var first_node : InkNode = nodes[0]
+
+	print("GetContent() Address: ", address.container.path, ".", address.index, " | ", first_node)
 	
-	if first_node is InkLineInfo:
+	if first_node is InkLogicNode:
+		var logic_node : InkLogicNode = first_node
+		logic_node.execute()
+
+	elif first_node is InkLineInfo:
+		var ink_line : InkLineInfo = first_node
 		# one node in the array
-		if first_node.is_visible():
+		if ink_line.is_visible():
+			ink_line.update() # update any inline variable text
 			return nodes
+		else:
+			print("Line not visible: ", ink_line.text.substr(0, 12))
+
 	elif first_node is InkChoiceInfo:
 		# multiple nodes in the array
 		var export_nodes : Array[InkNode] = []
@@ -70,10 +82,12 @@ func get_content() -> Array[InkNode]:
 			if node.is_visible():
 				export_nodes.push_back(node)
 		return export_nodes
+
 	elif first_node is InkRedirect:
 		# one node in the array
 		var redirect : InkRedirect = first_node
 		address = redirect_path_to_address(address, redirect.redirect)
+		
 	elif first_node is InkContainer:
 		address.container = first_node
 		address.index = 0
@@ -104,7 +118,7 @@ func find_node_with_path(container : InkContainer, index : int) -> InkNode:
 	return null
 
 func address_to_node(current_address : InkAddress) -> Array[InkNode]:
-	print("------ GETTING NODE at ", current_address.container.path + "." + str(current_address.index))
+	#print("------ GETTING NODE at ", current_address.container.path + "." + str(current_address.index))
 	var container : InkContainer = current_address.container
 	var index : int = current_address.index
 	if index < container.total_nodes_inclusive:
@@ -189,6 +203,7 @@ func redirect_path_to_address(current_address : InkAddress, path : String) -> In
 		else:
 			#container is referenced by name
 			#get container from tree (root)
+			print("Container is referenced by name: ", container_name, " | ", current_address.tree.containers[container_name])
 			new_container = current_address.tree.containers[container_name]
 		
 		print("New container: ", new_container.path, " new index: ", new_index)

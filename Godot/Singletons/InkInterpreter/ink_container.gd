@@ -16,11 +16,11 @@ func _init(
 	_parent_container: InkContainer,
 	_name : String,
 	_path : String, 
-	_evaluation_stack: Array[String] = [], 
+	_evaluation_stacks: Array[Array] = [[]], 
 	is_redirect : bool = false,
 ) -> void:
 	#print("Initial container names: ", _name)
-	super(_parent_container, _path, _evaluation_stack)
+	super(_parent_container, _path, _evaluation_stacks)
 	name = _name
 	if parent_container:
 		if is_redirect:

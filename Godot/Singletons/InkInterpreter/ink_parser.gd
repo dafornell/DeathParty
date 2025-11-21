@@ -1,11 +1,16 @@
 extends Node
 
 var json_dict : Dictionary #Dictionary from JSON file
+
 var evaluation_mode : bool = false #Are we pushing/popping variables onto the stack?
 var string_evaluation_mode : bool = false #Are we collecting choice text?
+var line_string_eval_mode : bool = false #Are we collecting dialogue line text components?
 var tag_evaluation_mode: bool = false
+
 var evaluation_stack_items : Array = [] #Used for T/F calculations using player variables
 var string_eval_stream : String = "" #Stores text for choices (text inside evaluation mode)
+var line_in_construction : InkParseInfo
+
 var last_speaker : String = "" #Inferred speaker
 var tag: String = ""
 
@@ -20,8 +25,59 @@ func hash_f_only(dict : Dictionary) -> bool:
 func pop() -> Variant:
 	return evaluation_stack_items.pop_back()
 
+func pop_of_type(target_type : Variant) -> Variant:
+	var return_val : Variant = null
+	var index_to_pop : int = -1;
+
+	for item : Variant in evaluation_stack_items:
+		index_to_pop += 1;
+		if typeof(item) == target_type:
+			break
+
+	if index_to_pop > -1:
+		return_val = evaluation_stack_items.pop_at(index_to_pop)
+	
+	return return_val
+
 func push(item : Variant) -> void:
 	evaluation_stack_items.push_back(item)
+
+class InkParseInfo:
+	var speaker : String
+	var text_components : Array[String] = []
+	var condition_stacks : Array[Array] = []
+	var parent_container : InkContainer
+	var path : String
+	func _init(_parent_container : InkContainer, _path : String) -> void:
+		InkParser.line_string_eval_mode = true
+		speaker = ""
+		parent_container = _parent_container
+		path = _path
+	
+	func add_text_component(component : String) -> void:
+		text_components.push_back(component)
+	
+	func add_condition_stack(stack : Array) -> void:
+		print("Adding condition stack: ", stack)
+		condition_stacks.push_back(stack)
+	
+	func export() -> void:
+		#finished collecting LineInfo text components
+		InkParser.line_string_eval_mode = false
+		if speaker == "ChoiceInfo":
+			#Automatically pushes itself to choices array
+			#no redirect path required because it is only used as flavor text to the choices UI
+			var choice_info_text : String = text_components[0]
+			InkChoiceInfo.new(parent_container, path, choice_info_text, "")
+		else:
+			InkLineInfo.new(parent_container, path, speaker, text_components, condition_stacks)
+
+func start_constructing_line(parent_container : InkContainer, path : String) -> bool:
+	var new_line : bool = line_string_eval_mode == false
+	if (new_line):
+		line_in_construction = InkParseInfo.new(parent_container, path)
+
+	return new_line
 
 class InkParseContainer:
 	var tree : InkTree
@@ -118,8 +174,15 @@ func match_eval_cmd(new_container : InkContainer, path : String, next:Variant) -
 	match (next):
 		"ev":
 			evaluation_mode = true
+			if (line_string_eval_mode):
+				#lets InkLineInfo know you need to parse a condition stack to append onto the sentence
+				line_in_construction.add_text_component("ev") 
 		"/ev":
 			evaluation_mode = false
+			if (line_string_eval_mode):
+				print("In string eval mode, pushing stack")
+				line_in_construction.add_condition_stack(evaluation_stack_items.duplicate()) 
+				evaluation_stack_items = []
 		"#":
 			tag_evaluation_mode = true
 		"/#":
@@ -133,20 +196,30 @@ func match_eval_cmd(new_container : InkContainer, path : String, next:Variant) -
 			string_evaluation_mode = true
 		"/str":
 			string_evaluation_mode = false
+			push(string_eval_stream)
+			string_eval_stream = ""
 		"end":
 			InkLineInfo.new(
 					new_container,
 					path,
 					"System",
-					"end",
+					["end"],
 				)
 		"nop":
 			InkLineInfo.new(
 					new_container,
 					path,
 					"System",
-					"nop",
+					["nop"],
 				)
+		"out":
+			var new_line : bool = start_constructing_line(new_container, path)
+			if (new_line):
+				print("Starting new line after the fact")
+				#lets InkLineInfo know you need to parse a condition stack to append onto the sentence
+				line_in_construction.add_text_component("ev") 
+
+			push("out")
 		_:
 			was_command = false
 	return was_command
@@ -172,8 +245,13 @@ func classify_line(arr_index : int, new_container : InkContainer, next : Variant
 
 	if next is String:
 		var next_str : String = next
-		if next_str[0] == '^': #is string
+		if line_string_eval_mode && next_str == "\n":
+			print("Exporting LineInfo")
+			line_in_construction.export()
+
+		elif next_str[0] == '^': #is string
 			next_str = next_str.substr(1)
+
 			if next_str.strip_edges().is_empty():
 				return
 			if string_evaluation_mode: #string eval mode takes precedence
@@ -181,20 +259,17 @@ func classify_line(arr_index : int, new_container : InkContainer, next : Variant
 			elif tag_evaluation_mode:
 				tag += next_str
 			else:
-				var line_info : InkLineInfo = break_up_dialogue(new_container, path, next_str) #returns {"speaker":char_name, "text":dialogue_text}
-				# if line_info.parent_container:
-				# 	print("InkLineInfo for str: ", line_info.text, " | parent: ", line_info.parent_container.name)
-				if line_info.speaker == "ChoiceInfo":
-					#Automatically pushes itself to choices array
-					#no redirect path required because it is only used as flavor text to the choices UI
-					InkChoiceInfo.new(new_container, path, line_info.text, "")
+				start_constructing_line(new_container, path)
+				break_up_dialogue(next_str) #returns {"speaker":char_name, "text":dialogue_text}
 			return
 
 	if evaluation_mode:
+		print("In evaluation mode")
 		#We don't care about evaluating the stack right now, only storing it for later
-		#Important because state variables will change
+		#Important because state variables will change at runtime
 		#Store global variables
 		if new_container.name == "global decl":
+			print("STORING GLOBAL VARIABLES")
 			if next is Dictionary:
 				var next_dict : Dictionary = next
 				if next_dict.has("VAR?"):
@@ -202,9 +277,12 @@ func classify_line(arr_index : int, new_container : InkContainer, next : Variant
 					push(SaveSystem.get_key(variable_name))
 				elif next_dict.has("VAR="):
 					var variable_name : String = next["VAR="]
+					print("Found variable named ", variable_name, " = ", SaveSystem.get_key(variable_name))
 					# don't reassign if already assigned
 					if !SaveSystem.key_exists(variable_name):
-						SaveSystem.set_key(variable_name, pop())
+						var new_value : Variant = pop()
+						print("Setting ", variable_name, " to ", new_value)
+						SaveSystem.set_key(variable_name, new_value)
 				elif string_evaluation_mode:
 					if next_dict.has("->"):
 						#get string value from redirect
@@ -251,9 +329,9 @@ func classify_line(arr_index : int, new_container : InkContainer, next : Variant
 			var next_dict : Dictionary = next
 			if next_dict.has("*"):
 				#Get choice text and any conditions that come with it (pushed on stack)
-				var choice_text : String = string_eval_stream
+				var choice_text : String = pop_of_type(TYPE_STRING)
 				#print("Choice text: ", string_eval_stream)
-				string_eval_stream = ""
+				#string_eval_stream = ""
 
 				#Choice's redirect
 				var redirect_location : String = next_dict["*"]
@@ -271,7 +349,7 @@ func classify_line(arr_index : int, new_container : InkContainer, next : Variant
 				
 				if flag&flag_one != 0: #check if 1 bit is set 
 					#Means it is conditional text
-					eval_stack = evaluation_stack_items
+					eval_stack = evaluation_stack_items.duplicate()
 					evaluation_stack_items = []
 				if flag&flag_sixteen != 0:
 					print("One-off choice: ", choice_text)
@@ -283,7 +361,7 @@ func classify_line(arr_index : int, new_container : InkContainer, next : Variant
 					path, 
 					choice_text,
 					redirect_location,
-					eval_stack,
+					[eval_stack],
 					once_only,
 				)
 			elif next_dict.has("->"):
@@ -291,22 +369,30 @@ func classify_line(arr_index : int, new_container : InkContainer, next : Variant
 
 				#conditional redirects
 				var eval_stack : Array = []
-				var condition : bool = true
+				#var condition : bool = true
 				if next_dict.has("c"):
-					condition = next_dict["c"]
-					eval_stack = evaluation_stack_items
+					#condition = next_dict["c"]
+					eval_stack = evaluation_stack_items.duplicate()
 					evaluation_stack_items = []
 
 				InkRedirect.new(
 					new_container, 
 					redirect,
 					path,
-					eval_stack,
+					[eval_stack],
+				)
+			elif next_dict.has("VAR="):
+				var eval_stack : Array = evaluation_stack_items.duplicate()
+				print("Creating logic node for VAR= : ", eval_stack)
+				eval_stack.push_back(next_dict)
+				evaluation_stack_items = []
+				InkLogicNode.new(
+					new_container, 
+					path,
+					[eval_stack],
 				)
 
-func break_up_dialogue(parent_container : InkContainer, path : String, dialogue:String) -> InkLineInfo:
-	#name of speaker should be between brackets; if not, infer it from last speaker
-	#print("Parsing string into line: ", dialogue)
+func get_speaker_name(dialogue : String) -> Array:
 	var char_name : String = ""
 	var recording_name : bool = false
 	var last_bracket_index : int = 0
@@ -325,18 +411,24 @@ func break_up_dialogue(parent_container : InkContainer, path : String, dialogue:
 			break
 		if recording_name:
 			char_name = char_name + c
-	
-	var dialogue_text : String = dialogue.substr(last_bracket_index)
 
-	#[Choice] means you are prefixing choice summary
 	if char_name.length() == 0:
 		char_name = last_speaker
-	elif char_name == "ChoiceInfo": 
-		#this will be appended to choices, not dialogue lines
-		char_name = "ChoiceInfo"
-		#set parent container to null so it doesn't get added to tree
-		return InkLineInfo.new(null, path, char_name, dialogue_text)
-	else:
+	elif char_name != "ChoiceInfo": #special case (choice flavor text)
 		last_speaker = char_name
-		
-	return InkLineInfo.new(parent_container, path, char_name, dialogue_text)
+
+	return [char_name, last_bracket_index]
+
+func break_up_dialogue(dialogue:String) -> void:
+	#name of speaker should be between brackets; if not, infer it from last speaker
+	#print("Parsing string into line: ", dialogue)
+	var properties : Array = get_speaker_name(dialogue)
+	var char_name : String = properties[0]
+	var last_bracket_index : int = properties[1]
+	
+	var dialogue_text : String = dialogue.substr(last_bracket_index)
+	
+	line_in_construction.speaker = char_name
+	line_in_construction.add_text_component(dialogue_text)
+
+	#return InkLineInfo.new(parent_container, path, char_name, dialogue_text)

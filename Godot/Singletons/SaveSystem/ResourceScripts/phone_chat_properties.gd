@@ -38,7 +38,7 @@ func load_save_state(save_data: Dictionary) -> void:
 			null,
 			"",
 			speaker,
-			text
+			[text]
 		)
 		return line_info
 	

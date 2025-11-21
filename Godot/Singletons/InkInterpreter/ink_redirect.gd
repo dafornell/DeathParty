@@ -6,7 +6,7 @@ func _init(
     _parent_container: InkContainer,
     _redirect : String,
     _path : String, 
-    _evaluation_stack: Array = [], 
+    _evaluation_stack: Array[Array] = [[]], 
 ) -> void:
     super(_parent_container, _path, _evaluation_stack)
     redirect = _redirect

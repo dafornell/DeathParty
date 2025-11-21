@@ -72,14 +72,15 @@ func load_inventory() -> void:
 
 #TYPE SAFETY
 func key_exists(key:String) -> bool: # returns whether key exists
-	return player_data.variable_dict.has(key)
+	var exists : bool = player_data.variable_dict.has(key) && player_data.variable_dict[key] != null
+	return exists
 
 func key_exists_assert(key:String) -> void: # returns location of key & errors if it doesn't exist
 	assert(key_exists(key), "ERROR: invalid key '" + key + "'. Check your spelling!")
 
 func key_is_type(key:String, type:int, value:Variant) -> void: # errors if types don't match (passing type enum)
 	key_exists_assert(key)
-	assert(typeof(player_data.variable_dict[key])==type, "TYPE ERROR: " + key + " (current value: " + str(player_data.variable_dict[key]) + ") not of type " + str(type) + " (current value: " + str(value) + ")")
+	assert(typeof(player_data.variable_dict[key])==type, "TYPE ERROR: " + key + " (current value: " + str(player_data.variable_dict[key]) + ") not of incoming type " + str(type) + " (current value: " + str(value) + ")")
 
 func match_type(key:String, value:Variant) -> void: # errors if types don't match (passing new value)
 	key_is_type(key, typeof(value), value)
