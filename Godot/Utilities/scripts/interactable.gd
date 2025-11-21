@@ -25,6 +25,8 @@ var interaction_detector_file: PackedScene = preload("res://Entities/interaction
 			for body: PhysicsBody3D in overlapping_bodies:
 				if body == Globals.player:
 					on_in_range(true)
+		if not enabled:
+			toggle_popup(false)
 
 ## If not null, this item will despawn whenever the player has this item
 @export var inventory_item: InventoryItemResource
@@ -144,7 +146,6 @@ func _despawn_if_has_item(item : InventoryItemResource = null) -> bool:
 
 func fade_away_then_delete() -> void:
 	enabled = false
-	popup.hide()
 
 	var meshes: Array = find_children("*", "MeshInstance3D", true, true)
 
