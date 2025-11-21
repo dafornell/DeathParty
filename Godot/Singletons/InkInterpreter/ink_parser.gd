@@ -123,6 +123,14 @@ class InkParseContainer:
 				for other_container_name : String in last_dict:
 					if !(last_dict[other_container_name] is Array): continue
 					var other_container : Array = last_dict[other_container_name]
+					if other_container_name == "s": 
+						#means it is string eval text (will be popped off the stack later when something redirects to .^.s)
+						#InkParser.string_evaluation_mode = true
+						var first_line : String = other_container[0]
+						first_line = first_line.substr(1)
+						InkParser.push(first_line)
+						print("Other container name is s | Pushed ", first_line)
+						
 					InkParseContainer.new( 
 						tree,
 						new_ink_container, 
@@ -275,6 +283,20 @@ func classify_line(tree: InkTree, arr_index : int, new_container : InkContainer,
 		print("In evaluation mode")
 		#We don't care about evaluating the stack right now, only storing it for later
 		#Important because state variables will change at runtime
+		
+		if string_evaluation_mode and next is Dictionary:
+			var next_dict : Dictionary = next
+			if next_dict.has("->"):
+				#get string value from redirect
+				var redirect_name : String = next_dict["->"]
+				var redirect_container : InkContainer = new_container.redirects[redirect_name]
+				var first_line : InkLineInfo = redirect_container.dialogue_lines[0]
+				
+				# print("Found redirect in SEM: ", evaluation_stack_items)
+				# var first_line : String = pop()
+				print("Found redirect inside string evaluation mode: ", next_dict["->"], " | Popped: ", first_line.text)
+				string_eval_stream = string_eval_stream + first_line.text
+
 		#Store global variables
 		if new_container.name == "global decl":
 			print("STORING GLOBAL VARIABLES")
@@ -291,13 +313,9 @@ func classify_line(tree: InkTree, arr_index : int, new_container : InkContainer,
 						var new_value : Variant = pop()
 						print("Setting ", variable_name, " to ", new_value)
 						SaveSystem.set_key(variable_name, new_value)
-				elif string_evaluation_mode:
-					if next_dict.has("->"):
-						#get string value from redirect
-						var redirect_name : String = next_dict["->"]
-						var redirect_container : InkContainer = new_container.redirects[redirect_name]
-						var first_line : InkLineInfo = redirect_container.dialogue_lines[0]
-						string_eval_stream = string_eval_stream + first_line.text
+				#elif next_dict.has("->"):
+
+				
 			else:
 				push(next)
 
