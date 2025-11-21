@@ -1,8 +1,9 @@
-[gd_scene load_steps=32 format=4 uid="uid://dp8mxgak36ovb"]
+[gd_scene load_steps=33 format=4 uid="uid://dp8mxgak36ovb"]
 
 [ext_resource type="PackedScene" uid="uid://qhxefncatca4" path="res://Entities/NPCs/npc.tscn" id="1_hq7c8"]
-[ext_resource type="Resource" uid="uid://clfvsvp2igosb" path="res://Singletons/SaveSystem/DefaultResources/CharacterResources/character_properties_caleb.tres" id="2_col57"]
+[ext_resource type="Script" uid="uid://c1m7v5mkxxca1" path="res://Assets/CharacterAssets/Caleb/caleb.gd" id="2_col57"]
 [ext_resource type="Texture2D" uid="uid://dlylnrxdrpktr" path="res://Assets/CharacterAssets/Caleb/Caleb_Caleb Skateboard Texture.png" id="3_col57"]
+[ext_resource type="Resource" uid="uid://clfvsvp2igosb" path="res://Singletons/SaveSystem/DefaultResources/CharacterResources/character_properties_caleb.tres" id="3_i180h"]
 [ext_resource type="Texture2D" uid="uid://c3jptgx5to1yj" path="res://Assets/CharacterAssets/Caleb/Caleb_caleb_base_v04_caleb_BaseColor.png" id="4_i180h"]
 [ext_resource type="Texture2D" uid="uid://bv0uxicmw6u0p" path="res://Assets/CharacterAssets/Caleb/Caleb_Cube Base Color.png" id="5_s70gg"]
 [ext_resource type="Texture2D" uid="uid://bd4jgw7mc66be" path="res://Assets/CharacterAssets/Caleb/Caleb_Cylinder Base Color.png" id="6_x0lco"]
@@ -2127,8 +2128,14 @@ _data = {
 &"talk": SubResource("Animation_3gmea")
 }
 
-[node name="Caleb" instance=ExtResource("1_hq7c8")]
-character_resource = ExtResource("2_col57")
+[node name="Caleb" node_paths=PackedStringArray("primary_mesh") instance=ExtResource("1_hq7c8")]
+script = ExtResource("2_col57")
+character_resource = ExtResource("3_i180h")
+primary_mesh = NodePath("CharacterBody3D/Model/Skeleton3D/caleb_base_v04_003")
+
+[node name="QuestMarker" parent="." index="1"]
+visible = true
+transparency = 0.1478979
 
 [node name="Skateboard" type="MeshInstance3D" parent="CharacterBody3D" index="1"]
 transform = Transform3D(0.0064359903, 0, -0.9999793, 0, 1, 0, 0.9999793, 0, 0.0064359903, -0.028134704, 0.02840384, 0.11068638)

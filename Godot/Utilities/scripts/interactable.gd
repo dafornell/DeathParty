@@ -140,3 +140,19 @@ func _despawn_if_has_item(item : InventoryItemResource = null) -> bool:
 		queue_free()
 		return true
 	return false
+
+
+func fade_away_then_delete() -> void:
+	enabled = false
+	popup.hide()
+
+	var meshes: Array = find_children("*", "MeshInstance3D", true, true)
+
+	var t: Tween = create_tween()
+	t.set_parallel()
+
+	for mesh: MeshInstance3D in meshes:
+		t.tween_property(mesh, "transparency", 1.0, 1.0)
+
+	await t.finished
+	queue_free()
