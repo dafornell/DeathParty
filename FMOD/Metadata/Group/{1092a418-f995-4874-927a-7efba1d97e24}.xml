@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="MixerGroup" id="{1092a418-f995-4874-927a-7efba1d97e24}">
 		<property name="name">
-			<value>900_MX</value>
+			<value>non-diagetic music</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{4aa5293e-5261-4a0d-a739-ef84fcaf42af}</destination>
