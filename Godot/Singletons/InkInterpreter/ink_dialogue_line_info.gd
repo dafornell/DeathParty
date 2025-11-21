@@ -8,13 +8,14 @@ var tags: Array[String] = []
 var metadata: Dictionary[String, String] = {}
 
 func _init( 
+	_parent_filepath : String, 
 	_parent_container: InkContainer,
 	_path : String,
 	_speaker : String,
 	_text_components : Array[String], #of strings
 	_condition_stacks: Array[Array] = [[]], 
 ) -> void:
-	super(_parent_container, _path, _condition_stacks)
+	super(_parent_filepath, _parent_container, _path, _condition_stacks)
 	speaker = _speaker
 	text_components = _text_components
 	if parent_container:
