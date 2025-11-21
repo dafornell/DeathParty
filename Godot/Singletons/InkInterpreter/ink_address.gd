@@ -11,3 +11,6 @@ func _init(_tree : InkTree, _container : InkContainer, _index : int) -> void:
 
 func duplicate() -> InkAddress:
 	return InkAddress.new(tree, container, index)
+
+func tostring() -> String:
+	return container.path + "." + str(index)

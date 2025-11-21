@@ -35,10 +35,11 @@ func load_save_state(save_data: Dictionary) -> void:
 		var speaker: String = dict["speaker"]
 		var text: String = dict["text"]
 		var line_info := InkLineInfo.new(
+			"",
 			null,
 			"",
 			speaker,
-			text
+			[text]
 		)
 		return line_info
 	

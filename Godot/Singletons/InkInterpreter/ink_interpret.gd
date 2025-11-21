@@ -14,6 +14,7 @@ func push(item : Variant) -> void:
 	evaluation_stack.push_back(item)
 
 ## Global current address
+var current_container : InkContainer #used to track number of visits to containers
 var address : InkAddress
 
 func from_JSON(json: JSON) -> void:
@@ -21,7 +22,7 @@ func from_JSON(json: JSON) -> void:
 	var container : InkContainer = tree.containers["root"]
 	var index : int = 0
 	address = InkAddress.new(tree, container, index)
-	print("Start address: ", address.container.name, ", ", address.index)
+	print("----------- INTERPRET -- Start address: ", address.container.name, ", ", address.index)
 
 func from_address(_address : InkAddress) -> void:
 	address = _address
@@ -52,17 +53,33 @@ func add_new_to_cache(filepath : String, tree : InkTree) -> void:
 
 func get_content() -> Array[InkNode]:
 	var nodes : Array[InkNode] = address_to_node(address)
-	print("GetContent() Address: ", address.container.path, ".", address.index)
+	print("Getting content at address ", address.tostring())
+
 	address.index += 1
 	if nodes.is_empty():
+		print("Node is empty, skipping")
 		return get_content()
 
 	var first_node : InkNode = nodes[0]
+
+	#check if we are inside a new container (to increment visit count)
+	if (first_node.parent_container != current_container):
+		current_container = first_node.parent_container
+		current_container.visit()
 	
-	if first_node is InkLineInfo:
+	if first_node is InkLogicNode:
+		var logic_node : InkLogicNode = first_node
+		logic_node.execute()
+
+	elif first_node is InkLineInfo:
+		var ink_line : InkLineInfo = first_node
 		# one node in the array
-		if first_node.is_visible():
+		if ink_line.is_visible():
+			ink_line.update() # update any inline variable text
 			return nodes
+		else:
+			print("Line not visible: ", ink_line.text.substr(0, 12))
+
 	elif first_node is InkChoiceInfo:
 		# multiple nodes in the array
 		var export_nodes : Array[InkNode] = []
@@ -70,11 +87,19 @@ func get_content() -> Array[InkNode]:
 			if node.is_visible():
 				export_nodes.push_back(node)
 		return export_nodes
+
 	elif first_node is InkRedirect:
+		print("First node is redirect")
 		# one node in the array
 		var redirect : InkRedirect = first_node
-		address = redirect_path_to_address(address, redirect.redirect)
+		if redirect.is_visible():
+			print("Redirect is visible: ", redirect.redirect)
+			address = redirect_path_to_address(address, redirect.redirect)
+		else:
+			print("Redirect is not visible")
+		
 	elif first_node is InkContainer:
+		#enter container
 		address.container = first_node
 		address.index = 0
 
@@ -116,26 +141,93 @@ func address_to_node(current_address : InkAddress) -> Array[InkNode]:
 		#	print(line.tostring())
 		print("Selected line: ", next_item.tostring())
 		return [find_node_with_path(container, index)]
-	else:
+	elif !container.dialogue_choices.is_empty():
 		print("Returning choices")
 		var as_ink_nodes : Array[InkNode] = []
 		#container.dialogue_choices as Array[InkNode]
 		for choice : InkChoiceInfo in container.dialogue_choices:
 			as_ink_nodes.push_back(choice)
 		return as_ink_nodes
+	else:
+		# move up to parent container (current container's address + 1)
+		var container_index : int = path_to_address(address.container.path).index
+		print("Container path: ", address.container.path, " | Container address: ", path_to_address(address.container.path).tostring())
+		var relative_address : InkAddress = redirect_path_to_address(address, ".^.^.0")
+		print("Relative address: ", relative_address.tostring())
+		relative_address.index = container_index + 1
+		var old_address : InkAddress = address
+		address = relative_address
+		print("Container " + old_address.tostring() + " has no dialogue choices. Redirecting to " + relative_address.tostring())
+		#assert(false, "Container " + old_address.tostring() + " has no dialogue choices. Redirecting to " + relative_address.tostring())
+		return address_to_node(address)
+
+func path_to_address(path : String) -> InkAddress:
+	print("Path to address: ", path)
+	var tree : InkTree = address.tree #get current tree
+
+	var path_array : Array = Array(path.split('.'))
+	var final_index : int = path_array.size()-1
+
+	var container_name : String = path_array[0]
+	var new_container : InkContainer
+	var new_index : int = 0
+
+	# get root container
+	if container_name == "0": # 0.c-1 (always starts with zero)
+		#sometimes it is 0.c-0 (from root redirect table), sometimes 0.8.s (from a sub-container)
+		new_container = address.tree.containers["root"]
+	else:
+		#container is referenced by name
+		#get container from tree (root)
+		assert(tree.containers.has(container_name), "Container " + container_name + " does not exist")
+		print("Container is referenced by name: ", container_name, " | ", tree.containers[container_name])
+		new_container = tree.containers[container_name]
+	
+	#go down path
+	for n in range(1, final_index+1):
+		var item : String = path_array[n]
+		if item.is_valid_int(): 
+			var index : int = int(item)
+			var next : InkNode = find_node_with_path(new_container, index)
+			#var next : InkNode = new_container.dialogue_lines[index]
+			if next is InkContainer && n != final_index:
+				#sub-container
+				var sub_container : InkContainer = next
+				new_container = sub_container
+
+			new_index = index
+		else: 
+			#redirect table container
+			var redirect_table : Dictionary[String, InkContainer] = new_container.redirects
+			new_container = redirect_table[item]
+	
+	print("New container: ", new_container.path, " new index: ", new_index)
+	return InkAddress.new(tree, new_container, new_index)
+
 
 func redirect_path_to_address(current_address : InkAddress, path : String) -> InkAddress:
 	print("Redirect path: ", path)
-	var new_address : InkAddress = current_address.duplicate()
 
 	var relative_path : bool = path[0] == "."
 	var path_array : Array = Array(path.split('.'))
 
 	var final_index : int = path_array.size()-1
-	var last_path_element : String = path_array[final_index]
 
-	# Go up the parent tree
-	if relative_path:
+	var new_address : InkAddress
+	
+	if !relative_path:
+		new_address = path_to_address(path)
+
+		var node_at_addr : InkNode = find_node_with_path(new_address.container, new_address.index)
+		if node_at_addr is InkContainer:
+			#start at 0th element of that container
+			var container : InkContainer = node_at_addr
+			new_address = InkAddress.new(new_address.tree, container, 0)
+
+	else:
+		# Go up the parent tree
+		new_address = current_address.duplicate()
+
 		var first_carat : bool = true #Skip first carat (just means the current container)
 		for n in range(1, final_index): # exclude last element (redirect or index), skip first element (empty space)
 			var item : String = path_array[n]
@@ -148,6 +240,7 @@ func redirect_path_to_address(current_address : InkAddress, path : String) -> In
 					print("Going up a container: ", new_address.container.name, " -> ", new_address.container.parent_container.name)
 					new_address.container = new_address.container.parent_container # set address container to parent
 
+		var last_path_element : String = path_array[final_index]
 		# Get index or redirect container within current container
 		if last_path_element.is_valid_int(): #then it is an index
 			new_address.index = int(last_path_element)
@@ -159,38 +252,6 @@ func redirect_path_to_address(current_address : InkAddress, path : String) -> In
 			new_address.container = new_address.container.redirects[last_path_element]
 			new_address.index = 0
 
-		return new_address
-	else: # 0.c-1 (always starts with zero)
-		var container_name : String = path_array[0]
-		var new_container : InkContainer
-		var new_index : int = 0
-
-		if container_name == "0":
-			#sometimes it is 0.c-0 (from root redirect table), sometimes 0.8.s (from a sub-container)
-			new_container = current_address.tree.containers["root"]
-			for n in range(1, final_index+1):
-				var item : String = path_array[n]
-				if item.is_valid_int(): 
-					var index : int = int(item)
-					var next : InkNode = find_node_with_path(new_container, index)
-					#var next : InkNode = new_container.dialogue_lines[index]
-					if next is InkContainer:
-						#sub-container
-						var sub_container : InkContainer = next
-						new_container = sub_container
-					else:
-						#address within container
-						print("New index is ", index)
-						new_index = index
-				else: 
-					#redirect table container
-					var redirect_table : Dictionary[String, InkContainer] = new_container.redirects
-					new_container = redirect_table[item]
-		else:
-			#container is referenced by name
-			#get container from tree (root)
-			new_container = current_address.tree.containers[container_name]
+	return new_address
 		
-		print("New container: ", new_container.path, " new index: ", new_index)
-		return InkAddress.new(current_address.tree, new_container, new_index)
 	
