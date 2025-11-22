@@ -1,0 +1,3 @@
+[Olivia]Well, this is definitely a frathouse bathroom. Let's see what kind of "choose your own adventure" nightmare I'm walking into.
+Follow the trail of red cups and beer bottles to the sink, then head straight to...wait, is that a hot dog stand?
+    -> END

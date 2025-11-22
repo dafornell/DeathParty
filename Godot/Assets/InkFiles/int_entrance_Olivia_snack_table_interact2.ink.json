@@ -1,0 +1,20 @@
+{
+  "inkVersion": 21,
+  "root": [
+    [
+      "^[Olivia] Nothing but snacks, booze, and poor decisions to be found here.",
+      "\n",
+      "end",
+      [
+        "done",
+        {
+          "#n": "g-0"
+        }
+      ],
+      null
+    ],
+    "done",
+    null
+  ],
+  "listDefs": {}
+}

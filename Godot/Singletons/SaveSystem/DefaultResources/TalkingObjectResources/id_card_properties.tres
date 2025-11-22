@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="TalkingObjectResource" load_steps=5 format=3 uid="uid://c0j6765kdvmgm"]
 
 [ext_resource type="Script" uid="uid://d1yny6oqf2gvp" path="res://Singletons/SaveSystem/ResourceScripts/json_array.gd" id="1_t21ku"]
-[ext_resource type="JSON" path="res://Assets/InkFiles/ext_entrance_Olivia_missing_wallet_interact.json" id="2_t21ku"]
+[ext_resource type="JSON" path="res://Assets/InkFiles/ext_entrance_Olivia_missing_wallet_interact.ink.json" id="2_t21ku"]
 [ext_resource type="Script" uid="uid://b3ieaqolkasnx" path="res://Singletons/SaveSystem/ResourceScripts/talking_object_properties_script.gd" id="3_et65i"]
 
 [sub_resource type="Resource" id="Resource_t21ku"]

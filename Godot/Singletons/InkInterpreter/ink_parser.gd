@@ -164,9 +164,12 @@ func parse(file : JSON) -> InkTree:
 	InkParseContainer.new(new_tree, null, "root", root_container)
 
 	##OTHER CONTAINERS
-	for other_container_name : String in json_dict["root"][2]:
-		if other_container_name != HASH_F and json_dict["root"][2][other_container_name] is Array:
-			var other_container : Array = json_dict["root"][2][other_container_name]
+	var other: Variant = json_dict["root"][2]
+	if other == null:
+		other = {}
+	for other_container_name : String in other:
+		if other_container_name != HASH_F and other[other_container_name] is Array:
+			var other_container : Array = other[other_container_name]
 			InkParseContainer.new(new_tree, null, other_container_name, other_container)
 	
 	return new_tree

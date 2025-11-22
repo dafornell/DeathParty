@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CharacterResource" load_steps=6 format=3 uid="uid://dq6c6xmfveuln"]
 
-[ext_resource type="JSON" path="res://Assets/InkFiles/bathroom_Olivia_makeup_npc_interact.json" id="1_ks33n"]
+[ext_resource type="JSON" path="res://Assets/InkFiles/bathroom_Olivia_makeup_npc_interact.ink.json" id="1_ks33n"]
 [ext_resource type="Texture2D" uid="uid://cpwere23b0y31" path="res://Assets/CharacterAssets/Polaroids/sorority_2_a.png" id="1_vh8hi"]
 [ext_resource type="Texture2D" uid="uid://bxwslig80hi1" path="res://Assets/CharacterAssets/Polaroids/sorority_2_b.png" id="2_dyxtk"]
 [ext_resource type="Script" uid="uid://cmr58186dx31r" path="res://Singletons/SaveSystem/ResourceScripts/character_properties_script.gd" id="3_y01bm"]

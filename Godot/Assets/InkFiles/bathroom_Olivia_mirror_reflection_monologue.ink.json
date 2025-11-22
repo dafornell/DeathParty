@@ -1,0 +1,20 @@
+{
+  "inkVersion": 21,
+  "root": [
+    [
+      "^[Olivia]Ugh, why do I look like that? I gotta stop with the all-nighters in the Dark Room.",
+      "\n",
+      "end",
+      [
+        "done",
+        {
+          "#n": "g-0"
+        }
+      ],
+      null
+    ],
+    "done",
+    null
+  ],
+  "listDefs": {}
+}

@@ -1,38 +1,43 @@
 {
-	"inkVersion": 21.0,
-	"root": [
-		[
-			{
-				"->": "OliviaDormCamera"
-			},
-			[
-				"done",
-				{
-					"#f": 5.0,
-					"#n": "g-0"
-				}
-			],
-			null
-		],
-		"done",
-		{
-			"OliviaDormCamera": [
-				"^[Olivia] Can’t go anywhere without this.",
-				"\n",
-				"^/give_item Camera",
-				"\n",
-				"^I should probably use this to grab a photo of my cork board before I head out.",
-				"^/emit_signal ready_to_take_photo_of_corkboard",
-				"\n",
-				"end",
-				{
-					"#f": 1.0
-				}
-			],
-			"#f": 1.0
-		}
-	],
-	"listDefs": {
-
-	}
+  "inkVersion": 21,
+  "root": [
+    [
+      {
+        "->": "OliviaDormCamera"
+      },
+      [
+        "done",
+        {
+          "#n": "g-0"
+        }
+      ],
+      null
+    ],
+    "done",
+    {
+      "OliviaDormCamera": [
+        "^[Olivia] Can\u2019t go anywhere without this.",
+        "\n",
+        "^/give_item Camera",
+        "\n",
+        "^I should probably use this to grab a photo of my cork board before I head out.",
+        "\n",
+        "^/emit_signal ready_to_take_photo_of_corkboard",
+        "\n",
+        "end",
+        null
+      ],
+      "global decl": [
+        "ev",
+        false,
+        {
+          "VAR=": "has_camera"
+        },
+        "/ev",
+        "end",
+        null
+      ]
+    }
+  ],
+  "listDefs": {}
 }
