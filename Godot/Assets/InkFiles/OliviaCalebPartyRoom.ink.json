@@ -33,6 +33,8 @@
         "\n",
         "^[Caleb] Ah shit looks like that guy over there is about to puke-- NOT ON THE COUCHES-- Sorry Liv, I gotta run!",
         "\n",
+        "^/emit_signal caleb_entrance_convo_finished",
+        "\n",
         "^[Olivia] Right... Catch you later I guess.",
         "\n",
         "end",
