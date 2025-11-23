@@ -1,7 +1,7 @@
 class_name NPC extends Interactable
 
 var outline: Node3D
-@onready var animation_player: AnimationPlayer = get_node_or_null("AnimationPlayer")
+@onready var animation_player: AnimationPlayer = find_child("AnimationPlayer")
 
 @export var character_resource: CharacterResource
 @export var dialogue_box: DialogueBoxResource = preload("res://Assets/Resources/DialogueBoxResources/main_dialogue_box_properties.tres")
