@@ -1,5 +1,5 @@
-VAR has_camera = true
-VAR has_journal = true
+VAR has_camera = false
+VAR has_journal = false
 
 ->OliviaDormDoor
 
