@@ -1,0 +1,1118 @@
+{
+  "inkVersion": 21,
+  "root": [
+    [
+      "^[Nora] Is that you\u2026Olivia? OLIVIA HERRERA?!",
+      "\n",
+      "ev",
+      "str",
+      "^Hey Nora, hey Sam. Umm...what's up?",
+      "/str",
+      "/ev",
+      {
+        "*": "0.c-0",
+        "flg": 20
+      },
+      "ev",
+      "str",
+      "^It is me. At a frat party.",
+      "/str",
+      "/ev",
+      {
+        "*": "0.c-1",
+        "flg": 20
+      },
+      {
+        "c-0": [
+          "\n",
+          {
+            "->": "whatsup"
+          },
+          {
+            "->": "0.g-0"
+          },
+          {
+            "#f": 5
+          }
+        ],
+        "c-1": [
+          "^ ",
+          "\n",
+          "^In a gigantic mansion.",
+          "\n",
+          {
+            "->": "itsme"
+          },
+          {
+            "->": "0.g-0"
+          },
+          {
+            "#f": 5
+          }
+        ],
+        "g-0": [
+          "done",
+          null
+        ]
+      }
+    ],
+    "done",
+    {
+      "whatsup": [
+        "^[Sam] ...",
+        "\n",
+        "^[Nora] What's up? What's. Up. That...that\u2019s all you have to say?  We\u2013I...I didn't think I\u2019d get to see you again. Ever.",
+        "\n",
+        "^Where've you been?",
+        "\n",
+        "^[Olivia] Right. Yeah...It's been awhile, huh?",
+        "\n",
+        {
+          "->": "schoolworkorstruggle"
+        },
+        null
+      ],
+      "itsme": [
+        "^[Sam] ...",
+        "\n",
+        "^[Nora] I just...I can't believe you're here. I know parties aren\u2019t really your vibe...",
+        "\n",
+        "^Anyway, since you <i>are</i> here, catch me up! How've you been?",
+        "\n",
+        {
+          "->": "schoolworkorstruggle"
+        },
+        null
+      ],
+      "schoolworkorstruggle": [
+        [
+          "ev",
+          "str",
+          "^Suffocating from schoolwork",
+          "/str",
+          "/ev",
+          {
+            "*": ".^.c-0",
+            "flg": 20
+          },
+          [
+            "ev",
+            {
+              "^->": "schoolworkorstruggle.0.6.$r1"
+            },
+            {
+              "temp=": "$r"
+            },
+            "str",
+            {
+              "->": ".^.s"
+            },
+            [
+              {
+                "#n": "$r1"
+              }
+            ],
+            "/str",
+            "/ev",
+            {
+              "*": ".^.^.c-1",
+              "flg": 18
+            },
+            {
+              "s": [
+                "^Honestly...It's been a struggle. ",
+                {
+                  "->": "$r",
+                  "var": true
+                },
+                null
+              ]
+            }
+          ],
+          {
+            "c-0": [
+              "\n",
+              "^I\u2019ve been suffocating under a neverending pile of schoolwork.",
+              "\n",
+              {
+                "->": "schoolwork"
+              },
+              {
+                "#f": 5
+              }
+            ],
+            "c-1": [
+              "ev",
+              {
+                "^->": "schoolworkorstruggle.0.c-1.$r2"
+              },
+              "/ev",
+              {
+                "temp=": "$r"
+              },
+              {
+                "->": ".^.^.6.s"
+              },
+              [
+                {
+                  "#n": "$r2"
+                }
+              ],
+              "\n",
+              {
+                "->": "struggle"
+              },
+              {
+                "#f": 5
+              }
+            ]
+          }
+        ],
+        null
+      ],
+      "schoolwork": [
+        [
+          "^[Sam] Uh huh. Did that pile crush your fingers or something? Or you just can\u2019t be bothered to text us back?",
+          "\n",
+          "^You take that shit way too seriously.",
+          "\n",
+          "^[Nora] Not all of us are badass like you, Sam. Some of us still care about getting good grades...sometimes that means you put away your distractions. Like your phone.",
+          "\n",
+          "^[Sam] Grades? You don\u2019t need \u2018em to do what you wanna do. Just get off your ass and do it.",
+          "\n",
+          "^[Nora] They can help, I mean...there\u2019s nothing like an A+ after an all-nighter, right, Liv?\u201d",
+          "\n",
+          "ev",
+          "str",
+          "^Yeah.",
+          "/str",
+          "/ev",
+          {
+            "*": ".^.c-0",
+            "flg": 20
+          },
+          "ev",
+          "str",
+          "^Grades can be overrated.",
+          "/str",
+          "/ev",
+          {
+            "*": ".^.c-1",
+            "flg": 20
+          },
+          {
+            "c-0": [
+              "^ ",
+              "\n",
+              "^Grades reward all the blood, sweat, and tears I\u2019ve poured into my work.",
+              "\n",
+              "^And the sleep deprivation. Can\u2019t forget that.",
+              "\n",
+              "^[Sam] Nerds.",
+              "\n",
+              "^[Nora] Ahem, proud nerds.",
+              "\n",
+              "^We\u2019ll bleed, sweat, and cry together, Liv...like we said we would. All the way to graduation!",
+              "\n",
+              {
+                "->": "noraorsam"
+              },
+              {
+                "#f": 5
+              }
+            ],
+            "c-1": [
+              "\n",
+              "^Still...I\u2019m not trying to tank my GPA.",
+              "\n",
+              "^[Sam] Uh huh.",
+              "\n",
+              "^[Nora] Same. I\u2019m gonna keep mine above 3.5. At least.",
+              "\n",
+              {
+                "->": "noraorsam"
+              },
+              {
+                "#f": 5
+              }
+            ]
+          }
+        ],
+        null
+      ],
+      "struggle": [
+        [
+          "^[Nora] I\u2019ve been really worried about you. You barely texted me back.",
+          "\n",
+          "^[Olivia] It\u2019s just been\u2014",
+          "\n",
+          "^[Nora] I know that it\u2019s hard to, sometimes. Trust me, I do.",
+          "\n",
+          "^[Olivia] It <i>is</i> hard. With classes and homework and...I can\u2019t sleep through the night so I\u2019m tired all the time. I\u2019m a mess.",
+          "\n",
+          "^[Nora] I miss you, Liv. These past few years, I really needed you and I don't even know how to reach you. It feels like you completely shut me out.",
+          "\n",
+          "^[Sam] Boo fuckin\u2019 hoo. You\u2019re not the only one struggling.",
+          "\n",
+          "ev",
+          "str",
+          "^I\u2019m so sorry, guys.",
+          "/str",
+          "/ev",
+          {
+            "*": ".^.c-0",
+            "flg": 20
+          },
+          "ev",
+          "str",
+          "^I've been caught up in other things.",
+          "/str",
+          "/ev",
+          {
+            "*": ".^.c-1",
+            "flg": 20
+          },
+          {
+            "c-0": [
+              "^ ",
+              "\n",
+              "^It\u2019s not an excuse but...I changed\u2014everything changed. After Kyle.",
+              "\n",
+              "^[Nora] I know you guys were really close but\u2026I\u2019m still here. I wanna be here for you.",
+              "\n",
+              "^But I can\u2019t do that if you disappear off the face of the Earth. I don\u2019t wanna lose you, too\u2026",
+              "\n",
+              "^[Sam] Everything did change. You stopped giving a single shit about us.",
+              "\n",
+              {
+                "->": "noraorsam"
+              },
+              {
+                "#f": 5
+              }
+            ],
+            "c-1": [
+              "\n",
+              "^Look, I\u2019ve been caught up with other things, okay? So a few texts slipped my mind. It happens.",
+              "\n",
+              "^[Sam] Wow. Great apology.",
+              "\n",
+              "^[Nora] It wasn\u2019t just a few texts. And it\u2019s not just about the texting, Liv, it\u2019s about\u2014I...actually, forget it. I don\u2019t want to talk about this right now.",
+              "\n",
+              {
+                "->": "noraorsam"
+              },
+              {
+                "#f": 5
+              }
+            ]
+          }
+        ],
+        null
+      ],
+      "noraorsam": [
+        [
+          "ev",
+          "str",
+          "^Uh...Nora.",
+          "/str",
+          "/ev",
+          {
+            "*": ".^.c-0",
+            "flg": 20
+          },
+          "ev",
+          "str",
+          "^So...Sam.",
+          "/str",
+          "/ev",
+          {
+            "*": ".^.c-1",
+            "flg": 20
+          },
+          {
+            "c-0": [
+              "\n",
+              "^How's it feel being back on campus?",
+              "\n",
+              {
+                "->": "backoncampus"
+              },
+              {
+                "#f": 5
+              }
+            ],
+            "c-1": [
+              "\n",
+              "^I heard you got suspended?",
+              "\n",
+              {
+                "->": "samsuspended"
+              },
+              {
+                "#f": 5
+              }
+            ]
+          }
+        ],
+        null
+      ],
+      "backoncampus": [
+        [
+          "^[Nora] It\u2019s been an adjustment, I guess. SVU has a billion stairs\u2014and only one elevator. One.",
+          "\n",
+          "ev",
+          "str",
+          "^What? That\u2019s gotta be an ADA violation.",
+          "/str",
+          "/ev",
+          {
+            "*": ".^.c-0",
+            "flg": 20
+          },
+          "ev",
+          "str",
+          "^Your cane is on point, though.",
+          "/str",
+          "/ev",
+          {
+            "*": ".^.c-1",
+            "flg": 20
+          },
+          {
+            "c-0": [
+              "\n",
+              "^[Nora] It probably is.",
+              "\n",
+              {
+                "->": "aboutcaleb"
+              },
+              {
+                "#f": 5
+              }
+            ],
+            "c-1": [
+              "\n",
+              "^[Nora] Thanks, Liv. Not even a <i>trillion</i> stairs can stop me from coordinating my colors.",
+              "\n",
+              {
+                "->": "aboutcaleb"
+              },
+              {
+                "#f": 5
+              }
+            ]
+          }
+        ],
+        null
+      ],
+      "samsuspended": [
+        [
+          "^[Sam] Now you\u2019re pretending to care?",
+          "\n",
+          "^[Nora] Don't mind him, he's just uh... focused on doing good work.",
+          "\n",
+          "ev",
+          "str",
+          "^You got really good, Sam.",
+          "/str",
+          "/ev",
+          {
+            "*": ".^.c-0",
+            "flg": 20
+          },
+          "ev",
+          "str",
+          "^I do care.",
+          "/str",
+          "/ev",
+          {
+            "*": ".^.c-1",
+            "flg": 20
+          },
+          {
+            "c-0": [
+              "^ ",
+              "\n",
+              "^Your tats are sick.",
+              "\n",
+              "^[Sam] ...thanks. Been inkin\u2019 anyone who\u2019ll let me.",
+              "\n",
+              {
+                "->": "aboutcaleb"
+              },
+              {
+                "#f": 5
+              }
+            ],
+            "c-1": [
+              "^ ",
+              "\n",
+              "^I was freaked out about you getting kicked out\u2014forever. I\u2019m seriously so relieved they let you back in!",
+              "\n",
+              "^[Sam] I\u2019ve been back. You would know, if you were around.",
+              "\n",
+              {
+                "->": "aboutcaleb"
+              },
+              {
+                "#f": 5
+              }
+            ]
+          }
+        ],
+        null
+      ],
+      "aboutcaleb": [
+        "ev",
+        {
+          "VAR?": "met_caleb"
+        },
+        "/ev",
+        [
+          {
+            "->": ".^.b",
+            "c": true
+          },
+          {
+            "b": [
+              "\n",
+              "^[Olivia] ...So...I saw Caleb.",
+              "\n",
+              "^[Nora] ...And?",
+              "\n",
+              "ev",
+              "str",
+              "^I tried to ask him about Kyle.",
+              "/str",
+              "/ev",
+              {
+                "*": ".^.c-0",
+                "flg": 20
+              },
+              "ev",
+              "str",
+              "^And...nothing.",
+              "/str",
+              "/ev",
+              {
+                "*": ".^.c-1",
+                "flg": 20
+              },
+              {
+                "->": ".^.^.^.4"
+              },
+              {
+                "c-0": [
+                  "\n",
+                  {
+                    "->": "triedtoask"
+                  },
+                  {
+                    "#f": 5
+                  }
+                ],
+                "c-1": [
+                  "\n",
+                  "^I mean, is it weird seeing him? ",
+                  {
+                    "->": "isitweird"
+                  },
+                  "\n",
+                  {
+                    "#f": 5
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "nop",
+        "\n",
+        "ev",
+        {
+          "VAR?": "met_caleb"
+        },
+        "!",
+        "/ev",
+        [
+          {
+            "->": ".^.b",
+            "c": true
+          },
+          {
+            "b": [
+              "\n",
+              "^[Olivia] Umm...Do you guys know where Caleb is?",
+              "\n",
+              "^[Nora] Caleb?......Why?",
+              "\n",
+              "ev",
+              "str",
+              "^I need to ask him about Kyle.",
+              "/str",
+              "/ev",
+              {
+                "*": ".^.c-0",
+                "flg": 20
+              },
+              "ev",
+              "str",
+              "^Uh...I want to say hi.",
+              "/str",
+              "/ev",
+              {
+                "*": ".^.c-1",
+                "flg": 20
+              },
+              {
+                "->": ".^.^.^.11"
+              },
+              {
+                "c-0": [
+                  "\n",
+                  {
+                    "->": "aboutkyle"
+                  },
+                  {
+                    "#f": 5
+                  }
+                ],
+                "c-1": [
+                  "\n",
+                  {
+                    "->": "sayhi"
+                  },
+                  {
+                    "#f": 5
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "nop",
+        "\n",
+        null
+      ],
+      "aboutkyle": [
+        [
+          "^[Sam] Classic Liv. Won\u2019t shut up about Kyle, who\u2019s been gone for two fucking years!",
+          "\n",
+          "^Even when your friends\u2014the ones you been ghosting\u2014are right in front of your face.",
+          "\n",
+          "^[Nora] I think what Sam is trying to say is...you just got here. A minute ago. Can\u2019t you ask him that later?",
+          "\n",
+          "^I wanna chat about what you\u2019ve been up to. Like...what\u2019s your favorite class this semester?",
+          "\n",
+          "^[Sam] Nah, I said what I said.",
+          "\n",
+          "ev",
+          "str",
+          "^Advanced Composition with Professor Henley.",
+          "/str",
+          "/ev",
+          {
+            "*": ".^.c-0",
+            "flg": 20
+          },
+          "ev",
+          "str",
+          "^I don\u2019t think I have one.",
+          "/str",
+          "/ev",
+          {
+            "*": ".^.c-1",
+            "flg": 20
+          },
+          {
+            "c-0": [
+              "\n",
+              "^[Nora] Oh my god, are you okay? I heard Henley is a total tyrant.",
+              "\n",
+              {
+                "->": ".^.^.g-0"
+              },
+              {
+                "#f": 5
+              }
+            ],
+            "c-1": [
+              "^ ",
+              "\n",
+              "^[Nora] That\u2019s a bummer. I hope it hasn\u2019t been too much of a slog.",
+              "\n",
+              {
+                "->": ".^.^.g-0"
+              },
+              {
+                "#f": 5
+              }
+            ],
+            "g-0": [
+              "ev",
+              "str",
+              "^What about you?",
+              "/str",
+              "/ev",
+              {
+                "*": ".^.c-2",
+                "flg": 20
+              },
+              "ev",
+              "str",
+              "^I\u2019m managing...somehow.",
+              "/str",
+              "/ev",
+              {
+                "*": ".^.c-3",
+                "flg": 20
+              },
+              {
+                "c-2": [
+                  "^ ",
+                  "\n",
+                  "^What\u2019s your favorite class?",
+                  "\n",
+                  "^[Nora] Fashion History! My last humanities elective.",
+                  "\n",
+                  "^It\u2019s amazing, I\u2019ve been learning so much cool stuff about fabrics, patterns, and trends.",
+                  "\n",
+                  {
+                    "->": ".^.^.^.g-1"
+                  },
+                  {
+                    "#f": 5
+                  }
+                ],
+                "c-3": [
+                  "\n",
+                  "^How are your classes going?",
+                  "\n",
+                  "^[Nora] I have three 9ams in a row this semester. I know\u2013it\u2019s rough, but it's also nice to start the day early.",
+                  "\n",
+                  "^I got way too used to sleeping in when I was home.",
+                  "\n",
+                  {
+                    "->": ".^.^.^.g-1"
+                  },
+                  {
+                    "#f": 5
+                  }
+                ]
+              }
+            ],
+            "g-1": [
+              "ev",
+              "str",
+              "^I need to find Caleb, Nora.",
+              "/str",
+              "/ev",
+              {
+                "*": ".^.c-4",
+                "flg": 20
+              },
+              "ev",
+              "str",
+              "^Nora...can you just tell me where Caleb is?",
+              "/str",
+              "/ev",
+              {
+                "*": ".^.c-5",
+                "flg": 20
+              },
+              {
+                "c-4": [
+                  "^ ",
+                  "\n",
+                  "^He was the last one who saw Kyle.",
+                  "\n",
+                  {
+                    "->": "obsessedwithkyle"
+                  },
+                  {
+                    "#f": 5
+                  }
+                ],
+                "c-5": [
+                  "^ ",
+                  "\n",
+                  {
+                    "->": "obsessedwithkyle"
+                  },
+                  {
+                    "#f": 5
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        null
+      ],
+      "sayhi": [
+        [
+          "^[Sam] Hmm.",
+          "\n",
+          "^[Nora] I think I saw him in the kitchen, maybe? I don\u2019t know if he\u2019s still there.",
+          "\n",
+          "^Are you gonna go look for him? Now?",
+          "\n",
+          "ev",
+          "str",
+          "^He was the last person to see Kyle",
+          "/str",
+          "/ev",
+          {
+            "*": ".^.c-0",
+            "flg": 20
+          },
+          "ev",
+          "str",
+          "^That\u2019s why I\u2019m here, Nora.",
+          "/str",
+          "/ev",
+          {
+            "*": ".^.c-1",
+            "flg": 20
+          },
+          {
+            "c-0": [
+              "\n",
+              {
+                "->": "aboutkyle"
+              },
+              {
+                "#f": 5
+              }
+            ],
+            "c-1": [
+              "^ ",
+              "\n",
+              "^To find out more about Kyle.",
+              "\n",
+              {
+                "->": "aboutkyle"
+              },
+              {
+                "#f": 5
+              }
+            ]
+          }
+        ],
+        null
+      ],
+      "triedtoask": [
+        [
+          "^[Sam] Big surprise.",
+          "\n",
+          "^[Nora] Liv...I can't even remember the last time we were all together. Can we talk about something else...before you bring up Kyle?",
+          "\n",
+          "^Have you had the time to take photos? Not just for classes?",
+          "\n",
+          "ev",
+          "str",
+          "^All the time.",
+          "/str",
+          "/ev",
+          {
+            "*": ".^.c-0",
+            "flg": 20
+          },
+          "ev",
+          "str",
+          "^Not much lately...",
+          "/str",
+          "/ev",
+          {
+            "*": ".^.c-1",
+            "flg": 20
+          },
+          {
+            "c-0": [
+              "^ ",
+              "\n",
+              "^[Nora] I love it. The random photos you take are some of my faves!",
+              "\n",
+              {
+                "->": ".^.^.g-0"
+              },
+              {
+                "#f": 5
+              }
+            ],
+            "c-1": [
+              "\n",
+              "^[Nora] Oh...I hope you\u2019re able to find some time soon.",
+              "\n",
+              {
+                "->": ".^.^.g-0"
+              },
+              {
+                "#f": 5
+              }
+            ],
+            "g-0": [
+              "ev",
+              "str",
+              "^Yeah, thanks, Nora...",
+              "/str",
+              "/ev",
+              {
+                "*": ".^.c-2",
+                "flg": 20
+              },
+              "ev",
+              "str",
+              "^It's not the same without Kyle...",
+              "/str",
+              "/ev",
+              {
+                "*": ".^.c-3",
+                "flg": 20
+              },
+              {
+                "c-2": [
+                  "\n",
+                  "^I\u2019m gonna find Caleb again. There\u2019s gotta be something he knows about Kyle.",
+                  "\n",
+                  {
+                    "->": "obsessedwithkyle"
+                  },
+                  {
+                    "#f": 5
+                  }
+                ],
+                "c-3": [
+                  "\n",
+                  "^Hyping up every pic\u2014even the blurriest takes. I\u2014I gotta talk to Caleb.",
+                  "\n",
+                  {
+                    "->": "obsessedwithkyle"
+                  },
+                  {
+                    "#f": 5
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        null
+      ],
+      "isitweird": [
+        [
+          "^[Nora] Sort of...well, not really, I guess. I...I still care about him.",
+          "\n",
+          "^[Sam] It\u2019s been a little weird, but they\u2019ll get over it.",
+          "\n",
+          "ev",
+          "str",
+          "^I get it.",
+          "/str",
+          "/ev",
+          {
+            "*": ".^.c-0",
+            "flg": 20
+          },
+          "ev",
+          "str",
+          "^Caleb's a good guy.",
+          "/str",
+          "/ev",
+          {
+            "*": ".^.c-1",
+            "flg": 20
+          },
+          {
+            "c-0": [
+              "\n",
+              "^Just \u2018cause things end doesn\u2019t mean you suddenly stop caring.",
+              "\n",
+              "^[Nora] No...I don\u2019t think I could stop, even if I tried.",
+              "\n",
+              "^[Sam] Love. Shit fucks you up.",
+              "\n",
+              {
+                "->": ".^.^.g-0"
+              },
+              {
+                "#f": 5
+              }
+            ],
+            "c-1": [
+              "\n",
+              "^Even though things didn\u2019t work out.",
+              "\n",
+              "^[Nora] Yeah...he is.",
+              "\n",
+              {
+                "->": ".^.^.g-0"
+              },
+              {
+                "#f": 5
+              }
+            ],
+            "g-0": [
+              "ev",
+              "str",
+              "^Do you think he\u2019ll talk to me about Kyle?",
+              "/str",
+              "/ev",
+              {
+                "*": ".^.c-2",
+                "flg": 20
+              },
+              "ev",
+              "str",
+              "^I need to find him again.",
+              "/str",
+              "/ev",
+              {
+                "*": ".^.c-3",
+                "flg": 20
+              },
+              {
+                "c-2": [
+                  "\n",
+                  {
+                    "->": "obsessedwithkyle"
+                  },
+                  {
+                    "#f": 5
+                  }
+                ],
+                "c-3": [
+                  "^ ",
+                  "\n",
+                  "^He knows something about Kyle.",
+                  "\n",
+                  {
+                    "->": "obsessedwithkyle"
+                  },
+                  {
+                    "#f": 5
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        null
+      ],
+      "obsessedwithkyle": [
+        [
+          "^[Sam] Fuck the rest of us, huh? The police closed the case years ago. Obsessing about Kyle and abandoning your friends won\u2019t bring him back.",
+          "\n",
+          "^[Nora] Liv...I know you\u2019re hurting. We all are. Kyle was our friend, not just yours.",
+          "\n",
+          "^Can we try to enjoy each other and have fun? While we can? Please.",
+          "\n",
+          "ev",
+          "str",
+          "^I won\u2019t give up.",
+          "/str",
+          "/ev",
+          {
+            "*": ".^.c-0",
+            "flg": 20
+          },
+          "ev",
+          "str",
+          "^You\u2019ve all forgotten about him.",
+          "/str",
+          "/ev",
+          {
+            "*": ".^.c-1",
+            "flg": 20
+          },
+          {
+            "c-0": [
+              "^ ",
+              "\n",
+              "^Just because everybody else has.",
+              "\n",
+              {
+                "->": ".^.^.g-0"
+              },
+              {
+                "#f": 5
+              }
+            ],
+            "c-1": [
+              "\n",
+              "^I can\u2019t.",
+              "\n",
+              {
+                "->": ".^.^.g-0"
+              },
+              {
+                "#f": 5
+              }
+            ],
+            "g-0": [
+              "^[Sam] Fuck. You.",
+              "\n",
+              "^[Nora] I\u2026I can\u2019t believe you said that.",
+              "\n",
+              "^[Rowan] Hey guys! Why look, it\u2019s the faithful gang\u2014reunited, once again!",
+              "\n",
+              "^[Sam] You\u2019re a selfish bitch, Olivia. Your head is stuck so far up your Kyle-obsessed ass, I don\u2019t even know how you got here.",
+              "\n",
+              "^[Rowan] Whoa! Wha? Guys...what happened?",
+              "\n",
+              "^[Olivia] Oh, <i>I\u2019m</i> selfish? Selfish for what? Caring about Kyle?",
+              "\n",
+              "^I\u2019m sorry I\u2019m not like you, I can\u2019t just move on from Kyle like\u2026like he went on fucking vacation or something.",
+              "\n",
+              "^He DISAPPEARED! That doesn\u2019t just happen, okay?",
+              "\n",
+              "^Don\u2019t you want to know the truth?",
+              "\n",
+              "^[Nora] Of course we do! But\u2014",
+              "\n",
+              "^[Rowan] Guys! Now is not the time!",
+              "\n",
+              "^[Sam] Here\u2019s the truth. You\u2019re a cun\u2014",
+              "\n",
+              "^[Rowan] STOP IT! RIGHT FUCKING NOW!!!",
+              "\n",
+              "^[Sam] \u2026Damn, Rowan.",
+              "\n",
+              "^[Nora] Rowan...",
+              "\n",
+              "^[Olivia] I\u2013",
+              "\n",
+              "^[Rowan] HELLO?! Look around, it\u2019s my final year and we\u2019re all in one room, at a frat party!",
+              "\n",
+              "^You know what that means? Shaking what our mommas\u2019 gave us, not tearing each others\u2019 throats apart.",
+              "\n",
+              "^[Nora] Sorry, Rowan.",
+              "\n",
+              "^[Sam] Whatever.",
+              "\n",
+              "^[Olivia] Fine.",
+              "\n",
+              "^[Rowan] Channel all that rage into dancing and we\u2019ll bring the house down! Come with me.",
+              "\n",
+              "end",
+              null
+            ]
+          }
+        ],
+        null
+      ],
+      "global decl": [
+        "ev",
+        false,
+        {
+          "VAR=": "met_caleb"
+        },
+        "/ev",
+        "end",
+        null
+      ]
+    }
+  ],
+  "listDefs": {}
+}

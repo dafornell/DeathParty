@@ -1,0 +1,20 @@
+{
+  "inkVersion": 21,
+  "root": [
+    [
+      "^[Olivia]I have no idea what they're playing...those cards have such cool art though!",
+      "\n",
+      "end",
+      [
+        "done",
+        {
+          "#n": "g-0"
+        }
+      ],
+      null
+    ],
+    "done",
+    null
+  ],
+  "listDefs": {}
+}

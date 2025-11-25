@@ -1,0 +1,27 @@
+{
+  "inkVersion": 21,
+  "root": [
+    [
+      {
+        "->": "OliviaDormClosePhone"
+      },
+      [
+        "done",
+        {
+          "#n": "g-0"
+        }
+      ],
+      null
+    ],
+    "done",
+    {
+      "OliviaDormClosePhone": [
+        "^[Olivia] Can't hide in here forever...I guess I should get ready to go. Better check my journal and grab my camera.",
+        "\n",
+        "end",
+        null
+      ]
+    }
+  ],
+  "listDefs": {}
+}

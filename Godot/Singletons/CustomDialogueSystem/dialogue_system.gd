@@ -13,7 +13,7 @@ var current_character_resource : TalkingObjectResource
 var current_conversation : Array[InkLineInfo]
 
 ## VARIABLE SETTER FILE
-var set_variables_file : JSON = preload("res://Assets/InkFiles/Act 1 Variables.json")
+var set_variables_file : JSON = preload("res://Assets/InkFiles/Act 1 Variables.ink.json")
 
 ## STATES
 var in_dialogue : bool = false
@@ -360,13 +360,11 @@ func advance_dialogue() -> void:
 		or !is_instance_valid(current_dialogue_box)
 		or are_choices
 		or waiting
-	): return	
-
-	if (
-		current_dialogue_box.done_state == true
 	):
+		return
+
+	if current_dialogue_box.done_state == true:
 		display_content()
-		
 	else:
 		skip()
 

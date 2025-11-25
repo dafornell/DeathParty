@@ -1,11 +1,12 @@
 class_name NPC extends Interactable
 
 var outline: Node3D
-@onready var animation_player: AnimationPlayer = get_node_or_null("AnimationPlayer")
+@onready var animation_player: AnimationPlayer = find_child("AnimationPlayer")
 
 @export var character_resource: CharacterResource
 @export var dialogue_box: DialogueBoxResource = preload("res://Assets/Resources/DialogueBoxResources/main_dialogue_box_properties.tres")
 @export var npc_interact_popup: NPCInteractPopup
+
 
 func _ready() -> void:
 	super()
@@ -45,6 +46,7 @@ func on_interact() -> void:
 
 func play_animation(anim_name: String) -> void:
 	animation_player.play(anim_name)
+
 
 func _toggle_quest_marker(value: bool) -> void:
 	if character_resource:

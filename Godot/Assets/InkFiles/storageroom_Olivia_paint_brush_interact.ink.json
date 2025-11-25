@@ -1,0 +1,21 @@
+{
+  "inkVersion": 21,
+  "root": [
+    [
+      "^[Olivia] Temp dialogue",
+      "\n",
+      "^/give_item \"Paint Brush\"",
+      "\n",
+      [
+        "done",
+        {
+          "#n": "g-0"
+        }
+      ],
+      null
+    ],
+    "done",
+    null
+  ],
+  "listDefs": {}
+}

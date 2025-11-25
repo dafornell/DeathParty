@@ -1,1 +1,39 @@
-{"inkVersion":21,"root":[[{"->":"OliviaDormPartyFlier"},["done",{"#f":5,"#n":"g-0"}],null],"done",{"OliviaDormPartyFlier":["^[Olivia] Delta Iota Epsilon. I told Kyle a frat named \"DIE\" that lived in that creepy old Durand mansion was no good.","\n","end",{"#f":1}],"#f":1}],"listDefs":{}}
+{
+  "inkVersion": 21,
+  "root": [
+    [
+      {
+        "->": "OliviaDormPartyFlier"
+      },
+      [
+        "done",
+        {
+          "#n": "g-0"
+        }
+      ],
+      null
+    ],
+    "done",
+    {
+      "OliviaDormPartyFlier": [
+        "^[Olivia] Delta Iota Epsilon. I told Kyle a frat named \"DIE\" that lived in that creepy old Durand mansion was no good.",
+        "\n",
+        "^/give_item partyflier",
+        "\n",
+        "end",
+        null
+      ],
+      "global decl": [
+        "ev",
+        false,
+        {
+          "VAR=": "has_partyflier"
+        },
+        "/ev",
+        "end",
+        null
+      ]
+    }
+  ],
+  "listDefs": {}
+}

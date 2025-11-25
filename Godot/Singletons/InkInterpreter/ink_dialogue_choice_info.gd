@@ -6,14 +6,15 @@ var once_only : bool
 var id : String
 
 func _init( 
+	_parent_filepath : String,
 	_container: InkContainer,
 	_path : String,
 	_text : String, 
 	_jump : String,
-	_condition_stack: Array = [],
+	_condition_stacks: Array[Array] = [[]],
 	_once_only: bool = false,
 ) -> void:
-	super(_container, _path, _condition_stack)
+	super(_parent_filepath, _container, _path, _condition_stacks)
 	parent_container.dialogue_choices.push_back(self)
 	text = _text
 	jump = _jump

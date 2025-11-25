@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c7lpgksj3ddcu" path="res://rooms/Exterior Frat Lawn/exterior.gd" id="1_nnx0v"]
 [ext_resource type="Environment" uid="uid://ca3e8txjiikuc" path="res://Assets/environments/new Exterior environment.tres" id="2_maypx"]
-[ext_resource type="JSON" path="res://Assets/InkFiles/ext_entrance_Olivia_house_monologue.json" id="3_42tb4"]
+[ext_resource type="JSON" path="res://Assets/InkFiles/ext_entrance_Olivia_house_monologue.ink.json" id="3_42tb4"]
 [ext_resource type="Texture2D" uid="uid://ch4xrdlj43bah" path="res://rooms/Exterior Frat Lawn/Exterior_TCom_OrnamentBorder0333_1_S.png" id="3_qokoo"]
 [ext_resource type="Script" uid="uid://cyn7mdbv1saaq" path="res://rooms/Exterior Frat Lawn/jog_controls_popup.gd" id="4_81i5n"]
 [ext_resource type="Texture2D" uid="uid://ddr8f0a45pnoy" path="res://rooms/Exterior Frat Lawn/Exterior_51dc8d5e7ac559bb47ade3dfd3ba5b58.jpg" id="4_s6f1y"]
@@ -2958,10 +2958,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9708751, -6.61071, 53.2711
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.343264, -4.26023, 5.97242)
 spawn_point_number = 1
 
-[node name="SceneLoader_Entrance" parent="." instance=ExtResource("55_maypx")]
+[node name="SceneLoader_Entrance" parent="." node_paths=PackedStringArray("interaction_detector") instance=ExtResource("55_maypx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.799007, -5.80702, 3.38396)
 interactable = false
 play_door_sound = true
+interaction_detector = NodePath("InteractionDetector")
+
+[node name="DoorSound" parent="SceneLoader_Entrance" index="0"]
+event_name = "event:/000_SFX/100_Environment/door"
 
 [node name="Popup" parent="SceneLoader_Entrance" index="1"]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0.219, 1.75, 0.339)

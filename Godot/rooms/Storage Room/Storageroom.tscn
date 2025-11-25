@@ -2809,12 +2809,16 @@ shape = SubResource("BoxShape3D_0uh0o")
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 7.14142, -1, 5.14142)
 shape = SubResource("BoxShape3D_82dqc")
 
-[node name="SceneLoader_Basement" parent="." instance=ExtResource("2_llsdw")]
+[node name="SceneLoader_Basement" parent="." node_paths=PackedStringArray("interaction_detector") instance=ExtResource("2_llsdw")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.89666, 0.818195, -0.733242)
 interactable = false
 target_scene = 6
 local_spawn_point = 1
 door_sound_type = 1
+interaction_detector = NodePath("InteractionDetector")
+
+[node name="DoorSound" parent="SceneLoader_Basement" index="0"]
+event_name = "event:/000_SFX/100_Environment/door"
 
 [node name="Popup" parent="SceneLoader_Basement" index="1"]
 transform = Transform3D(-6.55671e-09, 0, -0.15, 0, 0.15, 0, 0.15, 0, -6.55671e-09, 0, 1.75, -1.25)
@@ -3837,6 +3841,7 @@ skeleton = NodePath("")
 transform = Transform3D(-1.13392, 0, 0.111921, 0, 1.13943, 0, -0.111921, 0, -1.13392, 7.89147, -1.22022, 0.403218)
 
 [node name="RumbleAmbience" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/000_SFX/100_Environment/rumble ambience"
 event_guid = "{36631b25-d3e7-42fa-85c9-22c1deecf5cf}"
 autoplay = true
 volume = 2.0
@@ -3848,9 +3853,13 @@ transform = Transform3D(0.15482537, 0.027057577, 0.17202881, 0.005450524, 0.2293
 [node name="brush2" parent="." instance=ExtResource("63_81kv4")]
 transform = Transform3D(0.599649, -0.365484, -0.897297, 0.26079, 1.07719, -0.264477, 0.933118, -0.0661845, 0.650546, -3.60937, -0.105501, 3.40987)
 
-[node name="SceneLoader_Hourhand hallway" parent="." instance=ExtResource("2_llsdw")]
+[node name="SceneLoader_Hourhand hallway" parent="." node_paths=PackedStringArray("interaction_detector") instance=ExtResource("2_llsdw")]
 transform = Transform3D(1.13943, 0, 0, 0, 1.13943, 0, 0, 0, 1.13943, 0.974497, -1.74971, 1.00802)
 target_scene = 11
+interaction_detector = NodePath("InteractionDetector")
+
+[node name="DoorSound" parent="SceneLoader_Hourhand hallway" index="0"]
+event_name = "event:/000_SFX/100_Environment/door"
 
 [node name="Popup" parent="SceneLoader_Hourhand hallway" index="1"]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 1.75, 0)

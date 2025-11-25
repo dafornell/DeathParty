@@ -50,7 +50,7 @@
 [ext_resource type="PackedScene" uid="uid://b5sjjc5i61576" path="res://Singletons/ContentLoader/TeleportPoint.tscn" id="49_a6eg1"]
 [ext_resource type="Script" uid="uid://bea7y4hurcesx" path="res://Utilities/scripts/interactable.gd" id="49_bg7u6"]
 [ext_resource type="PackedScene" uid="uid://csh7q4aonjs3d" path="res://Assets/CharacterAssets/frat_boys/red_hat_frat_boy/Frat boy red hat.glb" id="49_cygoc"]
-[ext_resource type="PackedScene" uid="uid://c1vyk1h1qwesf" path="res://Common/Popup UI/npc_bark_popup.tscn" id="50_ylx8s"]
+[ext_resource type="PackedScene" path="res://Common/Popup UI/npc_bark_popup.tscn" id="50_ylx8s"]
 [ext_resource type="PackedScene" uid="uid://eyb48ss6xfgu" path="res://Assets/CharacterAssets/shy_girl/shy_girl.tscn" id="51_1e4ar"]
 [ext_resource type="Texture2D" uid="uid://dut3t6ajv8wp" path="res://Assets/textures/entrance_room_environment/two doors_IMG_4472.png" id="51_f4d3f"]
 [ext_resource type="PackedScene" uid="uid://bte4agxfg1yhm" path="res://Assets/CharacterAssets/frat_boys/Long_Hair_frat_boy/Frat boy long hair.glb" id="51_t3a1b"]
@@ -743,12 +743,13 @@ shape = SubResource("BoxShape3D_pvy67")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 4.1, -3.192288)
 shape = SubResource("BoxShape3D_77dsr")
 
-[node name="SceneLoader_Exterior" parent="." instance=ExtResource("35_nneh3")]
+[node name="SceneLoader_Exterior" parent="." node_paths=PackedStringArray("interaction_detector") instance=ExtResource("35_nneh3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 14)
 interactable = false
 target_scene = 9
 local_spawn_point = 1
 play_door_sound = true
+interaction_detector = NodePath("InteractionDetector")
 
 [node name="DoorSound" parent="SceneLoader_Exterior" index="0"]
 event_name = "event:/000_SFX/100_Environment/door"
@@ -759,11 +760,12 @@ texture = null
 [node name="CollisionShape3D" parent="SceneLoader_Exterior/InteractionDetector" index="0"]
 shape = SubResource("BoxShape3D_1e4ar")
 
-[node name="SceneLoader_Kitchen" parent="." instance=ExtResource("35_nneh3")]
+[node name="SceneLoader_Kitchen" parent="." node_paths=PackedStringArray("interaction_detector") instance=ExtResource("35_nneh3")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.07177, 0, 3.68975)
 target_scene = 10
 play_door_sound = true
 use_first_mesh = true
+interaction_detector = NodePath("InteractionDetector")
 
 [node name="DoorSound" parent="SceneLoader_Kitchen" index="0"]
 event_name = "event:/000_SFX/100_Environment/door"
@@ -775,10 +777,11 @@ transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.54834, 1.23943, 0.468261)
 shape = SubResource("BoxShape3D_f4d3f")
 
-[node name="SceneLoader_PartyRoom" parent="." instance=ExtResource("35_nneh3")]
+[node name="SceneLoader_PartyRoom" parent="." node_paths=PackedStringArray("interaction_detector") instance=ExtResource("35_nneh3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -4.96324)
 interactable = false
 target_scene = 3
+interaction_detector = NodePath("InteractionDetector")
 
 [node name="DoorSound" parent="SceneLoader_PartyRoom" index="0"]
 event_name = "event:/000_SFX/100_Environment/door"
@@ -791,11 +794,12 @@ texture = null
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15619, 0.218792, -0.17054)
 shape = SubResource("BoxShape3D_cygoc")
 
-[node name="SceneLoader_Basement" parent="." instance=ExtResource("35_nneh3")]
+[node name="SceneLoader_Basement" parent="." node_paths=PackedStringArray("interaction_detector") instance=ExtResource("35_nneh3")]
 transform = Transform3D(-0.00280997, 0, -0.999996, 0, 1, 0, 0.999996, 0, -0.00280997, 13.3283, 1.22732, 3.43122)
 target_scene = 6
 play_door_sound = true
 use_first_mesh = true
+interaction_detector = NodePath("InteractionDetector")
 
 [node name="DoorSound" parent="SceneLoader_Basement" index="0"]
 event_name = "event:/000_SFX/100_Environment/door"
@@ -1601,8 +1605,9 @@ autoplay = "sitttttt"
 [node name="witch" parent="NPCs" instance=ExtResource("44_kdf33")]
 transform = Transform3D(-0.612342, 0, 0.790593, 0, 1, 0, -0.790593, 0, -0.612342, -3.75813, -0.00254369, 4.89165)
 
-[node name="Caleb" parent="NPCs" instance=ExtResource("35_gfuhi")]
+[node name="Caleb" parent="NPCs" node_paths=PackedStringArray("kitchen_door") instance=ExtResource("35_gfuhi")]
 transform = Transform3D(0.828089, 0, 0.560596, 0, 1, 0, -0.560596, 0, 0.828089, 1.6852791, 0.0419717, 6.871859)
+kitchen_door = NodePath("../../SceneLoader_Kitchen")
 character_resource = SubResource("Resource_77dsr")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="NPCs/Caleb"]
@@ -1622,10 +1627,9 @@ transform = Transform3D(0.699775, 0, -0.714363, 0, 1, 0, 0.714363, 0, 0.699775, 
 [node name="chi omega2" parent="NPCs" instance=ExtResource("45_la1vu")]
 transform = Transform3D(-0.252289, 0, 0.967652, 0, 1, 0, -0.967652, 0, -0.252289, -2.59934, 4.58581, -3.70973)
 
-[node name="Frat boy red hat" type="Node3D" parent="NPCs" node_paths=PackedStringArray("bark_popup")]
+[node name="Frat boy red hat" type="Node3D" parent="NPCs"]
 transform = Transform3D(0.661547, 0, -0.749903, 0, 1, 0, 0.749903, 0, 0.661547, 8.29458, 0.0127136, 8.69468)
 script = ExtResource("49_bg7u6")
-bark_popup = NodePath("BarkPopup")
 metadata/_custom_type_script = "uid://bea7y4hurcesx"
 
 [node name="Frat boy red hat" parent="NPCs/Frat boy red hat" instance=ExtResource("49_cygoc")]

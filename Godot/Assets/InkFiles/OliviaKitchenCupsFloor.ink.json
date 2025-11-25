@@ -1,1 +1,27 @@
-{"inkVersion":21,"root":[[{"->":"OliviaKitchenCupsFloor"},["done",{"#f":5,"#n":"g-0"}],null],"done",{"OliviaKitchenCupsFloor":["^[Olivia] Some people just love to leave a mess.","\n","end",{"#f":1}],"#f":1}],"listDefs":{}}
+{
+  "inkVersion": 21,
+  "root": [
+    [
+      {
+        "->": "OliviaKitchenCupsFloor"
+      },
+      [
+        "done",
+        {
+          "#n": "g-0"
+        }
+      ],
+      null
+    ],
+    "done",
+    {
+      "OliviaKitchenCupsFloor": [
+        "^[Olivia] Some people just love to leave a mess.",
+        "\n",
+        "end",
+        null
+      ]
+    }
+  ],
+  "listDefs": {}
+}

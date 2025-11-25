@@ -1,0 +1,26 @@
+{
+  "inkVersion": 21,
+  "root": [
+    [
+      "^[Red Hat]Hey, you good?",
+      "\n",
+      "^[Olivia]Yea, I'm fine.",
+      "\n",
+      "^[Red Hat]Cool. Listen, the library is for cooling off, so just relax and let your feet rest.",
+      "\n",
+      "^[Olivia]Appreciate it.",
+      "\n",
+      "end",
+      [
+        "done",
+        {
+          "#n": "g-0"
+        }
+      ],
+      null
+    ],
+    "done",
+    null
+  ],
+  "listDefs": {}
+}

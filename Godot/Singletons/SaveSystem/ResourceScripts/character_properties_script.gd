@@ -16,20 +16,26 @@ class_name CharacterResource extends TalkingObjectResource
 
 signal location_changed
 signal interaction_ended
-		
+
+
 func change_location(location_str : String) -> void:
 	character_location = Globals.SCENES_STR[location_str]
 	location_changed.emit()
 
+
 func end_chat(_current_conversation : Array[InkLineInfo] = []) -> void:
 	super()
 	interaction_ended.emit()
-	
+
+
 func get_save_state() -> Dictionary:
 	var save_state := super()
 	save_state["quest_marker_enabled"] = quest_marker_enabled
+	save_state["character_location"] = character_location
 	return save_state
+
 
 func load_save_state(save_state: Dictionary) -> void:
 	super(save_state)
 	quest_marker_enabled = save_state.get("quest_marker_enabled", false)
+	character_location = save_state.get("character_location", Globals.SCENES.Everywhere)
