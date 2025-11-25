@@ -13,6 +13,7 @@ metadata/_custom_type_script = "uid://d1yny6oqf2gvp"
 
 [resource]
 script = ExtResource("1_5gmr0")
+character_location = 2
 quest_marker_enabled = true
 image_polaroid = ExtResource("1_ecyof")
 image_polaroid_popout = ExtResource("2_0c5ri")

@@ -9,7 +9,7 @@ func _enter_tree() -> void:
 
 
 func _on_entrance_convo_finished() -> void:
-	character_resource.character_location = Globals.SCENES.Nowhere
+	character_resource.character_location = Globals.SCENES.Basement
 	SaveSystem.save_to_disk()
 
 	if kitchen_door != null:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=182 format=4 uid="uid://3iwh0xc60rih"]
+[gd_scene load_steps=183 format=4 uid="uid://3iwh0xc60rih"]
 
 [ext_resource type="Script" uid="uid://ct6edy87engi4" path="res://rooms/Basement/basement.gd" id="1_e2jnh"]
 [ext_resource type="Texture2D" uid="uid://cphr3akbxc7wm" path="res://rooms/Basement/basement layout_Entryway wood.png" id="1_xu4va"]
@@ -78,6 +78,7 @@
 [ext_resource type="PackedScene" uid="uid://cno0dyov1i6bm" path="res://Assets/CharacterAssets/witch/witch.tscn" id="81_i5ndi"]
 [ext_resource type="PackedScene" uid="uid://b36wsq6enc3vs" path="res://Assets/CharacterAssets/chi_omega_girl/chi_omega_girl.tscn" id="82_48c5o"]
 [ext_resource type="PackedScene" uid="uid://s3crydfiatmy" path="res://Assets/CharacterAssets/cone_ghost/cone_ghost.tscn" id="83_ij3m0"]
+[ext_resource type="PackedScene" uid="uid://dp8mxgak36ovb" path="res://Assets/CharacterAssets/Caleb/caleb.tscn" id="83_reyxf"]
 [ext_resource type="PackedScene" uid="uid://bagpax3yb0uf7" path="res://Assets/CharacterAssets/christmas_tree/christmas_tree.tscn" id="84_reyxf"]
 [ext_resource type="PackedScene" uid="uid://cfen8ypgv1gjf" path="res://Assets/CharacterAssets/gamers/shark_gamer/shark_gamer.tscn" id="85_vdfwq"]
 [ext_resource type="PackedScene" uid="uid://cd3gxo5pookxd" path="res://Assets/CharacterAssets/frat_boys/red_hat_frat_boy/frat_boy_red_hat.tscn" id="88_2nnqp"]
@@ -2453,6 +2454,97 @@ autoplay = "push up"
 [node name="Shy Girl" parent="NPCs" instance=ExtResource("77_kk7s6")]
 transform = Transform3D(-0.9463339, 0, 0.32319075, 0, 1, 0, -0.32319075, 0, -0.9463339, 7.369347, 0.0910255, -2.8395653)
 
+[node name="Caleb" parent="NPCs" instance=ExtResource("83_reyxf")]
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, 1, 0, -2)
+
+[node name="Popup" parent="NPCs/Caleb" index="0"]
+transform = Transform3D(1.0000012, 0, 0, 0, 1, 0, 0, 0, 1.0000012, -0.9959292, 2, 0.57500005)
+
+[node name="QuestMarker" parent="NPCs/Caleb" index="1"]
+transparency = 0.09445456
+
+[node name="Skeleton3D" parent="NPCs/Caleb/CharacterBody3D/Model" index="0"]
+bones/0/position = Vector3(0.19517171, -0.036703825, -90.93941)
+bones/0/rotation = Quaternion(-0.7376949, -0.017559163, 0.0026004026, 0.6749008)
+bones/1/rotation = Quaternion(0.006099634, 0.019905023, 0.03413053, 0.9992006)
+bones/2/rotation = Quaternion(0.039065138, 0.0068928995, -0.00223974, 0.9992104)
+bones/3/rotation = Quaternion(0.009525104, 0.007813582, -0.0021803693, 0.99992174)
+bones/4/rotation = Quaternion(-0.0022441705, -0.012362004, -0.029672267, 0.9994807)
+bones/5/rotation = Quaternion(0.028044112, 0.014114977, 0.009220977, 0.9994645)
+bones/7/rotation = Quaternion(-0.6222888, -0.3621839, 0.5727615, -0.391821)
+bones/8/rotation = Quaternion(0.41108692, -0.01996723, -0.081271835, 0.9077465)
+bones/9/position = Vector3(3.2533694e-07, 12.892954, 6.1009305e-06)
+bones/9/rotation = Quaternion(0.013227483, -0.015848782, 0.11148464, 0.9935518)
+bones/10/position = Vector3(5.17673e-08, 27.812237, -3.9748447e-06)
+bones/10/rotation = Quaternion(-0.12388588, -0.016548734, 0.014202094, 0.9920569)
+bones/11/rotation = Quaternion(0.23724373, 0.15250416, 0.054755084, 0.9578413)
+bones/12/position = Vector3(-1.1203747, 3.7339518, -3.3829783e-06)
+bones/12/rotation = Quaternion(-0.012878611, -0.008967835, 0.077499375, 0.9968689)
+bones/13/rotation = Quaternion(-0.12660512, 0.025215367, 0.09834055, 0.9867444)
+bones/15/rotation = Quaternion(0.51395875, -0.01996733, -0.06116778, 0.85539824)
+bones/16/position = Vector3(0.018023372, 2.570945, -4.3756177e-06)
+bones/16/rotation = Quaternion(0.6350182, -0.00058643153, -0.12513979, 0.7622937)
+bones/17/position = Vector3(-0.010261774, 2.3421013, 1.1977374e-05)
+bones/17/rotation = Quaternion(0.6350506, 0.002843381, -0.12066026, 0.7629835)
+bones/19/position = Vector3(-1.1323516, 12.996209, -0.7686043)
+bones/19/rotation = Quaternion(0.5154489, -0.006924975, -0.03386178, 0.8562231)
+bones/20/rotation = Quaternion(0.6405367, -0.0034168772, -0.11093146, 0.7598653)
+bones/21/position = Vector3(-0.06526237, 2.8591192, -9.843382e-06)
+bones/21/rotation = Quaternion(0.6405953, 0.015023039, -0.08581308, 0.76292074)
+bones/23/position = Vector3(1.4043952, 12.188747, -0.2764005)
+bones/23/rotation = Quaternion(0.5154262, -0.0062620095, -0.036041707, 0.8561528)
+bones/24/position = Vector3(0.112066746, 3.1176784, -2.0324042e-06)
+bones/24/rotation = Quaternion(0.64033854, -0.0032206997, -0.11025938, 0.76013106)
+bones/25/position = Vector3(-0.051792532, 2.3855014, 1.2617082e-05)
+bones/25/rotation = Quaternion(0.64027053, 0.015309719, -0.089673944, 0.76274365)
+bones/26/position = Vector3(-0.060275555, 2.2042253, 5.9604986e-08)
+bones/27/position = Vector3(3.623644, 11.619946, -0.4270449)
+bones/27/rotation = Quaternion(0.5145065, -0.013780951, -0.053909793, 0.8556792)
+bones/28/rotation = Quaternion(0.63709253, -0.0004573054, -0.118541725, 0.7616171)
+bones/29/position = Vector3(-0.02341342, 2.1062481, 8.643722e-06)
+bones/29/rotation = Quaternion(0.6371222, 0.0060831783, -0.10751194, 0.76320356)
+bones/30/position = Vector3(-0.012139916, 1.6710645, 2.7418134e-06)
+bones/31/rotation = Quaternion(0.57894295, -0.41541237, 0.56130606, 0.4209431)
+bones/32/position = Vector3(-1.6917331e-06, 13.205319, 9.103691e-06)
+bones/32/rotation = Quaternion(0.45598128, -0.1264813, -0.0174326, 0.88078356)
+bones/33/position = Vector3(-1.3448379e-06, 12.874464, -1.4071102e-06)
+bones/33/rotation = Quaternion(0.018609079, 0.0247484, -0.16120349, 0.9864354)
+bones/34/position = Vector3(-6.149908e-07, 27.727757, 4.7422545e-06)
+bones/34/rotation = Quaternion(0.014362981, 0.14488438, 0.11640777, 0.9824721)
+bones/35/rotation = Quaternion(0.11531443, -0.09474903, -0.058645852, 0.9870592)
+bones/36/rotation = Quaternion(-0.021994594, 0.0070238328, -0.06760718, 0.9974448)
+bones/37/rotation = Quaternion(-0.10192048, -0.019032365, -0.25414652, 0.9615922)
+bones/39/position = Vector3(3.9985483, 12.333994, 0.060959052)
+bones/39/rotation = Quaternion(0.08852553, 0.007845057, -0.017054135, 0.995897)
+bones/40/rotation = Quaternion(0.087776735, 1.0027551e-05, 0.011397474, 0.99607503)
+bones/41/rotation = Quaternion(0.087777406, -2.3562464e-07, 0.011441303, 0.9960745)
+bones/42/position = Vector3(-0.00019848347, 2.1275475, -1.1622906e-06)
+bones/43/position = Vector3(1.2445428, 12.401545, -0.49975005)
+bones/43/rotation = Quaternion(0.08472885, 0.0016121853, -0.030545717, 0.9959345)
+bones/44/position = Vector3(-0.09129566, 3.053518, 3.3794013e-06)
+bones/44/rotation = Quaternion(0.28071225, -0.00023155104, 0.058631163, 0.9579995)
+bones/45/position = Vector3(0.07337567, 2.955468, 4.41245e-06)
+bones/45/rotation = Quaternion(0.21232305, -0.005439566, 0.016394068, 0.97704685)
+bones/47/rotation = Quaternion(0.15268955, 0.00043312064, -0.036408782, 0.98760325)
+bones/48/position = Vector3(-0.17203861, 3.0342524, 3.4797176e-07)
+bones/48/rotation = Quaternion(0.31046507, -0.00013146177, 0.07218716, 0.9478399)
+bones/49/position = Vector3(0.06940544, 2.6918538, -9.9167455e-06)
+bones/49/rotation = Quaternion(0.25845578, -0.0065530483, 0.03587833, 0.9653344)
+bones/51/position = Vector3(-3.7802591, 11.131266, -0.22906005)
+bones/51/rotation = Quaternion(0.13933161, 0.0035152754, -0.02851546, 0.9898289)
+bones/52/position = Vector3(-0.10804063, 2.724254, -3.7975042e-08)
+bones/52/rotation = Quaternion(0.32052702, 6.9947906e-05, 0.069979265, 0.9446509)
+bones/53/rotation = Quaternion(0.2674939, -0.0073247137, 0.0282846, 0.96311647)
+bones/54/position = Vector3(0.04374492, 1.9864814, -7.450535e-08)
+bones/55/rotation = Quaternion(0.13408963, 0.023133537, 0.98867095, -0.063362375)
+bones/56/rotation = Quaternion(-0.12628758, 0.054903463, -0.009179928, 0.9904306)
+bones/57/rotation = Quaternion(0.48136675, -0.012089424, 0.01934168, 0.87622255)
+bones/58/rotation = Quaternion(0.35247225, -0.063106805, 0.022242824, 0.9334271)
+bones/60/rotation = Quaternion(-0.0503732, -0.0056238994, 0.9987131, -0.001798175)
+bones/61/rotation = Quaternion(-0.10437346, -0.0213534, 0.013536335, 0.99421674)
+bones/62/rotation = Quaternion(0.49616453, -0.0087290965, -0.053817127, 0.866515)
+bones/63/rotation = Quaternion(0.34080058, 0.06532348, -0.022296095, 0.9375984)
+
 [node name="Music" type="FmodEventEmitter3D" parent="."]
 event_name = "event:/900_MX/Basement Music"
 event_guid = "{8e975a78-1a06-4211-9c7a-f0eb8fc9ce74}"
@@ -2471,3 +2563,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2999997, 0, 2.3000002)
 [editable path="NPCs/FreeHugGuy"]
 [editable path="NPCs/FratBoyRedHat"]
 [editable path="NPCs/FratBoyLongHair"]
+[editable path="NPCs/Caleb"]
