@@ -18,12 +18,13 @@ extends Node
 
 @export_group("UI sounds")
 @export var journal_close: PackedScene
+@export var journal_ui: PackedScene
+@onready var dialogue_print: FmodEventEmitter3D = %DialoguePrint
 
 @export_group("environment sounds")
 @export var door: PackedScene
 @export var metal_door: PackedScene
 
-@onready var dialogue_print: FmodEventEmitter3D = %DialoguePrint
 @onready var phone_typing: FmodEventEmitter3D = %PhoneTyping
 
 
@@ -51,3 +52,7 @@ func play_dialogue_print() -> void:
 
 func play_phone_typing() -> void:
 	phone_typing.play()
+
+
+func play_journal_ui() -> void:
+	play(journal_ui)

@@ -8,6 +8,7 @@ class_name ClickableJournalItem extends ThreeDCursorHover
 var background_fade_shader : ShaderMaterial
 var og_zindex : int
 
+
 func _ready() -> void:
 	item_resource.refresh()
 	if background_fade_on_hover:
@@ -16,13 +17,16 @@ func _ready() -> void:
 		background_fade_shader.set_shader_parameter("aspect_ratio", texture_rect.get_viewport().get_visible_rect().size)
 		og_zindex = texture_rect.z_index
 
+
 ##INHERITED
 func on_mouse_down() -> void:
+	Sounds.play_journal_ui()
 	if GuiSystem.inventory_showing: return
 	GuiSystem.inspect_journal_item(item_resource)
 	if item_resource.talking_object_resource:
 		print("Starting chat with talking object resource")
 		item_resource.talking_object_resource.start_chat()
+
 
 func enter_hover() -> void:
 	super()
@@ -33,6 +37,7 @@ func enter_hover() -> void:
 	background_fade_shader.set_shader_parameter("exclusion_rotation", texture_rect.rotation_degrees)
 	background_fade.visible = true
 	texture_rect.z_index = 100
+
 
 func exit_hover() -> void:
 	super()

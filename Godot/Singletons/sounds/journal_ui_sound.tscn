@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://drr3kvp43q00m"]
+
+[node name="JournalUI" type="FmodEventEmitter3D"]
+event_name = "event:/000_SFX/300_UI/JournalUI"
+event_guid = "{ac051662-630b-443a-b648-ee35ec9ad6d4}"
+attached = false
+autoplay = true
+auto_release = true
+volume = 0.5
