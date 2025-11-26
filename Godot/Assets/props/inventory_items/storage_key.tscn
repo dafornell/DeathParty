@@ -14,3 +14,7 @@ shape = SubResource("BoxShape3D_3e0hr")
 
 [node name="Storage Key" parent="MeshContainer" index="0" instance=ExtResource("2_cryxo")]
 transform = Transform3D(-0.70710677, 3.090862e-08, 0.70710677, 0.70710677, 3.090862e-08, 0.70710677, 0, 1, -4.371139e-08, 0, 0, 0)
+
+[node name="HoverSound" parent="." index="2"]
+event_name = "event:/000_SFX/300_UI/InventoryHover/KeyHover"
+event_guid = "{0cd97228-0655-4b7d-a2bb-0a3af47b6d90}"
