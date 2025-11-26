@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://tlr6nrrq3hp0" path="res://Assets/props/banners/happy_halloween_banner.tscn" id="25_6v65a"]
 [ext_resource type="PackedScene" uid="uid://48e2dw6eco7w" path="res://Assets/props/balloons/balloons_three_short.tscn" id="26_80mb7"]
 [ext_resource type="PackedScene" uid="uid://d3lt3kgvcji47" path="res://Assets/props/balloons/balloons_four_short.tscn" id="27_yoltj"]
+[ext_resource type="PackedScene" uid="uid://c088ha3843ea2" path="res://Assets/props/wooden_table/wood_table.tscn" id="28_bnqlw"]
 [ext_resource type="PackedScene" uid="uid://dxahcd25ocjsx" path="res://Assets/props/balloons/balloons_four_tall.tscn" id="28_vqd5x"]
 [ext_resource type="PackedScene" uid="uid://c5eugkbr3dtpg" path="res://Assets/props/balloons/balloons_three_floating.tscn" id="29_kkgt5"]
 [ext_resource type="PackedScene" uid="uid://bjguuep7ueh1l" path="res://Assets/props/cobwebs/cobweb_wide.tscn" id="30_bbh4x"]
@@ -34,16 +35,16 @@
 [ext_resource type="PackedScene" uid="uid://x8iqwxqrxuip" path="res://Assets/props/flags/party_flags_pink/party_flags_pink.tscn" id="32_6emc0"]
 [ext_resource type="PackedScene" uid="uid://xdanx1rjnktk" path="res://Assets/props/jack_o_lanterns/jack_o_lantern.tscn" id="33_hdy2l"]
 [ext_resource type="PackedScene" uid="uid://b413od8ag3jvo" path="res://Assets/props/jack_o_lanterns/jack_o_lantern_tall.tscn" id="34_iipv5"]
-[ext_resource type="PackedScene" path="res://Assets/CharacterAssets/Caleb/caleb.tscn" id="35_gfuhi"]
+[ext_resource type="PackedScene" uid="uid://dp8mxgak36ovb" path="res://Assets/CharacterAssets/Caleb/caleb.tscn" id="35_gfuhi"]
 [ext_resource type="PackedScene" uid="uid://bbyg62wymptn6" path="res://Singletons/ContentLoader/scene_loader.tscn" id="35_nneh3"]
 [ext_resource type="PackedScene" uid="uid://bndch2w3fgmyf" path="res://Assets/props/jack_o_lanterns/jack_o_lantern_squashed.tscn" id="35_p1ak8"]
 [ext_resource type="PackedScene" uid="uid://bm3olvlwfwvp1" path="res://Assets/environment/door/door.glb" id="36_gfuhi"]
 [ext_resource type="PackedScene" uid="uid://craae7sxr3poi" path="res://rooms/Basement/DIE flag.glb" id="37_0ritw"]
 [ext_resource type="PackedScene" uid="uid://c43bqwa4bftlx" path="res://Assets/props/sofas/sofa_brown_round/sofa_brown_round.tscn" id="39_wxsgv"]
 [ext_resource type="PackedScene" uid="uid://7byda3k0fnfy" path="res://Assets/CharacterAssets/frat_boys/jack/jack.tscn" id="41_6fv14"]
+[ext_resource type="PackedScene" uid="uid://wr4qtylnyyxg" path="res://Assets/props/beer_spider.tscn" id="41_bg7u6"]
 [ext_resource type="PackedScene" uid="uid://d1lmv76sg8rx0" path="res://Assets/CharacterAssets/free_hug_guy/free_hug_guy.tscn" id="42_a5wms"]
 [ext_resource type="PackedScene" uid="uid://k3sqairh3uh4" path="res://Assets/CharacterAssets/frat_boys/blond_frat_boy/blond_frat_boy.tscn" id="42_wxsgv"]
-[ext_resource type="PackedScene" uid="uid://bgeabboi8mw6q" path="res://rooms/Exterior Frat Lawn/beer spider.glb" id="43_klyfx"]
 [ext_resource type="PackedScene" uid="uid://cno0dyov1i6bm" path="res://Assets/CharacterAssets/witch/witch.tscn" id="44_kdf33"]
 [ext_resource type="PackedScene" uid="uid://b36wsq6enc3vs" path="res://Assets/CharacterAssets/chi_omega_girl/chi_omega_girl.tscn" id="45_la1vu"]
 [ext_resource type="PackedScene" uid="uid://s3crydfiatmy" path="res://Assets/CharacterAssets/cone_ghost/cone_ghost.tscn" id="46_ihq26"]
@@ -58,7 +59,6 @@
 [ext_resource type="PackedScene" uid="uid://cjkogt4y2w5dp" path="res://Assets/CharacterAssets/bunnies/red_bunny/red_bunny.tscn" id="53_77dsr"]
 [ext_resource type="PackedScene" uid="uid://cbtntid77jgm0" path="res://Assets/environment/red_carpet.tscn" id="53_t3a1b"]
 [ext_resource type="PackedScene" uid="uid://d1ao6n4p81227" path="res://Assets/CharacterAssets/bunnies/white_bunny/white_bunny.tscn" id="54_n2wrc"]
-[ext_resource type="PackedScene" uid="uid://c7ss5lax14vpn" path="res://Assets/props/wooden_table/wood_table.glb" id="56_77dsr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nneh3"]
 size = Vector3(19.459, 10.481, 20)
@@ -1363,12 +1363,6 @@ transform = Transform3D(1.46381, 0, 0, 0, 1.46381, 0, 0, 0, 1.46381, 2.33357, 5.
 [node name="Props" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 0)
 
-[node name="wood_table" parent="Props" instance=ExtResource("56_77dsr")]
-transform = Transform3D(0.8780832, 0, -0.47850794, 0, 1.0000001, 0, 0.47850794, 0, 0.8780832, 4.805722, -0.001959741, 6.130099)
-
-[node name="BeerSpider" parent="Props/wood_table" instance=ExtResource("43_klyfx")]
-transform = Transform3D(0.48350155, 0, -0.20764804, 0, 0.5262053, 0, 0.20764804, 0, 0.48350155, 0.07055664, 0.76999736, 0.13865209)
-
 [node name="TableTennisTable" parent="Props" instance=ExtResource("23_ogwe6")]
 transform = Transform3D(0.148415, 0, -0.0793759, 0, 0.168307, 0, 0.0793759, 0, 0.148415, -0.391999, 0.0044325, 5.48762)
 
@@ -1483,6 +1477,12 @@ transform = Transform3D(-1.22954, -2.0918e-05, 0.225262, 0.000926129, 1.47499, 0
 
 [node name="JackOLantern5" parent="Props/JackOLanterns/Balcony/Right" instance=ExtResource("33_hdy2l")]
 transform = Transform3D(-1.29904, 0, 0.750001, 0, 1.77, 0, -0.750001, 0, -1.29904, 2.72332, 1.04498, 15.2458)
+
+[node name="Table" parent="Props" instance=ExtResource("28_bnqlw")]
+transform = Transform3D(0.19999999, 0, 4.1894615e-05, 0, 0.20000003, 0, -4.1894615e-05, 0, 0.19999999, 4.805722, -0.001959741, 6.130099)
+
+[node name="BeerSpider" parent="Props/Table" instance=ExtResource("41_bg7u6")]
+transform = Transform3D(2.1624157, 0, -2.7520826, 0, 3.5, 0, 2.7520826, 0, 2.1624157, -0.02212143, 3.8499868, 0.777544)
 
 [node name="NPCs" type="Node3D" parent="."]
 
