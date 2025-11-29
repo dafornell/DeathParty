@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c23vow2002owt"]
+
+[ext_resource type="PackedScene" uid="uid://l0ljp7dxs4g4" path="res://Assets/props/inventory_items/inventory_item_base.tscn" id="1_pegwn"]
+[ext_resource type="PackedScene" uid="uid://c6nqapcqfohkl" path="res://rooms/Storage Room/Storage Key.glb" id="2_cryxo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3e0hr"]
+resource_local_to_scene = true
+size = Vector3(0.22949219, 0.26000977, 0.2)
+
+[node name="InventoryItemBase" instance=ExtResource("1_pegwn")]
+
+[node name="CollisionShape3D" parent="." index="0"]
+shape = SubResource("BoxShape3D_3e0hr")
+
+[node name="Storage Key" parent="MeshContainer" index="0" instance=ExtResource("2_cryxo")]
+transform = Transform3D(-0.70710677, 3.090862e-08, 0.70710677, 0.70710677, 3.090862e-08, 0.70710677, 0, 1, -4.371139e-08, 0, 0, 0)
+
+[node name="HoverSound" parent="." index="2"]
+event_name = "event:/000_SFX/300_UI/InventoryHover/KeyHover"
+event_guid = "{0cd97228-0655-4b7d-a2bb-0a3af47b6d90}"
