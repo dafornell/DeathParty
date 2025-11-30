@@ -29,10 +29,12 @@ VAR talk_sam_nora = false
 ===glad_you===
 [Rowan] Hey, I never miss a good time! 
 When was the last time we hung out...? Oh well don't let me keep you, we can reminisce later, go find Nora and Sam!
+/emit_signal rowan_exterior_convo_finished
 -> END
 
 ===rehearsal===
 [Rowan] Well, don't tell our director, but there's quite a few of us here. It's Halloween! We can't miss a chance to dress up!
 When was the last time we hung out...? Oh well don't let me keep you, we can reminisce later, go find Nora and Sam!
+/emit_signal rowan_exterior_convo_finished
 -> END
 

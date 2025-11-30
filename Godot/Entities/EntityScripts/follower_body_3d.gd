@@ -7,6 +7,7 @@ class_name FollowerBody3D
 @export var model: Node3D
 @export var animation_tree: AnimationTree
 @export var is_following_player: bool = true
+@export var disable_movement: bool = false
 
 var player_position: Vector3
 var sprint_distance_squared: float = 30
@@ -19,16 +20,21 @@ func _ready() -> void:
 	if(navigation_agent):
 		navigation_agent.velocity_computed.connect(Callable(_on_velocity_computed))
 		GlobalPlayerScript.player_moved.connect(_move_to_player)
-	GlobalPlayerScript.spawn_follower_npc.connect(_teleport)
+	GlobalPlayerScript.spawn_follower_npc.connect(_teleport)	
 
 
 func set_movement_target(movement_target: Vector3) -> void:
 	navigation_agent.set_target_position(movement_target)
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(delta: float) -> void:	
 	if(!navigation_agent):
 		return
+	if(disable_movement):
+		navigation_agent.avoidance_enabled = false
+	else:
+		navigation_agent.avoidance_enabled = true
+	
 	animate_npc(delta)
 	
 	# Do not query when the map has never synchronized and is empty.
