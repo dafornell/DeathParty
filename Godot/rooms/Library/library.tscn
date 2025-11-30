@@ -1,4 +1,4 @@
-[gd_scene load_steps=143 format=4 uid="uid://d3cv36i34m681"]
+[gd_scene load_steps=144 format=4 uid="uid://d3cv36i34m681"]
 
 [ext_resource type="Script" uid="uid://bf53h1kpy8ay4" path="res://rooms/Library/library.gd" id="1_508o3"]
 [ext_resource type="PackedScene" uid="uid://bbyg62wymptn6" path="res://Singletons/ContentLoader/scene_loader.tscn" id="1_j03r7"]
@@ -67,6 +67,7 @@
 [ext_resource type="PackedScene" uid="uid://bte4agxfg1yhm" path="res://Assets/CharacterAssets/frat_boys/Long_Hair_frat_boy/Frat boy long hair.glb" id="63_snomx"]
 [ext_resource type="PackedScene" uid="uid://eyb48ss6xfgu" path="res://Assets/CharacterAssets/shy_girl/shy_girl.tscn" id="67_6vgeg"]
 [ext_resource type="PackedScene" uid="uid://ce647ee5srh8k" path="res://Assets/CharacterAssets/alberto_ma/alberto_ma.tscn" id="67_snomx"]
+[ext_resource type="PackedScene" uid="uid://cfxvpoegl0xb5" path="res://Assets/CharacterAssets/nora/nora.tscn" id="68_6vgeg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_obdan"]
 size = Vector3(15.626, 10, 12)
@@ -1248,11 +1249,15 @@ debug_color = Color(0.19082111, 0.5130465, 1, 1)
 [node name="TeleportPoint" parent="." instance=ExtResource("2_mwspb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.85343, -3.48211, 3.96691)
 
-[node name="SceneLoader_Ghost hallway" parent="." instance=ExtResource("1_j03r7")]
+[node name="SceneLoader_Ghost hallway" parent="." node_paths=PackedStringArray("interaction_detector") instance=ExtResource("1_j03r7")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.40378, -3.8112, 7.39135)
 target_scene = 13
 local_spawn_point = 1
 play_door_sound = true
+interaction_detector = NodePath("InteractionDetector")
+
+[node name="DoorSound" parent="SceneLoader_Ghost hallway" index="0"]
+event_name = "event:/000_SFX/100_Environment/door"
 
 [node name="Popup" parent="SceneLoader_Ghost hallway" index="1"]
 transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 3.5, 1.5, -0.25)
@@ -2478,6 +2483,9 @@ transform = Transform3D(0.47852325, 0, -0.8780749, 0, 1, 0, 0.8780749, 0, 0.4785
 
 [node name="AlbertoMa" parent="NPCs" instance=ExtResource("67_snomx")]
 transform = Transform3D(0.97782713, 0, -0.20941377, 0, 1, 0, 0.20941377, 0, 0.97782713, 4.9384937, 0.035411358, -0.16834867)
+
+[node name="Nora" parent="NPCs" instance=ExtResource("68_6vgeg")]
+transform = Transform3D(0.86602545, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, 0.86602545, 0.3000002, 0, 0.39999998)
 
 [node name="WoodCreakSound" type="FmodEventEmitter3D" parent="."]
 event_name = "event:/000_SFX/000_Demo_Test/009_SFX_WoodCreak"
