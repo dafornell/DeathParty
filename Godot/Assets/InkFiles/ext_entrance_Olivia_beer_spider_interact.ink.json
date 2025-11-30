@@ -1,22 +1,24 @@
 {
-  "inkVersion": 21,
-  "root": [
-    [
-      "^[Olivia]Woah, is that a beer spider?",
-      "\n",
-      "^This had to have been made by one of the frat bros.",
-      "\n",
-      "end",
-      [
-        "done",
-        {
-          "#n": "g-0"
-        }
-      ],
-      null
-    ],
-    "done",
-    null
-  ],
-  "listDefs": {}
+	"inkVersion": 21.0,
+	"root": [
+		[
+			"^[Olivia]Woah, is that a beer spider?",
+			"\n",
+			"^This had to have been made by one of the frat bros.",
+			"\n",
+			"end",
+			[
+				"done",
+				{
+					"#n": "g-0"
+				}
+			],
+			null
+		],
+		"done",
+		null
+	],
+	"listDefs": {
+
+	}
 }

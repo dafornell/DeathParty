@@ -49,3 +49,6 @@ signal tutorial_skipped
 signal tasks_updated
 
 signal caleb_entrance_convo_finished
+
+# emitted by dialogue OliviaRowanKitchen.ink.json, after player talks to Rowan
+signal rowan_exterior_convo_finished
