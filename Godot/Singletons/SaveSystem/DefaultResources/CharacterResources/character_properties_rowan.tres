@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CharacterResource" load_steps=7 format=3 uid="uid://dugg5j3vcgmvm"]
+[gd_resource type="Resource" script_class="CharacterResource" load_steps=8 format=3 uid="uid://dugg5j3vcgmvm"]
 
 [ext_resource type="Texture2D" uid="uid://dbhqosmmhgp33" path="res://Assets/CharacterAssets/Polaroids/rowan_a.png" id="1_h6cx1"]
 [ext_resource type="JSON" path="res://Assets/InkFiles/OliviaRowanKitchen.ink.json" id="1_sbmtt"]
@@ -7,12 +7,19 @@
 [ext_resource type="Texture2D" uid="uid://bs350qy3aorke" path="res://Assets/CharacterAssets/Polaroids/rowan_b.png" id="2_usyd4"]
 [ext_resource type="Script" uid="uid://d1yny6oqf2gvp" path="res://Singletons/SaveSystem/ResourceScripts/json_array.gd" id="4_nvgbf"]
 
+[sub_resource type="Resource" id="Resource_sbmtt"]
+script = ExtResource("4_nvgbf")
+json_array = Array[JSON]([ExtResource("1_sbmtt")])
+metadata/_custom_type_script = "uid://d1yny6oqf2gvp"
+
 [resource]
 script = ExtResource("1_toiu1")
+character_location = 9
+quest_marker_enabled = true
 image_polaroid = ExtResource("1_h6cx1")
 image_polaroid_popout = ExtResource("2_usyd4")
 image_profile = ExtResource("2_nyvch")
-default_chats = Dictionary[int, JSON]({
-10: ExtResource("1_sbmtt")
+queue_chats = Dictionary[int, ExtResource("4_nvgbf")]({
+9: SubResource("Resource_sbmtt")
 })
 name = "Rowan"

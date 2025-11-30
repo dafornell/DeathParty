@@ -1,20 +1,22 @@
 {
-  "inkVersion": 21,
-  "root": [
-    [
-      "^[Olivia]Red cups... red cups everywhere...",
-      "\n",
-      "end",
-      [
-        "done",
-        {
-          "#n": "g-0"
-        }
-      ],
-      null
-    ],
-    "done",
-    null
-  ],
-  "listDefs": {}
+	"inkVersion": 21.0,
+	"root": [
+		[
+			"^[Olivia]Red cups... red cups everywhere...",
+			"\n",
+			"end",
+			[
+				"done",
+				{
+					"#n": "g-0"
+				}
+			],
+			null
+		],
+		"done",
+		null
+	],
+	"listDefs": {
+
+	}
 }
