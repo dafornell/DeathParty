@@ -3628,6 +3628,10 @@ character_resource = ExtResource("3_1mxnw")
 primary_mesh = NodePath("CharacterBody3D/model/Skeleton3D/nora")
 use_first_mesh = false
 
+[node name="QuestMarker" parent="." index="1"]
+visible = true
+transparency = 0.4234411
+
 [node name="model" type="Node3D" parent="CharacterBody3D" index="1"]
 transform = Transform3D(0.155, 0, 0, 0, 0.155, 0, 0, 0, 0.155, 0, 0, 0)
 
