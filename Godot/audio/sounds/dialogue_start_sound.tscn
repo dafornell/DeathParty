@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://btfdybk6lqhdt"]
+
+[node name="DialogueStartSound" type="FmodEventEmitter3D"]
+event_name = "event:/000_SFX/300_UI/DialogueStart"
+event_guid = "{1e36416a-8482-4a18-949f-828bc606c36f}"
+autoplay = true
+auto_release = true
+volume = 0.5

@@ -2,7 +2,6 @@ class_name NPC extends Interactable
 
 var outline: Node3D
 @onready var animation_player: AnimationPlayer = find_child("AnimationPlayer")
-@onready var interact_sound: FmodEventEmitter3D = %InteractSound
 
 @export var character_resource: CharacterResource
 @export var dialogue_box: DialogueBoxResource = preload("res://Assets/Resources/DialogueBoxResources/main_dialogue_box_properties.tres")
@@ -42,7 +41,6 @@ func on_interact() -> void:
 	if character_resource:
 		character_resource.start_chat()
 
-	interact_sound.play()
 	_toggle_quest_marker(false)
 
 
