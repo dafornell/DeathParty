@@ -1,0 +1,15 @@
+[remap]
+
+importer="inkgd.ink.json"
+type="Resource"
+uid="uid://bhewhq6wmy5fv"
+path="res://.godot/imported/OliviaDormPartyFlier.ink.json-ed3c6103579bc95bdc26af2eae3731be.res"
+
+[deps]
+
+source_file="res://Assets/InkFiles/OliviaDormPartyFlier.ink.json"
+dest_files=["res://.godot/imported/OliviaDormPartyFlier.ink.json-ed3c6103579bc95bdc26af2eae3731be.res"]
+
+[params]
+
+compress=true

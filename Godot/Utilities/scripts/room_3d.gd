@@ -10,7 +10,7 @@ class_name Room3D
 @export var room_environment: Environment
 
 #DIALOGUE
-@export var first_visit_json: JSON
+@export var first_visit_json: InkResource
 
 # offsets must be changd MANUALLY if the MainCamera's default position or fov change
 # offset's x value is the desired distance from the edges of the area

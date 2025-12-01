@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://c00klyh6eq146" path="res://rooms/Bathroom/bathroom.gd" id="1_qgpod"]
 [ext_resource type="PackedScene" uid="uid://bm3olvlwfwvp1" path="res://Assets/environment/door/door.glb" id="1_qlpr6"]
 [ext_resource type="PackedScene" uid="uid://bbyg62wymptn6" path="res://Singletons/ContentLoader/scene_loader.tscn" id="2_3y0er"]
-[ext_resource type="JSON" path="res://Assets/InkFiles/bathroom_Olivia_enters_monologue.ink.json" id="2_16j1d"]
+[ext_resource type="Resource" uid="uid://bhs4pmq0abbtx" path="res://Assets/InkFiles/bathroom_Olivia_enters_monologue.ink.json" id="2_16j1d"]
 [ext_resource type="PackedScene" uid="uid://b5sjjc5i61576" path="res://Singletons/ContentLoader/TeleportPoint.tscn" id="2_bym60"]
 [ext_resource type="Texture2D" uid="uid://cpyd6vsbc6h2e" path="res://rooms/Bathroom/Bathroom layout_Wall 2.jpg" id="2_qlpr6"]
 [ext_resource type="Texture2D" uid="uid://bekk2pej44hkd" path="res://rooms/Bathroom/Bathroom layout_wooddark.png" id="3_moj8i"]
@@ -649,11 +649,15 @@ shape = SubResource("BoxShape3D_46x1s")
 [node name="TeleportPoint" parent="." instance=ExtResource("2_bym60")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.65482, -2.13015, -0.531126)
 
-[node name="SceneLoader_PartyRoom" parent="." instance=ExtResource("2_3y0er")]
+[node name="SceneLoader_PartyRoom" parent="." node_paths=PackedStringArray("interaction_detector") instance=ExtResource("2_3y0er")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.82258, -1.96882, 0)
 target_scene = 3
 local_spawn_point = 1
 play_door_sound = true
+interaction_detector = NodePath("InteractionDetector")
+
+[node name="DoorSound" parent="SceneLoader_PartyRoom" index="0"]
+event_name = "event:/000_SFX/100_Environment/door"
 
 [node name="Popup" parent="SceneLoader_PartyRoom" index="1"]
 transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0.63, 1.75, -1.5)

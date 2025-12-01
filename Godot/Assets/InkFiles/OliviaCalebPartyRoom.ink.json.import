@@ -1,0 +1,15 @@
+[remap]
+
+importer="inkgd.ink.json"
+type="Resource"
+uid="uid://df2jx5vnb7uep"
+path="res://.godot/imported/OliviaCalebPartyRoom.ink.json-a73ee413c759ca1a601aa65c921fe909.res"
+
+[deps]
+
+source_file="res://Assets/InkFiles/OliviaCalebPartyRoom.ink.json"
+dest_files=["res://.godot/imported/OliviaCalebPartyRoom.ink.json-a73ee413c759ca1a601aa65c921fe909.res"]
+
+[params]
+
+compress=true

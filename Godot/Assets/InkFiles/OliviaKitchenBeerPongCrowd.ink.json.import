@@ -1,0 +1,15 @@
+[remap]
+
+importer="inkgd.ink.json"
+type="Resource"
+uid="uid://c3owd0tvij6ve"
+path="res://.godot/imported/OliviaKitchenBeerPongCrowd.ink.json-2d798476bb71b7082c6ec06f70f4ce3b.res"
+
+[deps]
+
+source_file="res://Assets/InkFiles/OliviaKitchenBeerPongCrowd.ink.json"
+dest_files=["res://.godot/imported/OliviaKitchenBeerPongCrowd.ink.json-2d798476bb71b7082c6ec06f70f4ce3b.res"]
+
+[params]
+
+compress=true

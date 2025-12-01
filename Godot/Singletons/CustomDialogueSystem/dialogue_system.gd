@@ -218,26 +218,27 @@ func get_first_message(json : InkResource) -> InkLineInfo:
 func display_content() -> void:
 	if _ink_player.can_continue:
 		var content : String = _ink_player.continue_story()
-		if content == "" or content == null:
-			display_content()
-			return
-
+		
 		#removes newline if there is one (messes with item names and stuff)
 		content = content.trim_suffix("\n") 
 
-		#var content : Variant = Ink.get_content()
-		print("Display content called: ", content)
-		if content[0] == "/":
-			await match_command(content)
+		if content.replace(" ", "") == "" or content == null:
+			print("Content is empty string, skipping")
+			display_content()
 		else:
-			var line : InkLineInfo = InkParser.break_up_dialogue(content)
-			if line.speaker == "ChoiceInfo":
-				current_dialogue_box.set_choice_info(line.text)
-				display_content()
+			#var content : Variant = Ink.get_content()
+			print("Display content called: ", content)
+			if content[0] == "/":
+				await match_command(content)
 			else:
-				current_dialogue_box.add_line(line)
-				current_conversation.push_back(line)
-				Events.dialogue_line_displayed.emit(line)
+				var line : InkLineInfo = InkParser.break_up_dialogue(content)
+				if line.speaker == "ChoiceInfo":
+					current_dialogue_box.set_choice_info(line.text)
+					display_content()
+				else:
+					current_dialogue_box.add_line(line)
+					current_conversation.push_back(line)
+					Events.dialogue_line_displayed.emit(line)
 	else:
 		#get choices, otherwise end
 		if _ink_player.has_choices:

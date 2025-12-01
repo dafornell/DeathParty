@@ -1,0 +1,15 @@
+[remap]
+
+importer="inkgd.ink.json"
+type="Resource"
+uid="uid://0505psipaxra"
+path="res://.godot/imported/OliviaDormClosePhone.json-c20e2394d3dd6e3110dd090db13b1beb.res"
+
+[deps]
+
+source_file="res://Assets/InkExamples/OliviaDormClosePhone.json"
+dest_files=["res://.godot/imported/OliviaDormClosePhone.json-c20e2394d3dd6e3110dd090db13b1beb.res"]
+
+[params]
+
+compress=true

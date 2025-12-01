@@ -4,7 +4,7 @@ class_name LoadableScene extends GameObject
 var scene_enum : Globals.SCENES
 
 var first_time_visit : bool = true
-var first_visit_json : JSON
+var first_visit_json : InkResource
 var room : Room3D #instance
 
 #SceneLoaders
@@ -87,7 +87,7 @@ func offload() -> void:
 func on_first_visit() -> void:
 	if first_visit_json:
 		await instance.get_tree().create_timer(2).timeout
-		#DialogueSystem.begin_dialogue(first_visit_json)
+		DialogueSystem.begin_dialogue(first_visit_json)
 ##END LOADING
 
 ##SCENE LOADERS

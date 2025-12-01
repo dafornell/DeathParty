@@ -104,14 +104,14 @@ func start_chat() -> void:
 	else:
 		DialogueSystem.from_character(self, first_chat)
 
-func _increment_queue_chat_indices(chat: JSON, scene: Globals.SCENES) -> void:
+func _increment_queue_chat_indices(chat: InkResource, scene: Globals.SCENES) -> void:
 	if queue_chats.has(scene) and chat in queue_chats[scene].json_array:
 		var cur_idx: int = queue_chat_indices.get(scene, 0)
 		queue_chat_indices[scene] = cur_idx + 1
 
 func end_chat(_current_conversation : Array[InkLineInfo] = []) -> void:
 	print("Ended chat with ", name)
-	var chat: JSON = upcoming_chats.pop_front()
+	var chat: InkResource = upcoming_chats.pop_front()
 	_increment_queue_chat_indices(chat, ContentLoader.active_scene_enum)
 	_increment_queue_chat_indices(chat, Globals.SCENES.Everywhere)
 	
