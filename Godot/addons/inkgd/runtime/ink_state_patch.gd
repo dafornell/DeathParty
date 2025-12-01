@@ -58,6 +58,7 @@ func try_get_global(name) -> InkTryGetResult:
 
 func set_global(name: String, value: InkObject) -> void:
 	_globals[name] = value
+	SaveSystem.set_key(name, value)
 
 func add_changed_variable(name: String) -> void:
 	_changed_variables.append(name)

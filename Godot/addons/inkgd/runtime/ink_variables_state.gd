@@ -242,6 +242,12 @@ func assign(var_ass: InkVariableAssignment, value: InkObject) -> void:
 				set_global = (context_index == 0)
 
 	if set_global:
+		if var_ass.is_new_declaration and SaveSystem.key_exists(name):
+			var old_val : Variant = SaveSystem.get_key(name)
+			if old_val is InkObject:
+				value = SaveSystem.get_key(name)
+			else:
+				SaveSystem.set_key_override(name, value)
 		set_global(name, value)
 	else:
 		_callstack.set_temporary_variable(name, value, var_ass.is_new_declaration, context_index)
