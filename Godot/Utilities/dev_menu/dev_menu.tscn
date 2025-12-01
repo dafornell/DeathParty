@@ -208,9 +208,11 @@ columns = 3
 
 [node name="VOTests" type="FoldableContainer" parent="ScrollContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
+folded = true
 title = "VO Tests"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/PanelContainer/VBoxContainer/VOTests"]
+visible = false
 layout_mode = 2
 
 [node name="Line1Button" type="Button" parent="ScrollContainer/PanelContainer/VBoxContainer/VOTests/HBoxContainer"]
