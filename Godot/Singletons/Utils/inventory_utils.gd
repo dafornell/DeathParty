@@ -89,6 +89,6 @@ func show_node_item_details(
 		item_resource.viewed = true
 		if item_resource.dialogue_on_first_view != null:
 			await object_viewer.get_tree().process_frame
-			DialogueSystem.begin_dialogue(item_resource.dialogue_on_first_view)
+			#DialogueSystem.begin_dialogue(item_resource.dialogue_on_first_view)
 
 	object_viewer.reset_zoom()

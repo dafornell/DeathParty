@@ -17,8 +17,8 @@ func _ready() -> void:
 		color_rect.visible = false
 	if SaveSystem.is_journal_entry_active(correct_item.name):
 		reveal_info()
-		if on_reveal_dialogue:
-			DialogueSystem.begin_dialogue(on_reveal_dialogue)
+		#if on_reveal_dialogue:
+			#DialogueSystem.begin_dialogue(on_reveal_dialogue)
 
 func enter_hover() -> void:
 	super()
