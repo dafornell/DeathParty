@@ -42,9 +42,9 @@ var speaker_image_label : TextureRect
 var previous_speaker_image_label : TextureRect
 
 class LocalChoiceButton:
-	var info : InkChoiceInfo
+	var info : InkChoice
 	var button : HoverButton
-	func _init(_texture_rect : TextureRect, _info : InkChoiceInfo) -> void:
+	func _init(_texture_rect : TextureRect, _info : InkChoice) -> void:
 		_texture_rect.visible = true
 		button = _texture_rect.get_node("RichTextLabel/Button")
 		info = _info
@@ -144,21 +144,20 @@ func add_line(line : InkLineInfo, _skip_delay : bool = false) -> void:
 func skip() -> void:
 	text_label.skip()
 
-func set_choices(choices : Array[InkChoiceInfo]) -> void:
+func set_choice_info(text : String) -> void:
+	choice_info.text = text
+
+func set_choices(choices : Array[InkChoice]) -> void:
 	current_speaker = SaveSystem.get_character("Olivia")
 	print("Got choices: ", choices)
 	set_ui_state(UI_STATES.CHOICES)
 	var choice_rects : Array[TextureRect] = [choice_down, choice_up, choice_right, choice_left]
 	var choice_count: int = 0
-	for choice : InkChoiceInfo in choices:
-		if choice.jump == "":
-			#this is choice info text
-			choice_info.text = choice.text
-		else:
-			var last_choice_rect : TextureRect = choice_rects.pop_back()
-			choice_count += 1
-			var choice_button := LocalChoiceButton.new(last_choice_rect, choice)
-			local_choice_buttons.push_back(choice_button)
+	for choice : InkChoice in choices:
+		var last_choice_rect : TextureRect = choice_rects.pop_back()
+		choice_count += 1
+		var choice_button := LocalChoiceButton.new(last_choice_rect, choice)
+		local_choice_buttons.push_back(choice_button)
 	#hide any remaining choice rects
 	for choice_rect : TextureRect in choice_rects:
 		choice_rect.visible = false

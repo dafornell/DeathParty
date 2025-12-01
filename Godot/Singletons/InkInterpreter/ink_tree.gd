@@ -1,7 +1,7 @@
-class_name InkTree extends RefCounted
+# class_name InkTree extends RefCounted
 
-var filepath : String
-var containers : Dictionary[String, InkContainer] = {}
+# var filepath : String
+# var containers : Dictionary[String, InkContainer] = {}
 
-func _init(_filepath : String) -> void:
-    filepath = _filepath
+# func _init(_filepath : String) -> void:
+# 	filepath = _filepath
