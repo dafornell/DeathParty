@@ -132,6 +132,15 @@ func set_key(key:String, value:Variant) -> void:
 	print("SET key function: ", key, " value: ", value)
 	player_data.variable_dict[key] = value
 
+func set_key_override(key:String, value:Variant) -> void:
+	if value is String:
+		if value == "true":
+			value = true
+		elif value == "false":
+			value = false
+	print("OVERRIDE SET key function: ", key, " value: ", value)
+	player_data.variable_dict[key] = value
+
 func global_decl_key(key:String, value:Variant) -> void:
 	if !key_exists(key):
 		set_key(key, value)
