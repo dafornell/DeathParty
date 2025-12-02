@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cxa0r5crt0re6"]
+
+[node name="DialogueEndSound" type="FmodEventEmitter3D"]
+event_name = "event:/000_SFX/300_UI/DialogueEnd"
+event_guid = "{d1c3e4b1-6be7-4bf3-a5a0-01f860c8bf8f}"
+attached = false
+autoplay = true
+auto_release = true
+volume = 0.5
