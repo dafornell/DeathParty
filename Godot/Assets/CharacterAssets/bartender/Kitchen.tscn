@@ -1731,10 +1731,10 @@ transform = Transform3D(-0.209893, 0, 0.977724, 0, 1, 0, -0.977724, 0, -0.209893
 transform = Transform3D(0.926568, 0, 0.376127, 0, 1, 0, -0.376127, 0, 0.926568, -5.09145, -3.11913, -5.21472)
 
 [node name="free hug3" parent="NPCs" instance=ExtResource("51_r8w57")]
-transform = Transform3D(0.589631, 0, 0.807673, 0, 1, 0, -0.807673, 0, 0.589631, 3.89342, -4.35183, 2.99064)
+transform = Transform3D(-0.8100417, 0, -0.58637244, 0, 1, 0, 0.58637244, 0, -0.8100417, 4.098, -4.252, 3.101)
 
 [node name="Popup" parent="NPCs/free hug3" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6780753, 2, -0.9288235)
+transform = Transform3D(1.0000018, -2.3841892e-07, 9.536743e-07, -2.682209e-07, 1.0000007, -4.172325e-07, -2.9802322e-08, 5.4389307e-07, 1, 0.9315479, 2, 0.6743283)
 
 [node name="Skeleton3D" parent="NPCs/free hug3/CharacterBody3D/free hug" index="0"]
 bones/0/position = Vector3(0.027091978, 0.45354173, -98.48683)
@@ -1845,6 +1845,7 @@ transform = Transform3D(0.06603867, 0.6236451, -0.77891314, -0.9968941, 0.074801
 
 [node name="AnimationPlayer" parent="NPCs/free hug3/CharacterBody3D" index="2"]
 autoplay = "crazyy"
+speed_scale = 0.05
 
 [node name="FratBoyRedHat" parent="NPCs" instance=ExtResource("53_m2sgf")]
 transform = Transform3D(0.65393585, 0, 0.75654984, 0, 1, 0, -0.75654984, 0, 0.65393585, 1.7965171, -3.0997, -0.68738925)
