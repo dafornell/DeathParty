@@ -6,4 +6,4 @@ event_guid = "{d1c3e4b1-6be7-4bf3-a5a0-01f860c8bf8f}"
 attached = false
 autoplay = true
 auto_release = true
-volume = 0.5
+volume = 0.25
