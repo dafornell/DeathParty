@@ -104,16 +104,13 @@
 	</object>
 	<object class="CompressorEffect" id="{cfa19f26-92db-40e5-9897-1ec92ed47e6e}">
 		<property name="threshold">
-			<value>-35</value>
-		</property>
-		<property name="ratio">
-			<value>1.25</value>
+			<value>-30</value>
 		</property>
 		<property name="attackTime">
 			<value>30</value>
 		</property>
 		<property name="releaseTime">
-			<value>300</value>
+			<value>500</value>
 		</property>
 		<relationship name="sidechains">
 			<destination>{021afa96-1e5f-4dad-a5ae-e7f5e8859e68}</destination>
