@@ -16,7 +16,13 @@
     "done",
     {
       "OliviaBasementCrimeSceneTape": [
-        "^[Olivia] Crime scene tape, this must've been from when... wait this is prop tape, the kind you would buy at a party store.",
+        "^[Olivia] Crime scene tape, this must've been from when...",
+        "\n",
+        "^[Olivia] wait.",
+        "\n",
+        "^[Olivia] This is prop tape- the kind you would buy at a party store.",
+        "\n",
+        "^/emit_signal basement_tape_conversation_finished",
         "\n",
         "end",
         null
