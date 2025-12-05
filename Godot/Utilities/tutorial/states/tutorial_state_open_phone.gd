@@ -1,6 +1,6 @@
 extends TutorialState
 
-@export var rowan_invite_dialogue: JSON
+@export var rowan_invite_dialogue: InkResource
 
 var _in_phone := false
 var _sent_message := false

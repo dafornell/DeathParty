@@ -1,0 +1,16 @@
+[remap]
+
+importer="ink"
+type="Resource"
+uid="uid://dblj125hh73fg"
+path="res://.godot/imported/loading_dialogue_test.ink-8dde5cc99a8aa727b5face2508673c85.res"
+
+[deps]
+
+source_file="res://Assets/InkExamples/loading_dialogue_test.ink"
+dest_files=["res://.godot/imported/loading_dialogue_test.ink-8dde5cc99a8aa727b5face2508673c85.res"]
+
+[params]
+
+is_main_file=false
+compress=true

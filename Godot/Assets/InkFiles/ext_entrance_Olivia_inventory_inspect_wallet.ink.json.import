@@ -1,0 +1,15 @@
+[remap]
+
+importer="inkgd.ink.json"
+type="Resource"
+uid="uid://bh21pyuagve8p"
+path="res://.godot/imported/ext_entrance_Olivia_inventory_inspect_wallet.ink.json-619c0bee5bc5433ab5deac3a0412e7ac.res"
+
+[deps]
+
+source_file="res://Assets/InkFiles/ext_entrance_Olivia_inventory_inspect_wallet.ink.json"
+dest_files=["res://.godot/imported/ext_entrance_Olivia_inventory_inspect_wallet.ink.json-619c0bee5bc5433ab5deac3a0412e7ac.res"]
+
+[params]
+
+compress=true

@@ -1,0 +1,15 @@
+[remap]
+
+importer="inkgd.ink.json"
+type="Resource"
+uid="uid://bdpttd7uv75to"
+path="res://.godot/imported/sample_dialogue_template.json-3e1157b4843620c0708f71ded5754f59.res"
+
+[deps]
+
+source_file="res://Assets/InkExamples/sample_dialogue_template.json"
+dest_files=["res://.godot/imported/sample_dialogue_template.json-3e1157b4843620c0708f71ded5754f59.res"]
+
+[params]
+
+compress=true

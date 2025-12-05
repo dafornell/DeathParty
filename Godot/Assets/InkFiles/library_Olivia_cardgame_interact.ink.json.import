@@ -1,0 +1,15 @@
+[remap]
+
+importer="inkgd.ink.json"
+type="Resource"
+uid="uid://mvgfqlkestvm"
+path="res://.godot/imported/library_Olivia_cardgame_interact.ink.json-47b55f31c13174a219f145241ce14148.res"
+
+[deps]
+
+source_file="res://Assets/InkFiles/library_Olivia_cardgame_interact.ink.json"
+dest_files=["res://.godot/imported/library_Olivia_cardgame_interact.ink.json-47b55f31c13174a219f145241ce14148.res"]
+
+[params]
+
+compress=true

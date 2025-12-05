@@ -1,0 +1,14 @@
+[remap]
+
+importer="inkgd.ink.json"
+type="Resource"
+uid="uid://cqbhsst6p3stc"
+valid=false
+
+[deps]
+
+source_file="res://Assets/BarkFiles/alien-gamers-bark.json"
+
+[params]
+
+compress=true

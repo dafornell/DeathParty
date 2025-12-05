@@ -20,7 +20,7 @@ warnings/check_invalid_track_paths=false
 
 config/name="Death Party"
 run/main_scene="uid://beuct1pjdlayy"
-config/features=PackedStringArray("4.5", "Forward Plus")
+config/features=PackedStringArray("4.5", "C#", "Forward Plus")
 run/load_shell_environment=true
 config/icon="res://icon.svg"
 
@@ -28,7 +28,7 @@ config/icon="res://icon.svg"
 
 SaveSystem="*res://Singletons/SaveSystem/save_system.tscn"
 DialogueSystem="*res://Singletons/CustomDialogueSystem/dialogue_system.gd"
-Ink="*res://Singletons/InkInterpreter/ink_interpret.gd"
+Ink="res://Singletons/InkInterpreter/ink_interpret.gd"
 Interact="*res://Singletons/Interact/interact.gd"
 GlobalCameraScript="*res://Singletons/global_camera_script.gd"
 GlobalPlayerScript="*res://Singletons/global_player_script.gd"
@@ -47,6 +47,7 @@ MenuFocusGrabber="*res://Singletons/menu_focus_grabber.gd"
 DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
 Events="*res://Singletons/events.gd"
 VoiceLinePlayer="*res://Singletons/VoiceLinePlayer/voice_line_player.tscn"
+__InkRuntime="*res://addons/inkgd/ink_runtime.gd"
 
 [debug]
 
@@ -83,7 +84,7 @@ export/convert_text_resources_to_binary=false
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg", "res://addons/fmod/plugin.cfg", "res://addons/polygon_counter/plugin.cfg")
+enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg", "res://addons/fmod/plugin.cfg", "res://addons/inkgd/plugin.cfg", "res://addons/polygon_counter/plugin.cfg")
 
 [global_group]
 
@@ -102,6 +103,11 @@ never-offload=""
 [gui]
 
 timers/tooltip_delay_sec=0.05
+
+[inkgd]
+
+use_mono_runtime=true
+register_templates=true
 
 [input]
 

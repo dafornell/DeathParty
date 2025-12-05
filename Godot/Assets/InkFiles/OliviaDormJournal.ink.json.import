@@ -1,0 +1,15 @@
+[remap]
+
+importer="inkgd.ink.json"
+type="Resource"
+uid="uid://dvydg2ooliv5k"
+path="res://.godot/imported/OliviaDormJournal.ink.json-ba639d25dca7e5332d7148bb49e8d797.res"
+
+[deps]
+
+source_file="res://Assets/InkFiles/OliviaDormJournal.ink.json"
+dest_files=["res://.godot/imported/OliviaDormJournal.ink.json-ba639d25dca7e5332d7148bb49e8d797.res"]
+
+[params]
+
+compress=true

@@ -1,0 +1,15 @@
+[remap]
+
+importer="inkgd.ink.json"
+type="Resource"
+uid="uid://t6yof5nksd3n"
+path="res://.godot/imported/glove_test.json-2f801b35ff04865ffef4b0d83971820f.res"
+
+[deps]
+
+source_file="res://Assets/InkFiles/glove_test.json"
+dest_files=["res://.godot/imported/glove_test.json-2f801b35ff04865ffef4b0d83971820f.res"]
+
+[params]
+
+compress=true

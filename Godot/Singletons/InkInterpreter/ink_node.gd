@@ -100,11 +100,11 @@ func stack_operations(stack_index : int) -> void:
 						push(container.visits)
 					else:
 						push(self.parent_container.visits)
-				"out":
-					if self is InkLineInfo:
-						var line : InkLineInfo = self
-						var addtl_text:String = pop();
-						line.runtime_text = line.runtime_text + addtl_text
+				# "out":
+				# 	if self is InkLineInfo:
+				# 		var line : InkLineInfo = self
+				# 		var addtl_text:String = pop();
+				# 		line.runtime_text = line.runtime_text + addtl_text
 				_:
 					push(item) # to be popped off later
 		else:

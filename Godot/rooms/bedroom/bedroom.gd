@@ -4,6 +4,8 @@ extends Room3D
 @export var title_screen: CanvasLayer
 @export var closet: Node3D
 
+@export var ink_story : InkResource
+
 @onready var music: FmodEventEmitter3D = %Music
 @onready var look_straight: Vector3 = Vector3(path_follow_node.global_position.x, path_follow_node.global_position.y, -basis.z.z)
 
@@ -44,6 +46,8 @@ func handle_player_entrance(body: Node3D) -> void:
 
 	#keep_camera_on_player(body)
 	#bind_camera_y(body, 1.5, 1.5)
+	# print("beginning dialogue: ", ink_story)
+	# DialogueSystem.begin_dialogue(ink_story)
 
 
 func _on_scene_loader_body_entered(body: Node3D) -> void:
