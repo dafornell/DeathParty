@@ -5,7 +5,7 @@
 			<value>control room ambience</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{14d6cdd0-76dd-45e5-8fca-ff212d0c9b92}</destination>
@@ -132,6 +132,7 @@
 	<object class="MixerBusEffectChain" id="{990632ca-74c5-4bb0-830f-4c33df057703}">
 		<relationship name="effects">
 			<destination>{4efc8074-5e6e-4743-a6f2-6eee27cd87aa}</destination>
+			<destination>{4066b877-faf8-44a1-a007-f76a0fa00ac2}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{b4ea735a-8d89-41ff-800e-74f5654356e0}" />
@@ -168,6 +169,14 @@
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{4efc8074-5e6e-4743-a6f2-6eee27cd87aa}" />
+	<object class="SpatialiserEffect" id="{4066b877-faf8-44a1-a007-f76a0fa00ac2}">
+		<property name="extentMode">
+			<value>1</value>
+		</property>
+		<property name="soundSize">
+			<value>40</value>
+		</property>
+	</object>
 	<object class="AutomationPoint" id="{d2d58d92-72f5-4b4d-b2d0-40269015d283}">
 		<property name="position">
 			<value>1.1102230246251565e-16</value>

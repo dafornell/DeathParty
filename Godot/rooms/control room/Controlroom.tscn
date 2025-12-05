@@ -1985,7 +1985,7 @@ skeleton = NodePath("")
 event_name = "event:/000_SFX/100_Environment/control room ambience"
 event_guid = "{c03b539f-bbab-4a4b-abe0-5053b12a5684}"
 autoplay = true
-volume = 0.5
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
 
 [editable path="SceneLoaders/SceneLoader_Hourhand hallway"]
 [editable path="SceneLoaders/SceneLoader_Hourhand hallway/InteractionDetector"]
