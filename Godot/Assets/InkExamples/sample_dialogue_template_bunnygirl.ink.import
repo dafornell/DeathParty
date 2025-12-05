@@ -1,6 +1,6 @@
 [remap]
 
-importer="ink"
+importer="inkgd.ink"
 type="Resource"
 uid="uid://b44owj58ju2xj"
 path="res://.godot/imported/sample_dialogue_template_bunnygirl.ink-155eef73c81abfce0f5472d94569997e.res"
@@ -12,5 +12,3 @@ dest_files=["res://.godot/imported/sample_dialogue_template_bunnygirl.ink-155eef
 
 [params]
 
-is_main_file=false
-compress=true

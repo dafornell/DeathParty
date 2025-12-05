@@ -1,6 +1,6 @@
 [remap]
 
-importer="ink"
+importer="inkgd.ink"
 type="Resource"
 uid="uid://djpn227nhl2vv"
 path="res://.godot/imported/self_help_nora.ink-f5c8a9e015a997b7b46ce4da3d6cc51f.res"
@@ -12,5 +12,3 @@ dest_files=["res://.godot/imported/self_help_nora.ink-f5c8a9e015a997b7b46ce4da3d
 
 [params]
 
-is_main_file=false
-compress=true
