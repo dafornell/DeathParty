@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://won4e1o3f7gg" path="res://rooms/Hourhand hallway/hourhand_hallway.gd" id="2_xgvqn"]
 [ext_resource type="Texture2D" uid="uid://b6e4jlycbcxdv" path="res://Assets/pop_ups/EnterArrowLeft.png" id="3_df5mx"]
 [ext_resource type="Texture2D" uid="uid://do503bq13ur3t" path="res://rooms/Hourhand hallway/hourhand hallway_TCom_ConcreteBare0318_5_S.jpg" id="3_xgvqn"]
-[ext_resource type="Texture2D" uid="uid://bk2cxm07d8gtg" path="res://rooms/Hourhand hallway/hourhand hallway_New Concret (1).png" id="4_1ehwm"]
+[ext_resource type="Texture2D" uid="uid://cvd8t567kdj3k" path="res://rooms/Hourhand hallway/hourhand hallway_New Concret (1).png" id="4_1ehwm"]
 [ext_resource type="Texture2D" uid="uid://bj5g2qwqvmjy0" path="res://rooms/Hourhand hallway/hourhand hallway_TCom_OrnamentsOrientalTrimDetails0002_1_S.jpg" id="5_4u7t1"]
 [ext_resource type="Texture2D" uid="uid://bv8dqjvgu516f" path="res://rooms/Hourhand hallway/hourhand hallway_golden ornate.jpg" id="6_swdjj"]
 [ext_resource type="Texture2D" uid="uid://0oypildhcku5" path="res://rooms/Hourhand hallway/hourhand hallway_TCom_BronzeCopper0106_1_S.jpg" id="8_ikewq"]
@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://cmwhoxhj5pdw5" path="res://rooms/Hourhand hallway/hourhand hallway_IMG_4162.png" id="12_yxj23"]
 [ext_resource type="PackedScene" uid="uid://bbyg62wymptn6" path="res://Singletons/ContentLoader/scene_loader.tscn" id="13_1ehwm"]
 [ext_resource type="PackedScene" uid="uid://bpb73pxvgtl0s" path="res://rooms/Hourhand hallway/canyon painting.glb" id="14_66r5h"]
-[ext_resource type="Texture2D" uid="uid://ceaey4kptqr4x" path="res://rooms/control room/Control room_518233709_10236937404997646_5794273750296707854_n.jpg" id="14_rs8om"]
+[ext_resource type="Texture2D" uid="uid://d0urteudj425a" path="res://rooms/control room/Control room_518233709_10236937404997646_5794273750296707854_n.jpg" id="14_rs8om"]
 [ext_resource type="PackedScene" uid="uid://buynljxwq46s4" path="res://rooms/Hourhand hallway/cloud painting.glb" id="15_xc4ch"]
 [ext_resource type="Texture2D" uid="uid://ccfm4gober6x6" path="res://Assets/environment/wall_lamps/wall_lamp_cone/wall_lamp_cone_industrial_wall_sconce_baseColor.jpg" id="16_8uf1m"]
 [ext_resource type="Texture2D" uid="uid://dm3hjctqeb8wy" path="res://Assets/environment/wall_lamps/wall_lamp_cone/wall_lamp_cone_industrial_wall_sconce_metallicRoughness.png" id="17_xaafo"]
@@ -975,13 +975,17 @@ skeleton = NodePath("../../Props/walllamp2")
 
 [node name="SceneLoaders" type="Node3D" parent="."]
 
-[node name="SceneLoader_Storageroom" parent="SceneLoaders" instance=ExtResource("13_1ehwm")]
+[node name="SceneLoader_Storageroom" parent="SceneLoaders" node_paths=PackedStringArray("interaction_detector") instance=ExtResource("13_1ehwm")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.01516, -1.32767, 0.633325)
 interactable = false
 target_scene = 8
 local_spawn_point = 1
 right_arrow_asset = null
 down_arrow_asset = ExtResource("3_df5mx")
+interaction_detector = NodePath("InteractionDetector")
+
+[node name="DoorSound" parent="SceneLoaders/SceneLoader_Storageroom" index="0"]
+event_name = "event:/000_SFX/100_Environment/door"
 
 [node name="Popup" parent="SceneLoaders/SceneLoader_Storageroom" index="1"]
 transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0, 1.5, 1.25)
@@ -991,12 +995,16 @@ texture = null
 transform = Transform3D(1, 0, -1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 1, -1.08614, 1.16042, -0.122394)
 shape = SubResource("BoxShape3D_rs8om")
 
-[node name="SceneLoader_Control room" parent="SceneLoaders" instance=ExtResource("13_1ehwm")]
+[node name="SceneLoader_Control room" parent="SceneLoaders" node_paths=PackedStringArray("interaction_detector") instance=ExtResource("13_1ehwm")]
 transform = Transform3D(-3.0907e-08, 0, -0.707069, 0, 0.707069, 0, 0.707069, 0, -3.0907e-08, 14.7747, -1.41536, 0.823003)
 target_scene = 12
 play_door_sound = true
 right_arrow_asset = null
 down_arrow_asset = ExtResource("3_df5mx")
+interaction_detector = NodePath("InteractionDetector")
+
+[node name="DoorSound" parent="SceneLoaders/SceneLoader_Control room" index="0"]
+event_name = "event:/000_SFX/100_Environment/door"
 
 [node name="Popup" parent="SceneLoaders/SceneLoader_Control room" index="1"]
 transform = Transform3D(-6.55671e-09, 0, 0.15, 0, 0.15, 0, -0.15, 0, -6.55671e-09, 1, 2, -1.75)
@@ -1095,6 +1103,12 @@ event_guid = "{5400becd-0db7-41ef-9585-f90cc8bc9bad}"
 autoplay = true
 volume = 0.25
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0.6, 1.8000004)
+
+[node name="ControlRoomAmbience" type="FmodEventEmitter3D" parent="SceneAudio"]
+event_name = "event:/000_SFX/100_Environment/control room ambience outside"
+event_guid = "{da6d42e2-cdef-4881-bf37-1308fc489b38}"
+autoplay = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, -0.5, 1.5000008)
 
 [node name="HallwaysAndFloor" type="Node3D" parent="."]
 
