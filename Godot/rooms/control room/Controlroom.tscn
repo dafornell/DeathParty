@@ -1594,6 +1594,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_xyqem")
 
 [node name="Control room" type="Area3D" node_paths=PackedStringArray("room_area")]
+collision_mask = 2
 script = ExtResource("1_5pt3f")
 room_area = NodePath("RoomArea")
 
