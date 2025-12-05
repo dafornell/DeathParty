@@ -101,8 +101,10 @@ func start_chat() -> void:
 		if default_chat:
 			print("Yes default chat")
 			DialogueSystem.from_character(self, default_chat)
+			Sounds.play_dialogue_start()
 	else:
 		DialogueSystem.from_character(self, first_chat)
+		Sounds.play_dialogue_start()
 
 func _increment_queue_chat_indices(chat: InkResource, scene: Globals.SCENES) -> void:
 	if queue_chats.has(scene) and chat in queue_chats[scene].json_array:

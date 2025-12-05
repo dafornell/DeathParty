@@ -18,7 +18,7 @@ func _on_entrance_convo_finished() -> void:
 		look_at(target_position, Vector3.UP, true)
 		var t: Tween = create_tween()
 		t.tween_property(self, "global_position", target_position, 3.5)
-		await get_tree().create_timer(2).timeout
+		await get_tree().create_timer(2.5).timeout
 
 	character_resource.change_location("Basement")
 	SaveSystem.save_to_disk()

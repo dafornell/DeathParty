@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=4 uid="uid://busrnnhrujsqx"]
+[gd_scene load_steps=99 format=4 uid="uid://busrnnhrujsqx"]
 
 [ext_resource type="Texture2D" uid="uid://dwqn2srjfxhnt" path="res://rooms/party_room/PartyRoom layout_wood panel big.png" id="2_1xrom"]
 [ext_resource type="PackedScene" uid="uid://b5sjjc5i61576" path="res://Singletons/ContentLoader/TeleportPoint.tscn" id="2_ir6ct"]
@@ -46,7 +46,6 @@
 [ext_resource type="PackedScene" uid="uid://cno0dyov1i6bm" path="res://Assets/CharacterAssets/witch/witch.tscn" id="47_e1lh3"]
 [ext_resource type="PackedScene" uid="uid://csh7q4aonjs3d" path="res://Assets/CharacterAssets/frat_boys/red_hat_frat_boy/Frat boy red hat.glb" id="47_prrke"]
 [ext_resource type="PackedScene" uid="uid://b36wsq6enc3vs" path="res://Assets/CharacterAssets/chi_omega_girl/chi_omega_girl.tscn" id="48_2fylr"]
-[ext_resource type="PackedScene" uid="uid://cnb05rd1rv7e7" path="res://Assets/CharacterAssets/rowan/rowan.tscn" id="48_lucee"]
 [ext_resource type="PackedScene" uid="uid://bte4agxfg1yhm" path="res://Assets/CharacterAssets/frat_boys/Long_Hair_frat_boy/Frat boy long hair.glb" id="48_prrke"]
 [ext_resource type="PackedScene" uid="uid://d1lmv76sg8rx0" path="res://Assets/CharacterAssets/free_hug_guy/free_hug_guy.tscn" id="49_prrke"]
 
@@ -713,10 +712,14 @@ spawn_point_number = 1
 [node name="TeleportPoint" parent="." instance=ExtResource("2_ir6ct")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.188527, 0.998657, -7.01949)
 
-[node name="SceneLoader_Entrance" parent="." instance=ExtResource("24_jpm82")]
+[node name="SceneLoader_Entrance" parent="." node_paths=PackedStringArray("interaction_detector") instance=ExtResource("24_jpm82")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0091097, 1, -8.999991)
 interactable = false
 local_spawn_point = 3
+interaction_detector = NodePath("InteractionDetector")
+
+[node name="DoorSound" parent="SceneLoader_Entrance" index="0"]
+event_name = "event:/000_SFX/100_Environment/door"
 
 [node name="Popup" parent="SceneLoader_Entrance" index="1"]
 transform = Transform3D(-0.1, 0, 1.50996e-08, 0, 0.1, 0, -1.50996e-08, 0, -0.1, -1.5, 0.75, 0)
@@ -726,10 +729,14 @@ texture = null
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8955, 0.578214, 0.0350056)
 shape = SubResource("BoxShape3D_aawic")
 
-[node name="SceneLoader_Bathroom" parent="." instance=ExtResource("24_jpm82")]
+[node name="SceneLoader_Bathroom" parent="." node_paths=PackedStringArray("interaction_detector") instance=ExtResource("24_jpm82")]
 transform = Transform3D(-4.36557e-08, 0, -1, 0, 1, 0, 1, 0, -4.36557e-08, 9.40812, 0.466779, -0.426576)
 target_scene = 5
 play_door_sound = true
+interaction_detector = NodePath("InteractionDetector")
+
+[node name="DoorSound" parent="SceneLoader_Bathroom" index="0"]
+event_name = "event:/000_SFX/100_Environment/door"
 
 [node name="Popup" parent="SceneLoader_Bathroom" index="1"]
 transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0, 1.75, 0.5)
@@ -738,10 +745,14 @@ transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0715044, 1.23943, 0.079814)
 shape = SubResource("BoxShape3D_lucee")
 
-[node name="SceneLoader_Ghost hallway" parent="." instance=ExtResource("24_jpm82")]
+[node name="SceneLoader_Ghost hallway" parent="." node_paths=PackedStringArray("interaction_detector") instance=ExtResource("24_jpm82")]
 transform = Transform3D(-4.3655746e-08, 0, 1, 0, 1, 0, -1, 0, -4.3655746e-08, -9.107091, 0, 1.8634547)
 target_scene = 13
 play_door_sound = true
+interaction_detector = NodePath("InteractionDetector")
+
+[node name="DoorSound" parent="SceneLoader_Ghost hallway" index="0"]
+event_name = "event:/000_SFX/100_Environment/door"
 
 [node name="Popup" parent="SceneLoader_Ghost hallway" index="1"]
 transform = Transform3D(-4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, 0, 2, 1.25)
@@ -860,13 +871,13 @@ transform = Transform3D(0.8290298, 0, 1.041699, 0, 1.03033, 0, -0.9879992, 0, 0.
 transform = Transform3D(0.8290298, 0, 1.041699, 0, 1.03033, 0, -0.9879992, 0, 0.87408936, -2.59168, -8.48158, 10.2159)
 
 [node name="MarblePillar6" parent="MarblePillars" instance=ExtResource("4_yruca")]
-transform = Transform3D(0.8290298, 0, 1.041699, 0, 0.95391, 0, -0.9879992, 0, 0.87408936, -7.69582, -8.74743, 8.93358)
+transform = Transform3D(0.82902986, 0, 1.0416992, 0, 0.95391, 0, -0.9879992, 0, 0.8740894, -8.111629, -8.74743, 8.932949)
 
 [node name="MarblePillar7" parent="MarblePillars" instance=ExtResource("4_yruca")]
-transform = Transform3D(0.8290298, 0, 1.041699, 0, 0.95391, 0, -0.9879992, 0, 0.87408936, -7.68754, -8.7518, 2.70155)
+transform = Transform3D(0.82902986, 0, 1.0416992, 0, 0.95391, 0, -0.9879992, 0, 0.8740894, -8.103349, -8.7518, 2.700919)
 
 [node name="MarblePillar8" parent="MarblePillars" instance=ExtResource("4_yruca")]
-transform = Transform3D(0.8290298, 0, 1.041699, 0, 0.95391, 0, -0.9879992, 0, 0.87408936, -7.67826, -8.7518, -3.40758)
+transform = Transform3D(0.82902986, 0, 1.0416992, 0, 0.95391, 0, -0.9879992, 0, 0.8740894, -8.094069, -8.7518, -3.4082115)
 
 [node name="Balcony" type="Node3D" parent="."]
 
@@ -2655,9 +2666,6 @@ autoplay = "fucking vibe"
 
 [node name="Nora" parent="NPCs" instance=ExtResource("46_fame6")]
 transform = Transform3D(-0.9476737, 0, -0.31924054, 0, 1, 0, 0.31924054, 0, -0.9476737, 4.3692126, 0.002283524, -4.4315643)
-
-[node name="Rowan" parent="NPCs" instance=ExtResource("48_lucee")]
-transform = Transform3D(-0.96246475, 0, -0.27140692, 0, 1, 0, 0.27140692, 0, -0.96246475, 3.5383759, 0.0062999222, -4.1721673)
 
 [node name="Sam" parent="NPCs" instance=ExtResource("47_aawic")]
 transform = Transform3D(-0.9194788, 0, -0.3931397, 0, 1, 0, 0.3931397, 0, -0.9194788, 5.0447335, -0.014124393, -4.2353377)

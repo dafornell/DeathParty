@@ -135,6 +135,7 @@ func end_dialogue() -> void:
 		current_dialogue_box.queue_free()
 		if current_character_resource:
 			current_character_resource.end_chat()
+		Sounds.play_dialogue_end()
 	current_conversation = []
 
 func pause_dialogue(revert_address : bool = false) -> void:
