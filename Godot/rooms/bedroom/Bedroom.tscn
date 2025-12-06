@@ -1,4 +1,4 @@
-[gd_scene load_steps=276 format=4 uid="uid://c44l5t4o5i1qg"]
+[gd_scene load_steps=275 format=4 uid="uid://c44l5t4o5i1qg"]
 
 [ext_resource type="Texture2D" uid="uid://di3fxmhwsgn4v" path="res://rooms/bedroom/Bedroom_IMG_4162.png" id="1_aasoq"]
 [ext_resource type="Script" uid="uid://bh46on0pmp3la" path="res://rooms/bedroom/bedroom.gd" id="1_lxtj2"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://x8vl3v7s7cat" path="res://rooms/bedroom/side wall.glb" id="3_ra5m4"]
 [ext_resource type="Texture2D" uid="uid://bxej6ebm3jetb" path="res://rooms/bedroom/Bedroom_woodmedium.png" id="3_rbtdn"]
 [ext_resource type="PackedScene" uid="uid://8npa6vrpy0jb" path="res://rooms/bedroom/punk posters.glb" id="3_w0jyq"]
-[ext_resource type="Resource" uid="uid://40hqax66mbfc" path="res://Assets/InkExamples/caleb_test_dialogue_1.json" id="3_wkd24"]
 [ext_resource type="Texture2D" uid="uid://b8uue8x55guj4" path="res://rooms/bedroom/polaroids and poster_love birds.png" id="4_fa1og"]
 [ext_resource type="Texture2D" uid="uid://d0vlsucaate3q" path="res://rooms/bedroom/punk posters_singer poster.png" id="4_tluma"]
 [ext_resource type="Texture2D" uid="uid://dcblfnhmnjp1h" path="res://rooms/bedroom/polaroids and poster_Sam tatt.png" id="5_dyybh"]
@@ -2384,10 +2383,8 @@ size = Vector3(1.61938, 2.80212, 2.04828)
 collision_mask = 2
 script = ExtResource("1_lxtj2")
 closet = NodePath("Closet")
-ink_story = ExtResource("3_wkd24")
 room_area = NodePath("RoomArea")
 path_follow_node = NodePath("IntroCameraPath/PathFollow3D")
-first_visit_json = ExtResource("3_wkd24")
 
 [node name="TutorialUI" parent="." node_paths=PackedStringArray("exterior_scene_loader") instance=ExtResource("3_84fnt")]
 exterior_scene_loader = NodePath("../SceneLoader_Exterior")
