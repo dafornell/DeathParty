@@ -1,0 +1,15 @@
+[remap]
+
+importer="inkgd.ink.json"
+type="Resource"
+uid="uid://cs6jlllxc4obq"
+path="res://.godot/imported/ink_conditionals_2.json-bc82d0d942c3549ca6f46918dde80381.res"
+
+[deps]
+
+source_file="res://Assets/InkExamples/ink_conditionals_2.json"
+dest_files=["res://.godot/imported/ink_conditionals_2.json-bc82d0d942c3549ca6f46918dde80381.res"]
+
+[params]
+
+compress=true

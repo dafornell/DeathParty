@@ -1,0 +1,15 @@
+[remap]
+
+importer="inkgd.ink.json"
+type="Resource"
+uid="uid://cysu22404pgv7"
+path="res://.godot/imported/RowanDormInvite.json-91758af3053e7d6d7777ced89cd7b46a.res"
+
+[deps]
+
+source_file="res://Assets/InkExamples/RowanDormInvite.json"
+dest_files=["res://.godot/imported/RowanDormInvite.json-91758af3053e7d6d7777ced89cd7b46a.res"]
+
+[params]
+
+compress=true

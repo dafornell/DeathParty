@@ -1420,9 +1420,11 @@ shadow_mesh = SubResource("ArrayMesh_jgltk")
 [sub_resource type="BoxShape3D" id="BoxShape3D_vdfwq"]
 size = Vector3(1.9077148, 3.0682373, 2.4550095)
 
-[node name="Basement" type="Area3D" node_paths=PackedStringArray("room_area", "rowan_spawn")]
+[node name="Basement" type="Area3D" node_paths=PackedStringArray("locked_door", "unlocked_door", "room_area", "rowan_spawn")]
 collision_mask = 2
 script = ExtResource("1_e2jnh")
+locked_door = NodePath("Door")
+unlocked_door = NodePath("SceneLoaders/SceneLoader_Storageroom")
 room_area = NodePath("RoomArea")
 rowan_spawn = NodePath("RowanSpawn")
 
@@ -2554,7 +2556,7 @@ transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, 1, 0, -2
 transform = Transform3D(1.0000012, 0, 0, 0, 1, 0, 0, 0, 1.0000012, -0.9959292, 2, 0.57500005)
 
 [node name="QuestMarker" parent="NPCs/Caleb" index="1"]
-transparency = 0.9483567
+transparency = 0.078781426
 
 [node name="Skeleton3D" parent="NPCs/Caleb/CharacterBody3D/Model" index="0"]
 bones/0/position = Vector3(0.19517171, -0.036703825, -90.93941)

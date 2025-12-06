@@ -1,0 +1,15 @@
+[remap]
+
+importer="inkgd.ink.json"
+type="Resource"
+uid="uid://cbya3fababqjw"
+path="res://.godot/imported/self_help_nora.json-b9f65728bf1ce6788b203c9202b25c3d.res"
+
+[deps]
+
+source_file="res://Assets/InkExamples/self_help_nora.json"
+dest_files=["res://.godot/imported/self_help_nora.json-b9f65728bf1ce6788b203c9202b25c3d.res"]
+
+[params]
+
+compress=true

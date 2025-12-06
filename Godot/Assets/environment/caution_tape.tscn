@@ -1,9 +1,46 @@
-[gd_scene load_steps=4 format=3 uid="uid://h0tswjr1iy5v"]
+[gd_scene load_steps=8 format=3 uid="uid://h0tswjr1iy5v"]
 
 [ext_resource type="PackedScene" uid="uid://bij3bw4s6epdt" path="res://rooms/Basement/caution tape.glb" id="1_q0u7c"]
-[ext_resource type="Script" uid="uid://bea7y4hurcesx" path="res://Utilities/scripts/interactable.gd" id="2_uccd7"]
+[ext_resource type="Script" path="res://Assets/environment/caution_tape.gd" id="2_uccd7"]
 [ext_resource type="Resource" uid="uid://cnhny0ax0dbam" path="res://Singletons/SaveSystem/DefaultResources/TalkingObjectResources/crime_scene_tape_properties.tres" id="3_do2ap"]
+[ext_resource type="PackedScene" uid="uid://3dt1w7lckdyq" path="res://Entities/interaction_detector.tscn" id="4_uccd7"]
+[ext_resource type="PackedScene" uid="uid://cqxjk5afxrhem" path="res://Common/Popup UI/object_interact_popup.tscn" id="5_do2ap"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_do2ap"]
+resource_local_to_scene = true
+size = Vector3(5, 3, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uccd7"]
+size = Vector3(5, 2, 2)
 
 [node name="caution tape" instance=ExtResource("1_q0u7c")]
 script = ExtResource("2_uccd7")
 talking_object_resource = ExtResource("3_do2ap")
+
+[node name="InteractionDetector" parent="." index="1" instance=ExtResource("4_uccd7")]
+
+[node name="CollisionShape3D" parent="InteractionDetector" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9827881, -0.09893799, 0.46401978)
+shape = SubResource("BoxShape3D_do2ap")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(0.819152, 0, 0.57357645, 0, 1, 0, -0.57357645, 0, 0.819152, 0.6996293, 0, -0.64181006)
+shape = SubResource("BoxShape3D_uccd7")
+
+[node name="RemovalSound" type="FmodEventEmitter3D" parent="." index="3"]
+event_name = "event:/000_SFX/100_Environment/tape"
+event_guid = "{ff5b0d9b-546b-4027-89c5-a6ec9a1b4613}"
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 0, -0.2)
+
+[node name="Popup" parent="." index="4" instance=ExtResource("5_do2ap")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -0.5)
+
+[node name="TakeLabel" parent="Popup" index="2"]
+offset = Vector2(200, 28)
+text = "tape"
+
+[editable path="InteractionDetector"]
+[editable path="Popup"]

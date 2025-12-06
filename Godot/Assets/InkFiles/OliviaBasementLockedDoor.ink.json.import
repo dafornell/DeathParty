@@ -1,0 +1,15 @@
+[remap]
+
+importer="inkgd.ink.json"
+type="Resource"
+uid="uid://dx6vjh4vvd5bs"
+path="res://.godot/imported/OliviaBasementLockedDoor.ink.json-9708d6a93b54a75bacb045df9ab67dcd.res"
+
+[deps]
+
+source_file="res://Assets/InkFiles/OliviaBasementLockedDoor.ink.json"
+dest_files=["res://.godot/imported/OliviaBasementLockedDoor.ink.json-9708d6a93b54a75bacb045df9ab67dcd.res"]
+
+[params]
+
+compress=true

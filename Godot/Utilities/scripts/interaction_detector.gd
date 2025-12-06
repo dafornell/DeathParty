@@ -25,9 +25,10 @@ func _on_body_entered(body: Node3D) -> void:
 		# 		npc itself (i think))
 		var grandparent = get_parent().get_parent()
 
-		if grandparent is NPC and grandparent.character_resource != null:
-			if grandparent.character_resource.has_chats():
-				InteractablePriority.add_interactable(self)
+		if grandparent is NPC:
+			if grandparent.character_resource != null:
+				if grandparent.character_resource.has_chats():
+					InteractablePriority.add_interactable(self)
 
 		# and if its not an npc, just add it to the list
 		else:

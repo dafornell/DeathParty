@@ -6,15 +6,15 @@ class_name ChatResource extends DefaultResource
 var participants : Array[CharacterResource] = [] #Characters in group chat
 
 #Chats
-var upcoming_chats : Array[JSON] = []
+var upcoming_chats : Array[InkResource] = []
 var past_chats : Array[InkLineInfo]
 var display_timestamp : float = 0.0
 var display_message : String = ""
 var chat_in_progress : bool = false
 
 #Pausing/Resuming
-var paused_ink_tree : InkTree
-var paused_ink_address : InkAddress
+# var paused_ink_tree : InkTree
+# var paused_ink_address : bool = false
 
 signal unread
 
@@ -35,11 +35,8 @@ func load_save_state(save_data: Dictionary) -> void:
 		var speaker: String = dict["speaker"]
 		var text: String = dict["text"]
 		var line_info := InkLineInfo.new(
-			"",
-			null,
-			"",
 			speaker,
-			[text]
+			text
 		)
 		return line_info
 	
@@ -54,13 +51,13 @@ func initialize() -> void:
 ##
 
 func update_chat_info() -> void:
-	var json_file : JSON = upcoming_chats.front()
+	var json_file : InkResource = upcoming_chats.front()
 	if(json_file):
 		print("Getting chat info for ", json_file.resource_path)
 		display_timestamp = SaveSystem.get_key("time")
 		display_message = DialogueSystem.get_first_message(json_file).text
 
-func load_chat(json : JSON) -> void:
+func load_chat(json : InkResource) -> void:
 	upcoming_chats.push_back(json)
 	update_chat_info()
 
@@ -75,20 +72,20 @@ func load_chat(json : JSON) -> void:
 	Events.new_phone_message.emit(self)
 	
 func start_chat() -> void:
-	if (paused_ink_address):
-		print("Starting chat: ", name, " | ", paused_ink_address.container.path, ".", paused_ink_address.index)
-	else:
-		print("No hierarchy starting chat: ", name)
+	# if (paused_ink_address):
+	# 	print("Starting chat: ", name, " | ", paused_ink_address.container.path, ".", paused_ink_address.index)
+	# else:
+	# 	print("No hierarchy starting chat: ", name)
 	DialogueSystem.load_past_messages(past_chats) #load it even if there are no new messages so player can see old ones
-	var new_json : JSON = upcoming_chats.front()
+	var new_json : InkResource = upcoming_chats.front()
 	if new_json == null:
 		chat_in_progress = false
 		return
-	if paused_ink_address:
-		print("Chat is in progress: ", name)
-		DialogueSystem.resume_dialogue(paused_ink_address, self)
-	else:
-		DialogueSystem.begin_dialogue(new_json, true)
+	# if paused_ink_address:
+	# 	print("Chat is in progress: ", name)
+	# 	DialogueSystem.resume_dialogue(paused_ink_address, self)
+	# else:
+	DialogueSystem.begin_dialogue(new_json, true)
 	chat_in_progress = true
 	
 func pause_chat(current_conversation : Array[InkLineInfo]) -> void:
@@ -97,7 +94,7 @@ func pause_chat(current_conversation : Array[InkLineInfo]) -> void:
 		past_chats = current_conversation
 		print(name, " is saving past chats as ", past_chats)
 		#save current InkTree address
-		paused_ink_address = DialogueSystem.current_address #saves current variables
+		#paused_ink_address = DialogueSystem.current_address #saves current variables
 		update_chat_info()
 
 func end_chat(current_conversation : Array[InkLineInfo]) -> void:

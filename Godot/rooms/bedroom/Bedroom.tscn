@@ -1,4 +1,4 @@
-[gd_scene load_steps=274 format=4 uid="uid://c44l5t4o5i1qg"]
+[gd_scene load_steps=275 format=4 uid="uid://c44l5t4o5i1qg"]
 
 [ext_resource type="Texture2D" uid="uid://di3fxmhwsgn4v" path="res://rooms/bedroom/Bedroom_IMG_4162.png" id="1_aasoq"]
 [ext_resource type="Script" uid="uid://bh46on0pmp3la" path="res://rooms/bedroom/bedroom.gd" id="1_lxtj2"]
@@ -2375,6 +2375,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_o7qs3")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_8ahpd"]
+resource_local_to_scene = true
+size = Vector3(1.61938, 2.80212, 2.04828)
+
 [node name="Bedroom" type="Area3D" node_paths=PackedStringArray("closet", "room_area", "path_follow_node") groups=["loadable_scene"]]
 collision_mask = 2
 script = ExtResource("1_lxtj2")
@@ -2457,15 +2461,15 @@ debug_color = Color(0, 0.6, 0.701961, 1)
 [node name="TeleportPoint" parent="." instance=ExtResource("88_otruv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.075, 0, 1.824)
 
-[node name="SceneLoader_Exterior" parent="." instance=ExtResource("6_x8yhf")]
+[node name="SceneLoader_Exterior" parent="." node_paths=PackedStringArray("interaction_detector") instance=ExtResource("6_x8yhf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.48049, 0, 5.078)
 target_scene = 9
 play_door_sound = true
 use_first_mesh = true
+interaction_detector = NodePath("InteractionDetector")
 enabled = false
 
 [node name="DoorSound" parent="SceneLoader_Exterior" index="0"]
-event_name = ""
 event_guid = "{00000000-0000-0000-0000-000000000000}"
 
 [node name="Popup" parent="SceneLoader_Exterior" index="1"]
@@ -3201,6 +3205,7 @@ transform = Transform3D(0.565345, 0.845524, -0.227634, 0.139033, 0.180841, 1.017
 autoplay = "IDLE"
 
 [node name="Music" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/900_MX/Olivia room music"
 event_guid = "{ae9cb825-c6ee-408e-a544-82929c10a82d}"
 autoplay = true
 volume = 0.5
@@ -3233,6 +3238,11 @@ skeleton = NodePath("")
 transform = Transform3D(0.889039, 0, 0, 0, 0.889039, 0, 0, 0, 0.889039, -0.866294, 1.75662, 1.98393)
 visible = false
 
+[node name="InteractionDetector" parent="." instance=ExtResource("63_yquho")]
+
+[node name="CollisionShape3D" parent="InteractionDetector" index="0"]
+shape = SubResource("BoxShape3D_8ahpd")
+
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
 
 [editable path="SceneLoader_Exterior"]
@@ -3243,3 +3253,4 @@ visible = false
 [editable path="CorkBoard/Popup"]
 [editable path="Props/SuitcaseAndBox"]
 [editable path="LEO"]
+[editable path="InteractionDetector"]

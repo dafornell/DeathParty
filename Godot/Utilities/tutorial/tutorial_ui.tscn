@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://dem1mxmxwres" path="res://Utilities/tutorial/states/tutorial_state_walk.gd" id="4_ked10"]
 [ext_resource type="Script" uid="uid://doefgjuxprm3w" path="res://Utilities/tutorial/states/tutorial_state_open_phone.gd" id="5_3xnq3"]
 [ext_resource type="Script" uid="uid://ckxrj4tcy13jq" path="res://Utilities/tutorial/states/tutorial_state_open_message.gd" id="6_kvxjh"]
-[ext_resource type="JSON" path="res://Assets/InkExamples/RowanDormInvite.json" id="7_e27ia"]
+[ext_resource type="Resource" uid="uid://cysu22404pgv7" path="res://Assets/InkExamples/RowanDormInvite.json" id="7_e27ia"]
 [ext_resource type="Script" uid="uid://quh4vq3y8a21" path="res://Utilities/tutorial/states/tutorial_state_open_journal.gd" id="7_qia2k"]
 [ext_resource type="Script" uid="uid://e5dxtx8btbel" path="res://Utilities/tutorial/states/tutorial_state_close_phone.gd" id="8_lj0v4"]
 [ext_resource type="Script" uid="uid://cm4tcci0ap62b" path="res://Utilities/tutorial/states/tutorial_state_read_conversation.gd" id="9_titvu"]

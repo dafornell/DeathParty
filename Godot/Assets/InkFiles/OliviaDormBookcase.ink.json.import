@@ -1,0 +1,15 @@
+[remap]
+
+importer="inkgd.ink.json"
+type="Resource"
+uid="uid://cuve3b5voxd0i"
+path="res://.godot/imported/OliviaDormBookcase.ink.json-5aaae50eb7feeb68c3a6055f38601a47.res"
+
+[deps]
+
+source_file="res://Assets/InkFiles/OliviaDormBookcase.ink.json"
+dest_files=["res://.godot/imported/OliviaDormBookcase.ink.json-5aaae50eb7feeb68c3a6055f38601a47.res"]
+
+[params]
+
+compress=true

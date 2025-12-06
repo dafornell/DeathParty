@@ -4,7 +4,7 @@ class_name LoadableScene extends GameObject
 var scene_enum : Globals.SCENES
 
 var first_time_visit : bool = true
-var first_visit_json : JSON
+var first_visit_json : InkResource
 var room : Room3D #instance
 
 #SceneLoaders

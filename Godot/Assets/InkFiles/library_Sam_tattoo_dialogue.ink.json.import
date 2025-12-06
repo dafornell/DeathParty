@@ -1,0 +1,15 @@
+[remap]
+
+importer="inkgd.ink.json"
+type="Resource"
+uid="uid://cptg61iip0ypq"
+path="res://.godot/imported/library_Sam_tattoo_dialogue.ink.json-b67260493808cfdb7a27d409c6d280fd.res"
+
+[deps]
+
+source_file="res://Assets/InkFiles/library_Sam_tattoo_dialogue.ink.json"
+dest_files=["res://.godot/imported/library_Sam_tattoo_dialogue.ink.json-b67260493808cfdb7a27d409c6d280fd.res"]
+
+[params]
+
+compress=true

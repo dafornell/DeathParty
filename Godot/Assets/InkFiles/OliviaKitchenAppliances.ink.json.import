@@ -1,0 +1,15 @@
+[remap]
+
+importer="inkgd.ink.json"
+type="Resource"
+uid="uid://77xvv37q1t2y"
+path="res://.godot/imported/OliviaKitchenAppliances.ink.json-b919074b24527757c398c6dc996b1a55.res"
+
+[deps]
+
+source_file="res://Assets/InkFiles/OliviaKitchenAppliances.ink.json"
+dest_files=["res://.godot/imported/OliviaKitchenAppliances.ink.json-b919074b24527757c398c6dc996b1a55.res"]
+
+[params]
+
+compress=true
