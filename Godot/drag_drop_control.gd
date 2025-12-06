@@ -7,7 +7,7 @@ class_name DragDropControl extends ThreeDGUI
 @export var reveal_scene : PackedScene
 @export var reveal_texture : CompressedTexture2D
 
-@export var on_reveal_dialogue : JSON
+@export var on_reveal_dialogue : InkResource
 const dialogue_box : DialogueBoxResource = preload("res://Assets/Resources/DialogueBoxResources/main_dialogue_box_properties.tres")
 
 @export var color_rect : ColorRect

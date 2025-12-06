@@ -49,10 +49,10 @@ var first_message : bool = true;
 var choices_array: Array[MessageAppChoiceButton] = []
 
 class MessageAppChoiceButton:
-	var info: InkChoiceInfo
+	var info: InkChoice
 	var button: PhoneChoiceButton
 	var box: MessageAppBox
-	func _init(_box: MessageAppBox, choice_container: Control, choice: InkChoiceInfo) -> void:
+	func _init(_box: MessageAppBox, choice_container: Control, choice: InkChoice) -> void:
 		info = choice
 		box = _box
 		button = box.choice_prefab.instantiate()
@@ -236,7 +236,7 @@ func add_line(line: InkLineInfo, skip_delay : bool = false) -> void:
 	#ADVANCE DIALOGUE AUTOMATICALLY (PHONE ONLY)
 	DialogueSystem.advance_dialogue()
 
-func set_choices(choices: Array[InkChoiceInfo]) -> void:
+func set_choices(choices: Array[InkChoice]) -> void:
 	await get_tree().create_timer(delay_before_choices).timeout
 	touch_screen.visible = false
 	for choice in choices:

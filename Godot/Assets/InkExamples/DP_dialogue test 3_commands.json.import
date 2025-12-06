@@ -1,0 +1,15 @@
+[remap]
+
+importer="inkgd.ink.json"
+type="Resource"
+uid="uid://bqllctkuwymlm"
+path="res://.godot/imported/DP_dialogue test 3_commands.json-e88fb89921ea988cae36d1d893528f85.res"
+
+[deps]
+
+source_file="res://Assets/InkExamples/DP_dialogue test 3_commands.json"
+dest_files=["res://.godot/imported/DP_dialogue test 3_commands.json-e88fb89921ea988cae36d1d893528f85.res"]
+
+[params]
+
+compress=true

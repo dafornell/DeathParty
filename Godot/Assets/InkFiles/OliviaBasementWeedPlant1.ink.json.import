@@ -1,0 +1,15 @@
+[remap]
+
+importer="inkgd.ink.json"
+type="Resource"
+uid="uid://d28u3wfwaf2gv"
+path="res://.godot/imported/OliviaBasementWeedPlant1.ink.json-fc68c5a9ded97c39ee800294d2162fa6.res"
+
+[deps]
+
+source_file="res://Assets/InkFiles/OliviaBasementWeedPlant1.ink.json"
+dest_files=["res://.godot/imported/OliviaBasementWeedPlant1.ink.json-fc68c5a9ded97c39ee800294d2162fa6.res"]
+
+[params]
+
+compress=true

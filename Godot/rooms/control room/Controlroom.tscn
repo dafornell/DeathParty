@@ -9,11 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://t10b4wct2ehs" path="res://rooms/control room/Control room_22869_2_580x.webp" id="6_l81f5"]
 [ext_resource type="Texture2D" uid="uid://xgmhi7wp1hg4" path="res://rooms/control room/Control room_1fbca382c3a2c21c6d30d0545225607e.jpg" id="7_jnoog"]
 [ext_resource type="Texture2D" uid="uid://ch5hp61cyrgs0" path="res://rooms/control room/Control room_TCom_ConcreteBare0318_5_S.jpg" id="8_hfeap"]
-[ext_resource type="Texture2D" uid="uid://dh1i8tbinnusr" path="res://rooms/control room/Control room_TCom_BronzeCopper0048_1_S (1).jpg" id="9_yi1qe"]
+[ext_resource type="Texture2D" uid="uid://bq4l5a8jdsecm" path="res://rooms/control room/Control room_TCom_BronzeCopper0048_1_S (1).jpg" id="9_yi1qe"]
 [ext_resource type="Texture2D" uid="uid://nnfpyt04n2mk" path="res://rooms/control room/Control room_TCom_BronzeCopper0099_1_S.jpg" id="10_lybdf"]
 [ext_resource type="Texture2D" uid="uid://dmqnplpmehdc4" path="res://rooms/control room/Control room_TCom_BronzeCopper0126_2_S.jpg" id="11_tvi1n"]
-[ext_resource type="Texture2D" uid="uid://ceaey4kptqr4x" path="res://rooms/control room/Control room_518233709_10236937404997646_5794273750296707854_n.jpg" id="12_0g1yx"]
-[ext_resource type="Texture2D" uid="uid://cle7hy6g6cs7i" path="res://rooms/control room/Control room_TCom_BronzeCopper0096_2_S.jpg" id="13_h6eor"]
+[ext_resource type="Texture2D" uid="uid://d0urteudj425a" path="res://rooms/control room/Control room_518233709_10236937404997646_5794273750296707854_n.jpg" id="12_0g1yx"]
+[ext_resource type="Texture2D" uid="uid://chk06ycs6unv8" path="res://rooms/control room/Control room_TCom_BronzeCopper0096_2_S.jpg" id="13_h6eor"]
 [ext_resource type="Texture2D" uid="uid://bkmb2b17o1ta" path="res://rooms/control room/Control room_TCom_BronzeCopper0106_1_S.jpg" id="14_onbbq"]
 [ext_resource type="Texture2D" uid="uid://gfq64erktirb" path="res://rooms/control room/Control room_TCom_MetalRusted0122_2_seamless_S.jpg" id="15_s63gy"]
 [ext_resource type="Texture2D" uid="uid://ceb8py0outbup" path="res://rooms/control room/Control room_IMG_0691.jpg" id="16_e511m"]
@@ -1594,6 +1594,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_xyqem")
 
 [node name="Control room" type="Area3D" node_paths=PackedStringArray("room_area")]
+collision_mask = 2
 script = ExtResource("1_5pt3f")
 room_area = NodePath("RoomArea")
 
@@ -1940,11 +1941,15 @@ spot_angle = 37.73
 
 [node name="SceneLoaders" type="Node3D" parent="."]
 
-[node name="SceneLoader_Hourhand hallway" parent="SceneLoaders" instance=ExtResource("18_whgpw")]
+[node name="SceneLoader_Hourhand hallway" parent="SceneLoaders" node_paths=PackedStringArray("interaction_detector") instance=ExtResource("18_whgpw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.226929, 0.227795, -5.11926)
 target_scene = 11
 local_spawn_point = 1
 play_door_sound = true
+interaction_detector = NodePath("InteractionDetector")
+
+[node name="DoorSound" parent="SceneLoaders/SceneLoader_Hourhand hallway" index="0"]
+event_name = "event:/000_SFX/100_Environment/door"
 
 [node name="Popup" parent="SceneLoaders/SceneLoader_Hourhand hallway" index="1"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 1.75, 0)
@@ -1976,6 +1981,12 @@ skeleton = NodePath("")
 transform = Transform3D(0.02398, 0, 0.529371, 0, 0.426145, 0, -0.529371, 0, 0.02398, -0.000196338, 2.87501, -0.165289)
 mesh = SubResource("ArrayMesh_wdsdr")
 skeleton = NodePath("")
+
+[node name="Ambience" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/000_SFX/100_Environment/control room ambience"
+event_guid = "{c03b539f-bbab-4a4b-abe0-5053b12a5684}"
+autoplay = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
 
 [editable path="SceneLoaders/SceneLoader_Hourhand hallway"]
 [editable path="SceneLoaders/SceneLoader_Hourhand hallway/InteractionDetector"]

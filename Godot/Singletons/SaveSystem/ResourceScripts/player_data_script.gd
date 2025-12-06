@@ -7,6 +7,7 @@ var variable_dict : Dictionary[String, Variant] = {
 	strength = 10,
 	empathy = 10,
 	sleaziness = 10,
+	basement_tape_cleared = false
 }
 
 var journal_entries : Dictionary[String, bool] = {}

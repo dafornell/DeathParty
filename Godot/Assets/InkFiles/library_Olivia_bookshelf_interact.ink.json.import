@@ -1,0 +1,15 @@
+[remap]
+
+importer="inkgd.ink.json"
+type="Resource"
+uid="uid://nym12agug4ti"
+path="res://.godot/imported/library_Olivia_bookshelf_interact.ink.json-79204c56af546616f9159899668594fb.res"
+
+[deps]
+
+source_file="res://Assets/InkFiles/library_Olivia_bookshelf_interact.ink.json"
+dest_files=["res://.godot/imported/library_Olivia_bookshelf_interact.ink.json-79204c56af546616f9159899668594fb.res"]
+
+[params]
+
+compress=true

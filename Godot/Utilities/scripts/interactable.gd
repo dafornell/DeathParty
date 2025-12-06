@@ -144,7 +144,8 @@ func _despawn_if_has_item(item : InventoryItemResource = null) -> bool:
 
 func fade_away_then_delete() -> void:
 	enabled = false
-	popup.hide()
+	if popup:
+		popup.hide()
 
 	var meshes: Array = find_children("*", "MeshInstance3D", true, true)
 

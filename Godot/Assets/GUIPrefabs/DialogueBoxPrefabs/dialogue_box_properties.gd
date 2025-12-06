@@ -29,7 +29,10 @@ class AnimatedTextLabel:
 func add_line(_line: InkLineInfo, _skip_delay : bool = false) -> void:
 	assert(false, "You need to define add_line() in your DialogueBox")
 
-func set_choices(_choices: Array[InkChoiceInfo]) -> void:
+func set_choice_info(_text : String) -> void:
+	assert(false, "You need to define set_choice_info() in your DialogueBox")
+
+func set_choices(_choices: Array[InkChoice]) -> void:
 	assert(false, "You need to define set_choices() in your DialogueBox")
 
 func pause_conversation() -> void:

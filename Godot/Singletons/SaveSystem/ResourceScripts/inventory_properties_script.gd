@@ -4,7 +4,7 @@ class_name InventoryItemResource extends DefaultResource
 @export var model : PackedScene
 
 @export var amount_owned : int = 0
-@export var dialogue_on_first_view : JSON
+@export var dialogue_on_first_view : InkResource
 var viewed : bool = false
 
 func get_save_state() -> Dictionary:

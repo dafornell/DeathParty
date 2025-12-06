@@ -1,0 +1,15 @@
+[remap]
+
+importer="inkgd.ink.json"
+type="Resource"
+uid="uid://lkghxvofkew1"
+path="res://.godot/imported/OliviaDormCamera.ink.json-060b5500377836fb9c13d2d454bc881c.res"
+
+[deps]
+
+source_file="res://Assets/InkFiles/OliviaDormCamera.ink.json"
+dest_files=["res://.godot/imported/OliviaDormCamera.ink.json-060b5500377836fb9c13d2d454bc881c.res"]
+
+[params]
+
+compress=true

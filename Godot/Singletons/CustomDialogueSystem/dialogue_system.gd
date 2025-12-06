@@ -13,7 +13,7 @@ var current_character_resource : TalkingObjectResource
 var current_conversation : Array[InkLineInfo]
 
 ## VARIABLE SETTER FILE
-var set_variables_file : JSON = preload("res://Assets/InkFiles/Act 1 Variables.ink.json")
+var set_variables_file : InkResource = preload("res://Assets/InkFiles/Act 1 Variables.ink.json")
 
 ## STATES
 var in_dialogue : bool = false
@@ -22,8 +22,11 @@ var waiting : bool = false
 signal done_waiting
 
 ## INK
-var current_address : InkAddress:
-	get: return Ink.address
+# var current_address : InkAddress:
+# 	get: return Ink.address
+var _ink_player : InkPlayer
+var _temp_ink_player : InkPlayer
+var current_story : JSON
 
 ## CONSTANTS or UTILITIES
 const INK_FILE_PATH : String = "res://Assets/InkFiles/"
@@ -55,7 +58,20 @@ func _ready() -> void:
 		text_message_box = canvas_layer.get_node("Phone/Phone/Screen/Background/MessageApp")
 		notification_box = canvas_layer.get_node("PhoneNotifications/VBoxContainer")
 		##run through initial variable-setting
-		begin_dialogue(set_variables_file)
+		#begin_dialogue(set_variables_file)
+
+	_temp_ink_player = InkPlayer.new()
+	add_child(_temp_ink_player)
+	_temp_ink_player.loads_in_background = true
+
+	_ink_player = InkPlayer.new()
+	add_child(_ink_player)
+	_ink_player.loads_in_background = true
+	_ink_player.ink_file = set_variables_file
+	#_ink_player.connect("loaded", self._new_story_loaded)
+	_ink_player.create_story()
+	await _ink_player.loaded
+	display_content() # runs through commands
 
 ## START/PAUSE/END DIALOGUE
 func show_dialogue_box(in_phone : bool) -> void:
@@ -65,7 +81,7 @@ func show_dialogue_box(in_phone : bool) -> void:
 		current_dialogue_box = text_message_box
 	current_dialogue_box.visible = true
 
-func begin_dialogue(file : JSON, in_phone : bool = false) -> void:
+func begin_dialogue(file : InkResource, in_phone : bool = false) -> void:
 	assert(file != null, "You forgot to assign a JSON file!")
 	if GuiSystem.in_title_screen:
 		await Events.title_screen_start_game_button_pressed
@@ -77,11 +93,18 @@ func begin_dialogue(file : JSON, in_phone : bool = false) -> void:
 		return
 	if current_character_resource == null:
 		current_character_resource = default_char_resource
-	print("Beginning dialogue")
+
+	print("Beginning dialogue: ", file.resource_path)
+
 	in_dialogue = true
+	_ink_player.ink_file = file
+	_ink_player.create_story()
+	await _ink_player.loaded
 	show_dialogue_box(in_phone)
-	Ink.from_JSON(file)
 	display_content()
+	#current_story = file
+	#Ink.from_JSON(file)
+	#display_content()
 
 func resume_dialogue(address : InkAddress, talking_resource : DefaultResource, in_phone : bool = true) -> void:
 	if in_dialogue:
@@ -97,7 +120,7 @@ func resume_dialogue(address : InkAddress, talking_resource : DefaultResource, i
 	else:
 		current_character_resource = talking_resource
 	show_dialogue_box(in_phone)
-	Ink.from_address(address)
+	#Ink.from_address(address)
 	display_content()
 
 func end_dialogue() -> void:
@@ -107,7 +130,7 @@ func end_dialogue() -> void:
 		current_phone_resource.end_chat(current_conversation)
 		current_phone_resource = null
 		current_dialogue_box = null
-	else:
+	elif current_dialogue_box:
 		current_dialogue_box.visible = false
 		current_dialogue_box.queue_free()
 		if current_character_resource:
@@ -119,7 +142,7 @@ func pause_dialogue(revert_address : bool = false) -> void:
 	if !in_dialogue: return
 	are_choices = false
 	if revert_address: #for when you pause but the system is already on the next line
-		Ink.address.index -= 1
+		#Ink.address.index -= 1
 		current_conversation.pop_back()
 	
 	print("trying to pause: ", current_dialogue_box, current_character_resource)
@@ -144,7 +167,7 @@ func spawn_dialogue_box() -> void:
 	canvas_layer.add_child(clone)
 	current_dialogue_box = clone
 
-func load_json(json_file_name : String) -> JSON:
+func load_json(json_file_name : String) -> InkResource:
 	if FileAccess.file_exists(INK_FILE_PATH+json_file_name):
 		return load(INK_FILE_PATH+json_file_name)
 	elif FileAccess.file_exists(INK_EXAMPLES_FILE_PATH+json_file_name):
@@ -152,14 +175,14 @@ func load_json(json_file_name : String) -> JSON:
 	return null
 
 func load_conversation(character_name : String, json_file_name : String) -> void:
-	var json : JSON = load_json(json_file_name)
+	var json : InkResource = load_json(json_file_name)
 	var talking_resource : TalkingObjectResource = SaveSystem.get_character(character_name)
 	if !talking_resource:
 		talking_resource = SaveSystem.get_talking_object(character_name)
 	talking_resource.load_chat(json)
 
 func load_phone_conversation(chat_name : String, json_file_name : String) -> void:
-	var json : JSON = load_json(json_file_name)
+	var json : InkResource = load_json(json_file_name)
 	var chat_resource : ChatResource = SaveSystem.get_phone_chat(chat_name)
 	current_phone_resource = chat_resource
 	chat_resource.load_chat(json)
@@ -172,47 +195,85 @@ func load_past_messages(past_chats : Array[InkLineInfo]) -> void:
 		var chat : InkLineInfo = current_conversation[n]
 		current_dialogue_box.add_line(chat, true)
 
-func to_phone(chat_name : String, file : JSON) -> void: # called to load json into phone
+func to_phone(chat_name : String, file : InkResource) -> void: # called to load json into phone
 	var chat : ChatResource = SaveSystem.get_phone_chat(chat_name)
 	current_phone_resource = chat
 	current_phone_resource.load_chat(file)
 
-func from_character(char_rsc : TalkingObjectResource, file : JSON) -> void:
+func from_character(char_rsc : TalkingObjectResource, file : InkResource) -> void:
 	current_character_resource = char_rsc
 	begin_dialogue(file)
 ##
 
 ## PROCESS CONTENT
-func get_first_message(json : JSON) -> InkLineInfo:
-	return Ink.get_first_message(json)
+func get_first_message(json : InkResource) -> InkLineInfo:
+	_temp_ink_player.ink_file = json
+	_temp_ink_player.create_story()
+
+	#await _temp_ink_player.loaded
+
+	var first_message : InkLineInfo = InkParser.break_up_dialogue(_temp_ink_player.continue_story())
+	json.reset_state()
+	return first_message#Ink.get_first_message(json)
 
 func display_content() -> void:
-	var content : Variant = Ink.get_content()
-	print("Display content called: ", content[0])
-	'''
-	Ink.get_content() returns Array[InkNode]
-	InkNode can be InkLineInfo or InkChoiceInfo
-	'''
-	if content[0] is InkLineInfo:
-		var line : InkLineInfo = content[0]
-		if line.speaker == "System" and line.text == "end":
-			end_dialogue()
-		elif line.speaker == "System" and line.text == "nop":
+	if _ink_player.can_continue:
+		var content : String = _ink_player.continue_story()
+		
+		#removes newline if there is one (messes with item names and stuff)
+		content = content.trim_suffix("\n") 
+
+		if content.replace(" ", "") == "" or content == null:
+			print("Content is empty string, skipping")
 			display_content()
-		elif line.text[0] == "/":
-			await match_command(line.text)
-			#print("Match command: ", line.text)
-			#display_content()
 		else:
-			current_dialogue_box.add_line(line)
-			current_conversation.push_back(line)
-			Events.dialogue_line_displayed.emit(line)
-	elif content[0] is InkChoiceInfo:
-		var choices : Array[InkChoiceInfo] = []
-		for choice : InkChoiceInfo in content:
-			choices.push_back(choice)
-		are_choices = true
-		current_dialogue_box.set_choices(choices)
+			#var content : Variant = Ink.get_content()
+			print("Display content called: ", content)
+			if content[0] == "/":
+				await match_command(content)
+			else:
+				var line : InkLineInfo = InkParser.break_up_dialogue(content)
+				if line.speaker == "ChoiceInfo":
+					current_dialogue_box.set_choice_info(line.text)
+					display_content()
+				else:
+					current_dialogue_box.add_line(line)
+					current_conversation.push_back(line)
+					Events.dialogue_line_displayed.emit(line)
+	else:
+		#get choices, otherwise end
+		if _ink_player.has_choices:
+			are_choices = true
+			
+			# parse
+			var choice_array : Array[InkChoice] = []
+			for choice : InkChoice in _ink_player.current_choices:
+				choice_array.push_back(choice)
+
+			current_dialogue_box.set_choices(choice_array)
+		else:
+			end_dialogue()
+
+	# if content[0] is InkLineInfo:
+	# 	var line : InkLineInfo = content[0]
+	# 	if line.speaker == "System" and line.text == "end":
+	# 		end_dialogue()
+	# 	elif line.speaker == "System" and line.text == "nop":
+	# 		display_content()
+	# 	elif line.text[0] == "/":
+	# 		await match_command(line.text)
+	# 		#print("Match command: ", line.text)
+	# 		#display_content()
+	# 	else:
+	# 		current_dialogue_box.add_line(line)
+	# 		current_conversation.push_back(line)
+	# 		Events.dialogue_line_displayed.emit(line)
+	# elif content[0] is InkChoiceInfo:
+	# 	var choices : Array[InkChoiceInfo] = []
+	# 	for choice : InkChoiceInfo in content:
+	# 		choices.push_back(choice)
+	# 	are_choices = true
+	# 	current_dialogue_box.set_choices(choices)
 
 	if waiting:
 		waiting = false
@@ -375,8 +436,9 @@ func advance_dialogue() -> void:
 
 
 ## MAKE CHOICE
-func make_choice(choice : InkChoiceInfo) -> void:
+func make_choice(choice : InkChoice) -> void:
 	are_choices = false
 	print("Making choice: ", choice)
-	Ink.make_choice(choice)
+	#Ink.make_choice(choice)
+	_ink_player.choose_choice_index(choice.index)
 	display_content()

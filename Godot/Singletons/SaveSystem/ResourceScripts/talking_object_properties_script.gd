@@ -1,13 +1,13 @@
 class_name TalkingObjectResource extends DefaultResource
 
 #CHATS
-var upcoming_chats: Array[JSON] = []
-var default_chat: JSON
+var upcoming_chats: Array[InkResource] = []
+var default_chat: InkResource
 
 var paused_ink_address: InkAddress
 
 ## ORDER: Room-specific -> Everywhere
-@export var default_chats: Dictionary[Globals.SCENES, JSON] = {}
+@export var default_chats: Dictionary[Globals.SCENES, InkResource] = {}
 @export var queue_chats: Dictionary[Globals.SCENES, JSONArray] = {}
 
 var queue_chat_indices: Dictionary[Globals.SCENES, int] = {}
@@ -41,7 +41,7 @@ func initialize() -> void:
 		load_chats_for_room()
 	)
 
-var first_chat: JSON:
+var first_chat: InkResource:
 	get:
 		if upcoming_chats.is_empty():
 			return null
@@ -75,13 +75,13 @@ func load_chats_for_room() -> void:
 	_load_queue_chats(ContentLoader.active_scene_enum)
 	_load_queue_chats(Globals.SCENES.Everywhere)
 
-func chat_already_loaded(file : JSON) -> bool:
-	for chat: JSON in upcoming_chats:
+func chat_already_loaded(file : InkResource) -> bool:
+	for chat: InkResource in upcoming_chats:
 		if chat.resource_path == file.resource_path:
 			return true
 	return false
 
-func load_chat(json: JSON) -> void:
+func load_chat(json: InkResource) -> void:
 	if chat_already_loaded(json):
 		return
 	upcoming_chats.push_back(json)
@@ -89,7 +89,7 @@ func load_chat(json: JSON) -> void:
 	
 func print_all_chats() -> void:
 	print(name, "'s chats-------")
-	for chat : JSON in upcoming_chats:
+	for chat : InkResource in upcoming_chats:
 		print("Chat: ", chat, chat.resource_path)
 	print("------")
 	
@@ -106,21 +106,22 @@ func start_chat() -> void:
 		DialogueSystem.from_character(self, first_chat)
 		Sounds.play_dialogue_start()
 
-func _increment_queue_chat_indices(chat: JSON, scene: Globals.SCENES) -> void:
+func _increment_queue_chat_indices(chat: InkResource, scene: Globals.SCENES) -> void:
 	if queue_chats.has(scene) and chat in queue_chats[scene].json_array:
 		var cur_idx: int = queue_chat_indices.get(scene, 0)
 		queue_chat_indices[scene] = cur_idx + 1
 
 func end_chat(_current_conversation : Array[InkLineInfo] = []) -> void:
 	print("Ended chat with ", name)
-	var chat: JSON = upcoming_chats.pop_front()
+	var chat: InkResource = upcoming_chats.pop_front()
 	_increment_queue_chat_indices(chat, ContentLoader.active_scene_enum)
 	_increment_queue_chat_indices(chat, Globals.SCENES.Everywhere)
 	
 
 func pause_chat() -> void:
 	#save current InkTree address
-	paused_ink_address = DialogueSystem.current_address #saves current variables
+	#paused_ink_address = DialogueSystem.current_address #saves current variables
+	pass
 	
 func has_chats() -> bool:
 	print("Checking has chats for ", name, " default chat: ", default_chat, " first chat: ", first_chat)

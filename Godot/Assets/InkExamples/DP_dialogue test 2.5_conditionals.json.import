@@ -1,0 +1,15 @@
+[remap]
+
+importer="inkgd.ink.json"
+type="Resource"
+uid="uid://tvce7s2wt4hy"
+path="res://.godot/imported/DP_dialogue test 2.5_conditionals.json-c085c5553801177674353f2326408bb0.res"
+
+[deps]
+
+source_file="res://Assets/InkExamples/DP_dialogue test 2.5_conditionals.json"
+dest_files=["res://.godot/imported/DP_dialogue test 2.5_conditionals.json-c085c5553801177674353f2326408bb0.res"]
+
+[params]
+
+compress=true

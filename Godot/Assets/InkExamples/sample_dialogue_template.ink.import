@@ -1,0 +1,14 @@
+[remap]
+
+importer="inkgd.ink"
+type="Resource"
+uid="uid://5swpmb1of6dj"
+path="res://.godot/imported/sample_dialogue_template.ink-8b6a066729434b6e990d37a86688356c.res"
+
+[deps]
+
+source_file="res://Assets/InkExamples/sample_dialogue_template.ink"
+dest_files=["res://.godot/imported/sample_dialogue_template.ink-8b6a066729434b6e990d37a86688356c.res"]
+
+[params]
+

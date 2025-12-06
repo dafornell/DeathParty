@@ -118,7 +118,7 @@ func get_time_string(include_ampm:bool = true) -> String:
 #EDITING
 func get_key(key:String) ->  Variant:
 	key_exists_assert(key)
-	print("global decl GET key function: ", key, " | ", player_data.variable_dict[key])
+	print("GET key function: ", key, " | ", player_data.variable_dict[key])
 	return player_data.variable_dict[key]
 
 func set_key(key:String, value:Variant) -> void:
@@ -129,8 +129,21 @@ func set_key(key:String, value:Variant) -> void:
 			value = true
 		elif value == "false":
 			value = false
-	print("set key function: ", key, " value: ", value)
+	print("SET key function: ", key, " value: ", value)
 	player_data.variable_dict[key] = value
+
+func set_key_override(key:String, value:Variant) -> void:
+	if value is String:
+		if value == "true":
+			value = true
+		elif value == "false":
+			value = false
+	print("OVERRIDE SET key function: ", key, " value: ", value)
+	player_data.variable_dict[key] = value
+
+func global_decl_key(key:String, value:Variant) -> void:
+	if !key_exists(key):
+		set_key(key, value)
 	
 func increment(key:String) -> void:
 	set_key(key, player_data.variable_dict[key]+1) #will also emit signal
