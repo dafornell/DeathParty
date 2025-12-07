@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=4 uid="uid://cno0dyov1i6bm"]
 
 [ext_resource type="PackedScene" uid="uid://qhxefncatca4" path="res://Entities/NPCs/npc.tscn" id="1_er6ci"]
-[ext_resource type="Texture2D" uid="uid://dwa2ag78in60f" path="res://Assets/CharacterAssets/witch/witch_witch.png" id="2_qrbe8"]
+[ext_resource type="Texture2D" uid="uid://pkwa3ch2g6vb" path="res://Assets/CharacterAssets/witch/new witch.png" id="2_er6ci"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1wp2n"]
 resource_name = "witch"
 cull_mode = 2
-albedo_texture = ExtResource("2_qrbe8")
+albedo_texture = ExtResource("2_er6ci")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_fefqd"]
 resource_name = "witch_Mesh_006"
