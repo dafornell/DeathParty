@@ -1,14 +1,15 @@
-[gd_resource type="Resource" script_class="CharacterResource" load_steps=7 format=3 uid="uid://clfvsvp2igosb"]
+[gd_resource type="Resource" script_class="CharacterResource" load_steps=8 format=3 uid="uid://clfvsvp2igosb"]
 
 [ext_resource type="Script" uid="uid://cmr58186dx31r" path="res://Singletons/SaveSystem/ResourceScripts/character_properties_script.gd" id="1_5gmr0"]
 [ext_resource type="Texture2D" uid="uid://buxqmi3ppd6wf" path="res://Assets/CharacterAssets/Polaroids/caleb_a.png" id="1_ecyof"]
+[ext_resource type="Script" uid="uid://dhrucqrtfnkrj" path="res://addons/inkgd/editor/import_plugins/ink_resource.gd" id="1_eyuf2"]
 [ext_resource type="Texture2D" uid="uid://b8sqw7pteykmi" path="res://Assets/CharacterAssets/Polaroids/caleb_b.png" id="2_0c5ri"]
 [ext_resource type="Script" uid="uid://d1yny6oqf2gvp" path="res://Singletons/SaveSystem/ResourceScripts/json_array.gd" id="3_npws7"]
-[ext_resource type="JSON" path="res://Assets/InkFiles/OliviaCalebPartyRoom.ink.json" id="4_npws7"]
+[ext_resource type="Resource" uid="uid://df2jx5vnb7uep" path="res://Assets/InkFiles/OliviaCalebPartyRoom.ink.json" id="4_npws7"]
 
-[sub_resource type="Resource" id="Resource_eyuf2"]
+[sub_resource type="Resource" id="Resource_x6qpo"]
 script = ExtResource("3_npws7")
-json_array = Array[JSON]([ExtResource("4_npws7"), null])
+json_array = Array[ExtResource("1_eyuf2")]([ExtResource("4_npws7")])
 metadata/_custom_type_script = "uid://d1yny6oqf2gvp"
 
 [resource]
@@ -19,6 +20,6 @@ image_polaroid = ExtResource("1_ecyof")
 image_polaroid_popout = ExtResource("2_0c5ri")
 image_profile = ExtResource("1_ecyof")
 queue_chats = Dictionary[int, ExtResource("3_npws7")]({
-0: SubResource("Resource_eyuf2")
+2: SubResource("Resource_x6qpo")
 })
 name = "Caleb"
